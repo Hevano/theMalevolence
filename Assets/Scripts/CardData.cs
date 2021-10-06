@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public new string name;
+    [TextArea]
     public string cardText;
     public CharacterEnum characterType;
 

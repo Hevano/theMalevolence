@@ -10,21 +10,21 @@ public abstract partial class CardEffect : ICard
     /**  INTERFACE **/
 
     //Called when the card is played onto a character
-    public void Played(Character c){
-
+    public virtual void Played(Character c){
+        character = c;
     }
     //Called when the card is executed on the character's turn
-    public void Resolved(){}
+    public virtual void Resolved(){}
     //Called when the card is permanently removed from the deck
-    public void Destroyed(){}
+    public virtual void Destroyed(){}
     //Called when the card is drawn into the hand
-    public void Drawn(){}
+    public virtual void Drawn(){}
     //Called when the card is removed from play untill the end of the battle
-    public void Exiled(){}
+    public virtual void Exiled(){}
     //Called when the card is sent from the hand to the discard pile
-    public void Discarded(){}
+    public virtual void Discarded(){}
     //Called when the card was played onto a character but was cancelled for some reason (stun, etc.)
-    public void Canceled(){
+    public virtual void Canceled(){
         character = null;
     }
 
@@ -77,6 +77,6 @@ public abstract partial class CardEffect : ICard
         }
     }
 
-    
+
 
 }
