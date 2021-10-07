@@ -6,6 +6,8 @@ using UnityEngine;
 public class CardEffectsMaker : MonoBehaviour {
     public Enums.CardEffects effectType;
 
+    public List<CardEffect> effectList;
+
     public CardEffect cardEffect = new CardEffect();
     public AttackEffect attackEffect = new AttackEffect();
     public CleanseEffect cleanseEffect = new CleanseEffect();
@@ -19,5 +21,7 @@ public class CardEffectsMaker : MonoBehaviour {
     public ReplaceValueEffect replaceValueEffect = new ReplaceValueEffect();
     public ReshuffleEffect reshuffleEffect = new ReshuffleEffect();
 
-    public void SetEffect () { }
+    public void SetEffect () {
+
+    }
 }

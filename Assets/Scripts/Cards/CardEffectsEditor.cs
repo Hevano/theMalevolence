@@ -5,6 +5,7 @@ using UnityEngine;
 
 [CustomEditor(typeof(CardEffectsMaker)), CanEditMultipleObjects]
 public class CardEffectsEditor : Editor {
+    List<CardEffectsMaker> effectsList;
     CardEffectsMaker effectMaker;
     SerializedObject GetTarget;
 
@@ -24,6 +25,7 @@ public class CardEffectsEditor : Editor {
     #endregion
 
     private void OnEnable () {
+        effectsList = new List<CardEffectsMaker>();
         effectMaker = (CardEffectsMaker)target;
         GetTarget = new SerializedObject(effectMaker);
 
@@ -47,50 +49,60 @@ public class CardEffectsEditor : Editor {
         GetTarget.Update();
         
         using (new EditorGUILayout.VerticalScope("HelpBox")) {
-            effectMaker.effectType = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", effectMaker.effectType);
+            if (effectsList.Count > 0) {
+                for (int i = 0; i < effectsList.Count; i++) {
+                    effectMaker = effectsList[i];
 
-            if (GUILayout.Button("Set Effect"))
-                effectMaker.SetEffect();
-
-            EditorGUILayout.Space();
-
-            switch (effectMaker.effectType) {
-                case Enums.CardEffects.Attack:
-                    EditorGUILayout.PropertyField(AttackEffect);
-                    break;
-                case Enums.CardEffects.Cleanse:
-                    EditorGUILayout.PropertyField(CleanseEffect);
-                    break;
-                case Enums.CardEffects.Corrupt:
-                    EditorGUILayout.PropertyField(CorruptEffect);
-                    break;
-                case Enums.CardEffects.Draw:
-                    EditorGUILayout.PropertyField(DrawEffect);
-                    break;
-                case Enums.CardEffects.Haste:
-                    EditorGUILayout.PropertyField(HealEffect);
-                    break;
-                case Enums.CardEffects.Heal:
-                    EditorGUILayout.PropertyField(HealEffect);
-                    break;
-                case Enums.CardEffects.Modify:
-                    EditorGUILayout.PropertyField(ModifyEffect);
-                    break;
-                case Enums.CardEffects.Protect:
-                    EditorGUILayout.PropertyField(ProtectEffect);
-                    break;
-                case Enums.CardEffects.Remove:
-                    EditorGUILayout.PropertyField(RemoveEffect);
-                    break;
-                case Enums.CardEffects.ReplaceValue:
-                    EditorGUILayout.PropertyField(ReplaceValueEffect);
-                    break;
-                case Enums.CardEffects.Reshuffle:
-                    EditorGUILayout.PropertyField(ReshuffleEffect);
-                    break;
-                default:
-                    EditorGUILayout.PropertyField(CardEffect);
-                    break;
+                    GUILayout.BeginHorizontal();
+                    effectMaker.effectType = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", effectMaker.effectType);
+                    if (GUILayout.Button("Remove", EditorStyles.miniButtonLeft, GUILayout.Width(60f))) {
+                        effectsList.RemoveAt(i);
+                    }
+                    GUILayout.EndHorizontal();
+                    
+                    switch (effectMaker.effectType) {
+                        case Enums.CardEffects.Attack:
+                            EditorGUILayout.PropertyField(AttackEffect);
+                            break;
+                        case Enums.CardEffects.Cleanse:
+                            EditorGUILayout.PropertyField(CleanseEffect);
+                            break;
+                        case Enums.CardEffects.Corrupt:
+                            EditorGUILayout.PropertyField(CorruptEffect);
+                            break;
+                        case Enums.CardEffects.Draw:
+                            EditorGUILayout.PropertyField(DrawEffect);
+                            break;
+                        case Enums.CardEffects.Haste:
+                            EditorGUILayout.PropertyField(HealEffect);
+                            break;
+                        case Enums.CardEffects.Heal:
+                            EditorGUILayout.PropertyField(HealEffect);
+                            break;
+                        case Enums.CardEffects.Modify:
+                            EditorGUILayout.PropertyField(ModifyEffect);
+                            break;
+                        case Enums.CardEffects.Protect:
+                            EditorGUILayout.PropertyField(ProtectEffect);
+                            break;
+                        case Enums.CardEffects.Remove:
+                            EditorGUILayout.PropertyField(RemoveEffect);
+                            break;
+                        case Enums.CardEffects.ReplaceValue:
+                            EditorGUILayout.PropertyField(ReplaceValueEffect);
+                            break;
+                        case Enums.CardEffects.Reshuffle:
+                            EditorGUILayout.PropertyField(ReshuffleEffect);
+                            break;
+                        default:
+                            EditorGUILayout.PropertyField(CardEffect);
+                            break;
+                    }
+                    EditorGUILayout.Space();
+                }
+            }
+            if (GUILayout.Button("Add Effect")) {
+                effectsList.Add(new CardEffectsMaker());
             }
         }
     }
