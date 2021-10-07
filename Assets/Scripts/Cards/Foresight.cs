@@ -7,7 +7,8 @@ namespace CardEffects{
     public class Foresight : CardEffect
     {
         public override void Resolved(){
-            DrawCards(new Deck(), 2); //Assume we have a static global reference to the right deck, or their is a UI method to select a specific deck
+            DrawCards(GameManager.manager.decks[character.data.characterType], 2);
+            character.Corruption += 10;
             if(!CorruptionCheck()){ //If we fail the corruption check
                 DiscardCards(1,1); //Discard between 1 and 1 cards
             }

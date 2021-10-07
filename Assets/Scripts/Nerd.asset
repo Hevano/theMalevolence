@@ -9,17 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8b449eb5759247439044e1b47b02594, type: 3}
-  m_Name: Foresight
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: Nerd
   m_EditorClassIdentifier: 
-  name: Foresight
-  cardText: '- Draw 2 cards and add 10 corruption.
-
-    - Perform a Corruption Check:
-
-    Pass:
-    No effect.
-
-    Fail: Discard a card.'
-  characterType: 1
-  cardEffectType: 2
+  characterType: 0
+  name: 
+  health: 0
+  corruption: 0
+  avatar: {fileID: 0}

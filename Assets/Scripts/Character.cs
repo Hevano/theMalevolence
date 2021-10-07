@@ -10,6 +10,10 @@ public enum CharacterEnum{
 }
 public class Character : MonoBehaviour
 {
+    public int Health {get; set;}
+    public int Corruption{get;set;}
+    
+    public CharacterData data;
     public bool CorruptionCheck(){
         return false;
     }

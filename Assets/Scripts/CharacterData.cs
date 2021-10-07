@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterData : MonoBehaviour
+[CreateAssetMenu]
+public class CharacterData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public CharacterEnum characterType;
+    public new string name;
+    public int health;
+    public int corruption;
+    public GameObject avatar;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    public Damage basicAttack = new Damage(0,0,0);
 }

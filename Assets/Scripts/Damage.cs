@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ValueRange {
     protected int dieNum;
     protected int dieSize;
@@ -34,6 +35,7 @@ public class ValueRange {
         this.bonus = bonus;
     }
 }
+[System.Serializable]
 public class Damage : ValueRange
 {
     public Damage(int dieNum, int dieSize, int bonus = 0) : base(dieNum, dieSize, bonus){
