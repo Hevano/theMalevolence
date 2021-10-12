@@ -16,4 +16,8 @@ public class ModifierEffect : CardEffect {
     [SerializeField] private int perFactorValue;
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
+
+    public ModifierEffect () {
+        Effect = Enums.CardEffects.Modify;
+    }
 }

@@ -8,4 +8,8 @@ public class DrawEffect : CardEffect {
     
     /** <summary>The number of cards to draw.</summary> */
     [SerializeField] private int cardsToDraw;
+
+    public DrawEffect () {
+        Effect = Enums.CardEffects.Draw;
+    }
 }

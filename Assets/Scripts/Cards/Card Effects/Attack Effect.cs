@@ -6,4 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class AttackEffect : CardEffect {
 
+    public AttackEffect () {
+        Effect = Enums.CardEffects.Attack;
+    }
 }

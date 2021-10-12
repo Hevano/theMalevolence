@@ -5,17 +5,16 @@ using UnityEngine;
 public static class Enums {
 
     public enum CardEffects {
+        None,
+        Afflict,
         Attack,
         Cleanse,
-        Corrupt,
         Draw,
-        Haste,
-        Heal,
+        Insert,
         Modify,
-        Protect,
-        Remove,
-        ReplaceValue,
-        Reshuffle
+        Reshuffle,
+        Summon,
+        Vitality
     }
 
     /** <summary>A list of possible player characters.</summary> */

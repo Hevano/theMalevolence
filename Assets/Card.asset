@@ -18,4 +18,6 @@ MonoBehaviour:
   cardCharacter: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
-  cardEffects: {fileID: 0}
+  cardEffects: []
+  corruptionPassEffects: []
+  corruptionFailEffects: []

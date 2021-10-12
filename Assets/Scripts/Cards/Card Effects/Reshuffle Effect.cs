@@ -6,4 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class ReshuffleEffect : CardEffect {
 
+    public ReshuffleEffect () {
+        Effect = Enums.CardEffects.Reshuffle;
+    }
 }
