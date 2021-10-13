@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager manager;
 
     public Dictionary<CharacterEnum, Deck> decks;
-    public List<CardObject> hand;
+    
 
     public List<Character> party;
     
