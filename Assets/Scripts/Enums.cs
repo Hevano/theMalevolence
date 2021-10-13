@@ -40,4 +40,10 @@ public static class Enums {
         Multiply,
         Subtract
     }
+
+    public enum GameplayPhase{
+        Planning,
+        Resolve,
+        Draw
+    }
 }
