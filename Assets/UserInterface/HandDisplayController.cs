@@ -22,12 +22,11 @@ public class HandDisplayController : MonoBehaviour {
 
     public void DisplayCard(CardDisplayController card) {
         CardDisplayController NewCard = Instantiate(card, Vector3.zero, Quaternion.identity);
-        RectTransform cardRectTransform = card.GetComponent<RectTransform>();
+        RectTransform cardRectTransform = NewCard.GetComponent<RectTransform>();
         RectTransform UI = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<RectTransform>();
-        UI.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 1f, Screen.height * 1f);
         cardRectTransform.SetParent(UI.transform);
-        cardRectTransform.offsetMin = new Vector2(-(Screen.width + Screen.height * 0.18f) + DisplayedCards.Count * (Screen.height * 0.4f), 0);
+        cardRectTransform.offsetMin = new Vector2(-UI.sizeDelta.y + DisplayedCards.Count * (+ Screen.width * 0.28f), UI.sizeDelta.y);
         cardRectTransform.offsetMax = new Vector2(0, 0);
-        cardRectTransform.sizeDelta = new Vector2(Screen.height * 0.09f, Screen.height * 0.09f);
+        cardRectTransform.sizeDelta = new Vector2(card.GetComponent<RectTransform>().sizeDelta.x + Screen.width * 0.03f, card.GetComponent<RectTransform>().sizeDelta.y + Screen.height * 0.05f);
     }
 }
