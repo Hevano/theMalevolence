@@ -6,7 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class AfflictEffect : CardEffect {
 
-    public AfflictEffect () {
-        Effect = Enums.CardEffects.Afflict;
-    }
+    public override string Display () { return "This is an afflict effect"; }
 }

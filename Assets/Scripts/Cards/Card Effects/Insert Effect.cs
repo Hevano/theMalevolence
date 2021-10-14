@@ -6,7 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class InsertEffect : CardEffect {
 
-    public InsertEffect () {
-        Effect = Enums.CardEffects.Insert;
-    }
+    public override string Display () { return "This is an insert effect"; }
 }

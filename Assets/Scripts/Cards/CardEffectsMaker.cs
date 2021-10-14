@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CardEffectsMaker : MonoBehaviour {
+public class CardEffectsMaker {
     public Enums.CardEffects effectType;
-
-    public CardEffect effect;
-
+    
     public CardEffect cardEffect = new CardEffect();
     public AfflictEffect afflictEffect = new AfflictEffect();
     public AttackEffect attackEffect = new AttackEffect();
@@ -19,35 +17,29 @@ public class CardEffectsMaker : MonoBehaviour {
     public SummonEffect summonEffect = new SummonEffect();
     public VitalityEffect vitalityEffect = new VitalityEffect();
     
-    public void SetEffect (CardEffect effect) {
-        switch (effect.Effect) {
+    public CardEffect GetEffect () {
+        switch(effectType) {
             case Enums.CardEffects.Afflict:
-                afflictEffect = (AfflictEffect)effect;
-                break;
+                return afflictEffect;
             case Enums.CardEffects.Attack:
-                attackEffect = (AttackEffect)effect;
-                break;
+                return attackEffect;
             case Enums.CardEffects.Cleanse:
-                cleanseEffect = (CleanseEffect)effect;
-                break;
+                return cleanseEffect;
             case Enums.CardEffects.Draw:
-                drawEffect = (DrawEffect)effect;
-                break;
+                return drawEffect;
             case Enums.CardEffects.Insert:
-                insertEffect = (InsertEffect)effect;
-                break;
+                return insertEffect;
             case Enums.CardEffects.Modify:
-                modifyEffect = (ModifierEffect)effect;
-                break;
+                return modifyEffect;
             case Enums.CardEffects.Reshuffle:
-                reshuffleEffect = (ReshuffleEffect)effect;
-                break;
+                return reshuffleEffect;
             case Enums.CardEffects.Summon:
-                summonEffect = (SummonEffect)effect;
-                break;
+                return summonEffect;
             case Enums.CardEffects.Vitality:
-                vitalityEffect = (VitalityEffect)effect;
-                break;
+                return vitalityEffect;
+            default:
+                return cardEffect;
         }
     }
+
 }

@@ -6,7 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class CleanseEffect : CardEffect {
 
-    public CleanseEffect () {
-        Effect = Enums.CardEffects.Cleanse ;
-    }
+    public override string Display () { return "This is a cleanse effect"; }
 }
