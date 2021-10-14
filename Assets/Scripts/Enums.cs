@@ -25,6 +25,14 @@ public static class Enums {
         Popular
     };
 
+    /** <summary>The types of effects on values in card effects.</summary> */
+    public enum Modifier {
+        Add,
+        Divide,
+        Multiply,
+        Subtract
+    }
+
     /** <summary>A list of factors that can affect card effects.</summary> */
     public enum ModifierFactors {
         Cards_Played,
@@ -34,14 +42,12 @@ public static class Enums {
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */
-    public enum Modifier {
-        Add,
-        Divide,
-        Multiply,
-        Subtract
+    public enum VitalityType {
+        Health,
+        Corruption
     }
 
-    public enum GameplayPhase{
+    public enum GameplayPhase {
         Planning,
         Resolve,
         Draw

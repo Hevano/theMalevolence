@@ -19,6 +19,7 @@ public class CardEditor : Editor {
     SerializedProperty CardEffects;
     SerializedProperty CardCorPass;
     SerializedProperty CardCorFail;
+    SerializedProperty CardEffectBuffer;
     #endregion
 
     private void OnEnable () {
@@ -35,6 +36,7 @@ public class CardEditor : Editor {
         CardEffects = GetTarget.FindProperty("cardEffects");
         CardCorPass = GetTarget.FindProperty("corruptionPassEffects");
         CardCorFail = GetTarget.FindProperty("corruptionFailEffects");
+        CardEffectBuffer = GetTarget.FindProperty("effectBuffer");
         #endregion
     }
 
@@ -82,8 +84,20 @@ public class CardEditor : Editor {
             }
             GUILayout.EndHorizontal();
 
-            Debug.Log(card.GetEffect(i, listNo) + "\n" + card.GetEffect(i, listNo).Effect);
-            //SerializedProperty effectRefProp = effectsList.GetArrayElementAtIndex(i);
+            //Use effect maker to load effect
+            effectMaker.SetEffect(card.GetEffect(i, listNo));
+
+            #region EFFECT TYPES
+            SerializedProperty AfflictEffect = CardEffectBuffer.FindPropertyRelative("afflictEffect");
+            SerializedProperty AttackEffect = CardEffectBuffer.FindPropertyRelative("attackEffect");
+            SerializedProperty CleanseEffect = CardEffectBuffer.FindPropertyRelative("cleanseEffect");
+            SerializedProperty DrawEffect = CardEffectBuffer.FindPropertyRelative("drawEffect");
+            SerializedProperty InsertEffect = CardEffectBuffer.FindPropertyRelative("insertEffect");
+            SerializedProperty ModifyEffect = CardEffectBuffer.FindPropertyRelative("modifyEffect");
+            SerializedProperty ReshuffleEffect = CardEffectBuffer.FindPropertyRelative("reshuffleEffect");
+            SerializedProperty SummonEffect = CardEffectBuffer.FindPropertyRelative("summonEffect");
+            SerializedProperty VitalityEffect = CardEffectBuffer.FindPropertyRelative("vitalityEffect");
+            #endregion
             //Draw input fields based on chosen effect
             switch (targetEffect) {
                 case Enums.CardEffects.Afflict:
@@ -93,19 +107,24 @@ public class CardEditor : Editor {
                 case Enums.CardEffects.Cleanse:
                     break;
                 case Enums.CardEffects.Draw:
-                    SerializedObject effectRef = new SerializedObject(card.GetEffect(i, listNo));
-                    SerializedProperty effectCardsToDraw = effectRef.FindProperty("cardsToDraw");
-                    EditorGUILayout.PropertyField(effectCardsToDraw);
+                    EditorGUILayout.PropertyField(DrawEffect.FindPropertyRelative("cardsToDraw"));
                     break;
                 case Enums.CardEffects.Insert:
                     break;
                 case Enums.CardEffects.Modify:
+                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierEffect"));
+                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierFactor"));
+                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierPerFactor"));
+                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("perFactorValue"));
+                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("effectIndex"));
                     break;
                 case Enums.CardEffects.Reshuffle:
                     break;
                 case Enums.CardEffects.Summon:
                     break;
                 case Enums.CardEffects.Vitality:
+                    EditorGUILayout.PropertyField(VitalityEffect.FindPropertyRelative("vitalityType"));
+                    EditorGUILayout.PropertyField(VitalityEffect.FindPropertyRelative("value"));
                     break;
             }
 

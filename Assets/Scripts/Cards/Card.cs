@@ -33,12 +33,7 @@ public class Card : ScriptableObject {
     public List<CardEffect> CardEffects { get { return cardEffects; } }
     public List<CardEffect> CorruptionPassEffects { get { return corruptionPassEffects; } }
     public List<CardEffect> CorruptionFailEffects { get { return corruptionFailEffects; } }
-
-    public CardEffect EffectBuffer {
-        get { return effectBuffer; }
-        set { effectBuffer = value; }
-    }
-
+    
     public void AddCardEffect (int listNo) {
         if (listNo == 0)
             cardEffects.Add(new CardEffect());
