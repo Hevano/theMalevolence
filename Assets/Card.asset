@@ -18,6 +18,36 @@ MonoBehaviour:
   cardCharacter: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
-  cardEffects: []
+  cardEffects:
+  - Effect: 4
   corruptionPassEffects: []
   corruptionFailEffects: []
+  effectBuffer:
+    effect:
+      Effect: 0
+    cardEffect:
+      Effect: 0
+    afflictEffect:
+      Effect: 1
+    attackEffect:
+      Effect: 2
+    cleanseEffect:
+      Effect: 3
+    drawEffect:
+      Effect: 4
+      cardsToDraw: 2
+    insertEffect:
+      Effect: 5
+    modifyEffect:
+      Effect: 6
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    reshuffleEffect:
+      Effect: 7
+    summonEffect:
+      Effect: 8
+    vitalityEffect:
+      Effect: 9

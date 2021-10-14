@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CardEffect : Object {
+public class CardEffect {
     protected Enums.CardEffects effect = Enums.CardEffects.None;
 
     public Enums.CardEffects Effect;
