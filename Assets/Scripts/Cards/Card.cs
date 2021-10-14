@@ -22,7 +22,7 @@ public class Card : ScriptableObject {
     [SerializeField] private List<CardEffect> corruptionPassEffects = new List<CardEffect>();
     [SerializeField] private List<CardEffect> corruptionFailEffects = new List<CardEffect>();
 
-    private CardEffect effectBuffer;
+    public CardEffectsMaker effectBuffer = new CardEffectsMaker();
 
     public string Name { get { return cardName; } }
     public string Description { get { return cardDescription; } }
@@ -34,9 +34,9 @@ public class Card : ScriptableObject {
     public List<CardEffect> CorruptionPassEffects { get { return corruptionPassEffects; } }
     public List<CardEffect> CorruptionFailEffects { get { return corruptionFailEffects; } }
 
-    public CardEffect EffectBuffer {
-        get { return effectBuffer; }
-        set { effectBuffer = value; }
+    public Card () {
+        if (effectBuffer == null)
+            effectBuffer = new CardEffectsMaker();
     }
 
     public void AddCardEffect (int listNo) {
