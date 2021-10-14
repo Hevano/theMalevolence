@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CharacterData : ScriptableObject
 {
-    public CharacterEnum characterType;
+    public Enums.Character characterType;
     public new string name;
     public int health;
     public int corruption;
