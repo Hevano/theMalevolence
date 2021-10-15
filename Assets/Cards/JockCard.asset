@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Jock Card
   cardDescription: Gock Desc
   cardFlavor: 
-  cardCharacter: 0
+  cardCharacter: 1
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
