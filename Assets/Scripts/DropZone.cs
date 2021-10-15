@@ -10,6 +10,7 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool hovering = false;
 
     public void OnPointerEnter(PointerEventData data){
+        Debug.Log($"{name} enter");
         hovering = true;
     }
     public void OnPointerExit(PointerEventData data){
@@ -17,7 +18,7 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     public void Update(){
-        if(hovering && Input.GetMouseButtonUp(0)){
+        if(hovering && Draggable.dragTarget != null && Input.GetMouseButtonUp(0)){
             if(GetComponent<RectTransform>().rect.Overlaps(Draggable.dragTarget.GetComponent<RectTransform>().rect)){
                 Debug.Log($"{Draggable.dragTarget.name} dropped in {name}");
                 if(onDrop != null){

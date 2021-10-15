@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: TempCard
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: Nerd
   m_EditorClassIdentifier: 
-  cardName: TempCard
-  cardDescription: 
-  cardFlavor: 
-  cardCharacter: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
-  cardEffects: []
-  corruptionPassEffects: []
-  corruptionFailEffects: []
+  characterType: 2
+  name: Nerd
+  health: 0
+  corruption: 0
+  avatar: {fileID: 0}

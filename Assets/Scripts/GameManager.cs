@@ -6,22 +6,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
 
-    //Temp
-    public Draggable toDrag;
-    public DropZone toDrop;
-
     public Enums.GameplayPhase phase;
 
     //Speeds the delay between phases, should also be applied to animations
     public float speedScale;
 
-    public Dictionary<Enums.Character, Deck> decks;
-    
+    public Dictionary<Enums.Character, Deck> decks = new Dictionary<Enums.Character, Deck>();
 
-    public List<Character> party;
-    public List<Character> foes;
+    public HandDisplayController hand;
 
-    public Dictionary<Enums.Character, Character> characters;
+    public List<Character> party = new List<Character>();
+    public List<Character> foes = new List<Character>();
+
+    public Dictionary<Enums.Character, Character> characters = new Dictionary<Enums.Character, Character>();
 
     public List<ITurnExecutable> turns;
     private IEnumerator battleEnumerator;
@@ -44,6 +41,11 @@ public class GameManager : MonoBehaviour
     public void StartBattle(){
         //Play battle start effects
         //Draw starting hand
+        InitializeDecks();
+        InitializeCharacters();
+        foreach(Character c in party){
+            Draw(c.data.characterType);
+        }
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
     }
@@ -116,6 +118,25 @@ public class GameManager : MonoBehaviour
     public void EndPlanning(){
         if(phase == Enums.GameplayPhase.Planning){
             phase = Enums.GameplayPhase.Resolve;
+        }
+    }
+
+    public void Draw(Enums.Character characterDeckToDrawFrom){
+        var card = decks[characterDeckToDrawFrom].Draw();
+        hand.AddCard(CardDisplayController.CreateCard(card));
+    }
+
+    //Should probably change this at some point, maybe instantiating the decks from prefabs in the resource folder
+    public void InitializeDecks(){
+        decks[Enums.Character.Goth] = GameObject.Find("GothDeck").GetComponent<Deck>();
+        decks[Enums.Character.Jock] = GameObject.Find("JockDeck").GetComponent<Deck>();
+        decks[Enums.Character.Nerd] = GameObject.Find("NerdDeck").GetComponent<Deck>();
+        decks[Enums.Character.Popular] = GameObject.Find("PopularDeck").GetComponent<Deck>();
+    }
+
+    public void InitializeCharacters(){
+        foreach(Character c in party){
+            characters[c.data.characterType] = c;
         }
     }
 

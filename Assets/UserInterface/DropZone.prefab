@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5033410002529003446}
   - component: {fileID: 7915190586987717360}
   - component: {fileID: 1565975605312351634}
+  - component: {fileID: 6388758026786752135}
   m_Layer: 0
   m_Name: DropZone
   m_TagString: Untagged
@@ -75,3 +76,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6388758026786752135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777675620839179304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a9ed47b75d5364bbbaa97212faef99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
