@@ -9,7 +9,6 @@ public class DrawEffect : CardEffect {
     /** <summary>The number of cards to draw.</summary> */
     [SerializeField] private int cardsToDraw;
 
-    public DrawEffect () {
-        Effect = Enums.CardEffects.Draw;
-    }
+    public int CardsToDraw { get { return cardsToDraw; } }
+    public override string Display () { return "This is a draw effect"; }
 }

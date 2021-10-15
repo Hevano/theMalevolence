@@ -15,14 +15,9 @@ public class Card : ScriptableObject {
     [SerializeField] private Sprite cardFront;
     [SerializeField] private Sprite cardBack;
 
-    [Header("Card Effects")]
-    [SerializeField] private List<CardEffect> cardEffects = new List<CardEffect>();
-
-    [Header("Corruption Effects")]
-    [SerializeField] private List<CardEffect> corruptionPassEffects = new List<CardEffect>();
-    [SerializeField] private List<CardEffect> corruptionFailEffects = new List<CardEffect>();
-
-    private CardEffect effectBuffer;
+    public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
+    public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
+    public List<CardEffectsMaker> cardCorFail = new List<CardEffectsMaker>();
 
     public string Name { get { return cardName; } }
     public string Description { get { return cardDescription; } }
@@ -30,74 +25,69 @@ public class Card : ScriptableObject {
     public Enums.Character Character { get { return cardCharacter; } }
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
-    public List<CardEffect> CardEffects { get { return cardEffects; } }
-    public List<CardEffect> CorruptionPassEffects { get { return corruptionPassEffects; } }
-    public List<CardEffect> CorruptionFailEffects { get { return corruptionFailEffects; } }
-    
-    public void AddCardEffect (int listNo) {
-        if (listNo == 0)
-            cardEffects.Add(new CardEffect());
-        else if (listNo == 1)
-            corruptionPassEffects.Add(new CardEffect());
+
+    private void SetList (List<CardEffect> effectsList, List<CardEffectsMaker> makerList) {
+        for (int i = 0; i < makerList.Count; i++) {
+            switch (makerList[i].effectType) {
+                case Enums.CardEffects.Afflict:
+                    effectsList.Add(makerList[i].afflictEffect);
+                    break;
+                case Enums.CardEffects.Attack:
+                    effectsList.Add(makerList[i].attackEffect);
+                    break;
+                case Enums.CardEffects.Cleanse:
+                    effectsList.Add(makerList[i].cleanseEffect);
+                    break;
+                case Enums.CardEffects.Draw:
+                    effectsList.Add(makerList[i].drawEffect);
+                    break;
+                case Enums.CardEffects.Insert:
+                    effectsList.Add(makerList[i].insertEffect);
+                    break;
+                case Enums.CardEffects.Modify:
+                    effectsList.Add(makerList[i].modifyEffect);
+                    break;
+                case Enums.CardEffects.Reshuffle:
+                    effectsList.Add(makerList[i].reshuffleEffect);
+                    break;
+                case Enums.CardEffects.Summon:
+                    effectsList.Add(makerList[i].summonEffect);
+                    break;
+                case Enums.CardEffects.Vitality:
+                    effectsList.Add(makerList[i].vitalityEffect);
+                    break;
+            }
+        }
+    }
+
+    public void AddCardEffectMaker (int listNo) {
+        if (listNo == 0) {
+            cardEffects.Add(new CardEffectsMaker());
+        } else if (listNo == 1)
+            cardCorPass.Add(new CardEffectsMaker());
         else if (listNo == 2)
-            corruptionFailEffects.Add(new CardEffect());
+            cardCorFail.Add(new CardEffectsMaker());
     }
 
     public CardEffect GetEffect (int index, int listNo) {
         if (listNo == 0)
-            return cardEffects[index];
+            return cardEffects[index].GetEffect();
         else if (listNo == 1)
-            return corruptionPassEffects[index];
+            return cardCorPass[index].GetEffect();
         else if (listNo == 2)
-            return corruptionFailEffects[index];
+            return cardCorFail[index].GetEffect();
         else
             return null;
     }
 
-    public void CheckCardEffect (int index, Enums.CardEffects effect, int listNo) {
-        List<CardEffect> list;
+    public CardEffectsMaker GetEffectMaker (int index, int listNo) {
         if (listNo == 0)
-            list = cardEffects;
+            return cardEffects[index];
         else if (listNo == 1)
-            list = corruptionPassEffects;
+            return cardCorPass[index];
         else if (listNo == 2)
-            list = corruptionFailEffects;
+            return cardCorFail[index];
         else
-            return;
-
-        if (list[index].Effect == effect)
-            return;
-        switch(effect) {
-            case Enums.CardEffects.None:
-                list[index] = new CardEffect();
-                break;
-            case Enums.CardEffects.Afflict:
-                list[index] = new AfflictEffect();
-                break;
-            case Enums.CardEffects.Attack:
-                list[index] = new AttackEffect();
-                break;
-            case Enums.CardEffects.Cleanse:
-                list[index] = new CleanseEffect();
-                break;
-            case Enums.CardEffects.Draw:
-                list[index] = new DrawEffect();
-                break;
-            case Enums.CardEffects.Insert:
-                list[index] = new InsertEffect();
-                break;
-            case Enums.CardEffects.Modify:
-                list[index] = new ModifierEffect();
-                break;
-            case Enums.CardEffects.Reshuffle:
-                list[index] = new ReshuffleEffect();
-                break;
-            case Enums.CardEffects.Summon:
-                list[index] = new SummonEffect();
-                break;
-            case Enums.CardEffects.Vitality:
-                list[index] = new VitalityEffect();
-                break;
-        }
+            return null;
     }
 }

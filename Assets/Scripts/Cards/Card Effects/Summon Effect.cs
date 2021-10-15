@@ -6,7 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class SummonEffect : CardEffect {
 
-    public SummonEffect () {
-        Effect = Enums.CardEffects.Summon;
-    }
+    public override string Display () { return "This is a summon effect"; }
 }
