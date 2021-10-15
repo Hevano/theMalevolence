@@ -17,7 +17,5 @@ public class ModifierEffect : CardEffect {
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
 
-    public ModifierEffect () {
-        Effect = Enums.CardEffects.Modify;
-    }
+    public override string Display () { return "This is a modify effect"; }
 }

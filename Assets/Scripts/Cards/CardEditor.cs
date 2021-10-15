@@ -6,8 +6,8 @@ using UnityEngine;
 [CustomEditor(typeof(Card)), CanEditMultipleObjects]
 public class CardEditor : Editor {
     Card card;
-    CardEffectsMaker effectMaker;
     SerializedObject GetTarget;
+    CardEffectsMaker effectMaker;
 
     #region CARD DATA
     SerializedProperty CardName;
@@ -34,9 +34,8 @@ public class CardEditor : Editor {
         CardFront = GetTarget.FindProperty("cardFront");
         CardBack = GetTarget.FindProperty("cardBack");
         CardEffects = GetTarget.FindProperty("cardEffects");
-        CardCorPass = GetTarget.FindProperty("corruptionPassEffects");
-        CardCorFail = GetTarget.FindProperty("corruptionFailEffects");
-        CardEffectBuffer = GetTarget.FindProperty("effectBuffer");
+        CardCorPass = GetTarget.FindProperty("cardCorPass");
+        CardCorFail = GetTarget.FindProperty("cardCorFail");
         #endregion
     }
 
@@ -74,57 +73,63 @@ public class CardEditor : Editor {
     private void InsertCardEffectFields(SerializedProperty effectsList, int listNo) {
         //Go through each effect in the list
         for (int i = 0; i < effectsList.arraySize; i++) {
-            Enums.CardEffects targetEffect;
+            effectMaker = card.GetEffectMaker(i, listNo);
             //Add the effect dropdown select, and remove button
             GUILayout.BeginHorizontal();
-            targetEffect = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", card.GetEffect(i, listNo).Effect);
-            card.CheckCardEffect(i, targetEffect, listNo);
+            effectMaker.effectType = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", effectMaker.effectType);
             if (GUILayout.Button("Remove", EditorStyles.miniButtonLeft, GUILayout.Width(60f))) {
                 effectsList.DeleteArrayElementAtIndex(i);
             }
             GUILayout.EndHorizontal();
 
-            //Use effect maker to load effect
-            effectMaker.SetEffect(card.GetEffect(i, listNo));
+            #region CARD DATA
+            CardEffectBuffer = effectsList.GetArrayElementAtIndex(i);
+            #endregion
 
             #region EFFECT TYPES
-            SerializedProperty AfflictEffect = CardEffectBuffer.FindPropertyRelative("afflictEffect");
-            SerializedProperty AttackEffect = CardEffectBuffer.FindPropertyRelative("attackEffect");
-            SerializedProperty CleanseEffect = CardEffectBuffer.FindPropertyRelative("cleanseEffect");
-            SerializedProperty DrawEffect = CardEffectBuffer.FindPropertyRelative("drawEffect");
-            SerializedProperty InsertEffect = CardEffectBuffer.FindPropertyRelative("insertEffect");
-            SerializedProperty ModifyEffect = CardEffectBuffer.FindPropertyRelative("modifyEffect");
-            SerializedProperty ReshuffleEffect = CardEffectBuffer.FindPropertyRelative("reshuffleEffect");
-            SerializedProperty SummonEffect = CardEffectBuffer.FindPropertyRelative("summonEffect");
-            SerializedProperty VitalityEffect = CardEffectBuffer.FindPropertyRelative("vitalityEffect");
+            SerializedProperty afflictEffect = CardEffectBuffer.FindPropertyRelative("afflictEffect");
+            SerializedProperty attackEffect = CardEffectBuffer.FindPropertyRelative("attackEffect");
+            SerializedProperty cleanseEffect = CardEffectBuffer.FindPropertyRelative("cleanseEffect");
+            SerializedProperty drawEffect = CardEffectBuffer.FindPropertyRelative("drawEffect");
+            SerializedProperty insertEffect = CardEffectBuffer.FindPropertyRelative("insertEffect");
+            SerializedProperty modifyEffect = CardEffectBuffer.FindPropertyRelative("modifyEffect");
+            SerializedProperty reshuffleEffect = CardEffectBuffer.FindPropertyRelative("reshuffleEffect");
+            SerializedProperty summonEffect = CardEffectBuffer.FindPropertyRelative("summonEffect");
+            SerializedProperty vitalityEffect = CardEffectBuffer.FindPropertyRelative("vitalityEffect");
+            SerializedProperty baseEffect = CardEffectBuffer.FindPropertyRelative("cardEffect");
             #endregion
+
             //Draw input fields based on chosen effect
-            switch (targetEffect) {
+            switch (effectMaker.effectType) {
                 case Enums.CardEffects.Afflict:
+                    EditorGUILayout.PropertyField(afflictEffect);
                     break;
                 case Enums.CardEffects.Attack:
+                    EditorGUILayout.PropertyField(attackEffect);
                     break;
                 case Enums.CardEffects.Cleanse:
+                    EditorGUILayout.PropertyField(cleanseEffect);
                     break;
                 case Enums.CardEffects.Draw:
-                    EditorGUILayout.PropertyField(DrawEffect.FindPropertyRelative("cardsToDraw"));
+                    EditorGUILayout.PropertyField(drawEffect);
                     break;
                 case Enums.CardEffects.Insert:
+                    EditorGUILayout.PropertyField(insertEffect);
                     break;
                 case Enums.CardEffects.Modify:
-                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierEffect"));
-                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierFactor"));
-                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("modifierPerFactor"));
-                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("perFactorValue"));
-                    EditorGUILayout.PropertyField(ModifyEffect.FindPropertyRelative("effectIndex"));
+                    EditorGUILayout.PropertyField(modifyEffect);
                     break;
                 case Enums.CardEffects.Reshuffle:
+                    EditorGUILayout.PropertyField(reshuffleEffect);
                     break;
                 case Enums.CardEffects.Summon:
+                    EditorGUILayout.PropertyField(summonEffect);
                     break;
                 case Enums.CardEffects.Vitality:
-                    EditorGUILayout.PropertyField(VitalityEffect.FindPropertyRelative("vitalityType"));
-                    EditorGUILayout.PropertyField(VitalityEffect.FindPropertyRelative("value"));
+                    EditorGUILayout.PropertyField(vitalityEffect);
+                    break;
+                default:
+                    EditorGUILayout.PropertyField(baseEffect);
                     break;
             }
 
@@ -132,8 +137,7 @@ public class CardEditor : Editor {
         }
 
         if (GUILayout.Button("Add Effect")) {
-            card.AddCardEffect(listNo);
-            GetTarget.ApplyModifiedProperties();
+            card.AddCardEffectMaker(listNo);
         }
 
         //if (effectsList.Count > 0) {
