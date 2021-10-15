@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
 
+    //Temp
+    public Draggable toDrag;
+    public DropZone toDrop;
+
     public Enums.GameplayPhase phase;
 
     //Speeds the delay between phases, should also be applied to animations
@@ -16,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public List<Character> party;
     public List<Character> foes;
+
+    public Dictionary<Enums.Character, Character> characters;
 
     public List<ITurnExecutable> turns;
     private IEnumerator battleEnumerator;
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour
         StartBattle();
     }
 
-    //Temporary, CheckGameOver should be called whenever a character / foe is defeated, not every frame
+    //Temporary, CheckGameOver should be called whenever a character / foe is Defeated, not every frame
     void Update(){
         CheckGameOver();
     }
@@ -83,11 +89,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f / speedScale);
     }
 
-    //Checks if the game is over. Should be called whenever a character or foe is defeated
+    //Checks if the game is over. Should be called whenever a character or foe is Defeated
     public void CheckGameOver(){
         bool playerDefeated = true;
         foreach(Character partyMember in party){
-            playerDefeated = playerDefeated && partyMember.defeated;
+            playerDefeated = playerDefeated && partyMember.Defeated;
         }
         if(playerDefeated){
             StopCoroutine(battleEnumerator);
@@ -97,7 +103,7 @@ public class GameManager : MonoBehaviour
 
         bool foesDefeated = true;
         foreach(Character foe in foes){
-            foesDefeated = foesDefeated && foe.defeated;
+            foesDefeated = foesDefeated && foe.Defeated;
         }
         if(foesDefeated){
             StopCoroutine(battleEnumerator);

@@ -6,8 +6,19 @@ public class Character : MonoBehaviour, ITurnExecutable
 {
     public int Health {get; set;}
     public int Corruption{get;set;}
-    public bool defeated = false;
+    private bool _defeated = false;
+    public bool Defeated {
+        get{
+            return _defeated;
+        }
+        set{
+            _defeated = value;
+            GameManager.manager.CheckGameOver();
+        }
+    }
     public CharacterData data;
+
+    public Card cardToPlay = null;
     public bool CorruptionCheck(){
         return false;
     }
@@ -19,11 +30,10 @@ public class Character : MonoBehaviour, ITurnExecutable
     //Temporary implementation of character's turn
     public IEnumerator GetTurn(){
         Debug.Log($"{name}'s turn");
-        Health--;
-        if(Health == 0){
-            defeated = true;
+        if(cardToPlay != null){
+            Debug.Log($"{name} playing card {cardToPlay.Name}");
+            //cardToPlay.ActivateCard();
         }
-        GameManager.manager.CheckGameOver();
         yield return new WaitForSeconds(0.5f);
     }
 }
