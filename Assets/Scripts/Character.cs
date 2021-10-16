@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, ITurnExecutable
+public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
     public int Health {get; set;}
     public int Corruption{get;set;}
@@ -32,7 +32,7 @@ public class Character : MonoBehaviour, ITurnExecutable
         Debug.Log($"{name}'s turn");
         if(cardToPlay != null){
             Debug.Log($"{name} playing card {cardToPlay.Name}");
-            //cardToPlay.ActivateCard();
+            //yield return cardToPlay.ActivateEffect();
         }
         yield return new WaitForSeconds(0.5f);
     }

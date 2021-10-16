@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<Enums.Character, Deck> decks = new Dictionary<Enums.Character, Deck>();
 
     public HandDisplayController hand;
-
+    public UnityEngine.UI.Image dropZone;
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
 
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
         var turnsList = new List<ITurnExecutable>(party);
         turnsList.AddRange(foes);
         turns = turnsList;
+        yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 2);
     }
 
     public IEnumerator ExecuteTurn(){

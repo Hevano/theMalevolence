@@ -90,4 +90,19 @@ public class Card : ScriptableObject {
         else
             return null;
     }
+
+    /*
+        CardEffect Resolution and Targeting
+    */
+    // public IEnumerator ActivateEffect(){
+    //     foreach(CardEffect effect in cardEffects){
+    //         yield return effect.Activate();
+    //     }
+    // }
+
+    // public IEnumerator AccquireTargets(){
+    //     foreach(CardEffect effect in cardEffects){
+    //         yield return effect.AccquireTarget();
+    //     }
+    // }
 }

@@ -52,4 +52,11 @@ public static class Enums {
         Resolve,
         Draw
     }
+
+    
+    public enum TargetType{
+        Any,
+        Allies,
+        Foes
+    }
 }
