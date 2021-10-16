@@ -20,22 +20,29 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData data){ //Camera needs to have the PhysicsRaycast Component
         Debug.Log("Clicked");
+
         if(targetting && targetTypes.Contains(targetType)){
             currentTargets.Add(target);
             Debug.Log($"{name} has been targeted");
         }
+
     }
 
     
     public static IEnumerator GetTargetable(Enums.TargetType type, string msg, int count = 1){
+
         //send msg to some Text object in the screen to inform the player what they are targetting
         Debug.Log(msg);
+
         GameManager.manager.dropZone.raycastTarget = false;
+
         currentTargets = new List<ITargetable>();
         targetting = true;
-        while(currentTargets.Count < count){
+
+        while (currentTargets.Count < count){
             yield return new WaitForEndOfFrame();
         }
+
         GameManager.manager.dropZone.raycastTarget = true;
         targetting = false;
     }

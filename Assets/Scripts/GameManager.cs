@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public HandDisplayController hand;
     public UnityEngine.UI.Image dropZone;
+
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
 
@@ -40,13 +41,17 @@ public class GameManager : MonoBehaviour
 
     //Starts a new battle with listed enemies
     public void StartBattle(){
+        
         //Play battle start effects
         //Draw starting hand
         InitializeDecks();
         InitializeCharacters();
-        foreach(Character c in party){
+
+        foreach(Character c in party)
+        {
             Draw(c.data.characterType);
         }
+
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
     }

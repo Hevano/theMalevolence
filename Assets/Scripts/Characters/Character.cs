@@ -7,6 +7,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public int Health {get; set;}
     public int Corruption{get;set;}
     private bool _defeated = false;
+
     public bool Defeated {
         get{
             return _defeated;
@@ -19,6 +20,9 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public CharacterData data;
 
     public Card cardToPlay = null;
+
+    public Card attackCard = null;
+
     public bool CorruptionCheck(){
         return false;
     }
