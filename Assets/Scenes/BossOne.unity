@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -472,7 +472,7 @@ MonoBehaviour:
   phase: 0
   speedScale: 1
   hand: {fileID: 1684228912}
-  dropZone: {fileID: 1590304232}
+  cardDropZone: {fileID: 1345192372}
   party:
   - {fileID: 6416874238983255967}
   - {fileID: 8185431853395727170}
@@ -847,6 +847,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294325093}
   m_CullTransparentMesh: 1
+--- !u!114 &1345192372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 651356541412869868, guid: e3e266f5053aa06468366b1636323afa, type: 3}
+  m_PrefabInstance: {fileID: 651356540937711842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a9ed47b75d5364bbbaa97212faef99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1433954734 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1550783691892655364, guid: d2c3c28f001c96e45af3b10df7c06678, type: 3}
@@ -1156,17 +1167,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c3c28f001c96e45af3b10df7c06678, type: 3}
---- !u!114 &1590304232 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 651356541412869869, guid: e3e266f5053aa06468366b1636323afa, type: 3}
-  m_PrefabInstance: {fileID: 651356540937711842}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1684228910
 PrefabInstance:
   m_ObjectHideFlags: 0
