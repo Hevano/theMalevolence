@@ -34,7 +34,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         //send msg to some Text object in the screen to inform the player what they are targetting
         Debug.Log(msg);
 
-        GameManager.manager.dropZone.raycastTarget = false;
+        GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
 
         currentTargets = new List<ITargetable>();
         targetting = true;
@@ -43,7 +43,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
             yield return new WaitForEndOfFrame();
         }
 
-        GameManager.manager.dropZone.raycastTarget = true;
+        GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
     }
 }

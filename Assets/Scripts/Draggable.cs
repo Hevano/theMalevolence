@@ -12,7 +12,11 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public event DragHandler onDragStop;
     public static Draggable dragTarget;
     public bool dragging = false;
-    public bool returnToZone = true;
+    [Tooltip("Will return to draggable object to it's previous position if it did not land on a valid drop zone")]
+    public bool returnIfNotDropped = true;
+    private Vector3 returnPos;
+    [Tooltip("If True, the object will follow the mouse while being dragged. If false, some other code must handle the movement using the draghandler events")]
+    public bool followMouse = true;
     private bool letGo = false;
     public DropZone zone;
     public void OnPointerDown(PointerEventData data){
@@ -21,11 +25,14 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if(onDragStart != null){
             onDragStart(this, null);
         }
+        returnPos = this.transform.position;
+        GetComponent<GraphicRaycaster>().enabled = false;
     }
 
     public void OnPointerUp(PointerEventData data){
         dragging = false;
         letGo = true;
+        GetComponent<GraphicRaycaster>().enabled = true;
 
     }
 
@@ -37,10 +44,10 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if(onDragStop != null){
                 onDragStop(this, zone);
             }
-            if(zone != null){
-                transform.position = zone.transform.position;
-            }
+        } else if(returnIfNotDropped) {
+            transform.position = returnPos;
         }
+
         
     }
 

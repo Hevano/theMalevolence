@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<Enums.Character, Deck> decks = new Dictionary<Enums.Character, Deck>();
 
     public HandDisplayController hand;
-    public UnityEngine.UI.Image dropZone;
+    public DropZone cardDropZone;
 
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
@@ -32,6 +32,14 @@ public class GameManager : MonoBehaviour
         }
         manager = this;
         StartBattle();
+
+        //Checks if something dropped in the card zone is actually a card, and only continues if it is
+        cardDropZone.onDrop += (drag, drop) =>{
+            CardDisplayController cardController = null;
+            if(drag.gameObject.TryGetComponent<CardDisplayController>(out cardController)){
+                drag.Drop(drop);
+            }
+        };
     }
 
     //Temporary, CheckGameOver should be called whenever a character / foe is Defeated, not every frame
@@ -76,7 +84,7 @@ public class GameManager : MonoBehaviour
         var turnsList = new List<ITurnExecutable>(party);
         turnsList.AddRange(foes);
         turns = turnsList;
-        yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 2);
+        yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 1);
     }
 
     public IEnumerator ExecuteTurn(){

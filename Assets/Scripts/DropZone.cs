@@ -10,11 +10,10 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool hovering = false;
 
     public void OnPointerEnter(PointerEventData data){
-        Debug.Log($"{name} enter");
         hovering = true;
     }
     public void OnPointerExit(PointerEventData data){
-        hovering = true;
+        hovering = false;
     }
 
     public void Update(){
@@ -24,7 +23,8 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if(onDrop != null){
                     onDrop(Draggable.dragTarget, this);
                 }
-                Draggable.dragTarget.Drop(this); //This could be changed so that only the onDrop handler decides if the dragTarget is valid
+                //If the draggable is a valid option for the drop zone, there should be a handler subscribed to onDrop that calls the code below
+                //drag.Drop(drop);
             }
             
         }
