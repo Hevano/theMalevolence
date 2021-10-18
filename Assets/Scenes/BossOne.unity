@@ -964,6 +964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseCommands
       objectReference: {fileID: 0}
+    - target: {fileID: 651356541412869870, guid: 544381dcdf91a9f4bb26ba34e94cc545, type: 3}
+      propertyPath: m_TagString
+      value: BaseCommands
+      objectReference: {fileID: 0}
     - target: {fileID: 651356541412869871, guid: 544381dcdf91a9f4bb26ba34e94cc545, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -1030,7 +1034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 651356541412869871, guid: 544381dcdf91a9f4bb26ba34e94cc545, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -650
+      value: -664
       objectReference: {fileID: 0}
     - target: {fileID: 651356541412869871, guid: 544381dcdf91a9f4bb26ba34e94cc545, type: 3}
       propertyPath: m_AnchoredPosition.y

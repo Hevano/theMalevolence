@@ -8,15 +8,19 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public int Corruption{get;set;}
     private bool _defeated = false;
 
-    public bool Defeated {
-        get{
+    public bool Defeated
+    {
+        get
+        {
             return _defeated;
         }
-        set{
+        set
+        {
             _defeated = value;
             GameManager.manager.CheckGameOver();
         }
     }
+
     public CharacterData data;
 
     public Card cardToPlay = null;

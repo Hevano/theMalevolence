@@ -141,7 +141,10 @@ public class GameManager : MonoBehaviour
         decks[Enums.Character.Popular] = GameObject.Find("PopularDeck").GetComponent<Deck>();
     }
 
+    //Initialize each character in party list established. 
     public void InitializeCharacters(){
+
+        //for each character in the party, make that character type in characters dictionary equal to the party member
         foreach(Character c in party){
             characters[c.data.characterType] = c;
         }

@@ -35,9 +35,9 @@ public class CardDisplayController : MonoBehaviour {
     }
 
     public static CardDisplayController CreateCard(Card card){
-        if(cardDisplayPrefab == null){
+        if(cardDisplayPrefab == null)
             cardDisplayPrefab = Resources.Load<GameObject>("UserInterface/CardDisplay");
-        }
+        
         var cardGameObject = Instantiate<GameObject>(cardDisplayPrefab, Vector3.zero, Quaternion.identity);
         var cardDisplay = cardGameObject.GetComponent<CardDisplayController>();
         cardDisplay.CardData = card;
