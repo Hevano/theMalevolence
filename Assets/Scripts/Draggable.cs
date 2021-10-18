@@ -53,7 +53,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void LateUpdate(){
         if(dragging){
-            transform.position = Input.mousePosition;
+            if(followMouse) transform.position = Input.mousePosition;
             if(onDrag != null){
                 onDrag(this, zone);
             }
