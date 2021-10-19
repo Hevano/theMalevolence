@@ -7,6 +7,7 @@ public class ValueRange {
     protected int dieNum;
     protected int dieSize;
     protected int bonus;
+
     public int Max {
         get {
             return dieNum * dieSize + bonus;

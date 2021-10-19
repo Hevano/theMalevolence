@@ -30,4 +30,17 @@ public class CardEffect {
     }
 
     public virtual IEnumerable ApplyEffect() { yield return null; }
+
+
+    /*
+        CardEffect Resolution and Targeting
+    */
+    // public IEnumerator Activate(){
+    //     //Effect resolution goes here
+    // }
+
+    // public IEnumerator AccquireTarget(){
+    //     yield return Targetable.GetTargetable(Enums.TargetType.Any, "Targetting ui msg", 1);
+    //     this.targets = Targetable.currentTargets;
+    // }
 }
