@@ -80,10 +80,8 @@ public class GameManager : MonoBehaviour
         while(phase == Enums.GameplayPhase.Planning){
             yield return new WaitForEndOfFrame();
         }
-        //Temporary until UI is added to arrange turns and actions
-        var turnsList = new List<ITurnExecutable>(party);
-        turnsList.AddRange(foes);
-        turns = turnsList;
+        
+        //Temporary, to test the targetting system
         yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 1);
     }
 
@@ -91,6 +89,11 @@ public class GameManager : MonoBehaviour
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
         Debug.Log("Resolving Phase");
+        turns = new List<ITurnExecutable>();
+        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder){
+            turns.Add(turnSlot.Turn);
+        }
+        turns.Insert(2, foes[0]); //Temporary, should add enemy turns more dynamically
         foreach(ITurnExecutable turn in turns){
             yield return turn.GetTurn();
         }
