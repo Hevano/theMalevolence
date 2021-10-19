@@ -10,6 +10,7 @@ public class Card : ScriptableObject {
     [SerializeField] private string cardDescription;
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
+    [SerializeField] private bool exiled;
 
     //[Header("Card Art")]
     [SerializeField] private Sprite cardFront;
@@ -62,11 +63,11 @@ public class Card : ScriptableObject {
 
     public void AddCardEffectMaker (int listNo) {
         if (listNo == 0) {
-            cardEffects.Add(new CardEffectsMaker());
+            cardEffects.Add(new CardEffectsMaker(this));
         } else if (listNo == 1)
-            cardCorPass.Add(new CardEffectsMaker());
+            cardCorPass.Add(new CardEffectsMaker(this));
         else if (listNo == 2)
-            cardCorFail.Add(new CardEffectsMaker());
+            cardCorFail.Add(new CardEffectsMaker(this));
     }
 
     public CardEffect GetEffect (int index, int listNo) {

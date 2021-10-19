@@ -8,6 +8,44 @@ public class DrawEffect : CardEffect {
     
     /** <summary>The number of cards to draw.</summary> */
     [SerializeField] private int cardsToDraw;
+    [SerializeField] private bool fromDiscard;
+    [SerializeField] private bool toDiscard;
 
-    public int CardsToDraw { get { return cardsToDraw; } }
+    public override IEnumerable ApplyEffect () {
+        ApplyModification();
+
+        if (toDiscard) {
+            for (int i = 0; i < cardsToDraw; i++) {
+                //Tell game manager to discard a card
+            }
+        } else if (fromDiscard) {
+            for (int i = 0; i < cardsToDraw; i++) {
+                //Tell game manager to draw a card from the discard
+            }
+        } else {
+            for (int i = 0; i < cardsToDraw; i++) {
+                //Tell game manager to draw a card
+            }
+        }
+        yield return null;
+    }
+
+    public override void ApplyModification () {
+        if (modifyingValue != 0) {
+            switch (modification) {
+                case Enums.Modifier.Add:
+                    cardsToDraw += modifyingValue;
+                    break;
+                case Enums.Modifier.Subtract:
+                    cardsToDraw -= modifyingValue;
+                    break;
+                case Enums.Modifier.Multiply:
+                    cardsToDraw *= modifyingValue;
+                    break;
+                case Enums.Modifier.Divide:
+                    cardsToDraw /= modifyingValue;
+                    break;
+            }
+        }
+    }
 }

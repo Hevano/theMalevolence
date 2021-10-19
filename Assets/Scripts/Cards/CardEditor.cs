@@ -14,6 +14,7 @@ public class CardEditor : Editor {
     SerializedProperty CardDescription;
     SerializedProperty CardFlavor;
     SerializedProperty CardCharacter;
+    SerializedProperty CardExile;
     SerializedProperty CardFront;
     SerializedProperty CardBack;
     SerializedProperty CardEffects;
@@ -31,6 +32,7 @@ public class CardEditor : Editor {
         CardDescription = GetTarget.FindProperty("cardDescription");
         CardFlavor = GetTarget.FindProperty("cardFlavor");
         CardCharacter = GetTarget.FindProperty("cardCharacter");
+        CardExile = GetTarget.FindProperty("exiled");
         CardFront = GetTarget.FindProperty("cardFront");
         CardBack = GetTarget.FindProperty("cardBack");
         CardEffects = GetTarget.FindProperty("cardEffects");
@@ -48,6 +50,7 @@ public class CardEditor : Editor {
             EditorGUILayout.PropertyField(CardDescription);
             EditorGUILayout.PropertyField(CardFlavor);
             EditorGUILayout.PropertyField(CardCharacter);
+            EditorGUILayout.PropertyField(CardExile);
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Card Art", EditorStyles.boldLabel);

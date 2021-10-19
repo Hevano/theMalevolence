@@ -4,6 +4,12 @@ using UnityEngine;
 
 public static class Enums {
 
+    public enum StatusEffects {
+        CorruptionShield,
+        Haste,
+        Protected
+    }
+
     public enum CardEffects {
         None,
         Afflict,

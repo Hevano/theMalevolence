@@ -16,4 +16,23 @@ public class ModifierEffect : CardEffect {
     [SerializeField] private int perFactorValue;
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
+    
+    public virtual IEnumerable ApplyEffect () {
+        int value = 0;
+
+        switch (modifierFactor) {
+            case Enums.ModifierFactors.Cards_Played:
+                break;
+            case Enums.ModifierFactors.Corruption:
+                break;
+            case Enums.ModifierFactors.Hand_Size:
+                break;
+            case Enums.ModifierFactors.Health:
+                break;
+        }
+
+        CardEffect effect = card.cardEffects[effectIndex].GetEffect();
+        effect.SetModification(value, modifierEffect);
+        yield return null;
+    }
 }

@@ -17,6 +17,19 @@ public class CardEffectsMaker {
     public SummonEffect summonEffect = new SummonEffect();
     public VitalityEffect vitalityEffect = new VitalityEffect();
     
+    public CardEffectsMaker (Card c) {
+        cardEffect.SetOwnerCard(c);
+        afflictEffect.SetOwnerCard(c);
+        attackEffect.SetOwnerCard(c);
+        cleanseEffect.SetOwnerCard(c);
+        drawEffect.SetOwnerCard(c);
+        insertEffect.SetOwnerCard(c);
+        modifyEffect.SetOwnerCard(c);
+        reshuffleEffect.SetOwnerCard(c);
+        summonEffect.SetOwnerCard(c);
+        vitalityEffect.SetOwnerCard(c);
+    }
+
     public CardEffect GetEffect () {
         switch(effectType) {
             case Enums.CardEffects.Afflict:

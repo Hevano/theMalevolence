@@ -6,8 +6,16 @@ using UnityEngine;
 public class CardEffect {
     [SerializeField] protected Enums.Target target;
     protected List<Character> targets;
+    protected Card card;
+
+    protected int modifyingValue;
+    protected Enums.Modifier modification;
 
     public Enums.Target Target { get { return target; } }
+
+    public void SetOwnerCard (Card c) {
+        card = c;
+    }
 
     public void DesignateTarget() {
         switch(target) {
@@ -29,7 +37,19 @@ public class CardEffect {
         }
     }
 
-    public virtual IEnumerable ApplyEffect() { yield return null; }
+    public virtual IEnumerable ApplyEffect() {
+        //Tell game manager to skip the caster's turn
+        yield return null;
+    }
+
+    public virtual void SetModification (int value, Enums.Modifier mod) {
+        modifyingValue = value;
+        modification = mod;
+    }
+
+    public virtual void ApplyModification () {
+        return;
+    }
 
 
     /*

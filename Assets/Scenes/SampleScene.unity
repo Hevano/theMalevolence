@@ -175,7 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragging: 0
-  returnToZone: 1
+  returnIfNotDropped: 1
+  followMouse: 1
   zone: {fileID: 0}
 --- !u!114 &278805865
 MonoBehaviour:
@@ -227,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c930b61c98e6944bcd01a13a786c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: 438d823664303f84a83ccb84a491aa90, type: 2}
 --- !u!1 &286109513
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   cardToPlay: {fileID: 0}
+  attackCard: {fileID: 0}
 --- !u!4 &527834492
 Transform:
   m_ObjectHideFlags: 0
@@ -539,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   cardToPlay: {fileID: 0}
+  attackCard: {fileID: 0}
 --- !u!4 &636794684
 Transform:
   m_ObjectHideFlags: 0
@@ -657,6 +659,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -729,6 +732,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee86a3819540c546b7ffe6e61207295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 11400000, guid: 44dc20ecb35dc2740a160f3887b199ed, type: 2}
 --- !u!1 &1068923655
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   cardToPlay: {fileID: 0}
+  attackCard: {fileID: 0}
 --- !u!4 &1068923657
 Transform:
   m_ObjectHideFlags: 0
@@ -894,6 +911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   cardToPlay: {fileID: 0}
+  attackCard: {fileID: 0}
 --- !u!4 &1464297722
 Transform:
   m_ObjectHideFlags: 0
@@ -939,6 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   cardToPlay: {fileID: 0}
+  attackCard: {fileID: 0}
 --- !u!4 &1791490953
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,10 +1146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55c8bd5513780e459737da6fed0d722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toDrag: {fileID: 278805864}
-  toDrop: {fileID: 1339947655}
   phase: 0
   speedScale: 1
+  hand: {fileID: 0}
+  cardDropZone: {fileID: 0}
   party:
   - {fileID: 1791490952}
   - {fileID: 1464297721}
