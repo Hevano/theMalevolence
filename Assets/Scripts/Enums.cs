@@ -41,6 +41,16 @@ public static class Enums {
         Health
     }
 
+    /** <summary>Targeting options for card effects</summary> */
+    public enum Target {
+        None,
+        Self,
+        Ally,
+        Enemy,
+        All_Ally,
+        All_Enemy
+    }
+
     /** <summary>The types of effects on values in card effects.</summary> */
     public enum VitalityType {
         Health,

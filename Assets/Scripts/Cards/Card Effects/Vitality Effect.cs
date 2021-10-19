@@ -8,6 +8,4 @@ public class VitalityEffect : CardEffect {
 
     [SerializeField] private Enums.VitalityType vitalityType;
     [SerializeField] private int value;
-
-    public override string Display () { return "This is a vitality effect"; }
 }

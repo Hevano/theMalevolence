@@ -5,6 +5,5 @@ using UnityEngine;
 /** <summary>Special card effect: Reshuffles a number of cards back into the deck.</summary> */
 [System.Serializable]
 public class ReshuffleEffect : CardEffect {
-
-    public override string Display () { return "This is a shuffle effect"; }
+    
 }

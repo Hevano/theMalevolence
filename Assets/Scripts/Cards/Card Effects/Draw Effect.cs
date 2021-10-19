@@ -10,5 +10,4 @@ public class DrawEffect : CardEffect {
     [SerializeField] private int cardsToDraw;
 
     public int CardsToDraw { get { return cardsToDraw; } }
-    public override string Display () { return "This is a draw effect"; }
 }

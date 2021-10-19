@@ -5,6 +5,5 @@ using UnityEngine;
 /** <summary>Special Card effect: Afflicts the target with a status effect.</summary> */
 [System.Serializable]
 public class AfflictEffect : CardEffect {
-
-    public override string Display () { return "This is an afflict effect"; }
+    
 }

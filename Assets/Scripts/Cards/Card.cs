@@ -90,4 +90,11 @@ public class Card : ScriptableObject {
         else
             return null;
     }
+
+    public IEnumerable Activate () {
+        for (int i = 0; i < cardEffects.Count; i++) {
+            yield return cardEffects[i].GetEffect().ApplyEffect();
+        }
+        yield return null;
+    }
 }

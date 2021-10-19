@@ -18,6 +18,42 @@ MonoBehaviour:
   cardCharacter: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
-  cardEffects: []
+  cardEffects:
+  - effectType: 6
+    drawEffect:
+      cardsToDraw: 0
+    modifyEffect:
+      modifierEffect: 1
+      modifierFactor: 1
+      modifierPerFactor: 2
+      perFactorValue: 20
+      effectIndex: 1
+    vitalityEffect:
+      vitalityType: 0
+      value: 0
+  - effectType: 4
+    drawEffect:
+      cardsToDraw: 2
+    modifyEffect:
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    vitalityEffect:
+      vitalityType: 0
+      value: 0
+  - effectType: 9
+    drawEffect:
+      cardsToDraw: 0
+    modifyEffect:
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    vitalityEffect:
+      vitalityType: 0
+      value: 25
   cardCorPass: []
   cardCorFail: []
