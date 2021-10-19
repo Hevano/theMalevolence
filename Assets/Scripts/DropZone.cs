@@ -18,14 +18,12 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Update(){
         if(hovering && Draggable.dragTarget != null && Input.GetMouseButtonUp(0)){
-            if(GetComponent<RectTransform>().rect.Overlaps(Draggable.dragTarget.GetComponent<RectTransform>().rect)){
-                Debug.Log($"{Draggable.dragTarget.name} dropped in {name}");
-                if(onDrop != null){
-                    onDrop(Draggable.dragTarget, this);
-                }
-                //If the draggable is a valid option for the drop zone, there should be a handler subscribed to onDrop that calls the code below
-                //drag.Drop(drop);
+            Debug.Log($"{Draggable.dragTarget.name} dropped in {name}");
+            if(onDrop != null){
+                onDrop(Draggable.dragTarget, this);
             }
+            //If the draggable is a valid option for the drop zone, there should be a handler subscribed to onDrop that calls the code below
+            //drag.Drop(drop);
             
         }
     }

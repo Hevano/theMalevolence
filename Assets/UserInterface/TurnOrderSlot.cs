@@ -13,6 +13,12 @@ public class TurnOrderSlot : MonoBehaviour
             return currentTurnDraggable.GetComponent<CharacterDisplayController>().Character;
         }
     }
+
+    public void PlaceTurn(CharacterDisplayController display){
+        currentTurnDraggable = display.GetComponent<Draggable>();
+        display.currentTurnSlot = this;
+        display.transform.position = transform.position;
+    }
     
     //ISSUE: Dropping characterDisplaycontroller onto slot, the display in that slot consumes the raycast
     void Start()
@@ -20,15 +26,15 @@ public class TurnOrderSlot : MonoBehaviour
         turnOrder.Add(this);
         dropZone = GetComponent<DropZone>();
         dropZone.onDrop += (drag, drop) =>{
-           CharacterDisplayController characterDisplay = null;
-           if(drag.TryGetComponent<CharacterDisplayController>(out characterDisplay)){
-                //Drop this slot's turn in the new turn's slot
-                currentTurnDraggable.Drop(characterDisplay.currentTurnSlot.dropZone);
-                currentTurnDraggable.transform.position = drop.transform.position;
-                //Drop new turn into this slot
+            if(drag == currentTurnDraggable) return;
+            CharacterDisplayController characterDisplay = null;
+            if(drag.TryGetComponent<CharacterDisplayController>(out characterDisplay)){
                 drag.Drop(drop);
-                drop.transform.position = transform.position;
-           }
+                //Drop this slot's turn in the new turn's slot
+                characterDisplay.currentTurnSlot.PlaceTurn(currentTurnDraggable.GetComponent<CharacterDisplayController>());
+                //Drop new turn into this slot
+                PlaceTurn(characterDisplay);
+            }
        };
     }
 }

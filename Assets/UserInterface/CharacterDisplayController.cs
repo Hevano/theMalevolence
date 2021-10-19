@@ -16,6 +16,7 @@ public class CharacterDisplayController : MonoBehaviour {
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
 
+    [SerializeField]
     private Character _character;
     public Character Character {
         get{

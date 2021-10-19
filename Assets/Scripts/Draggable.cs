@@ -41,14 +41,12 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         dragTarget = null;
         if(zoneWhereDropped != null){
             zone = zoneWhereDropped;
-            if(onDragStop != null){
-                onDragStop(this, zone);
-            }
         } else if(returnIfNotDropped) {
             transform.position = returnPos;
         }
-
-        
+        if(onDragStop != null){
+            onDragStop(this, zone);
+        }
     }
 
     public void LateUpdate(){

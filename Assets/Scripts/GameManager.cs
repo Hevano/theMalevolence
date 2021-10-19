@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder){
             turns.Add(turnSlot.Turn);
         }
+        turns.Reverse(); //Currently the turn slots are being initialized bottom-up, resulting in the turn order being reversed
         turns.Insert(2, foes[0]); //Temporary, should add enemy turns more dynamically
         foreach(ITurnExecutable turn in turns){
             yield return turn.GetTurn();
