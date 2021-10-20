@@ -36,7 +36,15 @@ public class GameManager : MonoBehaviour
         //Checks if something dropped in the card zone is actually a card, and only continues if it is
         cardDropZone.onDrop += (drag, drop) =>{
             CardDisplayController cardController = null;
-            if(drag.gameObject.TryGetComponent<CardDisplayController>(out cardController)){
+            if(drag.gameObject.TryGetComponent(out cardController)){
+                drag.Drop(drop);
+            }
+        };
+
+        hand.GetComponent<DropZone>().onDrop += (drag, drop) => {
+            CardDisplayController cardController = null;
+            if (drag.gameObject.TryGetComponent(out cardController))
+            {
                 drag.Drop(drop);
             }
         };

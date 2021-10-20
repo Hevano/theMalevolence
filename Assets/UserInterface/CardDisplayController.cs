@@ -26,6 +26,7 @@ public class CardDisplayController : MonoBehaviour {
         //Remove from hand display
     }
 
+    /// HERE Dingus
     public void Start(){
         GetComponent<Draggable>().onDragStop += (drag, drop) => {
             if(drop != null && drop.name == "DropZone"){

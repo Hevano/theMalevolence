@@ -28,7 +28,7 @@ public class TurnOrderSlot : MonoBehaviour
         dropZone.onDrop += (drag, drop) =>{
             if(drag == currentTurnDraggable) return;
             CharacterDisplayController characterDisplay = null;
-            if(drag.TryGetComponent<CharacterDisplayController>(out characterDisplay)){
+            if(drag.TryGetComponent(out characterDisplay)){
                 drag.Drop(drop);
                 //Drop this slot's turn in the new turn's slot
                 characterDisplay.currentTurnSlot.PlaceTurn(currentTurnDraggable.GetComponent<CharacterDisplayController>());
