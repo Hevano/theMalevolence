@@ -17,9 +17,12 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector3 returnPos;
     [Tooltip("If True, the object will follow the mouse while being dragged. If false, some other code must handle the movement using the draghandler events")]
     public bool followMouse = true;
+    [Tooltip("If true, can only be dragged while in the planning phase")]
+    public bool planningPhaseOnly = false;
     private bool letGo = false;
     public DropZone zone;
     public void OnPointerDown(PointerEventData data){
+        if(planningPhaseOnly && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragTarget = this;
         dragging = true;
         if(onDragStart != null){
@@ -30,6 +33,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void OnPointerUp(PointerEventData data){
+        if(planningPhaseOnly && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragging = false;
         letGo = true;
         GetComponent<GraphicRaycaster>().enabled = true;

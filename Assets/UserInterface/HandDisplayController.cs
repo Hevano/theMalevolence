@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandDisplayController : MonoBehaviour {
     [SerializeField]
-    private List<CardDisplayController> DisplayedCards = new List<CardDisplayController>();
+    public List<CardDisplayController> DisplayedCards = new List<CardDisplayController>();
 
     public void AddCard(CardDisplayController card) {
         DisplayedCards.Add(card);

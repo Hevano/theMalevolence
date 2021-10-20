@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         {
             Draw(c.data.characterType);
         }
-        Draw(Enums.Character.Popular);
 
         //look to remove this later
         foes[0].enemy = true;
@@ -151,8 +150,28 @@ public class GameManager : MonoBehaviour
     {
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
-        //Draw cards
-        yield return new WaitForSeconds(1.0f / speedScale);
+        
+        int cardsInHand = hand.DisplayedCards.Count;
+        //Enable draw buttons (could be better optimized)
+        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        {
+            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            if(party.Contains(display.Character)){
+                display.ToggleDrawButton(true);
+            }
+        }
+        //Wait untill one card has been drawn
+        while(hand.DisplayedCards.Count != cardsInHand + 1){
+            yield return new WaitForEndOfFrame();
+        }
+        //Disable draw buttons
+        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        {
+            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            if(party.Contains(display.Character)){
+                display.ToggleDrawButton(false);
+            }
+        }
     }
 
     //Checks if the game is over. Should be called whenever a character or foe is Defeated

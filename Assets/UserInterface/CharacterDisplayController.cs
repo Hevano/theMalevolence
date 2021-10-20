@@ -20,6 +20,8 @@ public class CharacterDisplayController : MonoBehaviour {
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
     public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
 
+    public Button drawButton;
+
     [SerializeField]
     private Character _character;
     public Character Character {
@@ -46,6 +48,10 @@ public class CharacterDisplayController : MonoBehaviour {
                 ChangeAction(newCard);
             };
         }
+    }
+
+    public void ToggleDrawButton(bool enabled){
+        drawButton.gameObject.SetActive(enabled);
     }
 
     public void ChangeHealth(int currentHealth) {
@@ -76,6 +82,9 @@ public class CharacterDisplayController : MonoBehaviour {
         d.onDragStop += (drag, drop) =>{
             ToggleRayCastOnOthers(true);
         };
+        drawButton.onClick.AddListener(() => {
+            GameManager.manager.Draw(Character.data.characterType);
+        });
     }
 
     //Toggles the graphic raycast component on all other (Slightly jank, a better method probably exists)

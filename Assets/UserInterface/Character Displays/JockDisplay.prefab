@@ -179,6 +179,7 @@ MonoBehaviour:
   dragging: 0
   returnIfNotDropped: 1
   followMouse: 0
+  planningPhaseOnly: 1
   zone: {fileID: 0}
 --- !u!114 &48006880594577918
 MonoBehaviour:
@@ -196,6 +197,7 @@ MonoBehaviour:
   _cptxt: {fileID: 8407978187657533628}
   _nametxt: {fileID: 8124891910033055571}
   _actiontxt: {fileID: 2618207563422005627}
+  drawButton: {fileID: 6496802736079536419}
   _character: {fileID: 0}
   currentTurnSlot: {fileID: 0}
 --- !u!223 &1243401774537792940
@@ -333,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593339875991762417
 RectTransform:
   m_ObjectHideFlags: 0

@@ -447,4 +447,5 @@ MonoBehaviour:
   dragging: 0
   returnIfNotDropped: 1
   followMouse: 1
+  planningPhaseOnly: 1
   zone: {fileID: 0}
