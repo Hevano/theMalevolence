@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        if(manager != null){
+        if (manager != null)
+        {
             Destroy(this);
         }
         manager = this;
@@ -56,7 +57,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Starts a new battle with listed enemies
-    public void StartBattle(){
+    public void StartBattle()
+    {
 
         //Play battle start effects
         //Draw starting hand
@@ -73,8 +75,10 @@ public class GameManager : MonoBehaviour
     }
 
     //Loops through turns untill the battleEnumerator is stopped (By CheckGameOver)
-    public IEnumerator ExecuteBattle(){
-        while(true){
+    public IEnumerator ExecuteBattle()
+    {
+        while(true)
+        {
             yield return ExecutePlanning();
             yield return ExecuteTurn();
             yield return ExecuteDrawPhase();
@@ -82,10 +86,12 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public IEnumerator ExecutePlanning(){
+    public IEnumerator ExecutePlanning()
+    {
         phase = Enums.GameplayPhase.Planning;
         Debug.Log("Planning phase");
-        while(phase == Enums.GameplayPhase.Planning){
+        while(phase == Enums.GameplayPhase.Planning)
+        {
             yield return new WaitForEndOfFrame();
         }
         
@@ -93,17 +99,23 @@ public class GameManager : MonoBehaviour
         yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 1);
     }
 
-    public IEnumerator ExecuteTurn(){
+    public IEnumerator ExecuteTurn()
+    {
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
         Debug.Log("Resolving Phase");
         turns = new List<ITurnExecutable>();
-        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder){
+
+        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        {
             turns.Add(turnSlot.Turn);
         }
+
         turns.Reverse(); //Currently the turn slots are being initialized bottom-up, resulting in the turn order being reversed
         turns.Insert(2, foes[0]); //Temporary, should add enemy turns more dynamically
-        foreach(ITurnExecutable turn in turns){
+
+        foreach(ITurnExecutable turn in turns)
+        {
             yield return turn.GetTurn();
         }
         //Check if battle has been resolved
@@ -111,7 +123,8 @@ public class GameManager : MonoBehaviour
         //UI turn resolving true
     }
 
-    public IEnumerator ExecuteDrawPhase(){
+    public IEnumerator ExecuteDrawPhase()
+    {
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
         //Draw cards
@@ -119,22 +132,29 @@ public class GameManager : MonoBehaviour
     }
 
     //Checks if the game is over. Should be called whenever a character or foe is Defeated
-    public void CheckGameOver(){
+    public void CheckGameOver()
+    {
         bool playerDefeated = true;
-        foreach(Character partyMember in party){
+        foreach(Character partyMember in party)
+        {
             playerDefeated = playerDefeated && partyMember.Defeated;
         }
-        if(playerDefeated){
+
+        if(playerDefeated)
+        {
             StopCoroutine(battleEnumerator);
             Debug.Log("Game Over! TPK");
             //Return to main menu ui
         }
 
         bool foesDefeated = true;
-        foreach(Character foe in foes){
+        foreach(Character foe in foes)
+        {
             foesDefeated = foesDefeated && foe.Defeated;
         }
-        if(foesDefeated){
+
+        if(foesDefeated)
+        {
             StopCoroutine(battleEnumerator);
             Debug.Log("Game Over! Defeated enemies");
             //Card Drafting ui
@@ -143,17 +163,20 @@ public class GameManager : MonoBehaviour
     }
 
     public void EndPlanning(){
-        if(phase == Enums.GameplayPhase.Planning){
+        if(phase == Enums.GameplayPhase.Planning)
+        {
             phase = Enums.GameplayPhase.Resolve;
         }
     }
 
-    public void Draw(Enums.Character characterDeckToDrawFrom){
+    public void Draw(Enums.Character characterDeckToDrawFrom)
+    {
         var card = decks[characterDeckToDrawFrom].Draw();
         hand.AddCard(CardDisplayController.CreateCard(card));
     }
     
-    public void InitializeDecks(){
+    public void InitializeDecks()
+    {
         Character ch;
         characters.TryGetValue(Enums.Character.Goth, out ch);
         decks[Enums.Character.Goth] = ch.data.Deck;
@@ -166,7 +189,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Initialize each character in party list established. 
-    public void InitializeCharacters(){
+    public void InitializeCharacters()
+    {
 
         //for each character in the party, make that character type in characters dictionary equal to the party member
         foreach(Character c in party){
