@@ -7,7 +7,7 @@ using UnityEngine;
 public class InsertEffect : CardEffect {
     [SerializeField] private Card toInsert;
 
-    public virtual IEnumerable ApplyEffect () {
+    public virtual IEnumerator ApplyEffect () {
         foreach (Character c in targets) {
             Deck deck;
             GameManager.manager.decks.TryGetValue(c.data.characterType, out deck);

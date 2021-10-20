@@ -9,7 +9,7 @@ public class VitalityEffect : CardEffect {
     [SerializeField] private Enums.VitalityType vitalityType;
     [SerializeField] private int value;
     
-    public virtual IEnumerable ApplyEffect () {
+    public override IEnumerator ApplyEffect () {
         foreach (Character c in targets) {
             switch (vitalityType) {
                 case Enums.VitalityType.Health:
