@@ -95,9 +95,6 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        
-        //Temporary, to test the targetting system
-        yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 1);
     }
 
     public IEnumerator ExecuteTurn()

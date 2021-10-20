@@ -20,7 +20,7 @@ public class TurnOrderSlot : MonoBehaviour
         display.transform.position = transform.position;
     }
     
-    //ISSUE: Dropping characterDisplaycontroller onto slot, the display in that slot consumes the raycast
+    
     void Start()
     {
         turnOrder.Add(this);
