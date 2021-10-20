@@ -34,9 +34,9 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             _corruption = value;
         }
     }
+    public bool enemy = false; //ONCE WE MAKE A CHILD CLASS FOR CHARS AND BOSSES, REMOVE THIS 
 
     private bool _defeated = false;
-
     public bool Defeated
     {
         get
@@ -60,10 +60,14 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set {
             var newCard = value;
-            if(CardToPlay != null){
+            if (enemy == true)
+            {
+                newCard = value;
+            }
+            else if (CardToPlay != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
             }
-            if(onActionChange != null){
+            if((onActionChange != null) && (enemy == false)){
                 onActionChange(_cardToPlay, newCard);
                 _cardToPlay = value;
             }

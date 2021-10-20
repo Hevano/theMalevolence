@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public Dictionary<Enums.Character, Character> characters = new Dictionary<Enums.Character, Character>();
 
     public List<ITurnExecutable> turns;
+
+    private int turnNumber = 0;
     private IEnumerator battleEnumerator;
     
     void Start()
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
         CheckGameOver();
     }
 
-    //Starts a new battle with listed enemies
+    //Starts a new battle with listed enemies. This initializes the characers, decks, and starts a new coroutine: battleEnumerator (like a thread)
     public void StartBattle()
     {
 
@@ -71,6 +73,9 @@ public class GameManager : MonoBehaviour
             Draw(c.data.characterType);
         }
         Draw(Enums.Character.Popular);
+
+        //look to remove this later
+        foes[0].enemy = true;
 
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // Planning phase
     public IEnumerator ExecutePlanning()
     {
         phase = Enums.GameplayPhase.Planning;
@@ -98,8 +104,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Turn/action phase
     public IEnumerator ExecuteTurn()
     {
+        turnNumber++;
+
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
         Debug.Log("Resolving Phase");
@@ -108,6 +117,18 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
         {
             turns.Add(turnSlot.Turn);
+        }
+
+        //TEMP WAY TO DO BOSS ACTIONS, REMOVE LATER
+        switch (turnNumber % 2)
+        {
+            case 0:
+                foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[0]);
+                break;
+            case 1:
+                foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[1]);
+                break;
+
         }
 
         turns.Reverse(); //Currently the turn slots are being initialized bottom-up, resulting in the turn order being reversed
@@ -125,6 +146,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Allow player to draw cards
     public IEnumerator ExecuteDrawPhase()
     {
         phase = Enums.GameplayPhase.Draw;
@@ -185,6 +207,7 @@ public class GameManager : MonoBehaviour
         hand.RemoveCard(cd);
     }
     
+    //Links data from the inspector's characters and enum's class.
     public void InitializeDecks()
     {
         Character ch;
@@ -196,6 +219,8 @@ public class GameManager : MonoBehaviour
         decks[Enums.Character.Nerd] = ch.data.Deck;
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
+        characters.TryGetValue(Enums.Character.Driver, out ch);
+        decks[Enums.Character.Driver] = ch.data.Deck;
     }
 
     //Initialize each character in party list established. 
@@ -203,9 +228,16 @@ public class GameManager : MonoBehaviour
     {
 
         //for each character in the party, make that character type in characters dictionary equal to the party member
-        foreach(Character c in party){
+        foreach (Character c in party)
+        {
             characters[c.data.characterType] = c;
         }
+
+        foreach (Character e in foes)
+        {
+            characters[e.data.characterType] = e;
+        }
+
     }
 
 }

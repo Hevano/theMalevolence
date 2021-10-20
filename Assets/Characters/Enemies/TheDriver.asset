@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
   m_Name: TheDriver
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 4
   name: 
   health: 100
   corruption: 0
   avatar: {fileID: 0}
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: 0730daae9889ab44fa22492690801135, type: 2}
+  - {fileID: 11400000, guid: e9aca80fb67d64843a82df0a2513fef1, type: 2}
