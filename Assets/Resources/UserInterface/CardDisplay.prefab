@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 8588575643367556106}
   - component: {fileID: 3148798170510408446}
   - component: {fileID: 4653213522641725672}
+  - component: {fileID: 4846171882246197907}
   m_Layer: 0
   m_Name: CardDisplay
   m_TagString: Untagged
@@ -427,3 +428,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b50664906eae894c952dacedc31c7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4846171882246197907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396882096517265912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ffeb10011bd494a9a622887bbc687f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragging: 0
+  returnIfNotDropped: 1
+  followMouse: 1
+  zone: {fileID: 0}
