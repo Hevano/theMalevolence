@@ -39,6 +39,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         currentTargets = new List<ITargetable>();
         targetting = true;
 
+        //loop while target is being found. Checks each frame if the number of targets is returned.
         while (currentTargets.Count < count){
             yield return new WaitForEndOfFrame();
         }

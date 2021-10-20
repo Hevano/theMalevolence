@@ -35,10 +35,25 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     //Temporary implementation of character's turn
     public IEnumerator GetTurn(){
+
         Debug.Log($"{name}'s turn");
-        if(cardToPlay != null){
+
+        if(cardToPlay != null)
+        {
             Debug.Log($"{name} playing card {cardToPlay.Name}");
-            //yield return cardToPlay.ActivateEffect();
+            //Execute the selected card from the dropzone.
+            yield return cardToPlay.Activate();
+        }
+        else
+        {
+            //Do a damage attack
+
+            //Pull current characters basic attack (can create new one and save to the data object for specific chars).
+            //data.basicAttack();
+            //yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+            //Character target = Targetable.currentTargets();
+            //
+
         }
         yield return new WaitForSeconds(0.5f);
     }
