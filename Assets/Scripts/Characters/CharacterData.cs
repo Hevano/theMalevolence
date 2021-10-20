@@ -16,7 +16,7 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] private List<Card> cards = new List<Card>();
 
-    //The basic attack damange attached to a new character. This uses the damage script to create a new type following
+    //The basic attack damage attached to a new character. This uses the damage script to create a new type following
     // the format int dieNum, int dieSize, int bonus (so 1 6 0 = 1d6 no bonus')
     [SerializeField]
     public Damage basicAttack = new Damage(1,6,0);

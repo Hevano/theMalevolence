@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
-    public int Health {get; set;}
-    public int Corruption{get;set;}
+    public int Health
+    {
+        get;
+        set;
+    }
+
+    public int Corruption
+    {
+        get;
+        set;
+    }
+
     private bool _defeated = false;
 
     public bool Defeated
@@ -48,11 +58,10 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             //Do a damage attack
 
-            //Pull current characters basic attack (can create new one and save to the data object for specific chars).
-            //data.basicAttack();
-            //yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
-            //Character target = Targetable.currentTargets();
-            //
+            //Pull current characters basic attack (can create new one and save to the data object for specific chars)
+            yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+            Character target = (Character)Targetable.currentTargets[0];
+            target.Health -= data.basicAttack.Value;
 
         }
         yield return new WaitForSeconds(0.5f);
