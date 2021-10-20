@@ -88,8 +88,8 @@ public class CardDisplayController : MonoBehaviour {
         cardDisplay.CardData = card;
         cardDisplay._name.text = card.Name;
         cardDisplay._description.text = card.Description;
-        //cardDisplay._back = card.BackArt;
-        //cardDisplay._front = card.FrontArt;
+        cardDisplay._back = card.BackArt;
+        cardDisplay._front = card.FrontArt;
 
         return cardDisplay;
     }

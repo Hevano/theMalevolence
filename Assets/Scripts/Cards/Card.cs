@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Card", menuName = "Card")]
 [System.Serializable]
@@ -13,8 +14,8 @@ public class Card : ScriptableObject {
     [SerializeField] private bool exiled;
 
     //[Header("Card Art")]
-    [SerializeField] private Sprite cardFront;
-    [SerializeField] private Sprite cardBack;
+    [SerializeField] private Image cardFront;
+    [SerializeField] private Image cardBack;
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
@@ -24,8 +25,8 @@ public class Card : ScriptableObject {
     public string Description { get { return cardDescription; } }
     public string Flavor { get { return cardFlavor; } }
     public Enums.Character Character { get { return cardCharacter; } }
-    public Sprite FrontArt { get { return cardFront; } }
-    public Sprite BackArt { get { return cardBack; } }
+    public Image FrontArt { get { return cardFront; } }
+    public Image BackArt { get { return cardBack; } }
 
     public Character AllyTarget { get; set; }
     public Character EnemyTarget { get; set; }
