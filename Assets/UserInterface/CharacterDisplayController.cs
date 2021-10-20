@@ -11,8 +11,6 @@ public class CharacterDisplayController : MonoBehaviour {
     private Text _cptxt;
     [SerializeReference]
     private Text _nametxt;
-    [SerializeField]
-    private int maxHP;
 
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
@@ -28,15 +26,30 @@ public class CharacterDisplayController : MonoBehaviour {
             _character = value;
             //Set the fields based on the character data
             //Subscribe to character events to continually update
+            _character.onStatChange += (string statName, int oldValue, int newValue) => {
+                Debug.Log("Stat change");
+                if(statName == "health"){
+                    ChangeHealth(newValue);
+                } else if(statName == "corruption"){
+                    ChangeCorruption(newValue);
+                }
+            };
+
+            ChangeHealth(Character.Health);
+            ChangeCorruption(Character.Corruption);
         }
     }
 
     public void ChangeHealth(int currentHealth) {
-        HealthDisplay.text = currentHealth + "/" + maxHP;
+        HealthDisplay.text = currentHealth + "/" + Character.data.health;
+    }
+    public void ChangeCorruption(int currentCorruption) {
+        CorruptionDisplay.text = currentCorruption.ToString();
     }
 
     public TurnOrderSlot currentTurnSlot;
     public void Start(){
+        Character = _character; //Cludgey workaround for initializing character events when character is set via the inspector
         var d = GetComponent<Draggable>();
         d.followMouse = false;
         d.onDrag += (drag, drop) =>{

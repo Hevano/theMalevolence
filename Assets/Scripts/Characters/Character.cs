@@ -4,16 +4,35 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
+    //For scrolling health bars, healthbar should be it's own class that dictates how scrolling health works
+    [SerializeField]
+    private int _health;
     public int Health
     {
-        get;
-        set;
+        get{
+            return _health;
+        }
+        set{
+            if(onStatChange != null){
+                onStatChange("health", _health, value);
+            }
+            _health = value;
+        }
     }
 
+    [SerializeField]
+    private int _corruption;
     public int Corruption
     {
-        get;
-        set;
+        get{
+            return _corruption;
+        }
+        set{
+            if(onStatChange != null){
+                onStatChange("corruption", _corruption, value);
+            }
+            _corruption = value;
+        }
     }
 
     private bool _defeated = false;
@@ -35,12 +54,16 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     public Card cardToPlay = null;
 
+    public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
+    public event StatChangeHandler onStatChange;
+
     public bool CorruptionCheck(){
         return false;
     }
 
     void Start(){
-        Health = 10;
+        Health = data.health;
+        Corruption = data.corruption;
     }
 
     //Temporary implementation of character's turn

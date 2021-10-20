@@ -1372,6 +1372,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 62023895}
     m_Modifications:
     - target: {fileID: 48006880594577918, guid: 2546d8f43e67fb44bb24aaf2cb5779ff, type: 3}
+      propertyPath: _character
+      value: 
+      objectReference: {fileID: 817149579377804402}
+    - target: {fileID: 48006880594577918, guid: 2546d8f43e67fb44bb24aaf2cb5779ff, type: 3}
       propertyPath: currentTurnSlot
       value: 
       objectReference: {fileID: 5987438}
