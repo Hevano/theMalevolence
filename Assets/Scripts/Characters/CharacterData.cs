@@ -15,10 +15,13 @@ public class CharacterData : ScriptableObject
     public GameObject avatar;
 
     [SerializeField] private List<Card> cards = new List<Card>();
-    private Deck deck = new Deck();
 
     //The basic attack damange attached to a new character. This uses the damage script to create a new type following
     // the format int dieNum, int dieSize, int bonus
     [SerializeField]
     public Damage basicAttack = new Damage(0,0,0);
+
+    public Deck Deck {
+        get { return new Deck(cards); }
+    }
 }

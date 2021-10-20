@@ -49,11 +49,11 @@ public class GameManager : MonoBehaviour
 
     //Starts a new battle with listed enemies
     public void StartBattle(){
-        
+
         //Play battle start effects
         //Draw starting hand
-        InitializeDecks();
         InitializeCharacters();
+        InitializeDecks();
 
         foreach(Character c in party)
         {
@@ -144,13 +144,17 @@ public class GameManager : MonoBehaviour
         var card = decks[characterDeckToDrawFrom].Draw();
         hand.AddCard(CardDisplayController.CreateCard(card));
     }
-
-    //Should probably change this at some point, maybe instantiating the decks from prefabs in the resource folder
+    
     public void InitializeDecks(){
-        decks[Enums.Character.Goth] = GameObject.Find("GothDeck").GetComponent<Deck>();
-        decks[Enums.Character.Jock] = GameObject.Find("JockDeck").GetComponent<Deck>();
-        decks[Enums.Character.Nerd] = GameObject.Find("NerdDeck").GetComponent<Deck>();
-        decks[Enums.Character.Popular] = GameObject.Find("PopularDeck").GetComponent<Deck>();
+        Character ch;
+        characters.TryGetValue(Enums.Character.Goth, out ch);
+        decks[Enums.Character.Goth] = ch.data.Deck;
+        characters.TryGetValue(Enums.Character.Jock, out ch);
+        decks[Enums.Character.Jock] = ch.data.Deck;
+        characters.TryGetValue(Enums.Character.Nerd, out ch);
+        decks[Enums.Character.Nerd] = ch.data.Deck;
+        characters.TryGetValue(Enums.Character.Popular, out ch);
+        decks[Enums.Character.Popular] = ch.data.Deck;
     }
 
     //Initialize each character in party list established. 
