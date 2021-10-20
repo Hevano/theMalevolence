@@ -25,8 +25,6 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     public Card cardToPlay = null;
 
-    public Card attackCard = null;
-
     public bool CorruptionCheck(){
         return false;
     }
