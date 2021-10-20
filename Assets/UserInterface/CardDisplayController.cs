@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Draggable))]
 public class CardDisplayController : MonoBehaviour {
-    [SerializeReference]
-    private Text _name;
-
-    public Text Name { get { return _name;  } }
-
+   
     public static GameObject cardDisplayPrefab;
 
     //The name of the displayed card. Must be changed to display the cards proper name (seperate field)
@@ -18,7 +14,6 @@ public class CardDisplayController : MonoBehaviour {
     public Text Name
     {
         get{return _name;}
-        set{_name = value;}
     }
 
     //The description of the displayed card. Must be changed to display the cards proper description (seperate field)
