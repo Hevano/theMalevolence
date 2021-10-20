@@ -11,6 +11,8 @@ public class CharacterDisplayController : MonoBehaviour {
     private Text _cptxt;
     [SerializeReference]
     private Text _nametxt;
+    [SerializeField]
+    private int maxHP;
 
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
@@ -27,6 +29,10 @@ public class CharacterDisplayController : MonoBehaviour {
             //Set the fields based on the character data
             //Subscribe to character events to continually update
         }
+    }
+
+    public void ChangeHealth(int currentHealth) {
+        HealthDisplay.text = currentHealth + "/" + maxHP;
     }
 
     public TurnOrderSlot currentTurnSlot;

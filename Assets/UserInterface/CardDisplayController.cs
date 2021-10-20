@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Draggable))]
 public class CardDisplayController : MonoBehaviour {
+    [SerializeReference]
+    private Text _name;
+
+    public Text Name { get { return _name;  } }
+
     public static GameObject cardDisplayPrefab;
 
     private Card _cardData;

@@ -115,6 +115,7 @@ MonoBehaviour:
   _hptxt: {fileID: 147583273524487894}
   _cptxt: {fileID: 8407978187657533628}
   _nametxt: {fileID: 8124891910033055571}
+  maxHP: 25
   _character: {fileID: 0}
   currentTurnSlot: {fileID: 0}
 --- !u!223 &1243401774537792940
@@ -233,7 +234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 25/25
 --- !u!1 &4726334407490855922
 GameObject:
   m_ObjectHideFlags: 0
