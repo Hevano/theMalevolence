@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         manager = this;
+
         StartBattle();
 
         //Checks if something dropped in the card zone is actually a card, and only continues if it is
