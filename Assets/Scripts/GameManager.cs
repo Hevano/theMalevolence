@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         {
             Draw(c.data.characterType);
         }
+        Draw(Enums.Character.Popular);
 
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
@@ -116,9 +117,12 @@ public class GameManager : MonoBehaviour
         {
             yield return turn.GetTurn();
         }
-        //Check if battle has been resolved
 
-        //UI turn resolving true
+        //Reset the actions of each character in the turn order
+        foreach(ITurnExecutable turn in turns)
+        {
+            ((Character)turn).CardToPlay = null;
+        }
     }
 
     public IEnumerator ExecuteDrawPhase()
@@ -170,7 +174,15 @@ public class GameManager : MonoBehaviour
     public void Draw(Enums.Character characterDeckToDrawFrom)
     {
         var card = decks[characterDeckToDrawFrom].Draw();
-        hand.AddCard(CardDisplayController.CreateCard(card));
+        PlaceCardInHand(card);
+    }
+
+    public void PlaceCardInHand(Card c){
+        hand.AddCard(CardDisplayController.CreateCard(c));
+    }
+
+    public void RemoveCardFromHand(CardDisplayController cd){
+        hand.RemoveCard(cd);
     }
     
     public void InitializeDecks()

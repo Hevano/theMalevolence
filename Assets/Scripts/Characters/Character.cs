@@ -52,10 +52,29 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     public CharacterData data;
 
-    public Card cardToPlay = null;
+    [SerializeField]
+    private Card _cardToPlay = null;
+    public Card CardToPlay{
+        get{
+            return _cardToPlay;
+        }
+        set {
+            var newCard = value;
+            if(CardToPlay != null){
+                GameManager.manager.PlaceCardInHand(CardToPlay);
+            }
+            if(onActionChange != null){
+                onActionChange(_cardToPlay, newCard);
+                _cardToPlay = value;
+            }
+        }
+    }
 
     public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
     public event StatChangeHandler onStatChange;
+
+    public delegate void ActionChangeHandler(Card prev, Card newCard);
+    public ActionChangeHandler onActionChange;
 
     public bool CorruptionCheck(){
         return false;
@@ -71,11 +90,11 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
         Debug.Log($"{name}'s turn");
 
-        if(cardToPlay != null)
+        if(CardToPlay != null)
         {
-            Debug.Log($"{name} playing card {cardToPlay.Name}");
+            Debug.Log($"{name} playing card {CardToPlay.Name}");
             //Execute the selected card from the dropzone.
-            yield return cardToPlay.Activate();
+            yield return CardToPlay.Activate();
         }
         else
         {

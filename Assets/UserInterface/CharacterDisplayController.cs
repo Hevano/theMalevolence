@@ -11,10 +11,14 @@ public class CharacterDisplayController : MonoBehaviour {
     private Text _cptxt;
     [SerializeReference]
     private Text _nametxt;
+    //Temporary UI for alpha
+    [SerializeReference]
+    private Text _actiontxt;
 
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
+    public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
 
     [SerializeField]
     private Character _character;
@@ -37,6 +41,10 @@ public class CharacterDisplayController : MonoBehaviour {
 
             ChangeHealth(Character.Health);
             ChangeCorruption(Character.Corruption);
+
+            _character.onActionChange += (Card prev, Card newCard) =>{
+                ChangeAction(newCard);
+            };
         }
     }
 
@@ -45,6 +53,10 @@ public class CharacterDisplayController : MonoBehaviour {
     }
     public void ChangeCorruption(int currentCorruption) {
         CorruptionDisplay.text = currentCorruption.ToString();
+    }
+
+    public void ChangeAction(Card c) {
+        ActionDisplay.text = c == null ? "Attacking" : $"Playing Card: {c.Name}";
     }
 
     public TurnOrderSlot currentTurnSlot;

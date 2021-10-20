@@ -12,6 +12,11 @@ public class HandDisplayController : MonoBehaviour {
         DisplayCard(card);
     }
 
+    public void RemoveCard(CardDisplayController card){
+        DisplayedCards.Remove(card);
+        Destroy(card.gameObject);
+    }
+
     public void DisplayCard(CardDisplayController card) {
 
         CardDisplayController NewCard = card;

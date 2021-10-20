@@ -58,13 +58,14 @@ public class CardDisplayController : MonoBehaviour {
     public void Play()
     {
         var character = GameManager.manager.characters[CardData.Character];
-        character.cardToPlay = CardData;
+        character.CardToPlay = CardData;
 
         //Activate the cards designate targets function.
         StartCoroutine(CardData.DesignateTargets());
 
         Debug.Log($"card {CardData.Name} DesignateTarget");
         //Remove from hand display
+        GameManager.manager.RemoveCardFromHand(this);
     }
 
     
