@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class ReshuffleEffect : CardEffect {
 
-    public virtual IEnumerable ApplyEffect () {
+    public virtual IEnumerator ApplyEffect () {
         foreach (Character c in targets) {
             Enums.Character charType = c.data.characterType;
             Deck deck;

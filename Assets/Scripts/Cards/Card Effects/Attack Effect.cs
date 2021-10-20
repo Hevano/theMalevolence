@@ -7,7 +7,7 @@ using UnityEngine;
 public class AttackEffect : CardEffect {
     [SerializeField] private int damageBonus;
 
-    public override IEnumerable ApplyEffect () {
+    public override IEnumerator ApplyEffect () {
         Character self;
         GameManager.manager.characters.TryGetValue(card.Character, out self);
         foreach (Character c in targets) {

@@ -17,17 +17,31 @@ public class ModifierEffect : CardEffect {
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
     
-    public virtual IEnumerable ApplyEffect () {
+    public override IEnumerator ApplyEffect () {
         int value = 0;
+        Character target;
 
         switch (modifierFactor) {
             case Enums.ModifierFactors.Cards_Played:
+                int cardsPlayed = 0;
+                value = (cardsPlayed / perFactorValue) * modifierPerFactor;
                 break;
             case Enums.ModifierFactors.Corruption:
+                if (targets.Count > 0)
+                    target = targets[0];
+                else
+                    GameManager.manager.characters.TryGetValue(card.Character, out target);
+                value = (target.Corruption / perFactorValue) * modifierPerFactor;
                 break;
             case Enums.ModifierFactors.Hand_Size:
                 break;
             case Enums.ModifierFactors.Health:
+                if (targets.Count > 0)
+                    target = targets[0];
+                else
+                    GameManager.manager.characters.TryGetValue(card.Character, out target);
+                int hp = target.data.health - target.Health;
+                value = (hp / perFactorValue) * modifierPerFactor;
                 break;
         }
 

@@ -27,6 +27,9 @@ public class Card : ScriptableObject {
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
 
+    public Character AllyTarget { get; set; }
+    public Character EnemyTarget { get; set; }
+
     private void SetList (List<CardEffect> effectsList, List<CardEffectsMaker> makerList) {
         for (int i = 0; i < makerList.Count; i++) {
             switch (makerList[i].effectType) {
@@ -92,12 +95,41 @@ public class Card : ScriptableObject {
             return null;
     }
 
-    public IEnumerable Activate () {
-        for (int i = 0; i < cardEffects.Count; i++) {
-            yield return cardEffects[i].GetEffect().ApplyEffect();
+    public IEnumerator Activate () {
+        if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
+            int corruptionCheck = Random.Range(0, 100);
+            Character character;
+            GameManager.manager.characters.TryGetValue(cardCharacter, out character);
+            if (corruptionCheck >= character.Corruption)
+                for (int i = 0; i < cardCorPass.Count; i++)
+                    yield return cardCorPass[i].GetEffect().ApplyEffect();
+            else
+                for (int i = 0; i < cardCorFail.Count; i++)
+                    yield return cardCorFail[i].GetEffect().ApplyEffect();
         }
+
+        for (int i = 0; i < cardEffects.Count; i++)
+            yield return cardEffects[i].GetEffect().ApplyEffect();
         yield return null;
     }
+
+    public IEnumerator DesignateTargets() {
+        AllyTarget = null;
+        EnemyTarget = null;
+
+        for (int i = 0; i < cardEffects.Count; i++) {
+            yield return cardEffects[i].GetEffect().DesignateTarget();
+        }
+
+        for (int i = 0; i < cardCorPass.Count; i++) {
+            yield return cardCorPass[i].GetEffect().DesignateTarget();
+        }
+
+        for (int i = 0; i < cardCorFail.Count; i++) {
+            yield return cardCorFail[i].GetEffect().DesignateTarget();
+        }
+    }
+
     /*
         CardEffect Resolution and Targeting
     */
