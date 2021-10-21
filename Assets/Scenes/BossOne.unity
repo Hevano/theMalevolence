@@ -1408,6 +1408,7 @@ MonoBehaviour:
   speedScale: 1
   hand: {fileID: 1684228912}
   cardDropZone: {fileID: 1345192372}
+  messager: {fileID: 0}
   party:
   - {fileID: 6416874238983255967}
   - {fileID: 8185431853395727170}
@@ -1670,6 +1671,10 @@ PrefabInstance:
     - target: {fileID: 3472537470939002031, guid: 2546d8f43e67fb44bb24aaf2cb5779ff, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -44.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771120444926226318, guid: 2546d8f43e67fb44bb24aaf2cb5779ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8188989416604174834, guid: 2546d8f43e67fb44bb24aaf2cb5779ff, type: 3}
       propertyPath: m_IsActive
