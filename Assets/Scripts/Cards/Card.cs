@@ -130,6 +130,7 @@ public class Card : ScriptableObject {
         AllyTarget = null;
         EnemyTarget = null;
 
+        //Somewhere here, targets are not being designated for the card. Are there missing references?
         Debug.Log("Designating targets");
 
         for (int i = 0; i < cardEffects.Count; i++) {

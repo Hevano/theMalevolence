@@ -73,7 +73,9 @@ public class CardDisplayController : MonoBehaviour {
         };
     }
 
-    public IEnumerator ResolveTargets(){
+    // Delete cards once targets have been designated
+    public IEnumerator ResolveTargets()
+    {
         yield return CardData.DesignateTargets();
         Debug.Log($"card {CardData.Name} DesignateTarget");
         GameManager.manager.RemoveCardFromHand(this);
