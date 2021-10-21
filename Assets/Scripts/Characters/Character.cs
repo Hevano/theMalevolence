@@ -68,12 +68,12 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             {
                 newCard = value;
             }
-            else if (CardToPlay != null){
+            else if (CardToPlay != null && newCard != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
             }
             if((onActionChange != null) && (enemy == false)){
                 onActionChange(_cardToPlay, newCard);
-                _cardToPlay = value;
+                _cardToPlay = newCard;
             }
         }
     }
