@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private int turnNumber = 0;
     private IEnumerator battleEnumerator;
+    private bool gameOver = false;
     
     void Start()
     {
@@ -54,11 +55,6 @@ public class GameManager : MonoBehaviour
                 drag.Drop(drop);
             }
         };
-    }
-
-    //Temporary, CheckGameOver should be called whenever a character / foe is Defeated, not every frame
-    void Update(){
-        CheckGameOver();
     }
 
     //Starts a new battle with listed enemies. This initializes the characers, decks, and starts a new coroutine: battleEnumerator (like a thread)
@@ -140,6 +136,9 @@ public class GameManager : MonoBehaviour
         foreach(ITurnExecutable turn in turns)
         {
             yield return turn.GetTurn();
+            if(gameOver){
+                yield break;
+            }
         }
 
         //Reset the actions of each character in the turn order
@@ -154,28 +153,34 @@ public class GameManager : MonoBehaviour
     {
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
+        bool cardsToDraw = false;
         
         int cardsInHand = hand.DisplayedCards.Count;
         //Enable draw buttons (could be better optimized)
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character)){
+            if(party.Contains(display.Character) && decks[display.Character.data.characterType].CardList.Count > 0){
                 display.ToggleDrawButton(true);
+                cardsToDraw = true;
             }
         }
-        //Wait untill one card has been drawn
-        while(hand.DisplayedCards.Count != cardsInHand + 1){
-            yield return new WaitForEndOfFrame();
-        }
-        //Disable draw buttons
-        foreach(TurnOrderSlot turnSlot in turnSlots)
-        {
-            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character)){
-                display.ToggleDrawButton(false);
+        //Only wait to draw if at least one deck has cards in it
+        if(cardsToDraw){
+            //Wait untill one card has been drawn
+            while(hand.DisplayedCards.Count != cardsInHand + 1){
+                yield return new WaitForEndOfFrame();
+            }
+            //Disable draw buttons
+            foreach(TurnOrderSlot turnSlot in turnSlots)
+            {
+                var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+                if(party.Contains(display.Character)){
+                    display.ToggleDrawButton(false);
+                }
             }
         }
+        
     }
 
     //Checks if the game is over. Should be called whenever a character or foe is Defeated
@@ -206,7 +211,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over! Defeated enemies");
             //Card Drafting ui
         }
-        
+        gameOver = foesDefeated || playerDefeated;
     }
 
     public void EndPlanning(){

@@ -13,10 +13,14 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             return _health;
         }
         set{
+            var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
             if(onStatChange != null){
-                onStatChange("health", _health, value);
+                onStatChange("health", _health, newValue);
             }
-            _health = value;
+            _health = newValue;
+            if(Health == 0){
+                Defeated = true;
+            }
         }
     }
 
@@ -93,8 +97,9 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public IEnumerator GetTurn(){
 
         Debug.Log($"{name}'s turn");
-
-        if(CardToPlay != null)
+        if(Defeated){
+            Debug.Log($"{data.name} has been defeated and cannot continue the fight");
+        } else if(CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             //Execute the selected card from the dropzone.
