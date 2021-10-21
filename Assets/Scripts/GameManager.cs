@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         {
             turns.Add(turnSlot.Turn);
         }
-
+        turns.Reverse();
         //TEMP WAY TO DO BOSS ACTIONS, REMOVE LATER
         switch (turnNumber % 2)
         {

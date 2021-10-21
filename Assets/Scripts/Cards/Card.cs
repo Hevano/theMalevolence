@@ -102,15 +102,25 @@ public class Card : ScriptableObject {
             Character character;
             GameManager.manager.characters.TryGetValue(cardCharacter, out character);
             if (corruptionCheck >= character.Corruption)
-                for (int i = 0; i < cardCorPass.Count; i++)
-                    yield return cardCorPass[i].GetEffect().ApplyEffect();
+                for (int i = 0; i < cardCorPass.Count; i++){
+                    var effect = cardCorPass[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
+                    
             else
-                for (int i = 0; i < cardCorFail.Count; i++)
-                    yield return cardCorFail[i].GetEffect().ApplyEffect();
+                for (int i = 0; i < cardCorFail.Count; i++){
+                    var effect = cardCorFail[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
         }
 
-        for (int i = 0; i < cardEffects.Count; i++)
-            yield return cardEffects[i].GetEffect().ApplyEffect();
+        for (int i = 0; i < cardEffects.Count; i++){
+            var effect = cardEffects[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.ApplyEffect();
+        }
         yield return null;
     }
 
