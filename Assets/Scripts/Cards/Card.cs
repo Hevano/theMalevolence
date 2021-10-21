@@ -96,6 +96,7 @@ public class Card : ScriptableObject {
             return null;
     }
 
+    //Play the card
     public IEnumerator Activate () {
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             int corruptionCheck = Random.Range(0, 100);
@@ -124,9 +125,12 @@ public class Card : ScriptableObject {
         yield return null;
     }
 
+
     public IEnumerator DesignateTargets() {
         AllyTarget = null;
         EnemyTarget = null;
+
+        Debug.Log("Designating targets");
 
         for (int i = 0; i < cardEffects.Count; i++) {
             //cardEffect.card was not being set properly, this is a workaround

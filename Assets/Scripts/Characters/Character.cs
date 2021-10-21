@@ -58,8 +58,10 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     [SerializeField]
     private Card _cardToPlay = null;
-    public Card CardToPlay{
-        get{
+    public Card CardToPlay
+    {
+        get
+        {
             return _cardToPlay;
         }
         set {
@@ -75,6 +77,15 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 onActionChange(_cardToPlay, newCard);
                 _cardToPlay = newCard;
             }
+        }
+    }
+
+    public string CardToPlayName
+    {
+        get
+        {
+            //I think the enemy card isnt established, which is why this doesnt work. It's accessing a null object -For kevin
+            return _cardToPlay.Name;
         }
     }
 
@@ -97,9 +108,11 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public IEnumerator GetTurn(){
 
         Debug.Log($"{name}'s turn");
-        if(Defeated){
+        if(Defeated)
+        {
             Debug.Log($"{data.name} has been defeated and cannot continue the fight");
-        } else if(CardToPlay != null)
+        }
+        else if(CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             //Execute the selected card from the dropzone.
@@ -123,13 +136,14 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
                 do
                 {
-                    target = GameManager.manager.party[Random.Range(0, 3)];
+                    target = GameManager.manager.party[Random.Range(1, 4)];
+                    Debug.Log("Picking target");
                 } while (target.Defeated == true);
 
                 int dmg = data.basicAttack.Value;
-                Debug.Log($"Boss is attacking a party member for {dmg} HP!");
+                Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
                 target.Health -= dmg;
-                target.Corruption += dmg;
+                target.Corruption += dmg*2;
             }
 
         }

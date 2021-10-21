@@ -17,24 +17,28 @@ public class CardEffect {
         card = c;
     }
 
+    //Depending on the card, find the target for the card
     public IEnumerator DesignateTarget() {
         targets = new List<Character>();
-        switch(target) {
+
+        Debug.Log("From Card Effect.cs, find target");
+
+        switch (target) {
             case Enums.Target.Self:
                 Character c;
                 GameManager.manager.characters.TryGetValue(card.Character, out c);
                 targets.Add(c);
                 break;
             case Enums.Target.Ally:
-                if (card.AllyTarget == null) {
-                    yield return Targetable.GetTargetable(Enums.TargetType.Allies, "Targetting ui msg", 1);
+                if (card.AllyTarget) {
+                    yield return Targetable.GetTargetable(Enums.TargetType.Allies, "Select Ally", 1);
                     card.AllyTarget = (Character) Targetable.currentTargets[0];
                 }
                 targets.Add(card.AllyTarget);
                 break;
             case Enums.Target.Enemy:
-                if (card.EnemyTarget == null) {
-                    yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Targetting ui msg", 1);
+                if (card.EnemyTarget) {
+                    yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select Enemy", 1);
                     card.EnemyTarget = (Character)Targetable.currentTargets[0];
                 }
                 targets.Add(card.EnemyTarget);
