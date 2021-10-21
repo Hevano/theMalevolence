@@ -119,15 +119,23 @@ public class Card : ScriptableObject {
         EnemyTarget = null;
 
         for (int i = 0; i < cardEffects.Count; i++) {
-            yield return cardEffects[i].GetEffect().DesignateTarget();
+            //cardEffect.card was not being set properly, this is a workaround
+            var effect = cardEffects[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
         }
 
         for (int i = 0; i < cardCorPass.Count; i++) {
-            yield return cardCorPass[i].GetEffect().DesignateTarget();
+            //cardEffect.card was not being set properly, this is a workaround
+            var effect = cardCorPass[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
         }
 
         for (int i = 0; i < cardCorFail.Count; i++) {
-            yield return cardCorFail[i].GetEffect().DesignateTarget();
+            var effect = cardCorFail[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
         }
     }
 
