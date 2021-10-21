@@ -26,14 +26,14 @@ public class CardEffect {
                 targets.Add(c);
                 break;
             case Enums.Target.Ally:
-                if (card.AllyTarget) {
+                if (card.AllyTarget == null) {
                     yield return Targetable.GetTargetable(Enums.TargetType.Allies, "Targetting ui msg", 1);
                     card.AllyTarget = (Character) Targetable.currentTargets[0];
                 }
                 targets.Add(card.AllyTarget);
                 break;
             case Enums.Target.Enemy:
-                if (card.AllyTarget) {
+                if (card.EnemyTarget == null) {
                     yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Targetting ui msg", 1);
                     card.EnemyTarget = (Character)Targetable.currentTargets[0];
                 }

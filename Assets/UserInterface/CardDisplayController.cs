@@ -61,11 +61,7 @@ public class CardDisplayController : MonoBehaviour {
         character.CardToPlay = CardData;
 
         //Activate the cards designate targets function.
-        StartCoroutine(CardData.DesignateTargets());
-
-        Debug.Log($"card {CardData.Name} DesignateTarget");
-        //Remove from hand display
-        GameManager.manager.RemoveCardFromHand(this);
+        StartCoroutine(ResolveTargets());
     }
 
     
@@ -75,6 +71,12 @@ public class CardDisplayController : MonoBehaviour {
                 Play();
             }
         };
+    }
+
+    public IEnumerator ResolveTargets(){
+        yield return CardData.DesignateTargets();
+        Debug.Log($"card {CardData.Name} DesignateTarget");
+        GameManager.manager.RemoveCardFromHand(this);
     }
 
     //Create a new display of the card selected

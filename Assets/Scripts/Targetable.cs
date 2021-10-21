@@ -47,7 +47,6 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         while (currentTargets.Count < count) {
             yield return new WaitForEndOfFrame();
         }
-
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
 
