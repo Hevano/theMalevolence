@@ -113,11 +113,18 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
             else
             {
-                
-                Character target = GameManager.manager.party[Random.Range(0,3)];
+
+                Character target;
+
+                do
+                {
+                    target = GameManager.manager.party[Random.Range(0, 3)];
+                } while (target.Defeated == true);
+
                 int dmg = data.basicAttack.Value;
                 Debug.Log($"Boss is attacking a party member for {dmg} HP!");
                 target.Health -= dmg;
+                target.Corruption += dmg;
             }
 
         }

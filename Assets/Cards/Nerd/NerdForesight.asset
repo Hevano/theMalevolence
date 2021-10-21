@@ -35,7 +35,7 @@ MonoBehaviour:
     drawEffect:
       target: 0
       cardsToDraw: 2
-      fromDiscard: 0
+      fromDiscard: 1
       toDiscard: 0
     insertEffect:
       target: 0

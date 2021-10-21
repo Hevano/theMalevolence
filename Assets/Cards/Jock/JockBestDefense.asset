@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JockBestDefense
   m_EditorClassIdentifier: 
   cardName: Best Body Guard
-  cardDescription: For every 5 health of other party members, add 2 dmg to attack.
+  cardDescription: For every 5 HP, add 2 dmg to attack.
   cardFlavor: 
   cardCharacter: 1
   exiled: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
       target: 0
       toInsert: {fileID: 0}
     modifyEffect:
-      target: 4
+      target: 1
       modifierEffect: 0
       modifierFactor: 3
       modifierPerFactor: 5
