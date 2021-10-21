@@ -125,9 +125,12 @@ public class Card : ScriptableObject {
         yield return null;
     }
 
+
     public IEnumerator DesignateTargets() {
         AllyTarget = null;
         EnemyTarget = null;
+
+        Debug.Log("Designating targets");
 
         for (int i = 0; i < cardEffects.Count; i++) {
             //cardEffect.card was not being set properly, this is a workaround

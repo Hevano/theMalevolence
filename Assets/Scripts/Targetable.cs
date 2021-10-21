@@ -22,7 +22,8 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData data){ //Camera needs to have the PhysicsRaycast Component
         Debug.Log("Clicked");
 
-        if(targetting && targetTypes.Contains(targetType)){
+        if(targetting && targetTypes.Contains(targetType))
+        {
             currentTargets.Add(target);
             Debug.Log($"{name} has been targeted");
         }
@@ -36,16 +37,18 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         messagePrompt.GetComponentInChildren<Text>().text = msg;
         messagePrompt.transform.position = new Vector3(0, 0, 0);
 
-
+        //Disables raycast of dropzone to prevent from being targetted.
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
 
         currentTargets = new List<ITargetable>();
         targetting = true;
 
-        //loop while target is being found. Checks each frame if the number of targets is returned.
+        //loop while target is being found based on 'targetting'. The onpointerclick function is utilized while this keeps the function from ending \
+        // Checks each frame if the number of targets is returned.
         while (currentTargets.Count < count) {
             yield return new WaitForEndOfFrame();
         }
+
 
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;

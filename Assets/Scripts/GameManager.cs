@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         turns.Reverse();
         //TEMP WAY TO DO BOSS ACTIONS, REMOVE LATER
         switch (turnNumber % 2)
-        {
+        {//Boss cards not saving to decks. Wonder why -Kevin
             case 0:
                 foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[0]);
                 Debug.Log($"boss is playing {foes[0].CardToPlay}");
@@ -187,6 +187,7 @@ public class GameManager : MonoBehaviour
     public void CheckGameOver()
     {
         bool playerDefeated = true;
+        //THIS DOESNT WORK. TPK GAMEOVERS DONT SUCCEED.
         foreach(Character partyMember in party)
         {
             playerDefeated = playerDefeated && partyMember.Defeated;

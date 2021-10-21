@@ -21,6 +21,8 @@ public class CardEffect {
     public IEnumerator DesignateTarget() {
         targets = new List<Character>();
 
+        Debug.Log("From Card Effect.cs, find target");
+
         switch (target) {
             case Enums.Target.Self:
                 Character c;

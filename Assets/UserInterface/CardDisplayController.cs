@@ -60,10 +60,10 @@ public class CardDisplayController : MonoBehaviour {
         var character = GameManager.manager.characters[CardData.Character];
         character.CardToPlay = CardData;
 
-        //Activate the cards designate targets function.
+        //Activate the cards designate targets function. THIS DOESNT WORK??
         StartCoroutine(CardData.DesignateTargets());
 
-        Debug.Log($"card {CardData.Name} DesignateTarget");
+        Debug.Log($"Card {CardData.Name} has targets");
         //Remove from hand display
         GameManager.manager.RemoveCardFromHand(this);
     }
