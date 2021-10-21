@@ -50,6 +50,8 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
 
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
+
+        Destroy(messagePrompt);
     }
 }
 
