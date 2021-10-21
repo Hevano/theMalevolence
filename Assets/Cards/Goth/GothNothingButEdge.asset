@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GothNothingButEdge
   m_EditorClassIdentifier: 
   cardName: Nothing But Edge
-  cardDescription: 
+  cardDescription: Attack enemy for 6 dmg, and per 10 corruption Conrad has, add
+    1 dmg to attack.
   cardFlavor: 
   cardCharacter: 0
   exiled: 0
@@ -62,7 +63,7 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 3
-      damageBonus: 0
+      damageBonus: 6
     cleanseEffect:
       target: 0
     drawEffect:

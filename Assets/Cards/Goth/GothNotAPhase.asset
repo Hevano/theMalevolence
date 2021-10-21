@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GothNotAPhase
   m_EditorClassIdentifier: 
   cardName: Not a Phase
-  cardDescription: 
+  cardDescription: If you fail a corruption check, deal 15 damage.
   cardFlavor: 
   cardCharacter: 0
   exiled: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 3
-      damageBonus: 0
+      damageBonus: 15
     cleanseEffect:
       target: 0
     drawEffect:

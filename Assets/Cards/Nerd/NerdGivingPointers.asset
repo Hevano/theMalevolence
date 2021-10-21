@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NerdGivingPointers
   m_EditorClassIdentifier: 
   cardName: Giving Pointers
-  cardDescription: 
+  cardDescription: Draw a card for an ally's hand. If you pass a corruption check,
+    draw another card. If you fail, they gain 20 corruption.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0

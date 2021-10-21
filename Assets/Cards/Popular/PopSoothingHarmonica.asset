@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PopSoothingHarmonica
   m_EditorClassIdentifier: 
   cardName: Soothing Harmonica
-  cardDescription: 
+  cardDescription: Target heals 5 HP and removes 25 corruption. Gain 25 corruption.
   cardFlavor: 
   cardCharacter: 3
   exiled: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     vitalityEffect:
       target: 2
       vitalityType: 1
-      value: 25
+      value: -25
   - effectType: 9
     cardEffect:
       target: 0

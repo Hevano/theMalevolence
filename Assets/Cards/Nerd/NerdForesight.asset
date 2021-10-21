@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NerdForesight
   m_EditorClassIdentifier: 
   cardName: Foresight
-  cardDescription: 
+  cardDescription: Draw 2 cards and add 10 corruption. If you pass a corruption check,
+    gain a card. If you fail, lose a card.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0

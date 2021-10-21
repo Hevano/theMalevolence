@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JockNoPainNoGain
   m_EditorClassIdentifier: 
   cardName: No Pain, No Gain
-  cardDescription: 
+  cardDescription: For every 5 missing HP, add 3 dmg to attack.
   cardFlavor: 
   cardCharacter: 1
   exiled: 0

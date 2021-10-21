@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PopFixMakeup
   m_EditorClassIdentifier: 
   cardName: Fix Makeup
-  cardDescription: 
+  cardDescription: Remove 50 corruption and heal 1 HP per 10 corruption lost.
   cardFlavor: 
   cardCharacter: 3
   exiled: 0

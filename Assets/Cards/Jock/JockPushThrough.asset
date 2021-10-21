@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JockPushThrough
   m_EditorClassIdentifier: 
   cardName: Push Through
-  cardDescription: 
+  cardDescription: Gain 10 HP and 30 corruption.
   cardFlavor: 
   cardCharacter: 1
   exiled: 0
