@@ -26,7 +26,6 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
             currentTargets.Add(target);
             Debug.Log($"{name} has been targeted");
         }
-
     }
 
     

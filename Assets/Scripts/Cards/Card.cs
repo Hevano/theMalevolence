@@ -96,6 +96,7 @@ public class Card : ScriptableObject {
             return null;
     }
 
+    //Play the card
     public IEnumerator Activate () {
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             int corruptionCheck = Random.Range(0, 100);
