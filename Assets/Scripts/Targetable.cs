@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Character))]
 public class Targetable : MonoBehaviour, IPointerClickHandler
@@ -32,7 +33,11 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     public static IEnumerator GetTargetable(Enums.TargetType type, string msg, int count = 1){
 
         //send msg to some Text object in the screen to inform the player what they are targetting
-        Debug.Log(msg);
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        Canvas messagePrompt = Instantiate(gm.messager);
+        messagePrompt.GetComponentInChildren<Text>().text = msg;
+        messagePrompt.transform.position = new Vector3(0, 0, 0);
+
 
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
 
@@ -40,7 +45,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         targetting = true;
 
         //loop while target is being found. Checks each frame if the number of targets is returned.
-        while (currentTargets.Count < count){
+        while (currentTargets.Count < count) {
             yield return new WaitForEndOfFrame();
         }
 

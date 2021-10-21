@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public HandDisplayController hand;
     public DropZone cardDropZone;
+    public Canvas messager;
 
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
