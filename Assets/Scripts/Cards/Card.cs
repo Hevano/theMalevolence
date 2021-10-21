@@ -14,8 +14,8 @@ public class Card : ScriptableObject {
     [SerializeField] private bool exiled;
 
     //[Header("Card Art")]
-    [SerializeField] private Image cardFront;
-    [SerializeField] private Image cardBack;
+    [SerializeField] private Sprite cardFront;
+    [SerializeField] private Sprite cardBack;
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
@@ -25,8 +25,8 @@ public class Card : ScriptableObject {
     public string Description { get { return cardDescription; } }
     public string Flavor { get { return cardFlavor; } }
     public Enums.Character Character { get { return cardCharacter; } }
-    public Image FrontArt { get { return cardFront; } }
-    public Image BackArt { get { return cardBack; } }
+    public Sprite FrontArt { get { return cardFront; } }
+    public Sprite BackArt { get { return cardBack; } }
 
     public Character AllyTarget { get; set; }
     public Character EnemyTarget { get; set; }

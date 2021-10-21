@@ -17,14 +17,15 @@ MonoBehaviour:
   cardFlavor: 
   cardCharacter: 1
   exiled: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  cardFront: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
+  cardBack: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
   cardEffects:
   - effectType: 9
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
