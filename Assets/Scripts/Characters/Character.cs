@@ -104,10 +104,21 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             //Do a damage attack
 
-            //Pull current characters basic attack (can create new one and save to the data object for specific chars)
-            yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
-            Character target = (Character)Targetable.currentTargets[0];
-            target.Health -= data.basicAttack.Value;
+            if (!enemy)
+            {
+                //Pull current characters basic attack (can create new one and save to the data object for specific chars)
+                yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+                Character target = (Character)Targetable.currentTargets[0];
+                target.Health -= data.basicAttack.Value;
+            }
+            else
+            {
+                
+                Character target = GameManager.manager.party[Random.Range(0,3)];
+                int dmg = data.basicAttack.Value;
+                Debug.Log($"Boss is attacking a party member for {dmg} HP!");
+                target.Health -= dmg;
+            }
 
         }
         yield return new WaitForSeconds(0.5f);
