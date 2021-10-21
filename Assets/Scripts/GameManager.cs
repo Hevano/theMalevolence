@@ -125,9 +125,11 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[0]);
+                Debug.Log($"boss is playing {foes[0].CardToPlay}");
                 break;
             case 1:
                 foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[1]);
+                Debug.Log($"boss is playing {foes[0].CardToPlay}");
                 break;
 
         }
