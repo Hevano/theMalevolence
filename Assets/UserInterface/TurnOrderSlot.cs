@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(DropZone))]
 public class TurnOrderSlot : MonoBehaviour
 {
-    public static List<TurnOrderSlot> turnOrder = new List<TurnOrderSlot>();
     public DropZone dropZone;
     public Draggable currentTurnDraggable;
     public ITurnExecutable Turn{
@@ -23,7 +22,6 @@ public class TurnOrderSlot : MonoBehaviour
     
     void Start()
     {
-        turnOrder.Add(this);
         dropZone = GetComponent<DropZone>();
         dropZone.onDrop += (drag, drop) =>{
             if(drag == currentTurnDraggable) return;

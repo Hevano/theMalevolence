@@ -1464,7 +1464,13 @@ MonoBehaviour:
   speedScale: 1
   hand: {fileID: 1684228912}
   cardDropZone: {fileID: 1345192372}
-  messager: {fileID: 0}
+  turnSlots:
+  - {fileID: 1891666092}
+  - {fileID: 2042971723}
+  - {fileID: 5987438}
+  - {fileID: 431660407}
+  - {fileID: 295873065}
+  messager: {fileID: 315191072437170018, guid: 18a097d145c0b954b8565f5332f264fb, type: 3}
   party:
   - {fileID: 6416874238983255967}
   - {fileID: 8185431853395727170}

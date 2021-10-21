@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public HandDisplayController hand;
     public DropZone cardDropZone;
+    public List<TurnOrderSlot> turnSlots;
     public Canvas messager;
 
     public List<Character> party = new List<Character>();
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Resolving Phase");
         turns = new List<ITurnExecutable>();
 
-        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             turns.Add(turnSlot.Turn);
         }
@@ -154,7 +155,7 @@ public class GameManager : MonoBehaviour
         
         int cardsInHand = hand.DisplayedCards.Count;
         //Enable draw buttons (could be better optimized)
-        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
             if(party.Contains(display.Character)){
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         //Disable draw buttons
-        foreach(TurnOrderSlot turnSlot in TurnOrderSlot.turnOrder)
+        foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
             if(party.Contains(display.Character)){

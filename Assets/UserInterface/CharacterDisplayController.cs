@@ -91,7 +91,7 @@ public class CharacterDisplayController : MonoBehaviour {
     private void ToggleRayCastOnOthers(bool enabled){
         var gr = GetComponent<GraphicRaycaster>();
         bool myToggleState = gr.enabled;
-        foreach(TurnOrderSlot slot in TurnOrderSlot.turnOrder){
+        foreach(TurnOrderSlot slot in GameManager.manager.turnSlots){
             slot.currentTurnDraggable.GetComponent<GraphicRaycaster>().enabled = enabled;
         }
         gr.enabled = myToggleState;
