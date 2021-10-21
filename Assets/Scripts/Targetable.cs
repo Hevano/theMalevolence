@@ -33,8 +33,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     public static IEnumerator GetTargetable(Enums.TargetType type, string msg, int count = 1){
 
         //send msg to some Text object in the screen to inform the player what they are targetting
-        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        Canvas messagePrompt = Instantiate(gm.messager);
+        Canvas messagePrompt = Instantiate(GameManager.manager.messager);
         messagePrompt.GetComponentInChildren<Text>().text = msg;
         messagePrompt.transform.position = new Vector3(0, 0, 0);
 
