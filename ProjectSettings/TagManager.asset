@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - HandDisplay
-  - BaseCommands
+  - Message
   layers:
   - Default
   - TransparentFX

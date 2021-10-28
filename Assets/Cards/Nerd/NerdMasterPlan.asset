@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: NerdMasterPlan
   m_EditorClassIdentifier: 
   cardName: Master Plan
-  cardDescription: 
+  cardDescription: Deal 4 dmg per every card played this turn. Gain 20 corruption.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
   - effectType: 6
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 1
       damageBonus: 0
@@ -91,6 +93,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0

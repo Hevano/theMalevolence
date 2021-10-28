@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 3
   name: Popular Kid
-  health: 0
+  health: 20
   corruption: 0
   avatar: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: cf76f1b16596a1e4189922023c6db010, type: 2}
+  - {fileID: 11400000, guid: 5b07e26b710520e408594ae3827f0433, type: 2}
+  - {fileID: 11400000, guid: 83bc2bab0e96dde4ea1d1f03ece1ff77, type: 2}
+  - {fileID: 11400000, guid: 44dc20ecb35dc2740a160f3887b199ed, type: 2}

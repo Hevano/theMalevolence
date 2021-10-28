@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: TheDriver
+  m_EditorClassIdentifier: 
+  characterType: 4
+  name: 
+  health: 100
+  corruption: 0
+  avatar: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: 0730daae9889ab44fa22492690801135, type: 2}
+  - {fileID: 11400000, guid: e9aca80fb67d64843a82df0a2513fef1, type: 2}

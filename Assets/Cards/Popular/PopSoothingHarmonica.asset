@@ -13,26 +13,32 @@ MonoBehaviour:
   m_Name: PopSoothingHarmonica
   m_EditorClassIdentifier: 
   cardName: Soothing Harmonica
-  cardDescription: 
+  cardDescription: Target heals 5 HP and removes 25 corruption. Gain 25 corruption.
   cardFlavor: 
   cardCharacter: 3
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  exiled: 0
+  cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
+  cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardEffects:
   - effectType: 9
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
+      damageBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
       target: 0
       cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
     insertEffect:
       target: 0
+      toInsert: {fileID: 0}
     modifyEffect:
       target: 0
       modifierEffect: 0
@@ -53,15 +59,20 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
+      damageBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
       target: 0
       cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
     insertEffect:
       target: 0
+      toInsert: {fileID: 0}
     modifyEffect:
       target: 0
       modifierEffect: 0
@@ -76,21 +87,26 @@ MonoBehaviour:
     vitalityEffect:
       target: 2
       vitalityType: 1
-      value: 25
+      value: -25
   - effectType: 9
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
+      damageBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
       target: 0
       cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
     insertEffect:
       target: 0
+      toInsert: {fileID: 0}
     modifyEffect:
       target: 0
       modifierEffect: 0

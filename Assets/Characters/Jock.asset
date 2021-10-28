@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 1
   name: Jockular
-  health: 0
+  health: 25
   corruption: 0
   avatar: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: 81478fe56cd871242bda1d0f8e5911f1, type: 2}
+  - {fileID: 11400000, guid: 4fac6d2b9aa7d2b4c985e1bf52784b5c, type: 2}
+  - {fileID: 11400000, guid: 730a503446941524bb3a79a6f612ea98, type: 2}
+  - {fileID: 11400000, guid: ce8b5744cb98d9c48ae170526dc9d10b, type: 2}

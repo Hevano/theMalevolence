@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class Deck : MonoBehaviour {
+public class Deck {
     [SerializeField] private List<Card> cardList;
 
     public List<Card> CardList { get { return cardList; } }
+
+    public Deck () { }
+
+    public Deck (List<Card> cards) {
+        cardList = new List<Card>(cards);
+    }
 
     public Card Draw() {
         Card ret = cardList[0];

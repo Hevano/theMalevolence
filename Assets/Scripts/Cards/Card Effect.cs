@@ -17,27 +17,42 @@ public class CardEffect {
         card = c;
     }
 
-    public void DesignateTarget() {
-        switch(target) {
+    //Depending on the card, find the target for the card
+    public IEnumerator DesignateTarget() {
+        targets = new List<Character>();
+
+        Debug.Log("From Card Effect.cs, find target");
+
+        switch (target) {
             case Enums.Target.Self:
-                //Ask game manager for card owner's character
+                Character c;
+                GameManager.manager.characters.TryGetValue(card.Character, out c);
+                targets.Add(c);
                 break;
             case Enums.Target.Ally:
-                //Ask game manager for player to choose a target
+                if (card.AllyTarget) {
+                    yield return Targetable.GetTargetable(Enums.TargetType.Allies, "Select Ally", 1);
+                    card.AllyTarget = (Character) Targetable.currentTargets[0];
+                }
+                targets.Add(card.AllyTarget);
                 break;
             case Enums.Target.Enemy:
-                //Ask game manager for player to choose a target
+                if (card.EnemyTarget) {
+                    yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select Enemy", 1);
+                    card.EnemyTarget = (Character)Targetable.currentTargets[0];
+                }
+                targets.Add(card.EnemyTarget);
                 break;
             case Enums.Target.All_Ally:
-                //Ask game manager for all allies
+                targets = new List<Character>(GameManager.manager.party);
                 break;
             case Enums.Target.All_Enemy:
-                //Ask game manager for all enemies
+                targets = new List<Character>(GameManager.manager.foes);
                 break;
         }
     }
 
-    public virtual IEnumerable ApplyEffect() {
+    public virtual IEnumerator ApplyEffect() {
         //Tell game manager to skip the caster's turn
         yield return null;
     }

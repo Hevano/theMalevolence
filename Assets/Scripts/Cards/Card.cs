@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Card", menuName = "Card")]
 [System.Serializable]
@@ -26,6 +27,9 @@ public class Card : ScriptableObject {
     public Enums.Character Character { get { return cardCharacter; } }
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
+
+    public Character AllyTarget { get; set; }
+    public Character EnemyTarget { get; set; }
 
     private void SetList (List<CardEffect> effectsList, List<CardEffectsMaker> makerList) {
         for (int i = 0; i < makerList.Count; i++) {
@@ -92,12 +96,64 @@ public class Card : ScriptableObject {
             return null;
     }
 
-    public IEnumerable Activate () {
-        for (int i = 0; i < cardEffects.Count; i++) {
-            yield return cardEffects[i].GetEffect().ApplyEffect();
+    //Play the card
+    public IEnumerator Activate () {
+        if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
+            int corruptionCheck = Random.Range(0, 100);
+            Character character;
+            GameManager.manager.characters.TryGetValue(cardCharacter, out character);
+            if (corruptionCheck >= character.Corruption)
+                for (int i = 0; i < cardCorPass.Count; i++){
+                    var effect = cardCorPass[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
+                    
+            else
+                for (int i = 0; i < cardCorFail.Count; i++){
+                    var effect = cardCorFail[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
+        }
+
+        for (int i = 0; i < cardEffects.Count; i++){
+            var effect = cardEffects[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.ApplyEffect();
         }
         yield return null;
     }
+
+
+    public IEnumerator DesignateTargets() {
+        AllyTarget = null;
+        EnemyTarget = null;
+
+        //Somewhere here, targets are not being designated for the card. Are there missing references?
+        Debug.Log("Designating targets");
+
+        for (int i = 0; i < cardEffects.Count; i++) {
+            //cardEffect.card was not being set properly, this is a workaround
+            var effect = cardEffects[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
+        }
+
+        for (int i = 0; i < cardCorPass.Count; i++) {
+            //cardEffect.card was not being set properly, this is a workaround
+            var effect = cardCorPass[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
+        }
+
+        for (int i = 0; i < cardCorFail.Count; i++) {
+            var effect = cardCorFail[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.DesignateTarget();
+        }
+    }
+
     /*
         CardEffect Resolution and Targeting
     */

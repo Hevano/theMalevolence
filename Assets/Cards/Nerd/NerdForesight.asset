@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: NerdForesight
   m_EditorClassIdentifier: 
   cardName: Foresight
-  cardDescription: 
+  cardDescription: Draw 2 cards and add 10 corruption. If you pass a corruption check,
+    gain a card. If you fail, lose a card.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
   - effectType: 4
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -33,7 +35,7 @@ MonoBehaviour:
     drawEffect:
       target: 0
       cardsToDraw: 2
-      fromDiscard: 0
+      fromDiscard: 1
       toDiscard: 0
     insertEffect:
       target: 0
@@ -58,6 +60,7 @@ MonoBehaviour:
       target: 1
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -92,6 +95,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -126,6 +130,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0

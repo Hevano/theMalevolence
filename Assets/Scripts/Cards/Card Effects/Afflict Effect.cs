@@ -7,7 +7,7 @@ using UnityEngine;
 public class AfflictEffect : CardEffect {
     [SerializeField] private Enums.StatusEffects statusEffect;
 
-    public virtual IEnumerable ApplyEffect () {
+    public override IEnumerator ApplyEffect () {
         switch (statusEffect) {
             case Enums.StatusEffects.CorruptionShield:
                 break;

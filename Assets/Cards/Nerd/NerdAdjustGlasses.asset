@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: NerdAdjustGlasses
   m_EditorClassIdentifier: 
   cardName: Adjust Glasses
-  cardDescription: 
+  cardDescription: Reshuffle Ally's cards and add 20 corruption. If a corruption
+    check is passed, draw 2 more cards.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
   - effectType: 7
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -58,6 +60,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0
@@ -92,6 +95,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 0
+      statusEffect: 0
     attackEffect:
       target: 0
       damageBonus: 0

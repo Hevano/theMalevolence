@@ -28,7 +28,8 @@ public static class Enums {
         Goth,
         Jock,
         Nerd,
-        Popular
+        Popular,
+        Driver
     };
 
     /** <summary>The types of effects on values in card effects.</summary> */

@@ -11,7 +11,7 @@ public class DrawEffect : CardEffect {
     [SerializeField] private bool fromDiscard;
     [SerializeField] private bool toDiscard;
 
-    public override IEnumerable ApplyEffect () {
+    public override IEnumerator ApplyEffect () {
         ApplyModification();
 
         if (toDiscard) {
