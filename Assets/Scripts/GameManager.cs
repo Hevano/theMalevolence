@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         CheckGameOver();
     }
 
-    //Starts a new battle with listed enemies
+    //Starts a new battle, which will run until checkGameOver is triggered
     public void StartBattle(){
         
         //Play battle start effects
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //Executes while turn is in planning phase
     public IEnumerator ExecutePlanning(){
         phase = Enums.GameplayPhase.Planning;
         Debug.Log("Planning phase");
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         yield return Targetable.GetTargetable(Enums.TargetType.Any, "Select any target", 1);
     }
 
+    //Executes while turn is in combat phase
     public IEnumerator ExecuteTurn(){
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
         //UI turn resolving true
     }
 
+    //Executes while turn is in draw phase
     public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
@@ -134,18 +137,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //UI function, is called when the player presses the end planning button
     public void EndPlanning(){
         if(phase == Enums.GameplayPhase.Planning){
             phase = Enums.GameplayPhase.Resolve;
         }
     }
 
+    //Adds a card from a deck to the hand. Deck is selected based on the character enum parameter
     public void Draw(Enums.Character characterDeckToDrawFrom){
         var card = decks[characterDeckToDrawFrom].Draw();
         hand.AddCard(CardDisplayController.CreateCard(card));
     }
 
     //Should probably change this at some point, maybe instantiating the decks from prefabs in the resource folder
+    //Assigned the decks in the dictionary to their respective characters. This is because dictionaries cannot be edited in the unity editor
     public void InitializeDecks(){
         decks[Enums.Character.Goth] = GameObject.Find("GothDeck").GetComponent<Deck>();
         decks[Enums.Character.Jock] = GameObject.Find("JockDeck").GetComponent<Deck>();
@@ -153,7 +159,7 @@ public class GameManager : MonoBehaviour
         decks[Enums.Character.Popular] = GameObject.Find("PopularDeck").GetComponent<Deck>();
     }
 
-    //Initialize each character in party list established. 
+    //Initialize each character in party list
     public void InitializeCharacters(){
 
         //for each character in the party, make that character type in characters dictionary equal to the party member
@@ -164,6 +170,7 @@ public class GameManager : MonoBehaviour
 
 }
 
+//Interface inherited by anything that can take a turn
 public interface ITurnExecutable {
 
     //Returns an ienumerator with the runtime logic of the object's turn that is executed when it's turn is resolved
