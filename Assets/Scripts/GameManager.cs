@@ -148,9 +148,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Allow player to draw cards
-    public IEnumerator ExecuteDrawPhase()
-    {
+    //Executes while turn is in draw phase
+    public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
         StartCoroutine(CombatUIManager.Instance.DisplayMessage("Draw a card", 3f));
@@ -216,6 +215,7 @@ public class GameManager : MonoBehaviour
         gameOver = foesDefeated || playerDefeated;
     }
 
+    //UI function, is called when the player presses the end planning button
     public void EndPlanning(){
         if(phase == Enums.GameplayPhase.Planning)
         {
@@ -271,6 +271,7 @@ public class GameManager : MonoBehaviour
     }
 }
 
+//Interface inherited by anything that can take a turn
 public interface ITurnExecutable {
 
     //Returns an ienumerator with the runtime logic of the object's turn that is executed when it's turn is resolved
