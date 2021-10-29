@@ -21,7 +21,7 @@ public class Deck {
     }
 
     public void Shuffle() {
-        List<Card> tempList = cardList;
+        List<Card> tempList = new List<Card>(cardList);
         cardList.Clear();
         int drawnCard;
         while (tempList.Count > 0) {

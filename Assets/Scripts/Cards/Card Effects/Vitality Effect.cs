@@ -16,11 +16,25 @@ public class VitalityEffect : CardEffect {
                     c.Health += value;
                     if (c.Health < 0) c.Health = 0;
                     if (c.Health > c.data.health) c.Health = c.data.health;
+                    if (value > 0) {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, Color.green);
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} restored {value} HP");
+                    } else {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform);
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} lost {value} HP");
+                    }
                     break;
                 case Enums.VitalityType.Corruption:
                     c.Corruption += value;
                     if (c.Corruption < 0) c.Corruption = 0;
                     if (c.Corruption > 100) c.Corruption = 100;
+                    if (value > 0) {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, Color.yellow);
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} cleansed {value} Corruption");
+                    } else {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, new Color32(139, 0, 139, 0));
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} gained {value} Corruption");
+                    }
                     break;
             }
         }

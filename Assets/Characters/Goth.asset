@@ -18,7 +18,4 @@ MonoBehaviour:
   corruption: 0
   avatar: {fileID: 0}
   cards:
-  - {fileID: 11400000, guid: 69e4299237ded04469afbd17f357c00e, type: 2}
-  - {fileID: 11400000, guid: dc6cbd1acb0343b499102d01e82733da, type: 2}
-  - {fileID: 11400000, guid: 58d03a73e1b7a844f879c7a99755a9af, type: 2}
-  - {fileID: 11400000, guid: ab5c02d9214861648b0da2b4d3ca5db7, type: 2}
+  - {fileID: 11400000, guid: 368c57b6d879a9b46919eaa4766b0b43, type: 2}

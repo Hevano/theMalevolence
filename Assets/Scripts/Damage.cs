@@ -35,6 +35,10 @@ public class ValueRange {
         this.dieSize = dieSize;
         this.bonus = bonus;
     }
+
+    public int DieNumber { get { return dieNum; } }
+    public int DieSize { get { return dieSize; } }
+    public int DieBonus { get { return bonus; } }
 }
 [System.Serializable]
 public class Damage : ValueRange

@@ -24,10 +24,11 @@ public class DrawEffect : CardEffect {
             }
         } else {
             for (int i = 0; i < cardsToDraw; i++) {
-                //Tell game manager to draw a card
+                yield return GameManager.manager.ExecuteDrawPhase();
+                GameManager.manager.phase = Enums.GameplayPhase.Resolve;
             }
         }
-        yield return null;
+        yield return new WaitForSeconds(1f);
     }
 
     public override void ApplyModification () {

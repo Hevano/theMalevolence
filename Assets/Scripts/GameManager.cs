@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private int turnNumber = 0;
     private IEnumerator battleEnumerator;
     private bool gameOver = false;
-    
+
     void Start()
     {
         if (manager != null)
@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
     {
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
+        StartCoroutine(CombatUIManager.Instance.DisplayMessage("Draw a card", 3f));
         bool cardsToDraw = false;
         
         int cardsInHand = hand.DisplayedCards.Count;
@@ -268,7 +269,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
 }
 
 public interface ITurnExecutable {

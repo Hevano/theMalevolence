@@ -115,38 +115,43 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         else if(CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
+            CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
             //Execute the selected card from the dropzone.
             yield return CardToPlay.Activate();
         }
         else
         {
             //Do a damage attack
-
-            if (!enemy)
-            {
+            if (!enemy) {
                 //Pull current characters basic attack (can create new one and save to the data object for specific chars)
                 yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
                 Character target = (Character)Targetable.currentTargets[0];
-                target.Health -= data.basicAttack.Value;
-            }
-            else
-            {
+                int value = data.basicAttack.Value;
+                target.Health -= value;
+                CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
+            } else {
 
                 Character target;
 
-                do
-                {
+                do {
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
                 } while (target.Defeated == true);
 
                 int dmg = data.basicAttack.Value;
                 Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
+                StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));
+
+                //Damage health
                 target.Health -= dmg;
-                target.Corruption += dmg*2;
+                CombatUIManager.Instance.SetDamageText(dmg, target.transform);
+                yield return new WaitForSeconds(0.25f);
+                //Increase corruption
+                target.Corruption += dmg * 2;
+                CombatUIManager.Instance.SetDamageText(dmg * 2, target.transform, new Color32(139, 0, 139, 0));
             }
 
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
 }
