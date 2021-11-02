@@ -32,7 +32,7 @@ public class CombatUIManager : MonoBehaviour {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(location.position);
         instance.transform.SetParent(this.transform, false);
         instance.transform.position = screenPos;
-        instance.SetText(value.ToString());
+        instance.SetText(Mathf.Abs(value).ToString());
     }
     
     public void SetDamageText (int value, Transform location, Color32 color) {
@@ -40,7 +40,7 @@ public class CombatUIManager : MonoBehaviour {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(location.position);
         instance.transform.SetParent(this.transform, false);
         instance.transform.position = screenPos;
-        instance.SetText(value.ToString());
+        instance.SetText(Mathf.Abs(value).ToString());
         instance.SetColor(color);
     }
 

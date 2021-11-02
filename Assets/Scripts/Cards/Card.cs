@@ -19,6 +19,11 @@ public class Card : ScriptableObject {
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
+
+    internal void ChangeOwner (Enums.Character characterType) {
+        cardCharacter = characterType;
+    }
+
     public List<CardEffectsMaker> cardCorFail = new List<CardEffectsMaker>();
 
     public string Name { get { return cardName; } }
