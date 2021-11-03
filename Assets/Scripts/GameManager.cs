@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator battleEnumerator;
     private bool gameOver = false;
 
+    public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
+    public event PhaseChangeHandler onPhaseChange;
+
     void Start()
     {
         if (manager != null)
@@ -94,6 +97,9 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecutePlanning()
     {
         phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         Debug.Log("Planning phase");
         while(phase == Enums.GameplayPhase.Planning)
         {
@@ -108,6 +114,10 @@ public class GameManager : MonoBehaviour
 
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
+        phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         Debug.Log("Resolving Phase");
         turns = new List<ITurnExecutable>();
 
@@ -156,6 +166,10 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
+        phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         StartCoroutine(CombatUIManager.Instance.DisplayMessage("Draw a card", 3f));
         bool cardsToDraw = false;
         

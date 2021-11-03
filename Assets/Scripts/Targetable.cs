@@ -24,8 +24,9 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
 
         if(targetting && targetTypes.Contains(targetType))
         {
-            currentTargets.Add(target);
+            currentTargets.Add(target);//May want to change so that a target already in the list cannot be added a second time
             Debug.Log($"{name} has been targeted");
+            ((Character)target).Targeted();        
         }
     }
 

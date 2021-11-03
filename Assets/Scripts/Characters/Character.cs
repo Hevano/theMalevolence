@@ -89,15 +89,40 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
+    //Character Events
     public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Card prev, Card newCard);
     public ActionChangeHandler onActionChange;
 
+    //Modifying corruptionValueForCheck will change the int the random roll is compared to
+    public delegate void CorruptionCheckAttemptHandler(ref int corruptionValueForCheck);
+    public event CorruptionCheckAttemptHandler onCorruptionCheckAttempt;
+
+    public delegate void CorruptionCheckResultHandler(bool passed);
+    public event CorruptionCheckResultHandler onCorruptionCheckResult;
+    public delegate void TurnHandler();
+    public event TurnHandler onTurnStart;
+    public event TurnHandler onTurnEnd;
+
+    //Targeting system may need to be modified to expose 'who' requests a target
+    public delegate void TargetedHandler();
+    public event TargetedHandler onTargeted;
+
     public bool CorruptionCheck(){
-        int corruptionCheck = Random.Range(0, 100);
-        return corruptionCheck >= Corruption;
+        int corruptionValue = Corruption;
+        if(onCorruptionCheckAttempt != null){
+            onCorruptionCheckAttempt(ref corruptionValue);
+        }
+        int corruptionCheck = Random.Range(1, 100);
+        return corruptionCheck > corruptionValue;
+    }
+
+    public void Targeted(){
+        if(onTargeted != null){
+            onTargeted();
+        }
     }
 
     void Start(){
