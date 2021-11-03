@@ -141,10 +141,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Reset the actions of each character in the turn order
+        //Discards all cards that were played
         foreach(ITurnExecutable turn in turns)
         {
-            ((Character)turn).CardToPlay = null;
+            Character c = (Character) turn;
+            if(c.CardToPlay != null){
+                decks[c.data.characterType].DiscardList.Add(c.CardToPlay);
+                c.CardToPlay = null;
+            }
         }
     }
 
@@ -160,7 +164,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character) && decks[display.Character.data.characterType].CardList.Count > 0){
+            if(party.Contains(display.Character)){ // && decks[display.Character.data.characterType].CardList.Count > 0
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }
