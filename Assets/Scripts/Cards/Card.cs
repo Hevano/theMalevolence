@@ -104,10 +104,9 @@ public class Card : ScriptableObject {
     //Play the card
     public IEnumerator Activate () {
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
-            int corruptionCheck = Random.Range(0, 100);
             Character character;
             GameManager.manager.characters.TryGetValue(cardCharacter, out character);
-            if (corruptionCheck >= character.Corruption)
+            if (character.CorruptionCheck())
                 for (int i = 0; i < cardCorPass.Count; i++){
                     var effect = cardCorPass[i].GetEffect();
                     effect.SetOwnerCard(this);

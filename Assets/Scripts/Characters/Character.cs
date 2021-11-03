@@ -96,12 +96,22 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public ActionChangeHandler onActionChange;
 
     public bool CorruptionCheck(){
-        return false;
+        int corruptionCheck = Random.Range(0, 100);
+        return corruptionCheck >= Corruption;
     }
 
     void Start(){
         Health = data.health;
         Corruption = data.corruption;
+    }
+
+    //Pull current characters basic attack (can create new one and save to the data object for specific chars)
+    public IEnumerator BasicAttack(Damage damage = null){
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+        Character target = (Character)Targetable.currentTargets[0];
+        int value = damage == null ? data.basicAttack.Value : damage.Value;
+        target.Health -= value;
+        CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
     }
 
     //Temporary implementation of character's turn
@@ -123,12 +133,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             //Do a damage attack
             if (!enemy) {
-                //Pull current characters basic attack (can create new one and save to the data object for specific chars)
-                yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
-                Character target = (Character)Targetable.currentTargets[0];
-                int value = data.basicAttack.Value;
-                target.Health -= value;
-                CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
+               yield return BasicAttack();
             } else {
 
                 Character target;
