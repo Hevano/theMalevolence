@@ -6,7 +6,7 @@ public static class Enums {
 
     public enum StatusEffects {
         CorruptionShield,
-        Haste,
+        ExtraCard,
         Protected
     }
 

@@ -201,15 +201,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public Character TargetPartyMember(Enums.Character character){
-        Character c = characters[character];
-        if(!party.Contains(c)){
-            throw new System.Exception("TargetPartyMember tried to target a non-party member");
-        }
-        c.Targeted();
-        return c;
-    }
-
     //Checks if the game is over. Should be called whenever a character or foe is Defeated
     public void CheckGameOver()
     {

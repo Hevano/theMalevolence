@@ -72,15 +72,17 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
             else if (CardToPlay != null && newCard != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
-                action = Enums.Action.Card;
-            } else {
-                action = Enums.Action.Attack;
             }
             if((onActionChange != null)){
                 onActionChange(_cardToPlay, newCard);
             }
             if(!enemy){
                 _cardToPlay = newCard;
+            }
+            if(CardToPlay != null){
+                action = Enums.Action.Card;
+            } else {
+                action = Enums.Action.Attack;
             }
         }
     }
@@ -114,7 +116,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public event TurnHandler onTurnEnd;
 
     //Targeting system may need to be modified to expose 'who' requests a target
-    public delegate void TargetedHandler();
+    public delegate void TargetedHandler(Character source, ref Character target);
     public event TargetedHandler onTargeted;
 
     public bool CorruptionCheck(){
@@ -126,11 +128,13 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return corruptionCheck > corruptionValue;
     }
 
-    public void Targeted(){
+    //Called whenever a character is targetted. Returns the actual target, which will most likely be that character
+    public Character Targeted(Character source){
+        Character target = this;
         if(onTargeted != null){
-            onTargeted();
+            onTargeted(source, ref target);
         }
-
+        return target;
     }
 
     void Start(){
@@ -140,7 +144,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     //Pull current characters basic attack (can create new one and save to the data object for specific chars)
     public IEnumerator BasicAttack(Damage damage = null){
-        yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
         Character target = (Character)Targetable.currentTargets[0];
         int value = damage == null ? data.basicAttack.Value : damage.Value;
         target.Health -= value;
@@ -175,9 +179,9 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
                     //temp
-                    target = GameManager.manager.party[3];
+                    target = GameManager.manager.party[2];
                 } while (target.Defeated == true);
-
+                target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
                 int dmg = data.basicAttack.Value;
                 Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
                 StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));

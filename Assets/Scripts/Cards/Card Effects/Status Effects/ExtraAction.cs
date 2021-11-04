@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class ExtraAction : StatusEffect
 {
     //On combat phase start, designate the extra action, (will need to edit the cardDisplayController to handle playing cards in the resolve phase)
@@ -10,8 +10,10 @@ public class ExtraAction : StatusEffect
     Enums.Actions action;
     Card card;
     Character watchedCharacter;
-    public ExtraAction(Character character, Enums.Action action){
-        GameManager.manager.onPhaseChange += 
+    public ExtraAction(Character cardCharacter, Character targetCharacter, Enums.Action action){
+        GameManager.manager.onPhaseChange += DesignateAction;
+        watchedCharacter = targetCharacter;
+        var index = GameManager.manager.turns.IndexOf(cardCharacter);
     }
 
     public DesignateAction(Enums.GameplayPhase phase){
@@ -21,6 +23,7 @@ public class ExtraAction : StatusEffect
                 //Get player to play card
                 //card = 
             }
+            GameManager.manager.onPhaseChange += DesignateAction;
         }
     }
 
@@ -31,4 +34,4 @@ public class ExtraAction : StatusEffect
         watchedCharacter.CardToPlay = null; //Have to clear out any existing card to make sure
         watchedCharacter.CardToPlay = card;
     }
-}
+}*/
