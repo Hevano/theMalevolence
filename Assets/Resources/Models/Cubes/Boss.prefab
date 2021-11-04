@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 938142427061772098}
   - component: {fileID: 7875880120984276654}
+  - component: {fileID: 37066268}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -140,5 +141,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a874722f55b7cf4eabcc6c5000ab3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
-  cardToPlay: {fileID: 0}
+  _health: 0
+  _corruption: 0
+  enemy: 0
+  data: {fileID: 11400000, guid: e6a8a6ec1e6e49b46afaad570bb17d86, type: 2}
+  _cardToPlay: {fileID: 0}
+--- !u!114 &37066268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615339571308388818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da36207b6cc7952419113accde71ed82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTypes: 0000000002000000

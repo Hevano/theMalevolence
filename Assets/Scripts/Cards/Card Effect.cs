@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** <summary>The base class for all other card effects.</summary> */
 [System.Serializable]
 public class CardEffect {
     [SerializeField] protected Enums.Target target;
@@ -57,7 +58,7 @@ public class CardEffect {
         yield return null;
     }
 
-    public virtual void SetModification (int value, Enums.Modifier mod) {
+    public void SetModification (int value, Enums.Modifier mod) {
         modifyingValue = value;
         modification = mod;
     }

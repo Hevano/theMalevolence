@@ -7,6 +7,10 @@ public class Deck {
     [SerializeField] private List<Card> cardList;
 
     public List<Card> CardList { get { return cardList; } }
+    
+    [SerializeField] private List<Card> discardList = new List<Card>();
+
+    public List<Card> DiscardList { get { return discardList; } }
 
     public Deck () { }
 
@@ -15,6 +19,9 @@ public class Deck {
     }
 
     public Card Draw() {
+        if(cardList.Count == 0){
+            Reshuffle();
+        }
         Card ret = cardList[0];
         cardList.RemoveAt(0);
         return ret;
@@ -29,6 +36,12 @@ public class Deck {
             cardList.Add(tempList[drawnCard]);
             tempList.RemoveAt(drawnCard);
         }
+    }
+
+    //Shuffles the discard pile into the draw pile
+    public void Reshuffle(){
+        cardList.AddRange(discardList);
+        Shuffle();
     }
 
     public void AddCard(Card card) {

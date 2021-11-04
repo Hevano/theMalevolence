@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator battleEnumerator;
     private bool gameOver = false;
 
+    public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
+    public event PhaseChangeHandler onPhaseChange;
+
     void Start()
     {
         if (manager != null)
@@ -94,6 +97,9 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecutePlanning()
     {
         phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         Debug.Log("Planning phase");
         while(phase == Enums.GameplayPhase.Planning)
         {
@@ -108,6 +114,10 @@ public class GameManager : MonoBehaviour
 
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
+        phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         Debug.Log("Resolving Phase");
         turns = new List<ITurnExecutable>();
 
@@ -141,10 +151,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Reset the actions of each character in the turn order
+        //Discards all cards that were played
         foreach(ITurnExecutable turn in turns)
         {
-            ((Character)turn).CardToPlay = null;
+            Character c = (Character) turn;
+            if(c.CardToPlay != null){
+                decks[c.data.characterType].DiscardList.Add(c.CardToPlay);
+                c.CardToPlay = null;
+            }
         }
     }
 
@@ -152,6 +166,10 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
+        phase = Enums.GameplayPhase.Planning;
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
         StartCoroutine(CombatUIManager.Instance.DisplayMessage("Draw a card", 3f));
         bool cardsToDraw = false;
         
@@ -160,7 +178,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character) && decks[display.Character.data.characterType].CardList.Count > 0){
+            if(party.Contains(display.Character)){ // && decks[display.Character.data.characterType].CardList.Count > 0
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }

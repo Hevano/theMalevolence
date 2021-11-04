@@ -8,22 +8,31 @@ public class DrawEffect : CardEffect {
     
     /** <summary>The number of cards to draw.</summary> */
     [SerializeField] private int cardsToDraw;
+    /** <summary>Draw cards from the discard pile.</summary> */
     [SerializeField] private bool fromDiscard;
+    /** <summary>Discard cards in hand to discard pile. Overrides fromDiscard.</summary> */
     [SerializeField] private bool toDiscard;
 
+    /** <summary>Applies the effect onto the relevant targets</summary> */
     public override IEnumerator ApplyEffect () {
         ApplyModification();
 
+        //Sends a number of numbers from the player's hand into the discard pile
         if (toDiscard) {
             for (int i = 0; i < cardsToDraw; i++) {
                 //Tell game manager to discard a card
             }
-        } else if (fromDiscard) {
-            for (int i = 0; i < cardsToDraw; i++) {
+        }
+        //Draws a number of cards from the discard pile into the player's hand
+        else if (fromDiscard) {
+        for (int i = 0; i < cardsToDraw; i++) {
                 //Tell game manager to draw a card from the discard
             }
-        } else {
+        } 
+        //Draw a number of cards from your decks
+        else {
             for (int i = 0; i < cardsToDraw; i++) {
+                //Tell the game manager to enter the draw phase, then return to resolve phase
                 yield return GameManager.manager.ExecuteDrawPhase();
                 GameManager.manager.phase = Enums.GameplayPhase.Resolve;
             }
@@ -31,6 +40,7 @@ public class DrawEffect : CardEffect {
         yield return new WaitForSeconds(1f);
     }
 
+    /** <summary>Takes the modification from the MODIFY effect and increases "cardsToDraw" value</summary> */
     public override void ApplyModification () {
         if (modifyingValue != 0) {
             switch (modification) {

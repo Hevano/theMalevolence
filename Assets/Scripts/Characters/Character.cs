@@ -89,19 +89,54 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
+    //Character Events
     public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Card prev, Card newCard);
     public ActionChangeHandler onActionChange;
 
+    //Modifying corruptionValueForCheck will change the int the random roll is compared to
+    public delegate void CorruptionCheckAttemptHandler(ref int corruptionValueForCheck);
+    public event CorruptionCheckAttemptHandler onCorruptionCheckAttempt;
+
+    public delegate void CorruptionCheckResultHandler(bool passed);
+    public event CorruptionCheckResultHandler onCorruptionCheckResult;
+    public delegate void TurnHandler();
+    public event TurnHandler onTurnStart;
+    public event TurnHandler onTurnEnd;
+
+    //Targeting system may need to be modified to expose 'who' requests a target
+    public delegate void TargetedHandler();
+    public event TargetedHandler onTargeted;
+
     public bool CorruptionCheck(){
-        return false;
+        int corruptionValue = Corruption;
+        if(onCorruptionCheckAttempt != null){
+            onCorruptionCheckAttempt(ref corruptionValue);
+        }
+        int corruptionCheck = Random.Range(1, 100);
+        return corruptionCheck > corruptionValue;
+    }
+
+    public void Targeted(){
+        if(onTargeted != null){
+            onTargeted();
+        }
     }
 
     void Start(){
         Health = data.health;
         Corruption = data.corruption;
+    }
+
+    //Pull current characters basic attack (can create new one and save to the data object for specific chars)
+    public IEnumerator BasicAttack(Damage damage = null){
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+        Character target = (Character)Targetable.currentTargets[0];
+        int value = damage == null ? data.basicAttack.Value : damage.Value;
+        target.Health -= value;
+        CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
     }
 
     //Temporary implementation of character's turn
@@ -123,12 +158,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             //Do a damage attack
             if (!enemy) {
-                //Pull current characters basic attack (can create new one and save to the data object for specific chars)
-                yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
-                Character target = (Character)Targetable.currentTargets[0];
-                int value = data.basicAttack.Value;
-                target.Health -= value;
-                CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
+               yield return BasicAttack();
             } else {
 
                 Character target;
