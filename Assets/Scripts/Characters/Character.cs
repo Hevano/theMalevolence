@@ -15,7 +15,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set{
             var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
             if(onStatChange != null){
-                onStatChange("health", _health, newValue);
+                onStatChange("health", ref _health, ref newValue);
             }
             _health = newValue;
             if(Health == 0){
@@ -33,7 +33,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set{
             if(onStatChange != null){
-                onStatChange("corruption", _corruption, value);
+                onStatChange("corruption", ref _corruption, ref value);
             }
             _corruption = value;
         }
@@ -72,13 +72,20 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
             else if (CardToPlay != null && newCard != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
+                action = Enums.Action.Card;
+            } else {
+                action = Enums.Action.Attack;
             }
-            if((onActionChange != null) && (enemy == false)){
+            if((onActionChange != null)){
                 onActionChange(_cardToPlay, newCard);
+            }
+            if(!enemy){
                 _cardToPlay = newCard;
             }
         }
     }
+
+    public Enums.Action action;
 
     public string CardToPlayName
     {
@@ -90,7 +97,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     //Character Events
-    public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
+    public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Card prev, Card newCard);
@@ -123,6 +130,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         if(onTargeted != null){
             onTargeted();
         }
+
     }
 
     void Start(){
@@ -147,7 +155,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             Debug.Log($"{data.name} has been defeated and cannot continue the fight");
         }
-        else if(CardToPlay != null)
+        else if(action == Enums.Action.Card && CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
@@ -166,6 +174,8 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 do {
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
+                    //temp
+                    target = GameManager.manager.party[3];
                 } while (target.Defeated == true);
 
                 int dmg = data.basicAttack.Value;
