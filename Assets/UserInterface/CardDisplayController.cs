@@ -69,6 +69,8 @@ public class CardDisplayController : MonoBehaviour {
 
     
     public void Start(){
+        GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
+        GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
         GetComponent<Draggable>().onDragStop += (drag, drop) => {
             if(drop != null && drop.name == "DropZone"){
                 Play();

@@ -14,7 +14,7 @@ public class HandDisplayController : MonoBehaviour {
     public CardDisplayController[,] DisplayedCardsPlacement;
 
     private void Awake() {
-        DisplayedCardsPlacement = new CardDisplayController[numRows, numCols];
+        DisplayedCardsPlacement = new CardDisplayController[numCols, numRows];
     }
 
 
