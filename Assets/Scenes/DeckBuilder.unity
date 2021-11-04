@@ -295,7 +295,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1188832036}
   m_HandleRect: {fileID: 1188832035}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1839,6 +1839,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8764688190947162698, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
+      propertyPath: numCols
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764688190947162698, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
+      propertyPath: numRows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764688190947162698, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
       propertyPath: DisplayedCards.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2509,6 +2517,10 @@ PrefabInstance:
     - target: {fileID: 7083277558356938752, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
       propertyPath: m_OverrideSorting
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764688190947162698, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
+      propertyPath: numCols
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8764688190947162698, guid: e5dadfa0093227c4d9386b19b8dab01d, type: 3}
       propertyPath: DisplayedCards.Array.size
