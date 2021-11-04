@@ -8,6 +8,9 @@ public class CardDisplayController : MonoBehaviour {
    
     public static GameObject cardDisplayPrefab;
 
+    internal int Handx;
+    internal int Handy;
+
     //The name of the displayed card. Must be changed to display the cards proper name (seperate field)
     [SerializeReference]
     private Text _name;

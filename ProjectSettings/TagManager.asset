@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HandDisplay
   - Message
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

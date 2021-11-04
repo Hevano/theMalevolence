@@ -30,6 +30,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         returnPos = this.transform.position;
         GetComponent<GraphicRaycaster>().enabled = false;
+        transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>());
     }
 
     public void OnPointerUp(PointerEventData data){
@@ -45,6 +46,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         dragTarget = null;
         if(zoneWhereDropped != null){
             zone = zoneWhereDropped;
+            transform.SetParent(zoneWhereDropped.GetComponent<RectTransform>());
         } else if(returnIfNotDropped) {
             transform.position = returnPos;
         }
