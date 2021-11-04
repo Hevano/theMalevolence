@@ -6,14 +6,17 @@ using UnityEngine;
 [System.Serializable]
 public class AfflictEffect : CardEffect {
     [SerializeField] private Enums.StatusEffects statusEffect;
+    private StatusEffect effect;
 
     public override IEnumerator ApplyEffect () {
         switch (statusEffect) {
             case Enums.StatusEffects.CorruptionShield:
+                effect = new StatChangePrevention(targets[0], "corruption", Enums.StatChangeEnum.Increase);
                 break;
-            case Enums.StatusEffects.Haste:
+            case Enums.StatusEffects.ExtraCard:
                 break;
             case Enums.StatusEffects.Protected:
+                effect = new AttackSubstitution(GameManager.manager.characters[card.Character], targets[0]);
                 break;
         }
         yield return null;

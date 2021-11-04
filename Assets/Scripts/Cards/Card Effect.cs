@@ -23,31 +23,31 @@ public class CardEffect {
         targets = new List<Character>();
 
         Debug.Log("From Card Effect.cs, find target");
+        Character c;
+        GameManager.manager.characters.TryGetValue(card.Character, out c);
 
         switch (target) {
             case Enums.Target.Self:
-                Character c;
-                GameManager.manager.characters.TryGetValue(card.Character, out c);
                 targets.Add(c);
                 break;
             case Enums.Target.Ally:
                 if (card.AllyTarget == null) {
-                    yield return Targetable.GetTargetable(Enums.TargetType.Allies, "Select Ally", 1);
+                    yield return Targetable.GetTargetable(Enums.TargetType.Allies, c, "Select Ally", 1);
                     card.AllyTarget = (Character) Targetable.currentTargets[0];
                 }
                 targets.Add(card.AllyTarget);
                 break;
             case Enums.Target.Enemy:
                 if (card.EnemyTarget == null) {
-                    yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select Enemy", 1);
+                    yield return Targetable.GetTargetable(Enums.TargetType.Foes, c, "Select Enemy", 1);
                     card.EnemyTarget = (Character)Targetable.currentTargets[0];
                 }
                 targets.Add(card.EnemyTarget);
                 break;
-            case Enums.Target.All_Ally:
+            case Enums.Target.All_Ally: //When all allies are targetted, effects that trigger of a single character being targetted shouldn't trigger
                 targets = new List<Character>(GameManager.manager.party);
                 break;
-            case Enums.Target.All_Enemy:
+            case Enums.Target.All_Enemy: //Same with all enemies
                 targets = new List<Character>(GameManager.manager.foes);
                 break;
             case Enums.Target.Before_Self:

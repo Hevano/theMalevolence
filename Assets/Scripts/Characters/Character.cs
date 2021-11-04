@@ -15,7 +15,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set{
             var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
             if(onStatChange != null){
-                onStatChange("health", _health, newValue);
+                onStatChange("health", ref _health, ref newValue);
             }
             if (_health > newValue)
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
@@ -37,7 +37,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set{
             if(onStatChange != null){
-                onStatChange("corruption", _corruption, value);
+                onStatChange("corruption", ref _corruption, ref value);
             }
             CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
@@ -78,12 +78,21 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             else if (CardToPlay != null && newCard != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
             }
-            if((onActionChange != null) && (enemy == false)){
+            if((onActionChange != null)){
                 onActionChange(_cardToPlay, newCard);
+            }
+            if(!enemy){
                 _cardToPlay = newCard;
+            }
+            if(CardToPlay != null){
+                action = Enums.Action.Card;
+            } else {
+                action = Enums.Action.Attack;
             }
         }
     }
+
+    public Enums.Action action;
 
     public string CardToPlayName
     {
@@ -94,19 +103,57 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
-    public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
+    //Character Events
+    public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Card prev, Card newCard);
     public ActionChangeHandler onActionChange;
 
+    //Modifying corruptionValueForCheck will change the int the random roll is compared to
+    public delegate void CorruptionCheckAttemptHandler(ref int corruptionValueForCheck);
+    public event CorruptionCheckAttemptHandler onCorruptionCheckAttempt;
+
+    public delegate void CorruptionCheckResultHandler(bool passed);
+    public event CorruptionCheckResultHandler onCorruptionCheckResult;
+    public delegate void TurnHandler();
+    public event TurnHandler onTurnStart;
+    public event TurnHandler onTurnEnd;
+
+    //Targeting system may need to be modified to expose 'who' requests a target
+    public delegate void TargetedHandler(Character source, ref Character target);
+    public event TargetedHandler onTargeted;
+
     public bool CorruptionCheck(){
-        return false;
+        int corruptionValue = Corruption;
+        if(onCorruptionCheckAttempt != null){
+            onCorruptionCheckAttempt(ref corruptionValue);
+        }
+        int corruptionCheck = Random.Range(1, 100);
+        return corruptionCheck > corruptionValue;
+    }
+
+    //Called whenever a character is targetted. Returns the actual target, which will most likely be that character
+    public Character Targeted(Character source){
+        Character target = this;
+        if(onTargeted != null){
+            onTargeted(source, ref target);
+        }
+        return target;
     }
 
     void Start(){
         Health = data.health;
         Corruption = data.corruption;
+    }
+
+    //Pull current characters basic attack (can create new one and save to the data object for specific chars)
+    public IEnumerator BasicAttack(Damage damage = null){
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
+        Character target = (Character)Targetable.currentTargets[0];
+        int value = damage == null ? data.basicAttack.Value : damage.Value;
+        target.Health -= value;
+        CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
     }
 
     //Temporary implementation of character's turn
@@ -117,7 +164,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             Debug.Log($"{data.name} has been defeated and cannot continue the fight");
         }
-        else if(CardToPlay != null)
+        else if(action == Enums.Action.Card && CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
@@ -128,11 +175,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             //Do a damage attack
             if (!enemy) {
-                //Pull current characters basic attack (can create new one and save to the data object for specific chars)
-                yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
-                Character target = (Character)Targetable.currentTargets[0];
-                int value = data.basicAttack.Value;
-                target.Health -= value;
+               yield return BasicAttack();
             } else {
 
                 Character target;
@@ -140,8 +183,10 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 do {
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
+                    //temp
+                    target = GameManager.manager.party[2];
                 } while (target.Defeated == true);
-
+                target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
                 int dmg = data.basicAttack.Value;
                 Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
                 StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));
