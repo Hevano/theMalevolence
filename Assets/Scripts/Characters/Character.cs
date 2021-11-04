@@ -17,8 +17,12 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("health", _health, newValue);
             }
+            if (_health > newValue)
+                CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
+            else
+                CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
             _health = newValue;
-            if(Health == 0){
+            if (Health == 0){
                 Defeated = true;
             }
         }
@@ -35,6 +39,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("corruption", _corruption, value);
             }
+            CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
         }
     }
@@ -128,7 +133,6 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 Character target = (Character)Targetable.currentTargets[0];
                 int value = data.basicAttack.Value;
                 target.Health -= value;
-                CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
             } else {
 
                 Character target;
@@ -148,7 +152,6 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 yield return new WaitForSeconds(0.25f);
                 //Increase corruption
                 target.Corruption += dmg * 2;
-                CombatUIManager.Instance.SetDamageText(dmg * 2, target.transform, new Color32(139, 0, 139, 0));
             }
 
         }

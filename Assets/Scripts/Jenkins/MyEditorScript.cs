@@ -1,4 +1,4 @@
-using System;
+/**using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -60,4 +60,4 @@ class MyEditorScript
             throw new Exception("BuildPlayer failure: " + res);
         }
     }
-}
+}*/

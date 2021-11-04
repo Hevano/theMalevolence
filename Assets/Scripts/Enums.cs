@@ -55,7 +55,9 @@ public static class Enums {
         Ally,
         Enemy,
         All_Ally,
-        All_Enemy
+        All_Enemy,
+        Before_Self,
+        After_Self
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */

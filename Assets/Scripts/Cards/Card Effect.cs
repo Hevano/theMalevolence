@@ -50,6 +50,10 @@ public class CardEffect {
             case Enums.Target.All_Enemy:
                 targets = new List<Character>(GameManager.manager.foes);
                 break;
+            case Enums.Target.Before_Self:
+                break;
+            case Enums.Target.After_Self:
+                break;
         }
     }
 
