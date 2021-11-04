@@ -8,6 +8,9 @@ public class CardDisplayController : MonoBehaviour {
    
     public static GameObject cardDisplayPrefab;
 
+    internal int Handx;
+    internal int Handy;
+
     //The name of the displayed card. Must be changed to display the cards proper name (seperate field)
     [SerializeReference]
     private Text _name;
@@ -66,6 +69,8 @@ public class CardDisplayController : MonoBehaviour {
 
     
     public void Start(){
+        GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
+        GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
         GetComponent<Draggable>().onDragStop += (drag, drop) => {
             if(drop != null && drop.name == "DropZone"){
                 Play();

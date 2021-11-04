@@ -21,6 +21,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool planningPhaseOnly = false;
     private bool letGo = false;
     public DropZone zone;
+    public DropZone returnDropZone;
     public void OnPointerDown(PointerEventData data){
         if(planningPhaseOnly && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragTarget = this;
@@ -30,6 +31,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         returnPos = this.transform.position;
         GetComponent<GraphicRaycaster>().enabled = false;
+        transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>());
     }
 
     public void OnPointerUp(PointerEventData data){
@@ -45,7 +47,10 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         dragTarget = null;
         if(zoneWhereDropped != null){
             zone = zoneWhereDropped;
+            returnDropZone = zone;
+            transform.SetParent(zoneWhereDropped.GetComponent<RectTransform>());
         } else if(returnIfNotDropped) {
+            transform.SetParent(returnDropZone.GetComponent<RectTransform>());
             transform.position = returnPos;
         }
         if(onDragStop != null){
