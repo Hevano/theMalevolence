@@ -10,6 +10,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     private static bool targetting = false;
     private static Enums.TargetType targetType;
     public static List<ITargetable> currentTargets = new List<ITargetable>();
+    public static Character targetSource;
 
     [Tooltip("List of target types that apply to this gameobject")]
     public List<Enums.TargetType> targetTypes;
@@ -20,18 +21,16 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData data){ //Camera needs to have the PhysicsRaycast Component
-        Debug.Log("Clicked");
-
         if(targetting && targetTypes.Contains(targetType))
         {
-            currentTargets.Add(target);//May want to change so that a target already in the list cannot be added a second time
+            currentTargets.Add(((Character)target).Targeted(targetSource));//May want to change so that a target already in the list cannot be added a second time
             Debug.Log($"{name} has been targeted");
-            ((Character)target).Targeted();        
+            ;        
         }
     }
 
     
-    public static IEnumerator GetTargetable(Enums.TargetType type, string msg, int count = 1){
+    public static IEnumerator GetTargetable(Enums.TargetType type, Character source, string msg, int count = 1){
 
         //send msg to some Text object in the screen to inform the player what they are targetting
         Canvas messagePrompt = Instantiate(GameManager.manager.messager);
@@ -44,6 +43,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         currentTargets = new List<ITargetable>();
         targetting = true;
         targetType = type;
+        targetSource = source;
 
         //loop while target is being found based on 'targetting'. The onpointerclick function is utilized while this keeps the function from ending \
         // Checks each frame if the number of targets is returned.

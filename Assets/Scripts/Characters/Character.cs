@@ -15,7 +15,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set{
             var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
             if(onStatChange != null){
-                onStatChange("health", _health, newValue);
+                onStatChange("health", ref _health, ref newValue);
             }
             _health = newValue;
             if(Health == 0){
@@ -33,7 +33,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set{
             if(onStatChange != null){
-                onStatChange("corruption", _corruption, value);
+                onStatChange("corruption", ref _corruption, ref value);
             }
             _corruption = value;
         }
@@ -73,12 +73,21 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             else if (CardToPlay != null && newCard != null){
                 GameManager.manager.PlaceCardInHand(CardToPlay);
             }
-            if((onActionChange != null) && (enemy == false)){
+            if((onActionChange != null)){
                 onActionChange(_cardToPlay, newCard);
+            }
+            if(!enemy){
                 _cardToPlay = newCard;
+            }
+            if(CardToPlay != null){
+                action = Enums.Action.Card;
+            } else {
+                action = Enums.Action.Attack;
             }
         }
     }
+
+    public Enums.Action action;
 
     public string CardToPlayName
     {
@@ -90,7 +99,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     //Character Events
-    public delegate void StatChangeHandler(string statName, int oldValue, int newValue);
+    public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Card prev, Card newCard);
@@ -107,7 +116,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public event TurnHandler onTurnEnd;
 
     //Targeting system may need to be modified to expose 'who' requests a target
-    public delegate void TargetedHandler();
+    public delegate void TargetedHandler(Character source, ref Character target);
     public event TargetedHandler onTargeted;
 
     public bool CorruptionCheck(){
@@ -119,10 +128,13 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return corruptionCheck > corruptionValue;
     }
 
-    public void Targeted(){
+    //Called whenever a character is targetted. Returns the actual target, which will most likely be that character
+    public Character Targeted(Character source){
+        Character target = this;
         if(onTargeted != null){
-            onTargeted();
+            onTargeted(source, ref target);
         }
+        return target;
     }
 
     void Start(){
@@ -132,7 +144,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     //Pull current characters basic attack (can create new one and save to the data object for specific chars)
     public IEnumerator BasicAttack(Damage damage = null){
-        yield return Targetable.GetTargetable(Enums.TargetType.Foes, "Select the boss", 1);
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
         Character target = (Character)Targetable.currentTargets[0];
         int value = damage == null ? data.basicAttack.Value : damage.Value;
         target.Health -= value;
@@ -147,7 +159,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             Debug.Log($"{data.name} has been defeated and cannot continue the fight");
         }
-        else if(CardToPlay != null)
+        else if(action == Enums.Action.Card && CardToPlay != null)
         {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
@@ -166,8 +178,10 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 do {
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
+                    //temp
+                    target = GameManager.manager.party[2];
                 } while (target.Defeated == true);
-
+                target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
                 int dmg = data.basicAttack.Value;
                 Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
                 StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));

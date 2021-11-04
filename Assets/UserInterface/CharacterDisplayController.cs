@@ -32,7 +32,7 @@ public class CharacterDisplayController : MonoBehaviour {
             _character = value;
             //Set the fields based on the character data
             //Subscribe to character events to continually update
-            _character.onStatChange += (string statName, int oldValue, int newValue) => {
+            _character.onStatChange += (string statName, ref int oldValue, ref int newValue) => {
                 //Debug.Log("Stat change");
                 if(statName == "health"){
                     ChangeHealth(newValue);

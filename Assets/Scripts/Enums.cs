@@ -6,7 +6,7 @@ public static class Enums {
 
     public enum StatusEffects {
         CorruptionShield,
-        Haste,
+        ExtraCard,
         Protected
     }
 
@@ -31,6 +31,13 @@ public static class Enums {
         Popular,
         Driver
     };
+
+    /** <summary>A list of possible actions a character can take</summary> */
+    public enum Action{
+        Card,
+        Attack,
+        Stunned
+    }
 
     /** <summary>The types of effects on values in card effects.</summary> */
     public enum Modifier {
@@ -75,5 +82,11 @@ public static class Enums {
         Any,
         Allies,
         Foes
+    }
+
+    public enum StatChangeEnum{
+        Increase,
+        Decrease,
+        Any
     }
 }
