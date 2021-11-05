@@ -8,7 +8,8 @@ public static class Enums {
         CorruptionShield,
         ExtraCard,
         Protected,
-        BackTalk
+        BackTalk,
+        Stun
     }
 
     public enum CardEffects {

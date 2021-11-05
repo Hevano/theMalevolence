@@ -154,8 +154,8 @@ public class GameManager : MonoBehaviour
 
         //Discards all cards that were played
         foreach(ITurnExecutable turn in turns){
-            Character c = (Character) turn;
-            if(c.CardToPlay != null){
+            Character c = turn as Character;
+            if(c != null && c.CardToPlay != null){
                 decks[c.data.characterType].DiscardList.Add(c.CardToPlay);
                 c.CardToPlay = null;
             }
@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character)){ // && decks[display.Character.data.characterType].CardList.Count > 0
+            if(party.Contains(display.Character)){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }

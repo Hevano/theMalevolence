@@ -79,7 +79,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(!enemy){
                 _cardToPlay = newCard;
             }
-            if(CardToPlay != null){
+            if(_cardToPlay != null){
                 action = Enums.Action.Card;
             } else {
                 action = Enums.Action.Attack;
@@ -87,7 +87,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
-    public Enums.Action action;
+    public Enums.Action action = Enums.Action.Attack;
 
     public string CardToPlayName
     {
@@ -142,6 +142,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     void Start(){
         Health = data.health;
         Corruption = data.corruption;
+        action = Enums.Action.Attack;
     }
 
     //Pull current characters basic attack (can create new one and save to the data object for specific chars)
@@ -174,7 +175,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             //Execute the selected card from the dropzone.
             yield return CardToPlay.Activate();
         }
-        else
+        else if(action == Enums.Action.Attack)
         {
             //Do a damage attack
             if (!enemy) {
