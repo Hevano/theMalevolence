@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: Protection Card
+  m_Name: Back Talk
   m_EditorClassIdentifier: 
-  cardName: Prot Card
-  cardDescription: Prot Card
+  cardName: BT
+  cardDescription: BT
   cardFlavor: 
-  cardCharacter: 3
+  cardCharacter: 0
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
@@ -24,8 +24,8 @@ MonoBehaviour:
     cardEffect:
       target: 0
     afflictEffect:
-      target: 2
-      statusEffect: 2
+      target: 1
+      statusEffect: 3
     attackEffect:
       target: 0
       dieNumber: 0

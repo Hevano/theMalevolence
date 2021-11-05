@@ -115,9 +115,11 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public event TurnHandler onTurnStart;
     public event TurnHandler onTurnEnd;
 
-    //Targeting system may need to be modified to expose 'who' requests a target
     public delegate void TargetedHandler(Character source, ref Character target);
     public event TargetedHandler onTargeted;
+
+    public delegate void AttackHandler(Character target, ref Damage d);
+    public event AttackHandler onAttack;
 
     public bool CorruptionCheck(){
         int corruptionValue = Corruption;
@@ -146,14 +148,20 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public IEnumerator BasicAttack(Damage damage = null){
         yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
         Character target = (Character)Targetable.currentTargets[0];
-        int value = damage == null ? data.basicAttack.Value : damage.Value;
-        target.Health -= value;
-        CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
+        damage = damage == null ? data.basicAttack : damage;
+        if(onAttack != null){
+            onAttack(target, ref damage);
+        }
+        
+        target.Health -= damage.Value;
+        CombatUIManager.Instance.SetDamageText(damage.Value, target.transform);
     }
 
     //Temporary implementation of character's turn
     public IEnumerator GetTurn(){
-
+        if(onTurnStart != null){
+            onTurnStart();
+        }
         Debug.Log($"{name}'s turn");
         if(Defeated)
         {
@@ -179,7 +187,7 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                     target = GameManager.manager.party[Random.Range(1, 4)];
                     Debug.Log("Picking target");
                     //temp
-                    target = GameManager.manager.party[2];
+                    target = GameManager.manager.party[0];
                 } while (target.Defeated == true);
                 target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
                 int dmg = data.basicAttack.Value;
@@ -195,6 +203,9 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 CombatUIManager.Instance.SetDamageText(dmg * 2, target.transform, new Color32(139, 0, 139, 0));
             }
 
+        }
+        if(onTurnEnd != null){
+            onTurnEnd();
         }
         yield return new WaitForSeconds(1f);
     }

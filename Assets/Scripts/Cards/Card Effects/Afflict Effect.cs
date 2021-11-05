@@ -18,6 +18,9 @@ public class AfflictEffect : CardEffect {
             case Enums.StatusEffects.Protected:
                 effect = new AttackSubstitution(GameManager.manager.characters[card.Character], targets[0]);
                 break;
+            case Enums.StatusEffects.BackTalk:
+                effect = new BackTalk(GameManager.manager.characters[card.Character]);
+                break;
         }
         yield return null;
     }

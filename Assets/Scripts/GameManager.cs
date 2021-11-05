@@ -114,10 +114,7 @@ public class GameManager : MonoBehaviour
 
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
-        phase = Enums.GameplayPhase.Planning;
-        if(onPhaseChange != null){
-            onPhaseChange(phase);
-        }
+        
         Debug.Log("Resolving Phase");
         turns = new List<ITurnExecutable>();
 
@@ -143,6 +140,10 @@ public class GameManager : MonoBehaviour
         turns.Reverse(); //Currently the turn slots are being initialized bottom-up, resulting in the turn order being reversed
         turns.Insert(2, foes[0]); //Temporary, should add enemy turns more dynamically
 
+        if(onPhaseChange != null){
+            onPhaseChange(phase);
+        }
+        
         foreach(ITurnExecutable turn in turns)
         {
             yield return turn.GetTurn();
@@ -152,8 +153,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Discards all cards that were played
-        foreach(ITurnExecutable turn in turns)
-        {
+        foreach(ITurnExecutable turn in turns){
             Character c = (Character) turn;
             if(c.CardToPlay != null){
                 decks[c.data.characterType].DiscardList.Add(c.CardToPlay);
@@ -166,7 +166,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("Draw phase");
-        phase = Enums.GameplayPhase.Planning;
         if(onPhaseChange != null){
             onPhaseChange(phase);
         }
@@ -198,7 +197,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+        phase = Enums.GameplayPhase.Planning;
     }
 
     //Checks if the game is over. Should be called whenever a character or foe is Defeated
