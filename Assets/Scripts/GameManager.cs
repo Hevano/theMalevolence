@@ -74,9 +74,6 @@ public class GameManager : MonoBehaviour
             Draw(c.data.characterType);
         }
 
-        //look to remove this later
-        foes[0].enemy = true;
-
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
     }

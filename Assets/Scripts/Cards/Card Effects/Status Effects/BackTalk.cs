@@ -22,7 +22,7 @@ public class BackTalk : StatusEffect {
         if(phase != Enums.GameplayPhase.Resolve) return;
         var index = GameManager.manager.turns.IndexOf(watchedCharacter);
         GameManager.manager.turns.Insert(index + 1, watchedCharacter);
-        watchedCharacter.action = (watchedCharacter.action != Enums.Action.Stunned) ? Enums.Action.Attack : Enums.Action.Stunned;
+        watchedCharacter.Action = (watchedCharacter.Action != Enums.Action.Stunned) ? Enums.Action.Attack : Enums.Action.Stunned;
         watchedCharacter.onTurnEnd += WaitToSecondAttack;
     }
 

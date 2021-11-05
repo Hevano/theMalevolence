@@ -32,7 +32,7 @@ public class ExtraAction : StatusEffect
     }
 
     public void ResolveAttack(){
-        watchedCharacter.action = action;
+        watchedCharacter.Action = action;
         watchedCharacter.CardToPlay = null;
         watchedCharacter.onTurnEnd -= ResolveAttack;
     }
@@ -44,6 +44,7 @@ public class ExtraAction : StatusEffect
             character = c;
         }
         public IEnumerator GetTurn(){
+            character.Action = Enums.Action.Card;
             bool anyValidCards = false;
             foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
                 if(cardDisplay.CardData.Character == character.data.characterType){

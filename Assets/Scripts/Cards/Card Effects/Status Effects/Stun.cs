@@ -6,6 +6,6 @@ public class Stun: StatusEffect {
     private Character watchedCharacter;
     public Stun(Character target){
         watchedCharacter = target;
-        target.action = Enums.Action.Stunned;
+        target.Action = Enums.Action.Stunned;
     }
 }
