@@ -4,9 +4,37 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
+    protected Deck deck;
+
+    public override Card CardToPlay {
+        get {
+            return _cardToPlay;
+        }
+
+        set {
+            var newCard = value;
+            if(_cardToPlay != null){
+                deck.DiscardList.Add(_cardToPlay);
+            }
+            _cardToPlay = newCard;
+            if(_cardToPlay != null){
+                Action = Enums.Action.Card;
+            } else {
+                Action = Enums.Action.Attack;
+            }
+        }
+    }
+    public override void Start(){
+        Health = data.health;
+        Corruption = data.corruption;
+        Action = Enums.Action.Attack;
+        deck = data.Deck;
+        //Any initialization in deck order
+    }
+
     public override IEnumerator GetTurn(){
         Character target;
-
+    
         do {
             target = GameManager.manager.party[Random.Range(0, 4)];
             Debug.Log("Picking target");

@@ -119,23 +119,6 @@ public class GameManager : MonoBehaviour
         {
             turns.Add(turnSlot.Turn);
         }
-        turns.Reverse();
-        //TEMP WAY TO DO BOSS ACTIONS, REMOVE LATER
-        switch (turnNumber % 2)
-        {//Boss cards not saving to decks. Wonder why -Kevin
-            case 0:
-                foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[0]);
-                Debug.Log($"boss is playing {foes[0].CardToPlay}");
-                break;
-            case 1:
-                foes[0].CardToPlay = (decks[Enums.Character.Driver].CardList[1]);
-                Debug.Log($"boss is playing {foes[0].CardToPlay}");
-                break;
-
-        }
-
-        turns.Reverse(); //Currently the turn slots are being initialized bottom-up, resulting in the turn order being reversed
-        turns.Insert(2, foes[0]); //Temporary, should add enemy turns more dynamically
 
         if(onPhaseChange != null){
             onPhaseChange(phase);
@@ -152,8 +135,8 @@ public class GameManager : MonoBehaviour
         //Discards all cards that were played
         foreach(ITurnExecutable turn in turns){
             Character c = turn as Character;
-            if(c != null && c.CardToPlay != null){
-                decks[c.data.characterType].DiscardList.Add(c.CardToPlay);
+            if(c != null){
+                Discard(c.CardToPlay);
                 c.CardToPlay = null;
             }
         }
@@ -243,6 +226,13 @@ public class GameManager : MonoBehaviour
         PlaceCardInHand(card);
     }
 
+    //Return card to discard pile. Note: doesn't remove from hand
+    public void Discard(Card card){
+        if(card == null) return;
+        decks[card.Character].DiscardList.Add(card);
+    }
+
+    //Remove card display from hand: Note: doesn't discard
     public void PlaceCardInHand(Card c){
         hand.AddCard(CardDisplayController.CreateCard(c));
     }

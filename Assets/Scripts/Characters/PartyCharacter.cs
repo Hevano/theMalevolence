@@ -36,7 +36,7 @@ public class PartyCharacter : Character
 
     //Pull current characters basic attack (can create new one and save to the data object for specific chars)
     public IEnumerator BasicAttack(Damage damage = null){
-        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
+        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, $"{data.name} attacks: Select a foe!", 1);
         Character target = (Character)Targetable.currentTargets[0];
         damage = damage == null ? data.basicAttack : damage;
         InvokeAttackHandler(target, ref damage);
