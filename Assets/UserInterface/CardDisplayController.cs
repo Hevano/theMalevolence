@@ -62,7 +62,7 @@ public class CardDisplayController : MonoBehaviour {
     {
         var character = GameManager.manager.characters[CardData.Character];
         character.CardToPlay = CardData;
-
+        GetComponent<Draggable>().enabled = false;
         //Activate the cards designate targets function.
         StartCoroutine(ResolveTargets());
     }
