@@ -14,9 +14,16 @@ public class AfflictEffect : CardEffect {
                 effect = new StatChangePrevention(targets[0], "corruption", Enums.StatChangeEnum.Increase);
                 break;
             case Enums.StatusEffects.ExtraCard:
+                effect = new ExtraAction(targets[0], Enums.Action.Card);
                 break;
             case Enums.StatusEffects.Protected:
                 effect = new AttackSubstitution(GameManager.manager.characters[card.Character], targets[0]);
+                break;
+            case Enums.StatusEffects.BackTalk:
+                effect = new BackTalk(GameManager.manager.characters[card.Character]);
+                break;
+            case Enums.StatusEffects.Stun:
+                effect = new Stun(targets[0]);
                 break;
         }
         yield return null;

@@ -55,4 +55,44 @@ public class CombatUIManager : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         displayText.text = "";
     }
+
+    public IEnumerator RevealCard(Card card, float duration = 1f){
+        var display = CardDisplayController.CreateCard(card);
+        display.GetComponent<Draggable>().followMouse = false;
+        display.transform.SetParent(displayText.transform);
+        RectTransform cardRectTransform = display.GetComponent<RectTransform>();
+        cardRectTransform.offsetMin = new Vector2(0, 120);
+        cardRectTransform.sizeDelta = new Vector2(60, 90);
+        yield return new WaitForSeconds(duration);
+        Destroy(display.gameObject);
+    }
+
+    //The list given will given will be modified to contain only the selected card
+    public IEnumerator DisplayChoice(List<Card> choices){
+        List<CardDisplayController> displays = new List<CardDisplayController>();
+        int selectedIndex = -1;
+        foreach(Card card in choices){
+            var display = CardDisplayController.CreateCard(card);
+            display.GetComponent<Draggable>().followMouse = false;
+            display.GetComponent<Draggable>().planningPhaseOnly = false;
+            display.transform.SetParent(displayText.transform);
+            RectTransform cardRectTransform = display.GetComponent<RectTransform>();
+            cardRectTransform.offsetMin = new Vector2((choices.IndexOf(card)) * 250 - ((choices.Count - 1) * 125), 120);
+            cardRectTransform.sizeDelta = new Vector2(60, 90);
+            displays.Add(display);
+            display.GetComponent<Draggable>().onDragStart += (drag, drop) => {
+                selectedIndex = displays.IndexOf(display);
+            };
+        }
+        while(selectedIndex == -1){
+            yield return new WaitForEndOfFrame();
+        }
+        var choice = choices[selectedIndex];
+        choices.Clear();
+        choices.Add(choice);
+        foreach(CardDisplayController display in displays){
+            Destroy(display.gameObject);
+        }
+        
+    }
 }

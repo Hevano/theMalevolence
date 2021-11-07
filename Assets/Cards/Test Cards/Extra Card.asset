@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: Crazed Flailing
+  m_Name: Extra Card
   m_EditorClassIdentifier: 
-  cardName: Crazed Flailing
-  cardDescription: Each party member acting before the boss takes 2d6+3 damage. All
-    party members must pass a corruption check or begin next turn stunned.
-  cardFlavor: He's gone mad
-  cardCharacter: 4
+  cardName: Xtra card
+  cardDescription: xtra card
+  cardFlavor: 
+  cardCharacter: 3
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
-  - effectType: 0
+  - effectType: 1
     cardEffect:
       target: 0
     afflictEffect:
-      target: 0
-      statusEffect: 0
+      target: 2
+      statusEffect: 1
     attackEffect:
       target: 0
       dieNumber: 0

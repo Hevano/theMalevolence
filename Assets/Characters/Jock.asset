@@ -22,3 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fac6d2b9aa7d2b4c985e1bf52784b5c, type: 2}
   - {fileID: 11400000, guid: 730a503446941524bb3a79a6f612ea98, type: 2}
   - {fileID: 11400000, guid: ce8b5744cb98d9c48ae170526dc9d10b, type: 2}
+  basicAttack:
+    dieNum: 1
+    dieSize: 6
+    bonus: 0

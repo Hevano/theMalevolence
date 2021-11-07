@@ -44,9 +44,7 @@ public class CharacterDisplayController : MonoBehaviour {
             ChangeHealth(Character.Health);
             ChangeCorruption(Character.Corruption);
 
-            _character.onActionChange += (Card prev, Card newCard) =>{
-                ChangeAction(newCard);
-            };
+            _character.onActionChange += ChangeAction;
         }
     }
 
@@ -61,8 +59,21 @@ public class CharacterDisplayController : MonoBehaviour {
         CorruptionDisplay.text = currentCorruption.ToString();
     }
 
-    public void ChangeAction(Card c) {
-        ActionDisplay.text = c == null ? "Attacking" : $"Playing Card: {c.Name}";
+    public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
+        if(oldAction == newAction) return;
+        switch(newAction){
+            case Enums.Action.Attack:
+                ActionDisplay.text = "Attacking";
+                break;
+            case Enums.Action.Card:
+                ActionDisplay.text =  $"Playing Card: {_character.CardToPlay.Name}";
+                break;
+            case Enums.Action.Stunned:
+                ActionDisplay.text = "Stunned";
+                break;
+                
+        }
+        
     }
 
     public TurnOrderSlot currentTurnSlot;

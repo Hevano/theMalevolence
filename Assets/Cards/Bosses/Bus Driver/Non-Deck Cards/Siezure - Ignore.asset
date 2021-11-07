@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: Crazed Flailing
+  m_Name: Siezure - Ignore
   m_EditorClassIdentifier: 
-  cardName: Crazed Flailing
-  cardDescription: Each party member acting before the boss takes 2d6+3 damage. All
-    party members must pass a corruption check or begin next turn stunned.
-  cardFlavor: He's gone mad
+  cardName: Siezure - Ignore
+  cardDescription: All party members gain 40 corruption.
+  cardFlavor: 
   cardCharacter: 4
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
-  - effectType: 0
+  - effectType: 9
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
       statusEffect: 0
     attackEffect:
-      target: 0
-      dieNumber: 0
-      dieSize: 0
+      target: 4
+      dieNumber: 2
+      dieSize: 6
       dieBonus: 0
     cleanseEffect:
       target: 0
@@ -54,8 +53,8 @@ MonoBehaviour:
     summonEffect:
       target: 0
     vitalityEffect:
-      target: 0
-      vitalityType: 0
-      value: 0
+      target: 4
+      vitalityType: 1
+      value: 40
   cardCorPass: []
   cardCorFail: []
