@@ -50,6 +50,25 @@ public class CardEffect {
             case Enums.Target.All_Enemy: //Same with all enemies
                 targets = new List<Character>(GameManager.manager.foes);
                 break;
+            case Enums.Target.Before_Self:
+                break;
+            case Enums.Target.After_Self:
+                break;
+            case Enums.Target.First_and_Last:
+                break;
+            case Enums.Target.Second_Ally:
+                if (card.SecondAllyTarget == null) {
+                    if (card.BossCard) {
+                        
+                    } else {
+                        do {
+                            yield return Targetable.GetTargetable(Enums.TargetType.Allies, c, "Select Another Ally", 1);
+                        } while ((Character)Targetable.currentTargets[0] != card.AllyTarget);
+                        card.SecondAllyTarget = (Character)Targetable.currentTargets[0];
+                    }
+                }
+                targets.Add(card.SecondAllyTarget);
+                break;
         }
     }
 

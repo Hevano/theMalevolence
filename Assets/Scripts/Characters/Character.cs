@@ -16,8 +16,12 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("health", ref _health, ref newValue);
             }
+            if (_health > newValue)
+                CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
+            else
+                CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
             _health = newValue;
-            if(Health == 0){
+            if (Health == 0){
                 Defeated = true;
             }
         }
@@ -34,6 +38,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("corruption", ref _corruption, ref value);
             }
+            CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
         }
     }
@@ -94,6 +99,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             _action = newAction;
         }
     }
+
+    public bool Marked { get; set; }
+
+    private Animator animator;
+    public Animator Animator { get { return animator; } }
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
@@ -186,6 +196,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         Health = data.health;
         Corruption = data.corruption;
         Action = Enums.Action.Attack;
+        animator = GetComponent<Animator>();
     }
 
     //Called once a resolve phase ends, reseting the character's status
