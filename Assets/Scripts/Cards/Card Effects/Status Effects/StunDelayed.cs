@@ -9,7 +9,7 @@ public class StunDelayed : StatusEffect {
         GameManager.manager.onPhaseChange += SetStun;
     }
     public void SetStun(Enums.GameplayPhase phase){
-        if(phase != Enums.GameplayPhase.Resolve) return;
+        if(phase != Enums.GameplayPhase.Planning) return;
         watchedCharacter.Action = Enums.Action.Stunned;
         GameManager.manager.onPhaseChange -= SetStun;
     }

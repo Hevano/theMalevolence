@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jock
   m_EditorClassIdentifier: 
   characterType: 1
-  name: Jockular
+  name: Jock
   health: 25
   corruption: 0
   avatar: {fileID: 0}

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Draggable))]
-public class CharacterDisplayController : MonoBehaviour {
+public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Text _hptxt;
     [SerializeReference]
@@ -21,6 +22,8 @@ public class CharacterDisplayController : MonoBehaviour {
     public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
 
     public Button drawButton;
+
+    //private Dictionary<string, StatusEffectDisplay> statusEffects;
 
     [SerializeField]
     private Character _character;
@@ -106,5 +109,13 @@ public class CharacterDisplayController : MonoBehaviour {
             slot.currentTurnDraggable.GetComponent<GraphicRaycaster>().enabled = enabled;
         }
         gr.enabled = myToggleState;
+    }
+
+    //Reset the character back to attacking if their display is right clicked
+    public void OnPointerClick(PointerEventData d){
+        if(d.button == PointerEventData.InputButton.Right && Character.CardToPlay != null){
+            GameManager.manager.PlaceCardInHand(Character.CardToPlay);
+            Character.CardToPlay = null;
+        }
     }
 }

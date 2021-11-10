@@ -53,6 +53,13 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
+    
+    public bool Incapacitated {
+        get {
+            return Defeated || Action == Enums.Action.Stunned;
+        }
+    }
+
     public CharacterData data;
 
     [SerializeField]
@@ -180,6 +187,13 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         Health = data.health;
         Corruption = data.corruption;
         Action = Enums.Action.Attack;
+    }
+
+    //Called once a resolve phase ends, reseting the character's status
+    public virtual void EndResolvePhase(){
+        GameManager.manager.Discard(CardToPlay);
+        _action = Enums.Action.Attack;
+        _cardToPlay = null;
     }
 
     

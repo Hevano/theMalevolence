@@ -136,8 +136,7 @@ public class GameManager : MonoBehaviour
         foreach(ITurnExecutable turn in turns){
             Character c = turn as Character;
             if(c != null){
-                Discard(c.CardToPlay);
-                c.CardToPlay = null;
+                c.EndResolvePhase();
             }
         }
     }
@@ -157,7 +156,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character)){
+            if(party.Contains(display.Character) && !display.Character.Defeated){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }
@@ -172,7 +171,7 @@ public class GameManager : MonoBehaviour
             foreach(TurnOrderSlot turnSlot in turnSlots)
             {
                 var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-                if(party.Contains(display.Character)){
+                if(party.Contains(display.Character) && !display.Character.Defeated){
                     display.ToggleDrawButton(false);
                 }
             }

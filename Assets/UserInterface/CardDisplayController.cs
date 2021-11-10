@@ -61,6 +61,11 @@ public class CardDisplayController : MonoBehaviour {
     public void Play()
     {
         var character = GameManager.manager.characters[CardData.Character];
+        if(character.Incapacitated){
+            //Display some error
+            StartCoroutine(CombatUIManager.Instance.DisplayMessage($"{character.data.name} is incapacitated and cannot play a card"));
+            return;
+        }
         character.CardToPlay = CardData;
         GetComponent<Draggable>().enabled = false;
         //Activate the cards designate targets function.
