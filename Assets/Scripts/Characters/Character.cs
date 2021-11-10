@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
+    //For scrolling health bars, healthbar should be it's own class that dictates how scrolling health works
     [SerializeField]
     private int _health;
     public int Health

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TheDriver
   m_EditorClassIdentifier: 
   characterType: 4
-  name: The Bus Driver
+  name: 
   health: 100
   corruption: 0
   avatar: {fileID: 8400000, guid: 5b58bd5636ffe6041a2fec17a9c7739c, type: 2}
