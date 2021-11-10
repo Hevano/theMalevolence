@@ -13,6 +13,7 @@ public class TurnOrderSlot : MonoBehaviour
         }
     }
 
+    //Place the CharacterDisplayController into this turn slot
     public void PlaceTurn(CharacterDisplayController display){
         currentTurnDraggable = display.GetComponent<Draggable>();
         display.currentTurnSlot = this;

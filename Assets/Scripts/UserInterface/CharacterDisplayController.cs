@@ -95,25 +95,39 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
 
     public TurnOrderSlot currentTurnSlot;
+
+
     public void Start(){
         Character = _character; //Cludgey workaround for initializing character events when character is set via the inspector
         var d = GetComponent<Draggable>();
         d.followMouse = false;
+
+        //Subscribe to the 'onDrag' event and execute code upon the event.
         d.onDrag += (drag, drop) =>{
             Vector3 pos = d.transform.position;
             pos.y = Input.mousePosition.y;
             transform.position = pos;
         };
+
+        //Subscribe to the 'onDragStart' event and execute code upon the event.
         d.onDragStart += (drag, drop) =>{
             ToggleRayCastOnOthers(false);
+            this._thumbtack.enabled = false;
         };
 
+        //Subscribe to the 'onDragStop' event and execute code upon the event.
         d.onDragStop += (drag, drop) =>{
             ToggleRayCastOnOthers(true);
+            this._thumbtack.enabled = true;
         };
+
         drawButton.onClick.AddListener(() => {
             GameManager.manager.Draw(Character.data.characterType);
         });
+
+
+
+
     }
 
     //Toggles the graphic raycast component on all other (Slightly jank, a better method probably exists)
@@ -133,4 +147,5 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             Character.CardToPlay = null;
         }
     }
+
 }
