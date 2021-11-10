@@ -51,6 +51,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
             ChangeHealth(Character.Health);
             ChangeCorruption(Character.Corruption);
+            ChangeName(Character.data.name);
             ChangeProfile(Character.data.avatar);
             ChangeThumbtack(Character.data.thumbtack);
 
@@ -69,6 +70,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public void ChangeThumbtack(Sprite newTack)
     {
         _thumbtack.sprite = newTack;
+    }
+    public void ChangeName(string name)
+    {
+        NameDisplay.text = name;
     }
     public void ChangeHealth(int currentHealth) {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
