@@ -20,11 +20,11 @@ public class CombatUIManager : MonoBehaviour {
             instance = this;
         else if (this != instance)
             Destroy(this);
+        PopupDamageText = Resources.Load<DamageText>("Prefabs/DamagePopUp");
     }
 
     // Start is called before the first frame update
     void Start() {
-        PopupDamageText = Resources.Load<DamageText>("Prefabs/DamagePopUp");
     }
 
     public void SetDamageText (int value, Transform location) {

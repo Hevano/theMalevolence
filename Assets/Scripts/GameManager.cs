@@ -253,8 +253,10 @@ public class GameManager : MonoBehaviour
         decks[Enums.Character.Nerd] = ch.data.Deck;
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
-        characters.TryGetValue(Enums.Character.Driver, out ch);
-        decks[Enums.Character.Driver] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.Driver, out ch))
+            decks[Enums.Character.Driver] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.PuzzleBox, out ch))
+            decks[Enums.Character.PuzzleBox] = ch.data.Deck;
     }
 
     //Initialize each character in party list established. 

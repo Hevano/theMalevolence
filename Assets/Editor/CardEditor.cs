@@ -8,7 +8,7 @@ public class CardEditor : Editor {
     Card card;
     SerializedObject GetTarget;
     CardEffectsMaker effectMaker;
-    bool displayBools;
+    static bool displayBools;
 
     #region CARD DATA
     SerializedProperty CardName;
@@ -72,8 +72,8 @@ public class CardEditor : Editor {
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Corruption Effects", EditorStyles.boldLabel);
-            //if (card.BossCard)
-            //    EditorGUILayout.PropertyField(CardBossCorTargets);
+            if (card.BossCard)
+                EditorGUILayout.PropertyField(CardBossCorTargets);
             EditorGUILayout.LabelField("Pass");
             InsertCardEffectFields(CardCorPass, 1);
             EditorGUILayout.Space();

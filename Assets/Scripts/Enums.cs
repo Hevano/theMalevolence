@@ -76,7 +76,6 @@ public static class Enums {
         All_Enemy,
         Before_Self,
         After_Self,
-        First_and_Last,
         Second_Ally
     }
 

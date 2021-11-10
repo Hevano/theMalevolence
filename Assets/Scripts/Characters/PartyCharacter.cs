@@ -42,7 +42,6 @@ public class PartyCharacter : Character
         InvokeAttackHandler(target, ref damage);
         
         target.Health -= damage.Value;
-        CombatUIManager.Instance.SetDamageText(damage.Value, target.transform);
     }
 
     //Executes the character's turn, where they either play their card or attack
