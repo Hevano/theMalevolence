@@ -12,6 +12,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private Text _cptxt;
     [SerializeReference]
     private Text _nametxt;
+    [SerializeReference]
+    private RawImage _profile;
+    [SerializeReference]
+    private Image _thumbtack;
+
     //Temporary UI for alpha
     [SerializeReference]
     private Text _actiontxt;
@@ -46,6 +51,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
             ChangeHealth(Character.Health);
             ChangeCorruption(Character.Corruption);
+            ChangeProfile(Character.data.avatar);
+            ChangeThumbtack(Character.data.thumbtack);
 
             _character.onActionChange += ChangeAction;
         }
@@ -55,6 +62,14 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         drawButton.gameObject.SetActive(enabled);
     }
 
+    //Setters for the CharacterDisplay Prefab
+    public void ChangeProfile(Texture newProfile) {
+        _profile.texture = newProfile;
+    }
+    public void ChangeThumbtack(Sprite newTack)
+    {
+        _thumbtack.sprite = newTack;
+    }
     public void ChangeHealth(int currentHealth) {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
     }
