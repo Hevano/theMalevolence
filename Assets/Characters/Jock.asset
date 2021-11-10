@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Jock
   m_EditorClassIdentifier: 
   characterType: 1
-  name: Jockular
+  name: Jock
   health: 25
   corruption: 0
-  avatar: {fileID: 0}
+  avatar: {fileID: 8400000, guid: 90bebba8b4299a14da2b84763f688b98, type: 2}
+  thumbtack: {fileID: 21300000, guid: 0dbf5b5894a743b4986074f393d468d3, type: 3}
   cards:
   - {fileID: 11400000, guid: 81478fe56cd871242bda1d0f8e5911f1, type: 2}
   - {fileID: 11400000, guid: 4fac6d2b9aa7d2b4c985e1bf52784b5c, type: 2}

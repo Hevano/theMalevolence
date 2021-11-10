@@ -64,6 +64,11 @@ public class CombatUIManager : MonoBehaviour {
         cardRectTransform.offsetMin = new Vector2(0, 120);
         cardRectTransform.sizeDelta = new Vector2(60, 90);
         yield return new WaitForSeconds(duration);
+        displayText.text = "Press any key to continue";
+        while(!Input.anyKey){
+            yield return new WaitForEndOfFrame();
+        }
+        displayText.text = "";
         Destroy(display.gameObject);
     }
 
