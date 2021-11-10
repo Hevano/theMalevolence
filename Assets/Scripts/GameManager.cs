@@ -229,6 +229,7 @@ public class GameManager : MonoBehaviour
     //Return card to discard pile. Note: doesn't remove from hand
     public void Discard(Card card){
         if(card == null) return;
+        if (card.Exiled) return;
         decks[card.Character].DiscardList.Add(card);
     }
 

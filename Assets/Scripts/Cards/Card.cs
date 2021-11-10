@@ -12,6 +12,8 @@ public class Card : ScriptableObject {
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
     [SerializeField] private bool exiled;
+    [SerializeField] private bool bossCard;
+    [SerializeField] private Enums.Target bossCorTargets;
 
     //[Header("Card Art")]
     [SerializeField] private Sprite cardFront;
@@ -30,10 +32,16 @@ public class Card : ScriptableObject {
     public string Description { get { return cardDescription; } }
     public string Flavor { get { return cardFlavor; } }
     public Enums.Character Character { get { return cardCharacter; } }
+
+    public bool Exiled { get { return exiled; } }
+    public bool BossCard { get { return bossCard; } }
+    public Enums.Target BossCorTargets { get { return bossCorTargets; } }
+
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
 
     public Character AllyTarget { get; set; }
+    public Character SecondAllyTarget { get; set; }
     public Character EnemyTarget { get; set; }
 
     private void SetList (List<CardEffect> effectsList, List<CardEffectsMaker> makerList) {
@@ -65,6 +73,9 @@ public class Card : ScriptableObject {
                     break;
                 case Enums.CardEffects.Vitality:
                     effectsList.Add(makerList[i].vitalityEffect);
+                    break;
+                case Enums.CardEffects.Solve:
+                    effectsList.Add(makerList[i].solveEffect);
                     break;
             }
         }
@@ -106,19 +117,22 @@ public class Card : ScriptableObject {
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             Character character;
             GameManager.manager.characters.TryGetValue(cardCharacter, out character);
-            if (character.CorruptionCheck())
-                for (int i = 0; i < cardCorPass.Count; i++){
-                    var effect = cardCorPass[i].GetEffect();
-                    effect.SetOwnerCard(this);
-                    yield return effect.ApplyEffect();
-                }
-                    
-            else
-                for (int i = 0; i < cardCorFail.Count; i++){
-                    var effect = cardCorFail[i].GetEffect();
-                    effect.SetOwnerCard(this);
-                    yield return effect.ApplyEffect();
-                }
+            if (bossCard) {
+                
+            } else {
+                if (character.CorruptionCheck())
+                    for (int i = 0; i < cardCorPass.Count; i++) {
+                        var effect = cardCorPass[i].GetEffect();
+                        effect.SetOwnerCard(this);
+                        yield return effect.ApplyEffect();
+                    } 
+                else
+                    for (int i = 0; i < cardCorFail.Count; i++) {
+                        var effect = cardCorFail[i].GetEffect();
+                        effect.SetOwnerCard(this);
+                        yield return effect.ApplyEffect();
+                    }
+            }
         }
 
         for (int i = 0; i < cardEffects.Count; i++){
@@ -156,6 +170,10 @@ public class Card : ScriptableObject {
             effect.SetOwnerCard(this);
             yield return effect.DesignateTarget();
         }
+    }
+
+    public void Exile() {
+        exiled = true;
     }
 
     /*

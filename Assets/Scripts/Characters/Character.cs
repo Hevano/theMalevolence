@@ -94,6 +94,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
     }
 
+    public bool Marked { get; set; }
+
+    private Animator animator;
+    public Animator Animator { get { return animator; } }
+
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
     public event StatChangeHandler onStatChange;
@@ -185,6 +190,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         Health = data.health;
         Corruption = data.corruption;
         Action = Enums.Action.Attack;
+        animator = GetComponent<Animator>();
     }
 
     
