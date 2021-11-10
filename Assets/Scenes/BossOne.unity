@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 846289399}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.5000001
+  m_Size: 0.50000006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4319,7 +4319,8 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: e6a8a6ec1e6e49b46afaad570bb17d86, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3461724694164276619, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
 --- !u!1001 &4376764104289657031
 PrefabInstance:
@@ -4408,7 +4409,8 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1204062182670178207, guid: f20d43b7b801cd04d9edaabfdd073b11, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f20d43b7b801cd04d9edaabfdd073b11, type: 3}
 --- !u!114 &4376764104289657032 stripped
 MonoBehaviour:
@@ -4504,7 +4506,8 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 34c64d631153c684587c3cb26c3178fc, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6606476924909737256, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
 --- !u!114 &6416874238983255967 stripped
 MonoBehaviour:
@@ -4600,7 +4603,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1469249544121950439, guid: 25a19e9098c205749a776ced6e398ad4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25a19e9098c205749a776ced6e398ad4, type: 3}
 --- !u!114 &6630067578136934688 stripped
 MonoBehaviour:
@@ -4708,7 +4712,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7679771541246720637, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
 --- !u!114 &8185431853395727170 stripped
 MonoBehaviour:
