@@ -18,7 +18,8 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Update(){
         if(hovering && Draggable.dragTarget != null && Input.GetMouseButtonUp(0)){
-            Debug.Log($"{Draggable.dragTarget.name} dropped in {name}");
+            Debug.Log($"<color=purple>DropZone.cs</color>:{Draggable.dragTarget.name} dropped in {name}");
+
             if(onDrop != null){
                 onDrop(Draggable.dragTarget, this);
             }

@@ -22,7 +22,7 @@ public class CardEffect {
     public IEnumerator DesignateTarget() {
         targets = new List<Character>();
 
-        Debug.Log("From Card Effect.cs, find target");
+        Debug.Log("<color=blue>CardEffect.cs</color>: find target");
         Character c;
         GameManager.manager.characters.TryGetValue(card.Character, out c);
 

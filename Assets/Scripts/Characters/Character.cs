@@ -160,6 +160,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         onAttack?.Invoke(target, ref d);
 	}
 
+    //Check to see if corruptioncheck passed or failed. (true = passed)
     public bool CorruptionCheck(){
         int corruptionValue = Corruption;
         if(onCorruptionCheckAttempt != null){
