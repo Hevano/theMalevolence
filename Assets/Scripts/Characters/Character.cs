@@ -160,17 +160,22 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         onAttack?.Invoke(target, ref d);
 	}
 
-    //Check to see if corruptioncheck passed or failed. (true = passed)
+    //Perform a corruption check and return the result (passed or failed, true/false).
     public bool CorruptionCheck(){
         int corruptionValue = Corruption;
-        if(onCorruptionCheckAttempt != null){
+
+        if (onCorruptionCheckAttempt != null){
             onCorruptionCheckAttempt(ref corruptionValue);
         }
+
         int corruptionCheck = Random.Range(1, 100);
+        
         bool result = corruptionCheck > corruptionValue;
+
         if(onCorruptionCheckResult != null){
             onCorruptionCheckResult(result);
         }
+
         return result;
     }
 
