@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         if(onPhaseChange != null){
             onPhaseChange(phase);
         }
-        Debug.Log("Planning phase");
+        Debug.Log("<color=yellow>Planning Phase</color>");
         while(phase == Enums.GameplayPhase.Planning)
         {
             yield return new WaitForEndOfFrame();
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
         
-        Debug.Log("Resolving Phase");
+        Debug.Log("<color=yellow>Resolving Phase</color>");
         turns = new List<ITurnExecutable>();
 
         foreach(TurnOrderSlot turnSlot in turnSlots)
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
     //Executes while turn is in draw phase
     public IEnumerator ExecuteDrawPhase(){
         phase = Enums.GameplayPhase.Draw;
-        Debug.Log("Draw phase");
+        Debug.Log("<color=yellow>Draw Phase</color>:");
         if(onPhaseChange != null){
             onPhaseChange(phase);
         }

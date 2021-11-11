@@ -54,7 +54,7 @@ public class PartyCharacter : Character
         }
         else if(Action == Enums.Action.Card && CardToPlay != null)
         {
-            Debug.Log($"{name} playing card {CardToPlay.Name}");
+            Debug.Log($"{data.name} playing card {CardToPlay.Name}");
             //CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
             yield return CombatUIManager.Instance.RevealCard(CardToPlay);
             //Execute the selected card from the dropzone.

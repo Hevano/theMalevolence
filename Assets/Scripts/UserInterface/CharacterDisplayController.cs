@@ -126,6 +126,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             this._thumbtack.enabled = true;
         };
 
+        _character.onCorruptionCheckAttempt += StartCorruptionCheck;
+        _character.onCorruptionCheckResult += ShowCorruptionCheck;
+
         drawButton.onClick.AddListener(() => {
             GameManager.manager.Draw(Character.data.characterType);
         });
@@ -133,6 +136,25 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
 
 
+    }
+
+    //For performing corruption checks, and providing some feedback for players.
+    public void StartCorruptionCheck(ref int corruptionValueForCheck)
+    {
+        //Enable a particle effect on corruption for the display controller, where the number is also highlighted
+        
+    }
+
+    //For performing corruption checks, and providing some feedback for players.
+    public void ShowCorruptionCheck(bool passed)
+    {
+        //depending on result, perform a 'drop corruption orb' effect, or 'merge' with the corruption value (just fade).
+        if (passed)
+        {
+
+
+        }
+        else { }
     }
 
     //Toggles the graphic raycast component on all other (Slightly jank, a better method probably exists)
