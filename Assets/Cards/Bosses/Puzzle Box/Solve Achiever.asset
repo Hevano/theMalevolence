@@ -19,9 +19,9 @@ MonoBehaviour:
   cardCharacter: 2
   exiled: 0
   bossCard: 0
-  keepInDeck: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  bossCorTargets: 0
+  cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
   - effectType: 10
     cardEffect:
@@ -58,6 +58,7 @@ MonoBehaviour:
       configuration: 1
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

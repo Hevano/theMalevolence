@@ -114,7 +114,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -135,15 +135,15 @@ ModelImporter:
       name: Achiever Idle
       takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 100
-      lastFrame: 100
+      firstFrame: 99
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -164,15 +164,15 @@ ModelImporter:
       name: Explorer Idle
       takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 200
-      lastFrame: 200
+      firstFrame: 199
+      lastFrame: 201
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -193,15 +193,15 @@ ModelImporter:
       name: Killer Idle
       takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 300
-      lastFrame: 300
+      firstFrame: 299
+      lastFrame: 301
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -222,15 +222,15 @@ ModelImporter:
       name: Socializer Idle
       takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 420
-      lastFrame: 420
+      firstFrame: 419
+      lastFrame: 421
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

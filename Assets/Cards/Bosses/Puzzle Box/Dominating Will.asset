@@ -18,7 +18,7 @@ MonoBehaviour:
   cardCharacter: 5
   exiled: 0
   bossCard: 1
-  keepInDeck: 1
+  bossCorTargets: 7
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
@@ -67,7 +67,7 @@ MonoBehaviour:
     cardEffect:
       target: 0
     afflictEffect:
-      target: 7
+      target: 1
       statusEffect: 4
     attackEffect:
       target: 0

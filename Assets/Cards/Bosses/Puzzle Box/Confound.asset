@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Confound
   m_EditorClassIdentifier: 
   cardName: Confound
-  cardDescription: 
+  cardDescription: The box begins to frustrate a character, forcing a corruption
+    check. On a pass, gain 10 corruption. On a fail, summon 2 Shards of Eternity.
   cardFlavor: 
   cardCharacter: 5
   exiled: 0
   bossCard: 1
-  keepInDeck: 1
+  bossCorTargets: 2
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects: []
@@ -58,8 +59,9 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
-      target: 2
+      target: 1
       vitalityType: 1
       value: 10
   cardCorFail:
@@ -97,7 +99,8 @@ MonoBehaviour:
       target: 0
       configuration: 0
     summonEffect:
-      target: 1
+      target: 3
+      Boss: 5
     vitalityEffect:
       target: 0
       vitalityType: 0

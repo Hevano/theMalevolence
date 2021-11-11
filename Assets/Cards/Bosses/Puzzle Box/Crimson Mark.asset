@@ -30,7 +30,7 @@ MonoBehaviour:
       target: 0
       statusEffect: 0
     attackEffect:
-      target: 4
+      target: 1
       dieNumber: 2
       dieSize: 4
       dieBonus: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     cardEffect:
       target: 0
     afflictEffect:
-      target: 4
+      target: 1
       statusEffect: 5
     attackEffect:
       target: 0

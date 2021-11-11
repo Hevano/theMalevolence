@@ -18,19 +18,19 @@ MonoBehaviour:
   cardCharacter: 5
   exiled: 0
   bossCard: 1
-  keepInDeck: 1
+  bossCorTargets: 4
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects: []
   cardCorPass:
-  - effectType: 2
+  - effectType: 9
     cardEffect:
       target: 0
     afflictEffect:
       target: 0
       statusEffect: 0
     attackEffect:
-      target: 4
+      target: 0
       dieNumber: 0
       dieSize: 0
       dieBonus: 0
@@ -58,16 +58,17 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
-      target: 0
-      vitalityType: 0
-      value: 0
+      target: 1
+      vitalityType: 1
+      value: 5
   cardCorFail:
   - effectType: 1
     cardEffect:
       target: 0
     afflictEffect:
-      target: 4
+      target: 1
       statusEffect: 8
     attackEffect:
       target: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

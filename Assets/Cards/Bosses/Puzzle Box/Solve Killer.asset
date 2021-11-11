@@ -17,11 +17,11 @@ MonoBehaviour:
     the correct configuration.
   cardFlavor: 
   cardCharacter: 1
-  exiled: 0
+  exiled: 1
   bossCard: 0
-  keepInDeck: 0
-  cardFront: {fileID: 0}
-  cardBack: {fileID: 0}
+  bossCorTargets: 0
+  cardFront: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
+  cardBack: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
   cardEffects:
   - effectType: 10
     cardEffect:
@@ -58,6 +58,7 @@ MonoBehaviour:
       configuration: 3
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

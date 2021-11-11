@@ -178,6 +178,13 @@ public class Card : ScriptableObject {
         List<Character> targets = new List<Character>();
         switch (bossCorTargets) {
             case Enums.Target.Ally:
+                if (AllyTarget == null) {
+                    int targ;
+                    do {
+                        targ = Random.Range(0, GameManager.manager.party.Count);
+                    } while (GameManager.manager.party[targ].Defeated);
+                    AllyTarget = GameManager.manager.party[targ];
+                }
                 targets.Add(AllyTarget);
                 break;
             case Enums.Target.All_Ally:

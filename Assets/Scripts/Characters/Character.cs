@@ -53,6 +53,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
+            OnDeath();
             GameManager.manager.CheckGameOver();
         }
     }
@@ -102,8 +103,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     public bool Marked { get; set; }
 
-    private Animator animator;
-    public Animator Animator { get { return animator; } }
+    protected Animator animator;
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
@@ -192,11 +192,14 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return target;
     }
 
+    void Awake() {
+        animator = GetComponent<Animator>();
+    }
+
     public virtual void Start(){
         Health = data.health;
         Corruption = data.corruption;
         Action = Enums.Action.Attack;
-        animator = GetComponent<Animator>();
     }
 
     //Called once a resolve phase ends, reseting the character's status
@@ -205,6 +208,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         _action = Enums.Action.Attack;
         _cardToPlay = null;
     }
+
+    protected virtual void OnDeath() { return; }
 
     
 

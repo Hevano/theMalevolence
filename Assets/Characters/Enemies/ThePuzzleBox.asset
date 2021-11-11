@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThePuzzleBox
   m_EditorClassIdentifier: 
   characterType: 5
-  name: The Puzzle Box of Ahl'zarrath
+  name: The Puzzle Box
   health: 200
   corruption: 0
   avatar: {fileID: 0}
@@ -30,9 +30,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0aa40a5aa38d6c648b8ea135c7de5f35, type: 2}
   - {fileID: 11400000, guid: 140690b13548c3049acc424e4f23dcb5, type: 2}
   - {fileID: 11400000, guid: 63f98e44cbe4ff345aa9e2bd6cb1dfb1, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8669eadb46776a7418070f0c639e9630, type: 2}
+  - {fileID: 11400000, guid: c389ddd7cd01d0947be1a5c4f20e0db5, type: 2}
+  - {fileID: 11400000, guid: 47805949f50b5c143b9fbdafb15ca72e, type: 2}
   basicAttack:
     dieNum: 1
     dieSize: 6

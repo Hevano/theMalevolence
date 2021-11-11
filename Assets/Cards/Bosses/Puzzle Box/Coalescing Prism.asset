@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coalescing Prism
   m_EditorClassIdentifier: 
   cardName: Coalescing Prism
-  cardDescription: 
+  cardDescription: Destroys all Shards of Eternity, dealing heavy damage to all characters.
   cardFlavor: 
   cardCharacter: 5
   exiled: 0
