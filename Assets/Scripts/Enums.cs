@@ -7,14 +7,7 @@ public static class Enums {
     public enum StatusEffects {
         CorruptionShield,
         ExtraCard,
-        Protected,
-        BackTalk,
-        Stun,
-        Mark,
-        WeakenWeapon,
-        WeakenArmor,
-        DiscardCharCards,
-        Silence
+        Protected
     }
 
     public enum CardEffects {
@@ -27,8 +20,7 @@ public static class Enums {
         Modify,
         Reshuffle,
         Summon,
-        Vitality,
-        Solve
+        Vitality
     }
 
     /** <summary>A list of possible player characters.</summary> */
@@ -37,8 +29,7 @@ public static class Enums {
         Jock,
         Nerd,
         Popular,
-        Driver,
-        PuzzleBox
+        Driver
     };
 
     /** <summary>A list of possible actions a character can take</summary> */
@@ -61,9 +52,7 @@ public static class Enums {
         Cards_Played,
         Corruption,
         Hand_Size,
-        Health,
-        Marked,
-        Discards
+        Health
     }
 
     /** <summary>Targeting options for card effects</summary> */
@@ -73,10 +62,7 @@ public static class Enums {
         Ally,
         Enemy,
         All_Ally,
-        All_Enemy,
-        Before_Self,
-        After_Self,
-        Second_Ally
+        All_Enemy
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */
@@ -102,13 +88,5 @@ public static class Enums {
         Increase,
         Decrease,
         Any
-    }
-
-    public enum PuzzleBoxConfigurations {
-        Default,
-        Achiever,
-        Explorer,
-        Killer,
-        Socializer
     }
 }

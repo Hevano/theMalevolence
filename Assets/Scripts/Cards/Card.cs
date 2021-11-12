@@ -12,8 +12,6 @@ public class Card : ScriptableObject {
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
     [SerializeField] private bool exiled;
-    [SerializeField] private bool bossCard;
-    [SerializeField] private Enums.Target bossCorTargets;
 
     //[Header("Card Art")]
     [SerializeField] private Sprite cardFront;
@@ -32,16 +30,10 @@ public class Card : ScriptableObject {
     public string Description { get { return cardDescription; } }
     public string Flavor { get { return cardFlavor; } }
     public Enums.Character Character { get { return cardCharacter; } }
-
-    public bool Exiled { get { return exiled; } }
-    public bool BossCard { get { return bossCard; } }
-    public Enums.Target BossCorTargets { get { return bossCorTargets; } }
-
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
 
     public Character AllyTarget { get; set; }
-    public Character SecondAllyTarget { get; set; }
     public Character EnemyTarget { get; set; }
 
     private void SetList (List<CardEffect> effectsList, List<CardEffectsMaker> makerList) {
@@ -73,9 +65,6 @@ public class Card : ScriptableObject {
                     break;
                 case Enums.CardEffects.Vitality:
                     effectsList.Add(makerList[i].vitalityEffect);
-                    break;
-                case Enums.CardEffects.Solve:
-                    effectsList.Add(makerList[i].solveEffect);
                     break;
             }
         }
@@ -117,22 +106,19 @@ public class Card : ScriptableObject {
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             Character character;
             GameManager.manager.characters.TryGetValue(cardCharacter, out character);
-            if (bossCard) {
-                yield return BossCorruptionCheck();
-            } else {
-                if (character.CorruptionCheck())
-                    for (int i = 0; i < cardCorPass.Count; i++) {
-                        var effect = cardCorPass[i].GetEffect();
-                        effect.SetOwnerCard(this);
-                        yield return effect.ApplyEffect();
-                    } 
-                else
-                    for (int i = 0; i < cardCorFail.Count; i++) {
-                        var effect = cardCorFail[i].GetEffect();
-                        effect.SetOwnerCard(this);
-                        yield return effect.ApplyEffect();
-                    }
-            }
+            if (character.CorruptionCheck())
+                for (int i = 0; i < cardCorPass.Count; i++){
+                    var effect = cardCorPass[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
+                    
+            else
+                for (int i = 0; i < cardCorFail.Count; i++){
+                    var effect = cardCorFail[i].GetEffect();
+                    effect.SetOwnerCard(this);
+                    yield return effect.ApplyEffect();
+                }
         }
 
         for (int i = 0; i < cardEffects.Count; i++){
@@ -162,79 +148,14 @@ public class Card : ScriptableObject {
             //cardEffect.card was not being set properly, this is a workaround
             var effect = cardCorPass[i].GetEffect();
             effect.SetOwnerCard(this);
-            if (!bossCard)
-                yield return effect.DesignateTarget();
+            yield return effect.DesignateTarget();
         }
 
         for (int i = 0; i < cardCorFail.Count; i++) {
             var effect = cardCorFail[i].GetEffect();
             effect.SetOwnerCard(this);
-            if (!bossCard)
-                yield return effect.DesignateTarget();
+            yield return effect.DesignateTarget();
         }
-    }
-
-    public IEnumerator BossCorruptionCheck () {
-        List<Character> targets = new List<Character>();
-        switch (bossCorTargets) {
-            case Enums.Target.Ally:
-                if (AllyTarget == null) {
-                    int targ;
-                    do {
-                        targ = Random.Range(0, GameManager.manager.party.Count);
-                    } while (GameManager.manager.party[targ].Defeated);
-                    AllyTarget = GameManager.manager.party[targ];
-                }
-                targets.Add(AllyTarget);
-                break;
-            case Enums.Target.All_Ally:
-                targets.AddRange(GameManager.manager.party);
-                break;
-            case Enums.Target.After_Self:
-                targets.Add((Character)GameManager.manager.turns[3]);
-                targets.Add((Character)GameManager.manager.turns[4]);
-                break;
-            case Enums.Target.Before_Self:
-                targets.Add((Character)GameManager.manager.turns[0]);
-                targets.Add((Character)GameManager.manager.turns[1]);
-                break;
-        }
-
-        foreach (Character c in targets) {
-            if (c.CorruptionCheck())
-                for (int i = 0; i < cardCorPass.Count; i++) {
-                    var effect = cardCorPass[i].GetEffect();
-                    effect.SetOwnerCard(this);
-                    effect.ResetTargets();
-                    switch (effect.Target) {
-                        case Enums.Target.Self:
-                            effect.AddTarget(c);
-                            break;
-                        case Enums.Target.Enemy:
-                            effect.AddTarget(GameManager.manager.foes[0]);
-                            break;
-                    }
-                    yield return effect.ApplyEffect();
-                } else
-                for (int i = 0; i < cardCorFail.Count; i++) {
-                    var effect = cardCorFail[i].GetEffect();
-                    effect.SetOwnerCard(this);
-                    effect.ResetTargets();
-                    switch (effect.Target) {
-                        case Enums.Target.Self:
-                            effect.AddTarget(c);
-                            break;
-                        case Enums.Target.Enemy:
-                            effect.AddTarget(GameManager.manager.foes[0]);
-                            break;
-                    }
-                    yield return effect.ApplyEffect();
-                }
-        }
-    }
-
-    public void Exile() {
-        exiled = true;
     }
 
     /*

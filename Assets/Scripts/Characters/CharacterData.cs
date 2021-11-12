@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu]
 public class CharacterData : ScriptableObject
@@ -13,8 +12,7 @@ public class CharacterData : ScriptableObject
     public new string name;
     public int health;
     public int corruption;
-    public Texture avatar;
-    public Sprite thumbtack;
+    public GameObject avatar;
 
     [SerializeField] private List<Card> cards = new List<Card>();
 

@@ -14,7 +14,6 @@ public class CardEffectsMaker {
     public InsertEffect insertEffect = new InsertEffect();
     public ModifierEffect modifyEffect = new ModifierEffect();
     public ReshuffleEffect reshuffleEffect = new ReshuffleEffect();
-    public SolveEffect solveEffect = new SolveEffect();
     public SummonEffect summonEffect = new SummonEffect();
     public VitalityEffect vitalityEffect = new VitalityEffect();
     
@@ -27,7 +26,6 @@ public class CardEffectsMaker {
         insertEffect.SetOwnerCard(c);
         modifyEffect.SetOwnerCard(c);
         reshuffleEffect.SetOwnerCard(c);
-        solveEffect.SetOwnerCard(c);
         summonEffect.SetOwnerCard(c);
         vitalityEffect.SetOwnerCard(c);
     }
@@ -48,8 +46,6 @@ public class CardEffectsMaker {
                 return modifyEffect;
             case Enums.CardEffects.Reshuffle:
                 return reshuffleEffect;
-            case Enums.CardEffects.Solve:
-                return solveEffect;
             case Enums.CardEffects.Summon:
                 return summonEffect;
             case Enums.CardEffects.Vitality:

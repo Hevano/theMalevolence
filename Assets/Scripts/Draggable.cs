@@ -23,7 +23,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public DropZone zone;
     public DropZone returnDropZone;
     public void OnPointerDown(PointerEventData data){
-        if(planningPhaseOnly && GameManager.manager != null && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
+        if(planningPhaseOnly && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragTarget = this;
         dragging = true;
         if(onDragStart != null){
@@ -35,7 +35,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void OnPointerUp(PointerEventData data){
-        if(planningPhaseOnly && GameManager.manager != null && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
+        if(planningPhaseOnly && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragging = false;
         letGo = true;
         GetComponent<GraphicRaycaster>().enabled = true;

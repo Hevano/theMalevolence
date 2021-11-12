@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Slam and Break
   m_EditorClassIdentifier: 
-  cardName: Slam and Break
-  cardDescription: The party member with the highest HP takes 3d6 damage.. All party
-    members must pass a corruption check or take 1d6 damage.
+  cardName: 
+  cardDescription: 
   cardFlavor: 
-  cardCharacter: 4
+  cardCharacter: 0
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}

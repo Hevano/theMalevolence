@@ -24,9 +24,6 @@ public class ModifierEffect : CardEffect {
         switch (modifierFactor) {
             case Enums.ModifierFactors.Cards_Played:
                 int cardsPlayed = 0;
-                foreach (Character c in GameManager.manager.party)
-                    if (c.Action == Enums.Action.Card)
-                        cardsPlayed++;
                 value = (cardsPlayed / perFactorValue) * modifierPerFactor;
                 break;
             case Enums.ModifierFactors.Corruption:
@@ -45,15 +42,6 @@ public class ModifierEffect : CardEffect {
                     GameManager.manager.characters.TryGetValue(card.Character, out target);
                 int hp = target.data.health - target.Health;
                 value = (hp / perFactorValue) * modifierPerFactor;
-                break;
-            case Enums.ModifierFactors.Marked:
-                if (targets[0].Marked)
-                    value = 1;
-                break;
-            case Enums.ModifierFactors.Discards:
-                Deck deck;
-                GameManager.manager.decks.TryGetValue(targets[0].data.characterType, out deck);
-                value = deck.DiscardList.Count;
                 break;
         }
 

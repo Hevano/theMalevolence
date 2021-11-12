@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Hail to the bus driver
   m_EditorClassIdentifier: 
-  cardName: Hail to The Bus Driver
-  cardDescription: All party members gain 10 corruption. All party members must make
-    a corruption check. On pass, they gain an additional 10 corruption. On fail,
-    all of their cards are discarded from your hand.
+  cardName: Hail to the bus driver
+  cardDescription: Hail to the bus driver!
   cardFlavor: Hail to the bus driver!
   cardCharacter: 4
   exiled: 0
@@ -30,9 +28,7 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      dieNumber: 0
-      dieSize: 0
-      dieBonus: 0
+      damageBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -67,9 +63,7 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      dieNumber: 0
-      dieSize: 0
-      dieBonus: 0
+      damageBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:

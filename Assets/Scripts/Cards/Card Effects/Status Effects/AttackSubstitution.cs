@@ -13,8 +13,16 @@ public class AttackSubstitution : StatusEffect {
 
     public void Substitute(Character source, ref Character target){
         target.onTargeted -= Substitute;
-        if((source as EnemyCharacter) != null){
+        if(source.enemy){
             target = substitutionCharacter;
         }
     }
+
+    /*
+        New Targetting system:
+        - Targetable.getTargetable requires a Character source
+        - Character.Target requires a character source, returns a Character that is the target
+        - Character.onTarget events can see the source and change the target
+    
+    */
 }

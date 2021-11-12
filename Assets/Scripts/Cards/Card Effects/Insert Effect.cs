@@ -10,13 +10,6 @@ public class InsertEffect : CardEffect {
 
     /** <summary>Applies the effect onto the relevant targets</summary> */
     public override IEnumerator ApplyEffect () {
-        //If target is "None", that means put the card in the "toInsert"'s chosen character
-        if (target == Enums.Target.None) {
-            targets.Clear();
-            Character owner;
-            GameManager.manager.characters.TryGetValue(toInsert.Character, out owner);
-            targets.Add(owner);
-        }
         //Apply effect on each target
         foreach (Character c in targets) {
             //Pull a deck
@@ -26,7 +19,7 @@ public class InsertEffect : CardEffect {
             toInsert.ChangeOwner(c.data.characterType);
             deck.AddCard(toInsert);
             //Inform the player what just happened
-            yield return CombatUIManager.Instance.DisplayMessage($"Added {toInsert.Name} to {c.data.name}'s deck", 3f);
+            yield return CombatUIManager.Instance.DisplayMessage($"Added {toInsert.Name} to {c.data.name}'s deck");
         }
         yield return new WaitForSeconds(1f);
     }

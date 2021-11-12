@@ -26,10 +26,13 @@ public class VitalityEffect : CardEffect {
                     //Inform the player what just happened
                     //If value is positive, Health was restored, color = green
                     //If value is negative, Health was lost, color = white
-                    if (value > 0)
+                    if (value > 0) {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, Color.green);
                         yield return CombatUIManager.Instance.DisplayMessage($"{c.name} restored {value} HP");
-                    else
+                    } else {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform);
                         yield return CombatUIManager.Instance.DisplayMessage($"{c.name} lost {value} HP");
+                    }
                     break;
                 //Modify the character's corruption
                 case Enums.VitalityType.Corruption:
@@ -39,11 +42,14 @@ public class VitalityEffect : CardEffect {
                     if (c.Corruption > 100) c.Corruption = 100;
                     //Inform the player what just happened
                     //If value is positive, Corruption was gained, color = purple
-                    //If value is negative, Corruption was cleansed, color = purple
-                    if (value < 0)
+                    //If value is negative, Corruption was cleansed, color = yellow
+                    if (value < 0) {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, Color.yellow);
                         yield return CombatUIManager.Instance.DisplayMessage($"{c.name} cleansed {value} Corruption");
-                    else
+                    } else {
+                        CombatUIManager.Instance.SetDamageText(value, c.transform, new Color32(139, 0, 139, 0));
                         yield return CombatUIManager.Instance.DisplayMessage($"{c.name} gained {value} Corruption");
+                    }
                     break;
             }
         }
