@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Popular
   m_EditorClassIdentifier: 
   characterType: 3
-  name: Popular Kid
+  name: Jacklyn Hawwt
   health: 20
   corruption: 0
-  avatar: {fileID: 0}
+  avatar: {fileID: 8400000, guid: 0a0759814335ccd40be7ea1ea1821412, type: 2}
+  thumbtack: {fileID: 21300000, guid: 4c57132217d5b184ebf8975f49da1560, type: 3}
   cards:
   - {fileID: 11400000, guid: cf76f1b16596a1e4189922023c6db010, type: 2}
   - {fileID: 11400000, guid: 5b07e26b710520e408594ae3827f0433, type: 2}
   - {fileID: 11400000, guid: 83bc2bab0e96dde4ea1d1f03ece1ff77, type: 2}
   - {fileID: 11400000, guid: 44dc20ecb35dc2740a160f3887b199ed, type: 2}
+  basicAttack:
+    dieNum: 1
+    dieSize: 6
+    bonus: 0

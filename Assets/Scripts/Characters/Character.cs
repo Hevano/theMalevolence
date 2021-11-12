@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, ITurnExecutable, ITargetable
+public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
-    //For scrolling health bars, healthbar should be it's own class that dictates how scrolling health works
     [SerializeField]
     private int _health;
     public int Health
@@ -17,8 +16,12 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("health", ref _health, ref newValue);
             }
+            if (_health > newValue)
+                CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
+            else
+                CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
             _health = newValue;
-            if(Health == 0){
+            if (Health == 0){
                 Defeated = true;
             }
         }
@@ -35,10 +38,10 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("corruption", ref _corruption, ref value);
             }
+            CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
         }
     }
-    public bool enemy = false; //ONCE WE MAKE A CHILD CLASS FOR CHARS AND BOSSES, REMOVE THIS 
 
     private bool _defeated = false;
     public bool Defeated
@@ -50,15 +53,23 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
+            OnDeath();
             GameManager.manager.CheckGameOver();
+        }
+    }
+
+    
+    public bool Incapacitated {
+        get {
+            return Defeated || Action == Enums.Action.Stunned;
         }
     }
 
     public CharacterData data;
 
     [SerializeField]
-    private Card _cardToPlay = null;
-    public Card CardToPlay
+    protected Card _cardToPlay = null;
+    public virtual Card CardToPlay
     {
         get
         {
@@ -66,43 +77,39 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set {
             var newCard = value;
-            if (enemy == true)
-            {
-                newCard = value;
-            }
-            else if (CardToPlay != null && newCard != null){
-                GameManager.manager.PlaceCardInHand(CardToPlay);
-            }
-            if((onActionChange != null)){
-                onActionChange(_cardToPlay, newCard);
-            }
-            if(!enemy){
-                _cardToPlay = newCard;
-            }
-            if(CardToPlay != null){
-                action = Enums.Action.Card;
+            _cardToPlay = newCard;
+            if(_cardToPlay != null){
+                Action = Enums.Action.Card;
             } else {
-                action = Enums.Action.Attack;
+                Action = Enums.Action.Attack;
             }
         }
     }
 
-    public Enums.Action action;
+    private Enums.Action _action = Enums.Action.Attack;
 
-    public string CardToPlayName
-    {
-        get
-        {
-            //I think the enemy card isnt established, which is why this doesnt work. It's accessing a null object -For kevin
-            return _cardToPlay.Name;
+    public Enums.Action Action {
+        get{
+            return _action;
+        }
+        set{
+            var newAction = value;
+            if((onActionChange != null)){
+                onActionChange(_action, newAction);
+            }
+            _action = newAction;
         }
     }
+
+    public bool Marked { get; set; }
+
+    protected Animator animator;
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
     public event StatChangeHandler onStatChange;
 
-    public delegate void ActionChangeHandler(Card prev, Card newCard);
+    public delegate void ActionChangeHandler(Enums.Action prev, Enums.Action newAction);
     public ActionChangeHandler onActionChange;
 
     //Modifying corruptionValueForCheck will change the int the random roll is compared to
@@ -115,18 +122,72 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public event TurnHandler onTurnStart;
     public event TurnHandler onTurnEnd;
 
-    //Targeting system may need to be modified to expose 'who' requests a target
     public delegate void TargetedHandler(Character source, ref Character target);
     public event TargetedHandler onTargeted;
 
+    public delegate void AttackHandler(Character target, ref Damage d);
+    public event AttackHandler onAttack;
+
+
+    //Event wrappers to allow events to be invoked in child classes
+
+    protected void InvokeStatChangeHandler(string statName, ref int oldValue, ref int newValue){
+        onStatChange?.Invoke(statName, ref oldValue, ref newValue);
+	}
+
+    protected void InvokeActionChangeHandler(Enums.Action prev, Enums.Action newAction){
+        onActionChange?.Invoke(prev, newAction);
+	}
+    protected void InvokeCorruptionCheckAttemptHandler(ref int corruptionValueForCheck){
+        onCorruptionCheckAttempt?.Invoke(ref corruptionValueForCheck);
+	}
+
+    protected void InvokeCorruptionCheckResultHandler(bool passed){
+        onCorruptionCheckResult?.Invoke(passed);
+	}
+    protected void InvokeTurnStartHandler(){
+        onTurnStart?.Invoke();
+	}
+    protected void InvokeTurnEndHandler(){
+        onTurnEnd?.Invoke();
+	}
+
+    protected void InvokeTargetedHandler(Character source, ref Character target){
+        onTargeted?.Invoke(source, ref target);
+	}
+
+    protected void InvokeAttackHandler(Character target, ref Damage d){
+        onAttack?.Invoke(target, ref d);
+	}
+
+    //Perform a corruption check and return the result (passed or failed, true/false).
     public bool CorruptionCheck(){
         int corruptionValue = Corruption;
-        if(onCorruptionCheckAttempt != null){
+
+        if (onCorruptionCheckAttempt != null){
             onCorruptionCheckAttempt(ref corruptionValue);
         }
+
         int corruptionCheck = Random.Range(1, 100);
-        return corruptionCheck > corruptionValue;
+        
+        bool result = corruptionCheck > corruptionValue;
+
+        if(onCorruptionCheckResult != null){
+            onCorruptionCheckResult(result);
+        }
+
+        return result;
     }
+
+    
+
+    /*
+        New Targetting system:
+        - Targetable.getTargetable requires a Character source
+        - Character.Targeted requires a character source, returns a Character that is the target
+        - Character.onTarget events can see the source and change the target
+    
+    */
 
     //Called whenever a character is targetted. Returns the actual target, which will most likely be that character
     public Character Targeted(Character source){
@@ -137,65 +198,27 @@ public class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return target;
     }
 
-    void Start(){
+    void Awake() {
+        animator = GetComponent<Animator>();
+    }
+
+    public virtual void Start(){
         Health = data.health;
         Corruption = data.corruption;
+        Action = Enums.Action.Attack;
     }
 
-    //Pull current characters basic attack (can create new one and save to the data object for specific chars)
-    public IEnumerator BasicAttack(Damage damage = null){
-        yield return Targetable.GetTargetable(Enums.TargetType.Foes, this, "Select the boss", 1);
-        Character target = (Character)Targetable.currentTargets[0];
-        int value = damage == null ? data.basicAttack.Value : damage.Value;
-        target.Health -= value;
-        CombatUIManager.Instance.SetDamageText(data.basicAttack.Value, target.transform);
+    //Called once a resolve phase ends, reseting the character's status
+    public virtual void EndResolvePhase(){
+        GameManager.manager.Discard(CardToPlay);
+        _action = Enums.Action.Attack;
+        _cardToPlay = null;
     }
+
+    protected virtual void OnDeath() { return; }
+
+    
 
     //Temporary implementation of character's turn
-    public IEnumerator GetTurn(){
-
-        Debug.Log($"{name}'s turn");
-        if(Defeated)
-        {
-            Debug.Log($"{data.name} has been defeated and cannot continue the fight");
-        }
-        else if(action == Enums.Action.Card && CardToPlay != null)
-        {
-            Debug.Log($"{name} playing card {CardToPlay.Name}");
-            CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
-            //Execute the selected card from the dropzone.
-            yield return CardToPlay.Activate();
-        }
-        else
-        {
-            //Do a damage attack
-            if (!enemy) {
-               yield return BasicAttack();
-            } else {
-
-                Character target;
-
-                do {
-                    target = GameManager.manager.party[Random.Range(1, 4)];
-                    Debug.Log("Picking target");
-                    //temp
-                    target = GameManager.manager.party[2];
-                } while (target.Defeated == true);
-                target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
-                int dmg = data.basicAttack.Value;
-                Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
-                StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));
-
-                //Damage health
-                target.Health -= dmg;
-                CombatUIManager.Instance.SetDamageText(dmg, target.transform);
-                yield return new WaitForSeconds(0.25f);
-                //Increase corruption
-                target.Corruption += dmg * 2;
-                CombatUIManager.Instance.SetDamageText(dmg * 2, target.transform, new Color32(139, 0, 139, 0));
-            }
-
-        }
-        yield return new WaitForSeconds(1f);
-    }
+    public abstract IEnumerator GetTurn();
 }
