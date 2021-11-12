@@ -13,47 +13,14 @@ MonoBehaviour:
   m_Name: Crazed Flailing
   m_EditorClassIdentifier: 
   cardName: Crazed Flailing
-  cardDescription: Each character acting before the boss take damage
+  cardDescription: Each party member acting before the boss takes 2d6+3 damage. All
+    party members must pass a corruption check or begin next turn stunned.
   cardFlavor: He's gone mad
   cardCharacter: 4
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
-  - effectType: 2
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 0
-      damageBonus: 5
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    summonEffect:
-      target: 0
-    vitalityEffect:
-      target: 0
-      vitalityType: 0
-      value: 0
   - effectType: 0
     cardEffect:
       target: 0
@@ -62,7 +29,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:

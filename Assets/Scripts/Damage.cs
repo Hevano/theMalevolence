@@ -4,9 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class ValueRange {
-    protected int dieNum;
-    protected int dieSize;
-    protected int bonus;
+    public int dieNum;
+    public int dieSize;
+    public int bonus;
 
     public int Max {
         get {
@@ -44,6 +44,9 @@ public class ValueRange {
 public class Damage : ValueRange
 {
     public Damage(int dieNum, int dieSize, int bonus = 0) : base(dieNum, dieSize, bonus){
+        
+    }
+    public Damage(Damage d) : base(d.dieNum, d.dieSize, d.bonus){
         
     }
 }

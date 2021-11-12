@@ -34,7 +34,6 @@ public class AttackEffect : CardEffect {
         foreach (Character c in targets) {
             int value = damage.Value;
             c.Health -= value;
-            CombatUIManager.Instance.SetDamageText(value, c.transform);
         }
         yield return new WaitForSeconds(1f);
     }

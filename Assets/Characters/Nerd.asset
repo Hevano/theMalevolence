@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Nerd
   m_EditorClassIdentifier: 
   characterType: 2
-  name: Nerd
+  name: Zoey Booker
   health: 15
   corruption: 0
-  avatar: {fileID: 0}
+  avatar: {fileID: 8400000, guid: 3368faa2f3e513c4d9994eb69fad60f0, type: 2}
+  thumbtack: {fileID: 21300000, guid: a67d996eb672f9448ab3b1fdc393287c, type: 3}
   cards:
   - {fileID: 11400000, guid: 215c301b9b849714c89d2e705e23c9f2, type: 2}
   - {fileID: 11400000, guid: f7b43d373e364844abc6aa3b30b93da8, type: 2}
   - {fileID: 11400000, guid: 9942ede4635a5c143897cfbdcfc62862, type: 2}
   - {fileID: 11400000, guid: 9c3fd646e0cca914a8f3e0b17cc71501, type: 2}
+  basicAttack:
+    dieNum: 1
+    dieSize: 6
+    bonus: 0

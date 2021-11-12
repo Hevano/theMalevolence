@@ -8,6 +8,7 @@ public class CardEditor : Editor {
     Card card;
     SerializedObject GetTarget;
     CardEffectsMaker effectMaker;
+    static bool displayBools;
 
     #region CARD DATA
     SerializedProperty CardName;
@@ -15,6 +16,8 @@ public class CardEditor : Editor {
     SerializedProperty CardFlavor;
     SerializedProperty CardCharacter;
     SerializedProperty CardExile;
+    SerializedProperty CardBossCard;
+    SerializedProperty CardBossCorTargets;
     SerializedProperty CardFront;
     SerializedProperty CardBack;
     SerializedProperty CardEffects;
@@ -33,6 +36,8 @@ public class CardEditor : Editor {
         CardFlavor = GetTarget.FindProperty("cardFlavor");
         CardCharacter = GetTarget.FindProperty("cardCharacter");
         CardExile = GetTarget.FindProperty("exiled");
+        CardBossCard = GetTarget.FindProperty("bossCard");
+        CardBossCorTargets = GetTarget.FindProperty("bossCorTargets");
         CardFront = GetTarget.FindProperty("cardFront");
         CardBack = GetTarget.FindProperty("cardBack");
         CardEffects = GetTarget.FindProperty("cardEffects");
@@ -50,7 +55,11 @@ public class CardEditor : Editor {
             EditorGUILayout.PropertyField(CardDescription);
             EditorGUILayout.PropertyField(CardFlavor);
             EditorGUILayout.PropertyField(CardCharacter);
-            EditorGUILayout.PropertyField(CardExile);
+            displayBools = EditorGUILayout.Foldout(displayBools, "Extra Card Options");
+            if (displayBools) {
+                EditorGUILayout.PropertyField(CardExile);
+                EditorGUILayout.PropertyField(CardBossCard);
+            }
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Card Art", EditorStyles.boldLabel);
@@ -63,6 +72,8 @@ public class CardEditor : Editor {
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Corruption Effects", EditorStyles.boldLabel);
+            if (card.BossCard)
+                EditorGUILayout.PropertyField(CardBossCorTargets);
             EditorGUILayout.LabelField("Pass");
             InsertCardEffectFields(CardCorPass, 1);
             EditorGUILayout.Space();
@@ -80,8 +91,22 @@ public class CardEditor : Editor {
             //Add the effect dropdown select, and remove button
             GUILayout.BeginHorizontal();
             effectMaker.effectType = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", effectMaker.effectType);
+            if (i != 0) {
+                if (GUILayout.Button("Up", EditorStyles.miniButtonLeft, GUILayout.Width(30f))) {
+                    //SerializedProperty buffer = effectsList.GetArrayElementAtIndex(i - 1);
+                    effectsList.MoveArrayElement(i, i - 1);
+                    continue;
+                }
+            }
+            if (i != effectsList.arraySize - 1) {
+                if (GUILayout.Button("Down", EditorStyles.miniButtonLeft, GUILayout.Width(40f))) {
+                    effectsList.MoveArrayElement(i, i + 1);
+                    continue;
+                }
+            }
             if (GUILayout.Button("Remove", EditorStyles.miniButtonLeft, GUILayout.Width(60f))) {
                 effectsList.DeleteArrayElementAtIndex(i);
+                continue;
             }
             GUILayout.EndHorizontal();
 
@@ -97,6 +122,7 @@ public class CardEditor : Editor {
             SerializedProperty insertEffect = CardEffectBuffer.FindPropertyRelative("insertEffect");
             SerializedProperty modifyEffect = CardEffectBuffer.FindPropertyRelative("modifyEffect");
             SerializedProperty reshuffleEffect = CardEffectBuffer.FindPropertyRelative("reshuffleEffect");
+            SerializedProperty solveEffect = CardEffectBuffer.FindPropertyRelative("solveEffect");
             SerializedProperty summonEffect = CardEffectBuffer.FindPropertyRelative("summonEffect");
             SerializedProperty vitalityEffect = CardEffectBuffer.FindPropertyRelative("vitalityEffect");
             SerializedProperty baseEffect = CardEffectBuffer.FindPropertyRelative("cardEffect");
@@ -124,6 +150,9 @@ public class CardEditor : Editor {
                     break;
                 case Enums.CardEffects.Reshuffle:
                     EditorGUILayout.PropertyField(reshuffleEffect);
+                    break;
+                case Enums.CardEffects.Solve:
+                    EditorGUILayout.PropertyField(solveEffect);
                     break;
                 case Enums.CardEffects.Summon:
                     EditorGUILayout.PropertyField(summonEffect);

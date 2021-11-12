@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Siezure
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
+  cardName: Siezure
+  cardDescription: 'Choose One: Help the driver or Ignore him'
   cardFlavor: 
-  cardCharacter: 0
+  cardCharacter: 4
   exiled: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
