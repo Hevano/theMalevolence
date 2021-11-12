@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jock
   m_EditorClassIdentifier: 
   characterType: 1
-  name: Jock
+  name: Johny Bigman
   health: 25
   corruption: 0
   avatar: {fileID: 8400000, guid: 90bebba8b4299a14da2b84763f688b98, type: 2}

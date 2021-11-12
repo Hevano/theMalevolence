@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Popular
   m_EditorClassIdentifier: 
   characterType: 3
-  name: Popular Kid
+  name: Jacklyn Hawwt
   health: 20
   corruption: 0
   avatar: {fileID: 8400000, guid: 0a0759814335ccd40be7ea1ea1821412, type: 2}

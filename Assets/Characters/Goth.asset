@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goth
   m_EditorClassIdentifier: 
   characterType: 0
-  name: Goth
+  name: Charles Blackwell
   health: 20
   corruption: 0
   avatar: {fileID: 8400000, guid: 34c64d631153c684587c3cb26c3178fc, type: 2}

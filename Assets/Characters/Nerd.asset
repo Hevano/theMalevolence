@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nerd
   m_EditorClassIdentifier: 
   characterType: 2
-  name: Nerd
+  name: Zoey Booker
   health: 15
   corruption: 0
   avatar: {fileID: 8400000, guid: 3368faa2f3e513c4d9994eb69fad60f0, type: 2}
