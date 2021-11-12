@@ -235,8 +235,7 @@ public class GameManager : MonoBehaviour
 
     //UI function, is called when the player presses the end planning button
     public void EndPlanning(){
-        if(phase == Enums.GameplayPhase.Planning)
-        {
+        if (phase == Enums.GameplayPhase.Planning) {
             phase = Enums.GameplayPhase.Resolve;
         }
     }
