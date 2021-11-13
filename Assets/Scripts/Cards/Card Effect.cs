@@ -37,10 +37,10 @@ public class CardEffect {
                         do {
                             targ = Random.Range(0, GameManager.manager.party.Count);
                         } while (GameManager.manager.party[targ].Defeated);
-                        card.AllyTarget = GameManager.manager.party[targ];
+                        card.AllyTarget = GameManager.manager.party[targ].Targeted(GameManager.manager.characters[card.Character]);
                     } else {
                         yield return Targetable.GetTargetable(Enums.TargetType.Allies, c, "Select Ally", 1);
-                        card.AllyTarget = (Character)Targetable.currentTargets[0];
+                        card.AllyTarget = ((Character)Targetable.currentTargets[0]).Targeted(GameManager.manager.characters[card.Character]);
                     }
                 }
                 targets.Add(card.AllyTarget);
@@ -55,7 +55,7 @@ public class CardEffect {
                         card.EnemyTarget = GameManager.manager.party[targ];
                     } else {
                         yield return Targetable.GetTargetable(Enums.TargetType.Foes, c, "Select Enemy", 1);
-                        card.EnemyTarget = (Character)Targetable.currentTargets[0];
+                        card.EnemyTarget = ((Character)Targetable.currentTargets[0]).Targeted(GameManager.manager.characters[card.Character]);
                     }
                 }
                 targets.Add(card.EnemyTarget);

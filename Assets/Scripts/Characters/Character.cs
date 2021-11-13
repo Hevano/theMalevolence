@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
     [SerializeField]
-    private int _health;
+    protected int _health;
     public int Health
     {
         get{
@@ -28,7 +28,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     [SerializeField]
-    private int _corruption;
+    protected int _corruption;
     public int Corruption
     {
         get{
@@ -198,21 +198,19 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return target;
     }
 
-    void Awake() {
-        animator = GetComponent<Animator>();
-    }
-
-    public virtual void Start(){
-        Health = data.health;
-        Corruption = data.corruption;
+    public virtual void Awake(){
+        _health = data.health;
+        _corruption = data.corruption;
         Action = Enums.Action.Attack;
+        animator = GetComponent<Animator>();
     }
 
     //Called once a resolve phase ends, reseting the character's status
     public virtual void EndResolvePhase(){
         GameManager.manager.Discard(CardToPlay);
-        _action = Enums.Action.Attack;
         _cardToPlay = null;
+        Action = Enums.Action.Attack;
+        
     }
 
     protected virtual void OnDeath() { return; }

@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: PopOftenImitatedNeverReplicated
   m_EditorClassIdentifier: 
   cardName: Often Imitated, Never Replicated
-  cardDescription: All allies remove corruption equal to Jacklyn's total corruption.
+  cardDescription: All allies may make any corruption checks with the Popular Kid's
+    corruption score this turn
   cardFlavor: 
   cardCharacter: 3
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardEffects:
@@ -28,7 +31,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -48,8 +53,12 @@ MonoBehaviour:
       effectIndex: 1
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 4
       vitalityType: 1
@@ -62,7 +71,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -82,8 +93,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 4
       vitalityType: 1

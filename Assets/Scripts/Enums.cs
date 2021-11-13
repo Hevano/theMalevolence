@@ -14,7 +14,8 @@ public static class Enums {
         WeakenWeapon,
         WeakenArmor,
         DiscardCharCards,
-        Silence
+        Silence,
+        CorruptionSubstitution
     }
 
     public enum CardEffects {

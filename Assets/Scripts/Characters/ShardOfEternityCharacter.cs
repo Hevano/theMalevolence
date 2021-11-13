@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShardOfEternityCharacter : EnemyCharacter {
-    void Awake () {
+    public override void Awake () {
+        base.Awake();
         CardToPlay = data.Deck.CardList[0];
     }
 

@@ -44,20 +44,30 @@ public class ExtraAction : StatusEffect
             character = c;
         }
         public IEnumerator GetTurn(){
-            character.Action = Enums.Action.Card;
             bool anyValidCards = false;
+            var playableCards = new List<CardDisplayController>();
             foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
                 if(cardDisplay.CardData.Character == character.data.characterType){
                     cardDisplay.GetComponent<Draggable>().planningPhaseOnly = false;
                     anyValidCards = true;
+                    playableCards.Add(cardDisplay);
                 }
             }
+
+            bool targetSelected = false;
+
             if(anyValidCards){
+                character.CardToPlay = null;
                 yield return CombatUIManager.Instance.DisplayMessage($"Giving Pointers: Play an extra {character.data.name} card", 3);
-                while(character.CardToPlay == null){
+                while(!targetSelected){
+                    foreach(CardDisplayController card in playableCards){
+                        if(card == null){
+                            targetSelected = true;
+                            break;
+                        }
+                    }
                     yield return new WaitForEndOfFrame();
                 }
-
                 foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
                     if(cardDisplay.CardData.Character == character.data.characterType){
                         cardDisplay.GetComponent<Draggable>().planningPhaseOnly = true;

@@ -33,7 +33,7 @@ public class BackTalk : StatusEffect {
 
     public void BonusDamage(Character target, ref Damage d){
         d = new Damage(watchedCharacter.data.basicAttack);
-        d.bonus += bonus;
+        d.bonus += Mathf.CeilToInt(bonus / 10);
         watchedCharacter.onStatChange -= AddDamage;
         watchedCharacter.onAttack -= BonusDamage;
     }

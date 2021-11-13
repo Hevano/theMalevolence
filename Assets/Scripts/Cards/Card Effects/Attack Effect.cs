@@ -16,7 +16,7 @@ public class AttackEffect : CardEffect {
     public override IEnumerator ApplyEffect () {
         Character self;
         GameManager.manager.characters.TryGetValue(card.Character, out self);
-
+        ApplyModification();
         //Create the damage object based on inputs. If value is invalid/0, use character's value
         int[] damVals = new int[3];
     
@@ -28,7 +28,7 @@ public class AttackEffect : CardEffect {
         else damVals[2] = self.data.basicAttack.DieBonus;
         Damage damage = new Damage(damVals[0], damVals[1], damVals[2]);
 
-        ApplyModification();
+        
 
         //Apply effect on each target
         foreach (Character c in targets) {

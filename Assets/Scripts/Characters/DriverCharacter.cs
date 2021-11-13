@@ -7,14 +7,6 @@ public class DriverCharacter : EnemyCharacter
     public Card siezureChoiceHelp;
     public Card siezureChoiceIgnore;
 
-    public override void Start(){
-        Health = data.health;
-        Corruption = data.corruption;
-        Action = Enums.Action.Attack;
-        deck = data.Deck;
-        //Any initialization in deck order
-    }
-
     public IEnumerator Siezure(){
         var choices = new List<Card>();
         choices.Add(siezureChoiceHelp);
@@ -49,13 +41,13 @@ public class DriverCharacter : EnemyCharacter
 
     public IEnumerator SlamAndBreak(){
         //Deal 3d6 to character with must HP
-        Character target = GameManager.manager.party[0];
+        Character target = GameManager.manager.party[0].Targeted(this);
         for(int i = 1; i < GameManager.manager.party.Count; i++){
             if(target.Health < GameManager.manager.party[i].Health){
                 target = GameManager.manager.party[i];
             }
         }
-
+        target = target.Targeted(this);
         var slamDamage = new Damage(3, 6, 0).Value;
         target.Health -= slamDamage;
         CombatUIManager.Instance.SetDamageText(slamDamage, target.transform);

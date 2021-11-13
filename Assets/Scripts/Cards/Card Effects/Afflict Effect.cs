@@ -14,6 +14,9 @@ public class AfflictEffect : CardEffect {
                 case Enums.StatusEffects.CorruptionShield:
                     effect = new StatChangePrevention(target, "corruption", Enums.StatChangeEnum.Increase);
                     break;
+                case Enums.StatusEffects.CorruptionSubstitution:
+                    effect = new CorruptionSubstitution(GameManager.manager.characters[card.Character], target);
+                    break;
                 case Enums.StatusEffects.ExtraCard:
                     effect = new ExtraAction(target, Enums.Action.Card);
                     break;

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Card : ScriptableObject {
     //[Header("Card Info")]
     [SerializeField] private string cardName;
+    [TextArea]
     [SerializeField] private string cardDescription;
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
@@ -114,6 +115,13 @@ public class Card : ScriptableObject {
 
     //Play the card
     public IEnumerator Activate () {
+
+        for (int i = 0; i < cardEffects.Count; i++){
+            var effect = cardEffects[i].GetEffect();
+            effect.SetOwnerCard(this);
+            yield return effect.ApplyEffect();
+        }
+
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             Character character;
             GameManager.manager.characters.TryGetValue(cardCharacter, out character);
@@ -133,12 +141,6 @@ public class Card : ScriptableObject {
                         yield return effect.ApplyEffect();
                     }
             }
-        }
-
-        for (int i = 0; i < cardEffects.Count; i++){
-            var effect = cardEffects[i].GetEffect();
-            effect.SetOwnerCard(this);
-            yield return effect.ApplyEffect();
         }
         yield return null;
     }

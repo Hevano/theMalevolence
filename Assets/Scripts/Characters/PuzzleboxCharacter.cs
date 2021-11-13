@@ -36,7 +36,8 @@ public class PuzzleboxCharacter : EnemyCharacter {
 
     public Enums.PuzzleBoxConfigurations Configuration { get { return currentConfiguration; } }
 
-    public void Awake () {
+    public override void Awake () {
+        base.Awake();
         animator = GetComponent<Animator>();
         Shards = new ShardOfEternityCharacter[ShardSpawns.Count];
     }

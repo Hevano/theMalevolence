@@ -24,9 +24,9 @@ public class EnemyCharacter : Character
             }
         }
     }
-    public override void Start(){
-        Health = data.health;
-        Corruption = data.corruption;
+    public override void Awake(){
+        _health = data.health;
+        _corruption = data.corruption;
         Action = Enums.Action.Attack;
         deck = data.Deck;
         //Any initialization in deck order

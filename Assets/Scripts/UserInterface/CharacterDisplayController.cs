@@ -103,7 +103,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
 
     public void Start(){
-        Character = _character; //Cludgey workaround for initializing character events when character is set via the inspector
+        Character = _character;
         var d = GetComponent<Draggable>();
         d.followMouse = false;
 
@@ -132,9 +132,6 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         drawButton.onClick.AddListener(() => {
             GameManager.manager.Draw(Character.data.characterType);
         });
-
-
-
     }
 
     //For performing corruption checks, and providing some feedback for players.
