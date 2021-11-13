@@ -16,6 +16,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private RawImage _profile;
     [SerializeReference]
     private Image _thumbtack;
+    [SerializeReference]
+    private GameObject _corruption;
+
 
     //Temporary UI for alpha
     [SerializeReference]
@@ -79,7 +82,27 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
     }
     public void ChangeCorruption(int currentCorruption) {
+
         CorruptionDisplay.text = currentCorruption.ToString() +"%";
+
+        switch (currentCorruption)
+        {
+            case int n when (n >75):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(3).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 50):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(2).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 25):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 0):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
+                break;
+
+
+        }
+
     }
 
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
