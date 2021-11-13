@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator battleEnumerator;
     private bool gameOver = false;
 
+    public GameObject endPhaseButton;
+
     public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
     public event PhaseChangeHandler onPhaseChange;
 
@@ -217,6 +219,10 @@ public class GameManager : MonoBehaviour
         {
             phase = Enums.GameplayPhase.Resolve;
         }
+    }
+
+    public void ToggleEndPhaseButton(bool enabled){
+        endPhaseButton.SetActive(enabled);
     }
 
     public void Draw(Enums.Character characterDeckToDrawFrom)
