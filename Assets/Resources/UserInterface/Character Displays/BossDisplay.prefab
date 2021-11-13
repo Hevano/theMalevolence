@@ -110,7 +110,7 @@ RectTransform:
   m_GameObject: {fileID: 1581967709071180477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 5400852525359001137}
   - {fileID: 3759909678492179795}
@@ -202,6 +202,7 @@ MonoBehaviour:
   _nametxt: {fileID: 3528303955986427977}
   _profile: {fileID: 1217281770081708441}
   _thumbtack: {fileID: 5962190231897812171}
+  _corruption: {fileID: 0}
   _actiontxt: {fileID: 528776489858429108}
   drawButton: {fileID: 5918591278382961546}
   _character: {fileID: 0}
