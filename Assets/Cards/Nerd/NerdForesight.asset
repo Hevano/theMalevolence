@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Foresight
   cardDescription: Draw 2 cards and add 10 corruption. If you pass a corruption check,
-    gain a card. If you fail, lose a card.
+    draw a card from the discard pile. If you fail, discard a card.
   cardFlavor: 
   cardCharacter: 2
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
@@ -29,7 +31,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -49,8 +53,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
@@ -63,7 +71,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -83,8 +93,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 1
       vitalityType: 1
@@ -98,7 +112,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -118,8 +134,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
@@ -133,7 +153,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -153,8 +175,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

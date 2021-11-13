@@ -1467,6 +1467,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopularDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1995304409378439585, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 295873066}
+    - target: {fileID: 1995304409378439585, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
+      propertyPath: returnDropZone
+      value: 
+      objectReference: {fileID: 295873066}
     - target: {fileID: 2139349290713739790, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
       propertyPath: m_SizeDelta.x
       value: 500
@@ -1735,6 +1743,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: JockDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1995304409378439585, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 2042971724}
+    - target: {fileID: 1995304409378439585, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
+      propertyPath: returnDropZone
+      value: 
+      objectReference: {fileID: 2042971724}
     - target: {fileID: 2618207563422005627, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 50
@@ -1916,6 +1932,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NerdDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1995304409378439585, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 431660408}
+    - target: {fileID: 1995304409378439585, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
+      propertyPath: returnDropZone
+      value: 
+      objectReference: {fileID: 431660408}
     - target: {fileID: 2548568040644086022, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 500
@@ -2029,6 +2053,7 @@ MonoBehaviour:
   - {fileID: 6630067578136934688}
   foes:
   - {fileID: 37066270}
+  endPhaseButton: {fileID: 2020935941}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0
@@ -2142,7 +2167,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 846289399}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.5
+  m_Size: 0.5000001
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4073,6 +4098,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GothDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 1891666093}
+    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: returnDropZone
+      value: 
+      objectReference: {fileID: 1891666093}
     - target: {fileID: 3472537470939002031, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -33.3

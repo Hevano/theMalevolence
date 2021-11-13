@@ -13,91 +13,28 @@ MonoBehaviour:
   m_Name: GothBackTalk
   m_EditorClassIdentifier: 
   cardName: Back Talk
-  cardDescription: If you fail a corruption check, you deal 12 damage to an enemy.
+  cardDescription: The goth makes an additional attack after their first action next
+    turn. The attack gains 1 damage for each corruption gained after this card is
+    played.
   cardFlavor: 
   cardCharacter: 0
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
   cardBack: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
   cardEffects:
-  - effectType: 0
+  - effectType: 1
     cardEffect:
       target: 0
     afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 3
-      damageBonus: 20
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    summonEffect:
-      target: 0
-    vitalityEffect:
-      target: 0
-      vitalityType: 0
-      value: 0
-  cardCorPass:
-  - effectType: 9
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 3
-      damageBonus: 12
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    summonEffect:
-      target: 0
-    vitalityEffect:
       target: 1
-      vitalityType: 1
-      value: 10
-  - effectType: 0
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
+      statusEffect: 3
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -117,44 +54,15 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
       value: 0
-  cardCorFail:
-  - effectType: 2
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 3
-      damageBonus: 12
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    summonEffect:
-      target: 0
-    vitalityEffect:
-      target: 0
-      vitalityType: 0
-      value: 0
+  cardCorPass: []
+  cardCorFail: []

@@ -13,23 +13,27 @@ MonoBehaviour:
   m_Name: JockBodyCheck
   m_EditorClassIdentifier: 
   cardName: Body Check
-  cardDescription: Attack enemy for 10 dmg, but subtract 2 dmg for every 5 missing
-    HP.
+  cardDescription: The Jock takes the next attack meant for a target ally this turn.
+    Make a corruption check. On a fail, the jock attacks the target ally.
   cardFlavor: 
   cardCharacter: 1
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
   cardBack: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
   cardEffects:
-  - effectType: 6
+  - effectType: 1
     cardEffect:
-      target: 0
+      target: 2
     afflictEffect:
       target: 2
-      statusEffect: 0
+      statusEffect: 2
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -41,20 +45,26 @@ MonoBehaviour:
       target: 0
       toInsert: {fileID: 0}
     modifyEffect:
-      target: 1
-      modifierEffect: 3
-      modifierFactor: 3
-      modifierPerFactor: 5
-      perFactorValue: 2
-      effectIndex: 1
+      target: 0
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
       value: 0
+  cardCorPass: []
+  cardCorFail:
   - effectType: 2
     cardEffect:
       target: 0
@@ -62,8 +72,10 @@ MonoBehaviour:
       target: 0
       statusEffect: 0
     attackEffect:
-      target: 3
-      damageBonus: 10
+      target: 2
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -83,45 +95,13 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
       value: 0
-  cardCorPass: []
-  cardCorFail:
-  - effectType: 9
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 0
-      damageBonus: 0
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    summonEffect:
-      target: 0
-    vitalityEffect:
-      target: 1
-      vitalityType: 0
-      value: -5
