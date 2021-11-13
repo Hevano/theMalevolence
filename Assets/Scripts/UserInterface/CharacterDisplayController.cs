@@ -79,7 +79,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
     }
     public void ChangeCorruption(int currentCorruption) {
-        CorruptionDisplay.text = currentCorruption.ToString();
+        CorruptionDisplay.text = currentCorruption.ToString() +"%";
     }
 
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
