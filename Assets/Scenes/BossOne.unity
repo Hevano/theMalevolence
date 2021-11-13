@@ -1363,14 +1363,6 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 70
       objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
-      propertyPath: m_OverrideSorting
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1385306916100328734, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
@@ -1639,14 +1631,6 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 70
       objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
-      propertyPath: m_OverrideSorting
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1550783691892655364, guid: 3addd36138ac4514083190ff06a456fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1819,14 +1803,6 @@ PrefabInstance:
     - target: {fileID: 147583273524487894, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
-      propertyPath: m_OverrideSorting
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1550783691892655364, guid: a4059c99947ee474f9cedb7cee9b14c8, type: 3}
       propertyPath: m_Pivot.x
@@ -2143,7 +2119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 846289399}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5000001
+  m_Size: 0.50000006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3969,14 +3945,6 @@ PrefabInstance:
     - target: {fileID: 260091467545482967, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243401774537792940, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: m_OverrideSorting
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1550783691892655364, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
       propertyPath: m_Pivot.x
