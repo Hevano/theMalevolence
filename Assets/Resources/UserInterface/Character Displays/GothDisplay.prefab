@@ -30,11 +30,11 @@ RectTransform:
   m_LocalScale: {x: 0.23467, y: 0.23467, z: 1.17333}
   m_Children: []
   m_Father: {fileID: 1550783691892655364}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.81479, y: -34.62445}
+  m_AnchoredPosition: {x: 125.0147, y: -34.62445}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1404496860535623900
@@ -113,7 +113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.099945, y: 4.9}
+  m_AnchoredPosition: {x: -11.09998, y: 4.9000015}
   m_SizeDelta: {x: 13, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5475869656777792690
@@ -191,8 +191,8 @@ RectTransform:
   - {fileID: 593640771693374630}
   - {fileID: 4914919104978160349}
   - {fileID: 6810660544539416940}
-  - {fileID: 7486913276330591992}
   - {fileID: 6132783374464122390}
+  - {fileID: 7486913276330591992}
   - {fileID: 7628240853083276126}
   - {fileID: 2136714492166810678}
   - {fileID: 2120181827740442271}
@@ -448,8 +448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.1, y: -10.3}
-  m_SizeDelta: {x: 13, y: 13}
+  m_AnchoredPosition: {x: -11.09998, y: -10.3}
+  m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5921320636342786956
 CanvasRenderer:
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0d9723ee61bbec4459c653858b8606fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b66a8896f054b234ebf787328c3b881c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -751,11 +751,11 @@ RectTransform:
   m_Children:
   - {fileID: 6008981726092670438}
   m_Father: {fileID: 1550783691892655364}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 114.81473, y: -45.51288}
+  m_AnchoredPosition: {x: 122, y: -45.51288}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &245566092613011578
@@ -793,7 +793,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 70
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
