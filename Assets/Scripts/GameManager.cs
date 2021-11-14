@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
     public void CheckGameOver()
     {
         bool playerDefeated = true;
-        //THIS DOESNT WORK. TPK GAMEOVERS DONT SUCCEED.
+
         foreach(Character partyMember in party)
         {
             playerDefeated = playerDefeated && partyMember.Defeated;

@@ -17,6 +17,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Image _thumbtack;
     [SerializeReference]
+    private Image _action;
+    [SerializeReference]
     private GameObject _corruption;
 
 
@@ -29,7 +31,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
     public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
 
-    public Button drawButton;
+    public Button drawButton, _actionButton;
 
     //private Dictionary<string, StatusEffectDisplay> statusEffects;
 
@@ -57,6 +59,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             ChangeName(Character.data.name);
             ChangeProfile(Character.data.avatar);
             ChangeThumbtack(Character.data.thumbtack);
+            ChangeAction(Character.data.weapon);
 
             _character.onActionChange += ChangeAction;
         }
@@ -73,6 +76,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public void ChangeThumbtack(Sprite newTack)
     {
         _thumbtack.sprite = newTack;
+    }
+    public void ChangeAction(Sprite newAction)
+    {
+        _action.sprite = newAction;
     }
     public void ChangeName(string name)
     {
@@ -110,9 +117,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         switch(newAction){
             case Enums.Action.Attack:
                 ActionDisplay.text = "Attacking";
+                _action.sprite = _character.data.weapon;
                 break;
             case Enums.Action.Card:
                 ActionDisplay.text =  $"Playing Card: {_character.CardToPlay.Name}";
+                _action.sprite = _character.CardToPlay.FrontArt;
                 break;
             case Enums.Action.Stunned:
                 ActionDisplay.text = "Stunned";
@@ -154,6 +163,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
         drawButton.onClick.AddListener(() => {
             GameManager.manager.Draw(Character.data.characterType);
+        });
+
+        _actionButton.onClick.AddListener(() => {
+            CheckAction();
         });
     }
 
@@ -199,6 +212,19 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     //Reset the character back to attacking if their display is right clicked
     public void OnPointerClick(PointerEventData d){
         if(d.button == PointerEventData.InputButton.Right && Character.CardToPlay != null){
+            GameManager.manager.PlaceCardInHand(Character.CardToPlay);
+            Character.CardToPlay = null;
+        }
+    }
+
+
+    //Reset the character back to attacking if their action button is clicked
+    public void CheckAction()
+    {
+        Debug.Log("Checking current character action...");
+
+        if (Character.CardToPlay != null)
+        {
             GameManager.manager.PlaceCardInHand(Character.CardToPlay);
             Character.CardToPlay = null;
         }

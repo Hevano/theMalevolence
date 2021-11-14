@@ -15,6 +15,7 @@ public class CharacterData : ScriptableObject
     public int corruption;
     public Texture avatar;
     public Sprite thumbtack;
+    public Sprite weapon;
 
     [SerializeField] private List<Card> cards = new List<Card>();
 
