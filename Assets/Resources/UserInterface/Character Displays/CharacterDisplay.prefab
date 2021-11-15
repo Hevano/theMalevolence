@@ -359,11 +359,14 @@ MonoBehaviour:
   _profile: {fileID: 6119707376394164872}
   _thumbtack: {fileID: 7499197665923200476}
   _action: {fileID: 6013649021437904753}
+  _actionBackground: {fileID: 0}
   _actionText: {fileID: 340590754673703075}
   _corruption: {fileID: 3536691199274492532}
+  CardBack: {fileID: 0}
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
   _actiontxt: {fileID: 10220638204115507}
   drawButton: {fileID: 747420881410581307}
-  _actionButton: {fileID: 8510418830125685268}
+  actionButton: {fileID: 8510418830125685268}
   _character: {fileID: 0}
   currentTurnSlot: {fileID: 0}
 --- !u!223 &1243401774537792940
@@ -607,7 +610,6 @@ GameObject:
   - component: {fileID: 4121398341767852459}
   - component: {fileID: 6013649021437904753}
   - component: {fileID: 8510418830125685268}
-  - component: {fileID: 5404437307339650336}
   m_Layer: 0
   m_Name: Action
   m_TagString: Untagged
@@ -632,7 +634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 124.1, y: 12.1}
+  m_AnchoredPosition: {x: 129.5, y: 12.1}
   m_SizeDelta: {x: 75, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4121398341767852459
@@ -698,7 +700,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0.53333336}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -716,40 +718,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6013649021437904753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 48006880594577918}
-        m_TargetAssemblyTypeName: CharacterDisplayController, Assembly-CSharp
-        m_MethodName: CheckAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!223 &5404437307339650336
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341567876516708095}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 1
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
+      m_Calls: []
 --- !u!1 &3536691199274492532
 GameObject:
   m_ObjectHideFlags: 0

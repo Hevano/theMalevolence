@@ -16,6 +16,8 @@ public class CharacterData : ScriptableObject
     public Texture avatar;
     public Sprite thumbtack;
     public Sprite weapon;
+    public Color color;
+    public Sprite cardBack;
 
     [SerializeField] private List<Card> cards = new List<Card>();
 

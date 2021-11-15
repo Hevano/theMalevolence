@@ -98,7 +98,14 @@ public class GameManager : MonoBehaviour
         phase = Enums.GameplayPhase.Planning;
         ToggleEndPhaseButton(true);
 
-        if(onPhaseChange != null){
+        //For each turn in turnSlots, enabled return card button
+        foreach (TurnOrderSlot turnSlot in turnSlots)
+        {
+            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            toggleCharButton(display, true);
+        }
+
+        if (onPhaseChange != null){
             onPhaseChange(phase);
         }
         Debug.Log("<color=yellow>Planning Phase</color>");
@@ -119,12 +126,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("<color=yellow>Resolving Phase</color>");
         turns = new List<ITurnExecutable>();
 
+        //For each turn in turnSlots, add a turn to the turns list
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             turns.Add(turnSlot.Turn);
+
+            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            toggleCharButton(display, false);
+
         }
 
-        if(onPhaseChange != null){
+
+        if (onPhaseChange != null){
             onPhaseChange(phase);
         }
         
@@ -163,6 +176,7 @@ public class GameManager : MonoBehaviour
             if(party.Contains(display.Character) && !display.Character.Defeated){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
+                toggleCharButton(display, false);
             }
         }
         //Only wait to draw if at least one deck has cards in it
@@ -228,6 +242,21 @@ public class GameManager : MonoBehaviour
         endPhaseButton.SetActive(enabled);
     }
 
+    public void toggleCharButton(CharacterDisplayController display, bool enabled)
+    {
+        display.actionButton.interactable = enabled;
+    }
+
+    public void togglePartyButton(bool enabled)
+    {
+        //Enable draw buttons (could be better optimized)
+        foreach (TurnOrderSlot turnSlot in turnSlots)
+        {
+            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            toggleCharButton(display, enabled);
+        }
+    }
+
     public void Draw(Enums.Character characterDeckToDrawFrom)
     {
         var card = decks[characterDeckToDrawFrom].Draw();
@@ -256,12 +285,28 @@ public class GameManager : MonoBehaviour
         Character ch;
         characters.TryGetValue(Enums.Character.Goth, out ch);
         decks[Enums.Character.Goth] = ch.data.Deck;
+
+        foreach (Card c in ch.data.Deck.CardList)
+            c.Color = ch.data.color;
+
         characters.TryGetValue(Enums.Character.Jock, out ch);
         decks[Enums.Character.Jock] = ch.data.Deck;
+
+        foreach (Card c in ch.data.Deck.CardList)
+            c.Color = ch.data.color;
+
         characters.TryGetValue(Enums.Character.Nerd, out ch);
         decks[Enums.Character.Nerd] = ch.data.Deck;
+
+        foreach (Card c in ch.data.Deck.CardList)
+            c.Color = ch.data.color;
+
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
+
+        foreach (Card c in ch.data.Deck.CardList)
+            c.Color = ch.data.color;
+
         if (characters.TryGetValue(Enums.Character.Driver, out ch))
             decks[Enums.Character.Driver] = ch.data.Deck;
         if (characters.TryGetValue(Enums.Character.PuzzleBox, out ch))

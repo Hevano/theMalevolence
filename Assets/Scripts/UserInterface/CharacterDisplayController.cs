@@ -22,6 +22,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private Text _actionText;
     [SerializeReference]
     private GameObject _corruption;
+    [SerializeReference]
+    private Color DefaultColor;
+
+
+    private bool _returnCard = true;
 
 
     //Temporary UI for alpha
@@ -31,9 +36,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
-    public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
+    public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } }
+    public bool ReturnCard { get { return _returnCard; } set { _returnCard = value; } }
 
-    public Button drawButton, _actionButton;
+    public Button drawButton, actionButton;
 
     //private Dictionary<string, StatusEffectDisplay> statusEffects;
 
@@ -126,16 +132,17 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             case Enums.Action.Attack:
 
                 if(_character.data.weapon != null)
-                { 
+                {
+                    _action.color = DefaultColor;
                     _action.sprite = _character.data.weapon;
                     _actionText.text = "<color=black>Attack\n\n\n</color>";
                 }
                 break;
             case Enums.Action.Card:
 
-                if (_character.CardToPlay.FrontArt != null)
+                if (_character.CardToPlay != null)
                 { 
-                    _action.sprite = _character.CardToPlay.FrontArt;
+                    _action.sprite = _character.data.cardBack;
                     _actionText.text = $"<color=white>{_character.CardToPlay.Name}</color>";
                 }
 
@@ -182,7 +189,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             GameManager.manager.Draw(Character.data.characterType);
         });
 
-        _actionButton.onClick.AddListener(() => {
+        actionButton.onClick.AddListener(() => {
             CheckAction();
         });
     }
@@ -238,9 +245,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     //Reset the character back to attacking if their action button is clicked
     public void CheckAction()
     {
-        Debug.Log("Checking current character action...");
-
-        if (Character.CardToPlay != null)
+        if (Character.CardToPlay != null && _returnCard == true)
         {
             GameManager.manager.PlaceCardInHand(Character.CardToPlay);
             Character.CardToPlay = null;

@@ -208,7 +208,7 @@ MonoBehaviour:
   _corruption: {fileID: 8002430869632817433}
   _actiontxt: {fileID: 528776489858429108}
   drawButton: {fileID: 5918591278382961546}
-  _actionButton: {fileID: 3273600371708256008}
+  actionButton: {fileID: 3273600371708256008}
   _character: {fileID: 0}
   currentTurnSlot: {fileID: 0}
 --- !u!223 &1243401774537792940
