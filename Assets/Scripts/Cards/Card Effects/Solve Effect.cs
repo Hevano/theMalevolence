@@ -16,5 +16,6 @@ public class SolveEffect : CardEffect {
             } else
                 yield return CombatUIManager.Instance.DisplayMessage("Failed to solve the " + configuration + " configuration");
         }
+        yield return null;
     }
 }

@@ -61,7 +61,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     
     public bool Incapacitated {
         get {
-            return Defeated || Action == Enums.Action.Stunned;
+            return Defeated || Action == Enums.Action.Stunned || Action == Enums.Action.Silenced;
         }
     }
 

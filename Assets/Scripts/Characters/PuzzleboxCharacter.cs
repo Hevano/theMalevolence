@@ -69,11 +69,18 @@ public class PuzzleboxCharacter : EnemyCharacter {
                         //Achiever Configuration
                         case Enums.PuzzleBoxConfigurations.Achiever:
                             cardChoice = Random.Range(1, 100);
+                            //Randomly play "Volatile Ejections" (25%), "Dominating Will" (37%) or "Vengeful Retaliation" (38%)
+                            if (cardChoice <= 25)
+                                CardToPlay = deck.CardList[2];
+                            else if (cardChoice <= 62)
+                                CardToPlay = deck.CardList[3];
+                            else
+                                CardToPlay = deck.CardList[4];
                             break;
                         //Explorer Configuration
                         case Enums.PuzzleBoxConfigurations.Explorer:
                             cardChoice = Random.Range(1, 100);
-                            //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "" (38%)
+                            //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "Strangulate" (38%)
                             if (cardChoice <= 25)
                                 CardToPlay = deck.CardList[5];
                             else if (cardChoice <= 62)
@@ -209,6 +216,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
                 ShardOfEternityCharacter newShard = Instantiate(Resources.Load<ShardOfEternityCharacter>("prefabs/Shard Of Eternity"), ShardSpawns[i].transform);
                 newShard.transform.localPosition = Vector3.zero;
                 yield return CombatUIManager.Instance.DisplayMessage("A Shard of Eternity has been created");
+                break;
             }
         }
     }

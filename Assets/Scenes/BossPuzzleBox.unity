@@ -2397,6 +2397,7 @@ MonoBehaviour:
   - {fileID: 6630067578136934688}
   foes:
   - {fileID: 951318889}
+  endPhaseButton: {fileID: 2020935941}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0

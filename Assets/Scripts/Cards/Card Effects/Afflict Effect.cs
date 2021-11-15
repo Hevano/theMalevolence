@@ -48,6 +48,9 @@ public class AfflictEffect : CardEffect {
                         }
                         yield return CombatUIManager.Instance.DisplayMessage($"Discarding {target.name}'s cards from your hand!", 2f);
                     break;
+                case Enums.StatusEffects.Silence:
+                    effect = new Silence(target);
+                    break;
             }
         }
         yield return null;
