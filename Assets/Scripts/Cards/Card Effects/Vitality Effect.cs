@@ -27,9 +27,9 @@ public class VitalityEffect : CardEffect {
                     //If value is positive, Health was restored, color = green
                     //If value is negative, Health was lost, color = white
                     if (value > 0)
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} restored {value} HP");
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} restored {value} HP");
                     else
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} lost {value} HP");
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} lost {value} HP");
                     break;
                 //Modify the character's corruption
                 case Enums.VitalityType.Corruption:
@@ -41,9 +41,9 @@ public class VitalityEffect : CardEffect {
                     //If value is positive, Corruption was gained, color = purple
                     //If value is negative, Corruption was cleansed, color = purple
                     if (value < 0)
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} cleansed {value} Corruption");
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} cleansed {value} Corruption");
                     else
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.name} gained {value} Corruption");
+                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} gained {value} Corruption");
                     break;
             }
         }

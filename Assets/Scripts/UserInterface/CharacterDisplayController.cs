@@ -19,6 +19,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Image _action;
     [SerializeReference]
+    private Text _actionText;
+    [SerializeReference]
     private GameObject _corruption;
 
 
@@ -118,10 +120,12 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             case Enums.Action.Attack:
                 ActionDisplay.text = "Attacking";
                 _action.sprite = _character.data.weapon;
+                _actionText.text = "";
                 break;
             case Enums.Action.Card:
-                ActionDisplay.text =  $"Playing Card: {_character.CardToPlay.Name}";
+                ActionDisplay.text =  $"Playing Card";
                 _action.sprite = _character.CardToPlay.FrontArt;
+                _actionText.text = $"{_character.CardToPlay.Name}";
                 break;
             case Enums.Action.Stunned:
                 ActionDisplay.text = "Stunned";

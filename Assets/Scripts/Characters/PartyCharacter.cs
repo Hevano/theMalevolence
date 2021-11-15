@@ -39,15 +39,15 @@ public class PartyCharacter : Character
 
     //Executes the character's turn, where they either play their card or attack
     public override IEnumerator GetTurn(){
-        Debug.Log($"{data.name}'s turn");
+        Debug.Log($"<color=orange>{data.name}'s turn</color>");
         InvokeTurnStartHandler();
         if(Defeated)
         {
-            Debug.Log($"{data.name} has been defeated and cannot continue the fight");
+            Debug.Log($"<Color=red>{data.name} has been defeated and cannot continue the fight</color>");
         }
         else if(Action == Enums.Action.Card && CardToPlay != null)
         {
-            Debug.Log($"{data.name} playing card {CardToPlay.Name}");
+            Debug.Log($"<color=green>{data.name} playing card {CardToPlay.Name}</color>");
             //CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
             yield return CombatUIManager.Instance.RevealCard(CardToPlay);
             //Execute the selected card from the dropzone.
