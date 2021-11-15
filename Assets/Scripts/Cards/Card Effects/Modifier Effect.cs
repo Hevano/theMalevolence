@@ -17,11 +17,13 @@ public class ModifierEffect : CardEffect {
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
     
-    public override IEnumerator ApplyEffect () {
+    public override IEnumerator ApplyEffect ()
+    {
         int value = 0;
         Character target;
 
-        switch (modifierFactor) {
+        switch (modifierFactor)
+        {
             case Enums.ModifierFactors.Cards_Played:
                 int cardsPlayed = 0;
                 foreach (Character c in GameManager.manager.party)

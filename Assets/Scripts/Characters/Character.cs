@@ -215,8 +215,6 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     protected virtual void OnDeath() { return; }
 
-    
-
     //Temporary implementation of character's turn
     public abstract IEnumerator GetTurn();
 }
