@@ -62,6 +62,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             ChangeProfile(Character.data.avatar);
             ChangeThumbtack(Character.data.thumbtack);
             ChangeAction(Character.data.weapon);
+            _actionText.text = "<color=black>Attack\n\n\n</color>";
 
             _character.onActionChange += ChangeAction;
         }
@@ -123,9 +124,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
                 ActionDisplay.text = "Attacking";
 
                 if(_character.data.weapon != null)
-                _action.sprite = _character.data.weapon;
-
-                _actionText.text = "";
+                { 
+                    _action.sprite = _character.data.weapon;
+                    _actionText.text = "<color=black>Attack\n\n\n</color>";
+                }
                 break;
             case Enums.Action.Card:
                 ActionDisplay.text =  $"Playing Card";
@@ -133,7 +135,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
                 if (_character.CardToPlay.FrontArt != null)
                 { 
                     _action.sprite = _character.CardToPlay.FrontArt;
-                    _actionText.text = $"{_character.CardToPlay.Name}";
+                    _actionText.text = $"<color=white>{_character.CardToPlay.Name}</color>";
                 }
 
                 break;
