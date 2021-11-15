@@ -359,11 +359,9 @@ MonoBehaviour:
   _profile: {fileID: 6119707376394164872}
   _thumbtack: {fileID: 7499197665923200476}
   _action: {fileID: 6013649021437904753}
-  _actionBackground: {fileID: 0}
   _actionText: {fileID: 340590754673703075}
   _corruption: {fileID: 3536691199274492532}
-  CardBack: {fileID: 0}
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
   _actiontxt: {fileID: 10220638204115507}
   drawButton: {fileID: 747420881410581307}
   actionButton: {fileID: 8510418830125685268}
