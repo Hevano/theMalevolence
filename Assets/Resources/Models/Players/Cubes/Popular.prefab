@@ -183,7 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4347838961449656081}
   - component: {fileID: 951417850923306029}
-  - component: {fileID: 1469249544121950439}
   m_Layer: 0
   m_Name: CharacterView
   m_TagString: Untagged
@@ -238,8 +237,8 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetTexture: {fileID: 8400000, guid: 0a0759814335ccd40be7ea1ea1821412, type: 2}
+  m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -248,14 +247,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1469249544121950439
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495078097035639742}
-  m_Enabled: 1
 --- !u!1 &6630067578162462801
 GameObject:
   m_ObjectHideFlags: 0

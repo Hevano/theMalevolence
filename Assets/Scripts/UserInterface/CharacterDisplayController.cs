@@ -81,7 +81,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
     public void ChangeAction(Sprite newAction)
     {
-        _action.sprite = newAction;
+
+        if(newAction != null)
+            _action.sprite = newAction;
     }
     public void ChangeName(string name)
     {
@@ -119,13 +121,21 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         switch(newAction){
             case Enums.Action.Attack:
                 ActionDisplay.text = "Attacking";
+
+                if(_character.data.weapon != null)
                 _action.sprite = _character.data.weapon;
+
                 _actionText.text = "";
                 break;
             case Enums.Action.Card:
                 ActionDisplay.text =  $"Playing Card";
-                _action.sprite = _character.CardToPlay.FrontArt;
-                _actionText.text = $"{_character.CardToPlay.Name}";
+
+                if (_character.CardToPlay.FrontArt != null)
+                { 
+                    _action.sprite = _character.CardToPlay.FrontArt;
+                    _actionText.text = $"{_character.CardToPlay.Name}";
+                }
+
                 break;
             case Enums.Action.Stunned:
                 ActionDisplay.text = "Stunned";

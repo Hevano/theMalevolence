@@ -96,6 +96,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator ExecutePlanning()
     {
         phase = Enums.GameplayPhase.Planning;
+        ToggleEndPhaseButton(true);
+
         if(onPhaseChange != null){
             onPhaseChange(phase);
         }
@@ -218,6 +220,7 @@ public class GameManager : MonoBehaviour
         if(phase == Enums.GameplayPhase.Planning)
         {
             phase = Enums.GameplayPhase.Resolve;
+            ToggleEndPhaseButton(false);
         }
     }
 
