@@ -16,13 +16,15 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("health", ref _health, ref newValue);
             }
-            if (_health > newValue)
+            if (_health > newValue) {
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
-            else
+                try { animator.SetTrigger("hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+            } else
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
             _health = newValue;
             if (Health == 0){
                 Defeated = true;
+                try { animator.SetTrigger("death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
             }
         }
     }

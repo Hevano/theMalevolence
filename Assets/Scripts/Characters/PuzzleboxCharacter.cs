@@ -42,13 +42,15 @@ public class PuzzleboxCharacter : EnemyCharacter {
         Shards = new ShardOfEternityCharacter[ShardSpawns.Count];
     }
 
+
+    [SerializeField] private int currentCard = 2;
     public override IEnumerator GetTurn () {
         changingConfig = false;
         if (Action != Enums.Action.Stunned) {
             if (deck.CardList.Count == 0) {
                 deck.Reshuffle();
             }
-
+            /*
             //Check if current configuration is valid
             if ((currentConfiguration == Enums.PuzzleBoxConfigurations.Achiever && !AchieverConfig)
                 || (currentConfiguration == Enums.PuzzleBoxConfigurations.Explorer && !ExplorerConfig)
@@ -140,9 +142,19 @@ public class PuzzleboxCharacter : EnemyCharacter {
                     yield return CardToPlay.Activate();
                 }
             }
+            */
         }
         turnEnd = !turnEnd;
         changingConfig = false;
+
+        CardToPlay = deck.CardList[currentCard];
+        Debug.Log($"{name} playing card {CardToPlay.Name}");
+        yield return CombatUIManager.Instance.RevealCard(CardToPlay);
+        CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
+        yield return CardToPlay.Activate();
+        currentCard++;
+        if (currentCard == deck.CardList.Count)
+            Health = 0;
     }
 
     private IEnumerator ChangeConfiguration() {

@@ -121,6 +121,8 @@ public class Card : ScriptableObject {
 
     //Play the card
     public IEnumerator Activate () {
+        if (bossCard)
+            yield return DesignateTargets();
 
         for (int i = 0; i < cardEffects.Count; i++){
             var effect = cardEffects[i].GetEffect();

@@ -25,7 +25,8 @@ public class CardEffect {
         //Toggle the 'action' button for each character display prefab
         GameManager.manager.togglePartyButton(false);
 
-        Debug.Log("<color=blue>CardEffect.cs</color>: find target");
+        if (!card.BossCard)
+            Debug.Log("<color=blue>CardEffect.cs</color>: find target");
         Character c;
         GameManager.manager.characters.TryGetValue(card.Character, out c);
 
