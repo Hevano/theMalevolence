@@ -25,6 +25,12 @@ public class StatChangePrevention : StatusEffect {
         if(statName == watchedStat && newValue < oldValue){
             newValue = oldValue;
             watchedCharacter.onStatChange -= PreventStatDecrease;
+            //Workaround to update ui
+            if(statName == "health"){
+                watchedCharacter.Health = watchedCharacter.Health;
+            } else {
+               watchedCharacter.Corruption = watchedCharacter.Corruption; 
+            }
         }
     }
 
@@ -32,6 +38,11 @@ public class StatChangePrevention : StatusEffect {
         if(statName == watchedStat && newValue > oldValue){
             newValue = oldValue;
             watchedCharacter.onStatChange -= PreventStatIncrease;
+            if(statName == "health"){
+                watchedCharacter.Health = watchedCharacter.Health;
+            } else {
+               watchedCharacter.Corruption = watchedCharacter.Corruption; 
+            }
         }
     }
 
