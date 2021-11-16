@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &947093973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6844388912046593108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e613f7d5e7cc0ca4ab95d92ab35fee9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
-  _corruption: 0
-  data: {fileID: 0}
-  _cardToPlay: {fileID: 0}
 --- !u!136 &947093972
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30,19 +14,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 0}
---- !u!114 &947093971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6844388912046593108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da36207b6cc7952419113accde71ed82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTypes: 0200000000000000
 --- !u!111 &947093970
 Animation:
   m_ObjectHideFlags: 0
@@ -58,6 +29,35 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &947093971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844388912046593108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da36207b6cc7952419113accde71ed82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTypes: 0200000000000000
+--- !u!114 &947093973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844388912046593108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e613f7d5e7cc0ca4ab95d92ab35fee9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _corruption: 0
+  data: {fileID: 11400000, guid: de3b0b617dcc112438cc47a2ec873a9b, type: 2}
+  _cardToPlay: {fileID: 0}
 --- !u!1001 &5925979143105014021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,15 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
       propertyPath: m_LocalPosition.x

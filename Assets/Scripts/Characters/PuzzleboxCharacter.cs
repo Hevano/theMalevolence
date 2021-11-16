@@ -42,13 +42,15 @@ public class PuzzleboxCharacter : EnemyCharacter {
         Shards = new ShardOfEternityCharacter[ShardSpawns.Count];
     }
 
+
+    [SerializeField] private int currentCard = 2;
     public override IEnumerator GetTurn () {
         changingConfig = false;
         if (Action != Enums.Action.Stunned) {
             if (deck.CardList.Count == 0) {
                 deck.Reshuffle();
             }
-
+            /*
             //Check if current configuration is valid
             if ((currentConfiguration == Enums.PuzzleBoxConfigurations.Achiever && !AchieverConfig)
                 || (currentConfiguration == Enums.PuzzleBoxConfigurations.Explorer && !ExplorerConfig)
@@ -69,11 +71,18 @@ public class PuzzleboxCharacter : EnemyCharacter {
                         //Achiever Configuration
                         case Enums.PuzzleBoxConfigurations.Achiever:
                             cardChoice = Random.Range(1, 100);
+                            //Randomly play "Volatile Ejections" (25%), "Dominating Will" (37%) or "Vengeful Retaliation" (38%)
+                            if (cardChoice <= 25)
+                                CardToPlay = deck.CardList[2];
+                            else if (cardChoice <= 62)
+                                CardToPlay = deck.CardList[3];
+                            else
+                                CardToPlay = deck.CardList[4];
                             break;
                         //Explorer Configuration
                         case Enums.PuzzleBoxConfigurations.Explorer:
                             cardChoice = Random.Range(1, 100);
-                            //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "" (38%)
+                            //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "Strangulate" (38%)
                             if (cardChoice <= 25)
                                 CardToPlay = deck.CardList[5];
                             else if (cardChoice <= 62)
@@ -133,9 +142,19 @@ public class PuzzleboxCharacter : EnemyCharacter {
                     yield return CardToPlay.Activate();
                 }
             }
+            */
         }
         turnEnd = !turnEnd;
         changingConfig = false;
+
+        CardToPlay = deck.CardList[currentCard];
+        Debug.Log($"{name} playing card {CardToPlay.Name}");
+        yield return CombatUIManager.Instance.RevealCard(CardToPlay);
+        CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
+        yield return CardToPlay.Activate();
+        currentCard++;
+        if (currentCard == deck.CardList.Count)
+            Health = 0;
     }
 
     private IEnumerator ChangeConfiguration() {
@@ -209,6 +228,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
                 ShardOfEternityCharacter newShard = Instantiate(Resources.Load<ShardOfEternityCharacter>("prefabs/Shard Of Eternity"), ShardSpawns[i].transform);
                 newShard.transform.localPosition = Vector3.zero;
                 yield return CombatUIManager.Instance.DisplayMessage("A Shard of Eternity has been created");
+                break;
             }
         }
     }

@@ -17,8 +17,7 @@ public class ModifierEffect : CardEffect {
     /** <summary>The index number of the card effect to modify.</summary> */
     [SerializeField] private int effectIndex;
     
-    public override IEnumerator ApplyEffect ()
-    {
+    public override IEnumerator ApplyEffect () {
         int value = 0;
         Character target;
 
@@ -54,8 +53,10 @@ public class ModifierEffect : CardEffect {
                 break;
             case Enums.ModifierFactors.Discards:
                 Deck deck;
-                GameManager.manager.decks.TryGetValue(targets[0].data.characterType, out deck);
-                value = deck.DiscardList.Count;
+                for (int i = 0; i < 4; i++) {
+                    GameManager.manager.decks.TryGetValue(GameManager.manager.party[i].data.characterType, out deck);
+                    value += deck.DiscardList.Count;
+                }
                 break;
         }
 

@@ -53,7 +53,7 @@ public class PartyCharacter : Character
             //Execute the selected card from the dropzone.
             yield return CardToPlay.Activate();
         }
-        else if(Action == Enums.Action.Attack)
+        else if(Action == Enums.Action.Attack || Action == Enums.Action.Silenced)
         {
             yield return BasicAttack();
         }

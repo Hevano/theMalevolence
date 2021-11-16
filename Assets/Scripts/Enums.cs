@@ -52,7 +52,8 @@ public static class Enums {
     public enum Action{
         Card,
         Attack,
-        Stunned
+        Stunned,
+        Silenced
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */

@@ -71,9 +71,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 3
-      dieNumber: 0
-      dieSize: 0
-      dieBonus: 10
+      dieNumber: 1
+      dieSize: 6
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
