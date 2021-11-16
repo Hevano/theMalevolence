@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: JockPushThrough
+  m_Name: NerdEsotericAlgorithm
   m_EditorClassIdentifier: 
-  cardName: Push Through
-  cardDescription: Gain 10 HP and 30 corruption.
+  cardName: Esoteric Algorithm
+  cardDescription: Draw a card for every 25 corruption the Nerd has.
   cardFlavor: 
-  cardCharacter: 1
-  cardColor: {r: 1, g: 0, b: 0, a: 1}
+  cardCharacter: 2
+  cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
-  cardFront: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
-  cardBack: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
+  cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardEffects:
-  - effectType: 9
+  - effectType: 6
     cardEffect:
       target: 0
     afflictEffect:
@@ -45,12 +45,12 @@ MonoBehaviour:
       target: 0
       toInsert: {fileID: 0}
     modifyEffect:
-      target: 0
+      target: 1
       modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
+      modifierFactor: 1
+      modifierPerFactor: 1
+      perFactorValue: 25
+      effectIndex: 1
     reshuffleEffect:
       target: 0
     solveEffect:
@@ -60,10 +60,10 @@ MonoBehaviour:
       target: 0
       Boss: 0
     vitalityEffect:
-      target: 1
+      target: 0
       vitalityType: 0
-      value: 10
-  - effectType: 9
+      value: 0
+  - effectType: 4
     cardEffect:
       target: 0
     afflictEffect:
@@ -100,8 +100,8 @@ MonoBehaviour:
       target: 0
       Boss: 0
     vitalityEffect:
-      target: 1
-      vitalityType: 1
-      value: 30
+      target: 0
+      vitalityType: 0
+      value: 0
   cardCorPass: []
   cardCorFail: []

@@ -103,6 +103,9 @@ public class CardDisplayController : MonoBehaviour {
         var cardDisplay = cardGameObject.GetComponent<CardDisplayController>();
 
         cardDisplay.CardData = card;
+
+        Debug.Log($"CDC: Creating card {card}");
+
         cardDisplay._name.text = card.Name;
         cardDisplay._description.text = card.Description;
 

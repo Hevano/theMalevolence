@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: JockPushThrough
+  m_Name: PopPsychicScream
   m_EditorClassIdentifier: 
-  cardName: Push Through
-  cardDescription: Gain 10 HP and 30 corruption.
+  cardName: Soothing Harmonica
+  cardDescription: Stun all characters other than the popular kid. Make a corruption
+    check. On a pass, popular kid will be stunned next round.
   cardFlavor: 
-  cardCharacter: 1
-  cardColor: {r: 1, g: 0, b: 0, a: 1}
+  cardCharacter: 3
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
-  cardFront: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
-  cardBack: {fileID: 21300000, guid: 71ecd78f1cf88654fafc96390ea661bb, type: 3}
+  cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
+  cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardEffects:
-  - effectType: 9
+  - effectType: 1
     cardEffect:
-      target: 0
+      target: 4
     afflictEffect:
-      target: 0
-      statusEffect: 0
+      target: 4
+      statusEffect: 5
     attackEffect:
       target: 0
       dieNumber: 0
@@ -60,15 +61,15 @@ MonoBehaviour:
       target: 0
       Boss: 0
     vitalityEffect:
-      target: 1
+      target: 0
       vitalityType: 0
-      value: 10
-  - effectType: 9
+      value: 0
+  - effectType: 1
     cardEffect:
       target: 0
     afflictEffect:
-      target: 0
-      statusEffect: 0
+      target: 5
+      statusEffect: 5
     attackEffect:
       target: 0
       dieNumber: 0
@@ -100,8 +101,48 @@ MonoBehaviour:
       target: 0
       Boss: 0
     vitalityEffect:
+      target: 0
+      vitalityType: 0
+      value: 0
+  cardCorPass:
+  - effectType: 1
+    cardEffect:
+      target: 0
+    afflictEffect:
       target: 1
-      vitalityType: 1
-      value: 30
-  cardCorPass: []
+      statusEffect: 6
+    attackEffect:
+      target: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
+    cleanseEffect:
+      target: 0
+    drawEffect:
+      target: 0
+      cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
+    insertEffect:
+      target: 0
+      toInsert: {fileID: 0}
+    modifyEffect:
+      target: 0
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    reshuffleEffect:
+      target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
+    summonEffect:
+      target: 0
+      Boss: 0
+    vitalityEffect:
+      target: 0
+      vitalityType: 0
+      value: 0
   cardCorFail: []
