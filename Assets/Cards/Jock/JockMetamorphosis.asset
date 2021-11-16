@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: Metamorphosis
+  m_Name: JockMetamorphosis
   m_EditorClassIdentifier: 
   cardName: Metamorphosis
   cardDescription: Jock'c basic attack gains +1d6 damage. Make a corruption check.
