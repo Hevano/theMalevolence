@@ -18,13 +18,13 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
             if (_health > newValue) {
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
-                try { animator.SetTrigger("hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+                try { animator.SetTrigger("Hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
             } else
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
             _health = newValue;
             if (Health == 0){
                 Defeated = true;
-                try { animator.SetTrigger("death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
             }
         }
     }

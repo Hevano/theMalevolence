@@ -13,12 +13,12 @@ public class DriverCharacter : EnemyCharacter
         choices.Add(siezureChoiceIgnore);
         yield return CombatUIManager.Instance.DisplayChoice(choices);
         yield return choices[0].DesignateTargets(); //These two cards target all allies
-        animator.SetTrigger("flail");
+        animator.SetTrigger("Flail");
         yield return choices[0].Activate();
     }
 
     public IEnumerator CrazedFlailing() {
-        animator.SetTrigger("flail");
+        animator.SetTrigger("Flail");
         var index = GameManager.manager.turns.IndexOf(this);
         for(int i = 0; i < index; i++){
             Character partyMemberTarget = GameManager.manager.turns[i] as PartyCharacter;
@@ -42,7 +42,7 @@ public class DriverCharacter : EnemyCharacter
     }
 
     public IEnumerator SlamAndBreak() {
-        animator.SetTrigger("slam");
+        animator.SetTrigger("Slam");
         //Deal 3d6 to character with must HP
         Character target = GameManager.manager.party[0].Targeted(this);
         for(int i = 1; i < GameManager.manager.party.Count; i++){
@@ -68,7 +68,7 @@ public class DriverCharacter : EnemyCharacter
     }
 
     public IEnumerator HailToTheBusDriver() {
-        animator.SetTrigger("hail");
+        animator.SetTrigger("Hail");
         //Each character gains 10 corruption
         CardToPlay.DesignateTargets(); //This card targets all allies, so it can use the card system
         CardToPlay.Activate();
@@ -117,6 +117,7 @@ public class DriverCharacter : EnemyCharacter
     }*/
 
     public override IEnumerator GetTurn(){
+        Debug.Log(animator);
         if(Action != Enums.Action.Stunned){
             if(deck.CardList.Count == 0){
                 deck.Reshuffle();

@@ -29,6 +29,7 @@ public class EnemyCharacter : Character
         _corruption = data.corruption;
         Action = Enums.Action.Attack;
         deck = data.Deck;
+        animator = GetComponentInChildren<Animator>();
         //Any initialization in deck order
     }
 
