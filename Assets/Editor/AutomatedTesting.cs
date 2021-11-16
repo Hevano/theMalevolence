@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-class MyEditorScript
+class AutomatedTesting
 {
     static string[] SCENES = FindEnabledEditorScenes();
     
@@ -15,14 +15,13 @@ class MyEditorScript
     {
         PerformMacOSXBuild();
         PerformWindowsBuild();
-        PerformAndroidBuild();
     }
 
 
     [MenuItem("Custom/CI/Build Mac OS X")]
     static void PerformMacOSXBuild()
     {
-@ -12,25 + 20,39 @@
+        string target_dir = APP_NAME + ".app";
         GenericBuild(SCENES, TARGET_DIR + "/" + target_dir, BuildTarget.StandaloneOSXIntel, BuildOptions.None);
     }
 
@@ -31,7 +30,7 @@ class MyEditorScript
         string target_dir = APP_NAME + ".exe";
         GenericBuild(SCENES, TARGET_DIR + "/" + target_dir, BuildTarget.StandaloneWindows, BuildOptions.None);
     }
-
+/*
     static void PerformAndroidBuild()
     {
         //Set the path to the Android SDK on the machine, since Unity cannot retain the state properly
@@ -39,7 +38,7 @@ class MyEditorScript
         string target_dir = APP_NAME + ".apk";
         GenericBuild(SCENES, TARGET_DIR + "/" + target_dir, BuildTarget.Android, BuildOptions.None);
     }
-
+    */
     private static string[] FindEnabledEditorScenes()
     {
         List<string> EditorScenes = new List<string>();
@@ -54,7 +53,7 @@ class MyEditorScript
     static void GenericBuild(string[] scenes, string target_dir, BuildTarget build_target, BuildOptions build_options)
     {
         EditorUserBuildSettings.SwitchActiveBuildTarget(build_target);
-        string res = BuildPipeline.BuildPlayer(scenes, target_dir, build_target, build_options);
+        string res = $"{ BuildPipeline.BuildPlayer(scenes, target_dir, build_target, build_options)}";
         if (res.Length > 0)
         {
             throw new Exception("BuildPlayer failure: " + res);
