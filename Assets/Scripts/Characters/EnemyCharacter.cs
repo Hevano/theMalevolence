@@ -28,7 +28,14 @@ public class EnemyCharacter : Character
         _health = data.health;
         _corruption = data.corruption;
         Action = Enums.Action.Attack;
+
+        //Establish card color for decks
+        foreach (Card c in data.Deck.CardList)
+            c.Color = data.color;
+
         deck = data.Deck;
+
+
         animator = GetComponentInChildren<Animator>();
         //Any initialization in deck order
     }
