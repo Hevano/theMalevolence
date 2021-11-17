@@ -24,13 +24,14 @@ public class AudioManager : MonoBehaviour
 
             //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
             currentTrack = GetComponent<AudioSource>();
-            currentTrack.volume = 0.5f;
+            currentTrack.volume = 0.3f;
             currentTrack.clip = sceneBGM;
             currentTrack.loop = true;
 
 
             //Configure audioSources
-            SFXPlayer = SFXSource.GetComponent<AudioSource>(); 
+            SFXPlayer = SFXSource.GetComponent<AudioSource>();
+            SFXPlayer.volume = 0.5f;
             currentTrack.playOnAwake = false;
             SFXPlayer.playOnAwake = false;
 
@@ -46,15 +47,13 @@ public class AudioManager : MonoBehaviour
     public void PlayObjectSFX(GameObject SFXObject)
     {
 
-        SFXSource.GetComponent<AudioSource>().clip = SFXObject.GetComponent<AudioSource>().clip;
+        SFXPlayer.clip = SFXObject.GetComponent<AudioSource>().clip;
 
-        SFXSource.GetComponent<AudioSource>().Play();
+        SFXPlayer.Play();
     }
 
     public void PlayUISFX(string SFX)
     {
-
-        SFXPlayer = SFXSource.GetComponent<AudioSource>();
 
         switch (SFX)
         {

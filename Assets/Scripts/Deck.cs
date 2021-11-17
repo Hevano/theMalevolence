@@ -36,6 +36,8 @@ public class Deck {
             cardList.Add(tempList[drawnCard]);
             tempList.RemoveAt(drawnCard);
         }
+
+        AudioManager.audioMgr.PlayUISFX("Shuffle");
     }
 
     //Shuffles the discard pile into the draw pile
