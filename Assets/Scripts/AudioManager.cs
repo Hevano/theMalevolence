@@ -66,7 +66,22 @@ public class AudioManager : MonoBehaviour
         {
             case "CardInteraction":
                 break;
-
+            case "PickupCard":
+                break;
+            case "PlaceCard":
+                break;
+            case "Shuffle":
+                break;
+            case "CorruptionFail":
+                break;
+            case "CorruptionPass":
+                break;
+            case "CorruptionGain":
+                break;
+            case "CorruptionCleanse":
+                break;
+            case "Heal":
+                break;
 
             default:
                 Debug.Log($"<color=red>AudioManager:</color> Sound effect of name {SFX} is not listed!");
