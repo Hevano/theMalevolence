@@ -5,33 +5,48 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioMgr;
+    
 
     //GameObjects sound sources
-    public GameObject sceneBGM;
-    private AudioSource currentTrack, victoryTrack, failureTrack;
-    public AudioSource sfxSrc;
+    public GameObject sceneBGM, sceneIntro;
 
-    /*
+    //BGM
+    private AudioSource currentTrack, victoryTrack, failureTrack;
+
+    //SFX
     private List<AudioSource> sfx = new List<AudioSource>();
+    public List<AudioClip> SoundEffects;
 
     public void Awake()
     {
-        if (aCtrl == null)
+        if (audioMgr == null)
         {
+            //Play 'awake' sfx for the scene (one time)
+            //currentTrack = sceneIntro.GetComponent<AudioSource>();
+            currentTrack.loop = false;
 
-            levelMusic.Add(bgMusic1.GetComponent<AudioSource>());
-            levelMusic.Add(bgMusic2.GetComponent<AudioSource>());
+            //Foreach SoundEffect stored in the unity editor's gameobject audioManager is attached to, add them to th sfx AudioSource list.
+            foreach (AudioClip sound in SoundEffects)
+            {
 
-            currentTrack = levelMusic[ctrackIndex];
+                AudioSource selSFX = new AudioSource();
+                selSFX.clip = sound;
 
-            currentTrack.loop = true;
-            aCtrl = this;
+                sfx.Add(selSFX);
+                    
+            }
+
+
+            audioMgr = this;
         }
 
     }
 
 
-    public void PlaySFX() { aCtrl.sfxSrc.Play(); }
+    public void PlaySFX(GameObject SFXprefab)
+    {
+        //audioMgr.sfxSrc.Play();
+    }
 
     public void StopMusic() { currentTrack.Stop(); }
 
@@ -41,26 +56,7 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeMusic()
     {
-        ctrackIndex++;
+        
 
-        currentTrack.Stop();
-
-        switch (ctrackIndex)
-        {
-            case 1:
-                currentTrack = levelMusic[ctrackIndex];
-                Debug.Log("Current track is now" + currentTrack);
-                break;
-            default:
-                ctrackIndex = 0;
-                currentTrack = levelMusic[ctrackIndex];
-                break;
-
-        }
-
-        currentTrack.Play();
-
-
-
-    }*/
+    }
 }
