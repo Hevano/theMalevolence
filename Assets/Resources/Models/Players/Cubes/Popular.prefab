@@ -127,7 +127,7 @@ Transform:
   - {fileID: 2025054775}
   - {fileID: 6595524028887965502}
   - {fileID: 4347838961449656081}
-  - {fileID: 3605881566664045464}
+  - {fileID: 4280554580917477272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,7 +344,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &4268688220790948670
+--- !u!1001 &3625488729168277310
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -397,14 +397,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720015470350866467, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
       propertyPath: m_Name
-      value: SFX
+      value: CharacterSFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
---- !u!4 &3605881566664045464 stripped
+--- !u!4 &4280554580917477272 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 664218805886529702, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
-  m_PrefabInstance: {fileID: 4268688220790948670}
+  m_PrefabInstance: {fileID: 3625488729168277310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6630067577871071445
 PrefabInstance:

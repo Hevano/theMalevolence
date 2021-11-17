@@ -29,7 +29,6 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private bool _returnCard = true;
 
 
-    //Temporary UI for alpha
     [SerializeReference]
     private Text _actiontxt;
 

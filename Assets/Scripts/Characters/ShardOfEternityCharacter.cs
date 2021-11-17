@@ -15,6 +15,7 @@ public class ShardOfEternityCharacter : EnemyCharacter {
     }
 
     protected override void OnDeath () {
+        GameManager.manager.foes.Remove(this);
         Destroy(GetComponent<Targetable>());
         Destroy(gameObject);
     }

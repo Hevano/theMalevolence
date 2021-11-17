@@ -127,7 +127,7 @@ Transform:
   - {fileID: 433887319}
   - {fileID: 6811668469730999483}
   - {fileID: 4437769115071142390}
-  - {fileID: 371224830502038695}
+  - {fileID: 5414246631941164399}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,7 +344,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1001 &869507505382808577
+--- !u!1001 &4761575687711981001
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -397,14 +397,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720015470350866467, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
       propertyPath: m_Name
-      value: SFX
+      value: CharacterSFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
---- !u!4 &371224830502038695 stripped
+--- !u!4 &5414246631941164399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 664218805886529702, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
-  m_PrefabInstance: {fileID: 869507505382808577}
+  m_PrefabInstance: {fileID: 4761575687711981001}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6416874239079881552
 PrefabInstance:

@@ -76,6 +76,7 @@ public class CardDisplayController : MonoBehaviour {
     public void Start(){
         GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
         GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
+
         GetComponent<Draggable>().onDragStop += (drag, drop) => {
             if(drop != null && drop.name == "DropZone"){
                 Play();
@@ -90,6 +91,8 @@ public class CardDisplayController : MonoBehaviour {
         yield return CardData.DesignateTargets();
         Debug.Log($"<color=blue>{CardData.Name} </color>Designating target...");
         GameManager.manager.RemoveCardFromHand(this);
+        AudioManager.audioMgr.PlayUISFX("PlaceCard");
+
         GameManager.manager.ToggleEndPhaseButton(true);
     }
 
@@ -104,7 +107,7 @@ public class CardDisplayController : MonoBehaviour {
 
         cardDisplay.CardData = card;
 
-        Debug.Log($"CDC: Creating card {card}");
+        //Debug.Log($"CDC: Creating card {card}");
 
         cardDisplay._name.text = card.Name;
         cardDisplay._description.text = card.Description;

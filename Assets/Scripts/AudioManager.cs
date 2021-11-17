@@ -5,17 +5,15 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioMgr;
-    
-
-    //GameObjects sound sources
-    public GameObject sceneBGM, sceneIntro;
 
     //BGM
-    private AudioSource currentTrack, victoryTrack, failureTrack;
+    [SerializeField]
+    private AudioClip sceneBGM, sceneIntro, victoryTrack, failureTrack;
+    private AudioSource currentTrack;
 
     //SFX
-    public AudioSource SFXSource;
-    private List<AudioSource> sfx = new List<AudioSource>();
+    public GameObject SFXSource;
+    private AudioSource SFXPlayer;
     public List<AudioClip> SoundEffects;
     
 
@@ -23,73 +21,87 @@ public class AudioManager : MonoBehaviour
     {
         if (audioMgr == null)
         {
-            //Play 'awake' sfx for the scene (one time)
-            currentTrack = sceneIntro.GetComponent<AudioSource>();
-            currentTrack.loop = false;
+
+            //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
+            currentTrack = GetComponent<AudioSource>();
+            currentTrack.volume = 0.2f;
+            currentTrack.clip = sceneBGM;
+            currentTrack.loop = true;
 
 
+            //Configure audioSources
+            SFXPlayer = SFXSource.GetComponent<AudioSource>();
+            SFXPlayer.volume = 0.5f;
             currentTrack.playOnAwake = false;
-
-            SFXSource.playOnAwake = false;
-
-            //Foreach SoundEffect stored in the unity editor's gameobject audioManager is attached to, add them to th sfx AudioSource list.
-            foreach (AudioClip sound in SoundEffects)
-            {
-
-                SFXSource.clip = sound;
-
-                sfx.Add(SFXSource);
-               
-            }
+            SFXPlayer.playOnAwake = false;
 
 
             audioMgr = this;
+
+            currentTrack.Play();
         }
 
     }
 
+    public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
+    {
+        Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in ts)
+        { 
+            if (t.gameObject.name == SFXName)
+            { 
+                PlayObjectSFX(t.gameObject);
+                break;
+            }
 
-    public void PlayObjectSFX(GameObject SFX)
+        }
+    }
+
+    public void PlayObjectSFX(GameObject SFXObject)
     {
 
-        AudioSource selectSFX = new AudioSource();
-        selectSFX = sceneIntro.GetComponent<AudioSource>();
-
-        selectSFX.Play();
+        SFXObject.GetComponent<AudioSource>().Play();
+        
     }
 
     public void PlayUISFX(string SFX)
     {
 
-
-        switch(SFX)
+        switch (SFX)
         {
-            case "CardInteraction":
+            case "PaperInteraction":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CardInteraction"));
                 break;
             case "PickupCard":
-                Random.Range(1, 3);
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("PickupCard" + Random.Range(1, 3)));
                 break;
             case "PlaceCard":
-                Random.Range(1, 2);
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("PlaceCard" + Random.Range(1, 2)));
                 break;
             case "Shuffle":
-                Random.Range(1, 2);
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("Shuffle" + Random.Range(1, 2)));
                 break;
             case "CorruptionFail":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CorruptionFail"));
                 break;
             case "CorruptionPass":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CorruptionPass"));
                 break;
             case "CorruptionGain":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CorruptionGain"));
                 break;
             case "CorruptionCleanse":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CorruptionCleanse"));
                 break;
             case "Heal":
+                SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("Heal"));
                 break;
-
             default:
                 Debug.Log($"<color=red>AudioManager:</color> Sound effect of name {SFX} is not listed!");
                 break;
         }
+
+        SFXPlayer.Play();
 
     }
 

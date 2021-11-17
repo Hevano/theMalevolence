@@ -22,10 +22,6 @@ public class HandDisplayController : MonoBehaviour {
         DisplayedCards.Add(card);
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
-                
-                //Removed for playtest
-                //Debug.Log(j + " " + i);
-
                 if (DisplayedCardsPlacement[j,i] == null) {
                     DisplayedCardsPlacement[j,i] = card;
                     card.Handx = j;
