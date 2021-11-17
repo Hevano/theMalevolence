@@ -102,7 +102,7 @@ MonoBehaviour:
     vitalityEffect:
       target: 1
       vitalityType: 0
-      value: 5
+      value: 10
   - effectType: 9
     cardEffect:
       target: 0

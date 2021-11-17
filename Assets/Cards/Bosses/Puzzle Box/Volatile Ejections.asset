@@ -73,7 +73,7 @@ MonoBehaviour:
       target: 2
       dieNumber: 1
       dieSize: 4
-      dieBonus: 10
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:

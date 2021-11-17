@@ -65,7 +65,7 @@ MonoBehaviour:
       vitalityType: 0
       value: 0
   cardCorFail:
-  - effectType: 1
+  - effectType: 8
     cardEffect:
       target: 0
     afflictEffect:
@@ -99,8 +99,8 @@ MonoBehaviour:
       target: 0
       configuration: 0
     summonEffect:
-      target: 0
-      Boss: 0
+      target: 3
+      Boss: 5
     vitalityEffect:
       target: 0
       vitalityType: 0

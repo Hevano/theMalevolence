@@ -2134,7 +2134,7 @@ MonoBehaviour:
   - {fileID: 1997351467}
   - {fileID: 1880129127}
   - {fileID: 1041460158}
-  currentCard: 5
+  currentCard: 10
 --- !u!114 &951318890
 MonoBehaviour:
   m_ObjectHideFlags: 0
