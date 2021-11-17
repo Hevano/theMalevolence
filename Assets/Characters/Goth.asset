@@ -26,6 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc6cbd1acb0343b499102d01e82733da, type: 2}
   - {fileID: 11400000, guid: ab5c02d9214861648b0da2b4d3ca5db7, type: 2}
   - {fileID: 11400000, guid: 69e4299237ded04469afbd17f357c00e, type: 2}
+  - {fileID: 11400000, guid: 9530e4fbc62ae314891a1ee99bbd7457, type: 2}
   basicAttack:
     dieNum: 1
     dieSize: 6

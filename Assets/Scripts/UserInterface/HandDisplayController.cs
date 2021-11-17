@@ -34,7 +34,8 @@ public class HandDisplayController : MonoBehaviour {
                 }
             }
         }
-        card.GetComponent<Draggable>().zone = this.GetComponent<DropZone>();
+        var draggable = card.GetComponent<Draggable>();
+        draggable.zone = this.GetComponent<DropZone>();
         DisplayCard(card);
     }
 
@@ -47,7 +48,7 @@ public class HandDisplayController : MonoBehaviour {
     public void DisplayCard(CardDisplayController card) {
         CardDisplayController NewCard = card;
         RectTransform cardRectTransform = NewCard.GetComponent<RectTransform>();
-        RectTransform UI = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<RectTransform>();
+        RectTransform UI = GetComponent<RectTransform>();
         cardRectTransform.SetParent(UI.transform);
         cardRectTransform.offsetMin = new Vector2((card.Handx + 1) * 250, (card.Handy + 1) * 300);
         cardRectTransform.offsetMax = new Vector2(0, 0);

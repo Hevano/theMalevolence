@@ -68,4 +68,10 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             Drop(null);
         }
     }
+
+    public void ClearHandlers(){
+        onDragStart = null;
+        onDragStop = null;
+        onDrag = null;
+    }
 }
