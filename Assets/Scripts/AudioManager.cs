@@ -24,8 +24,8 @@ public class AudioManager : MonoBehaviour
         if (audioMgr == null)
         {
             //Play 'awake' sfx for the scene (one time)
-            //currentTrack = sceneIntro.GetComponent<AudioSource>();
-            //currentTrack.loop = false;
+            currentTrack = sceneIntro.GetComponent<AudioSource>();
+            currentTrack.loop = false;
 
 
             currentTrack.playOnAwake = false;
@@ -67,10 +67,13 @@ public class AudioManager : MonoBehaviour
             case "CardInteraction":
                 break;
             case "PickupCard":
+                Random.Range(1, 3);
                 break;
             case "PlaceCard":
+                Random.Range(1, 2);
                 break;
             case "Shuffle":
+                Random.Range(1, 2);
                 break;
             case "CorruptionFail":
                 break;
