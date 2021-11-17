@@ -16,9 +16,10 @@ MonoBehaviour:
   cardDescription: 
   cardFlavor: 
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
   bossCard: 1
-  keepInDeck: 1
+  bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
@@ -44,12 +45,12 @@ MonoBehaviour:
       target: 0
       toInsert: {fileID: 0}
     modifyEffect:
-      target: 0
+      target: 2
       modifierEffect: 0
       modifierFactor: 1
       modifierPerFactor: 2
       perFactorValue: 20
-      effectIndex: 0
+      effectIndex: 1
     reshuffleEffect:
       target: 0
     solveEffect:
@@ -57,6 +58,7 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
@@ -71,7 +73,7 @@ MonoBehaviour:
       target: 2
       dieNumber: 1
       dieSize: 4
-      dieBonus: 0
+      dieBonus: 10
     cleanseEffect:
       target: 0
     drawEffect:
@@ -96,6 +98,7 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

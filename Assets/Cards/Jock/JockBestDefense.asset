@@ -69,7 +69,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 1
-      statusEffect: 1
+      statusEffect: 16
     attackEffect:
       target: 0
       dieNumber: 0

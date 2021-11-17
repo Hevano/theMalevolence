@@ -35,6 +35,7 @@ public class ModifierEffect : CardEffect {
                     target = targets[0];
                 else
                     GameManager.manager.characters.TryGetValue(card.Character, out target);
+                Debug.Log(target.data.name + ": Corruption = " + target.Corruption);
                 value = (target.Corruption / perFactorValue) * modifierPerFactor;
                 break;
             case Enums.ModifierFactors.Hand_Size:

@@ -12,6 +12,8 @@ public class AttackEffect : CardEffect {
     /** <summary>An attack bonus to add after die have been rolled</summary> */
     [SerializeField] private int dieBonus;
 
+    private int bonusDamage;
+
     /** <summary>Applies the effect onto the relevant targets</summary> */
     public override IEnumerator ApplyEffect () {
         Character self;
@@ -24,7 +26,7 @@ public class AttackEffect : CardEffect {
         else damVals[0] = self.data.basicAttack.DieNumber;
         if (dieSize > 0) damVals[1] = dieSize;
         else damVals[1] = self.data.basicAttack.DieSize;
-        if (dieBonus != 0) damVals[2] = dieBonus;
+        if (bonusDamage != 0) damVals[2] = bonusDamage;
         else damVals[2] = self.data.basicAttack.DieBonus;
         Damage damage = new Damage(damVals[0], damVals[1], damVals[2]);
 
@@ -41,16 +43,16 @@ public class AttackEffect : CardEffect {
         if (modifyingValue != 0) {
             switch (modification) {
                 case Enums.Modifier.Add:
-                    dieBonus += modifyingValue;
+                    bonusDamage = dieBonus + modifyingValue;
                     break;
                 case Enums.Modifier.Subtract:
-                    dieBonus -= modifyingValue;
+                    bonusDamage = dieBonus - modifyingValue;
                     break;
                 case Enums.Modifier.Multiply:
-                    dieBonus *= modifyingValue;
+                    bonusDamage = dieBonus * modifyingValue;
                     break;
                 case Enums.Modifier.Divide:
-                    dieBonus /= modifyingValue;
+                    bonusDamage = dieBonus / modifyingValue;
                     break;
             }
         }

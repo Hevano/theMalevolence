@@ -17,6 +17,7 @@ MonoBehaviour:
     check. On a pass, gain 10 corruption. On a fail, summon 2 Shards of Eternity.
   cardFlavor: 
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
   bossCard: 1
   bossCorTargets: 2
@@ -65,6 +66,46 @@ MonoBehaviour:
       vitalityType: 1
       value: 10
   cardCorFail:
+  - effectType: 8
+    cardEffect:
+      target: 0
+    afflictEffect:
+      target: 0
+      statusEffect: 0
+    attackEffect:
+      target: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
+    cleanseEffect:
+      target: 0
+    drawEffect:
+      target: 0
+      cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
+    insertEffect:
+      target: 0
+      toInsert: {fileID: 0}
+    modifyEffect:
+      target: 0
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    reshuffleEffect:
+      target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
+    summonEffect:
+      target: 3
+      Boss: 5
+    vitalityEffect:
+      target: 0
+      vitalityType: 0
+      value: 0
   - effectType: 8
     cardEffect:
       target: 0
