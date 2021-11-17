@@ -47,6 +47,17 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("corruption", ref _corruption, ref value);
             }
+
+            //Play sounds based on corruption
+            if (_corruption > value)
+            {
+                AudioManager.audioMgr.PlayUISFX("CorruptionGain");
+            }
+            else
+            {
+                AudioManager.audioMgr.PlayUISFX("CorruptionCleanse");
+            }
+
             CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
         }
