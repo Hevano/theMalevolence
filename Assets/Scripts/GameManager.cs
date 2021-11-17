@@ -235,6 +235,7 @@ public class GameManager : MonoBehaviour
         {
             phase = Enums.GameplayPhase.Resolve;
             ToggleEndPhaseButton(false);
+            AudioManager.audioMgr.PlayUISFX("PaperInteraction");
         }
     }
 
