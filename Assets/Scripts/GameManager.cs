@@ -273,6 +273,7 @@ public class GameManager : MonoBehaviour
     //Remove card display from hand: Note: doesn't discard
     public void PlaceCardInHand(Card c){
         hand.AddCard(CardDisplayController.CreateCard(c));
+        AudioManager.audioMgr.PlayUISFX("PickupCard");
     }
 
     public void RemoveCardFromHand(CardDisplayController cd){
