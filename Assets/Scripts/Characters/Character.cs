@@ -6,6 +6,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
     [SerializeField]
     protected int _health;
+    protected GameObject SFX;
+
     public int Health
     {
         get{
@@ -22,6 +24,9 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             {
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
                 try { animator.SetTrigger("Hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Hurt");
+
             }
             else
             { 
@@ -49,7 +54,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
 
             //Play sounds based on corruption
-            if (_corruption > value)
+            if (_corruption < value)
             {
                 AudioManager.audioMgr.PlayUISFX("CorruptionGain");
             }
@@ -73,6 +78,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
+            AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
             OnDeath();
             GameManager.manager.CheckGameOver();
         }
@@ -218,11 +224,18 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         return target;
     }
 
-    public virtual void Awake(){
+    public virtual void Awake()
+    {
         _health = data.health;
         _corruption = data.corruption;
         Action = Enums.Action.Attack;
         animator = GetComponent<Animator>();
+    }
+
+    public virtual void Start()
+    {
+        Debug.Log($"Creating {this.gameObject.name}");
+        SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");
     }
 
     //Called once a resolve phase ends, reseting the character's status
