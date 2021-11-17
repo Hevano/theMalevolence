@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
         {
             //Play 'awake' sfx for the scene (one time)
             //currentTrack = sceneIntro.GetComponent<AudioSource>();
-            currentTrack.loop = false;
+            //currentTrack.loop = false;
 
             //Foreach SoundEffect stored in the unity editor's gameobject audioManager is attached to, add them to th sfx AudioSource list.
             foreach (AudioClip sound in SoundEffects)
