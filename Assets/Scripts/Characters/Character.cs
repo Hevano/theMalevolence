@@ -31,12 +31,14 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             else
             { 
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
+
                 AudioManager.audioMgr.PlayUISFX("Heal");
             }
             _health = newValue;
             if (Health == 0){
                 Defeated = true;
                 try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+
             }
         }
     }
@@ -78,7 +80,9 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
+
             AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+
             OnDeath();
             GameManager.manager.CheckGameOver();
         }
@@ -236,6 +240,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     {
         Debug.Log($"Creating {this.gameObject.name}");
         SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");
+
     }
 
     //Called once a resolve phase ends, reseting the character's status
