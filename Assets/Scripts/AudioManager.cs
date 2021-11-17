@@ -14,8 +14,10 @@ public class AudioManager : MonoBehaviour
     private AudioSource currentTrack, victoryTrack, failureTrack;
 
     //SFX
+    public AudioSource SFXSource;
     private List<AudioSource> sfx = new List<AudioSource>();
     public List<AudioClip> SoundEffects;
+    
 
     public void Awake()
     {
@@ -25,15 +27,19 @@ public class AudioManager : MonoBehaviour
             //currentTrack = sceneIntro.GetComponent<AudioSource>();
             //currentTrack.loop = false;
 
+
+            currentTrack.playOnAwake = false;
+
+            SFXSource.playOnAwake = false;
+
             //Foreach SoundEffect stored in the unity editor's gameobject audioManager is attached to, add them to th sfx AudioSource list.
             foreach (AudioClip sound in SoundEffects)
             {
 
-                AudioSource selSFX = new AudioSource();
-                selSFX.clip = sound;
+                SFXSource.clip = sound;
 
-                sfx.Add(selSFX);
-                    
+                sfx.Add(SFXSource);
+               
             }
 
 
@@ -43,9 +49,30 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlaySFX(GameObject SFXprefab)
+    public void PlayObjectSFX(GameObject SFX)
     {
-        //audioMgr.sfxSrc.Play();
+
+        AudioSource selectSFX = new AudioSource();
+        selectSFX = sceneIntro.GetComponent<AudioSource>();
+
+        selectSFX.Play();
+    }
+
+    public void PlayUISFX(string SFX)
+    {
+
+
+        switch(SFX)
+        {
+            case "CardInteraction":
+                break;
+
+
+            default:
+                Debug.Log($"<color=red>AudioManager:</color> Sound effect of name {SFX} is not listed!");
+                break;
+        }
+
     }
 
     public void StopMusic() { currentTrack.Stop(); }
