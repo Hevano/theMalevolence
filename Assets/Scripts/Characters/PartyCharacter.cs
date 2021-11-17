@@ -33,7 +33,9 @@ public class PartyCharacter : Character
         Character target = (Character)Targetable.currentTargets[0];
         damage = damage == null ? data.basicAttack : damage;
         InvokeAttackHandler(target, ref damage);
-        
+
+        AudioManager.audioMgr.PlayCharacterSFX(SFX, "Attack");
+
         target.Health -= damage.Value;
     }
 

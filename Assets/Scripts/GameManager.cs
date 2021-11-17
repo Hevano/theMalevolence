@@ -35,13 +35,18 @@ public class GameManager : MonoBehaviour
     public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
     public event PhaseChangeHandler onPhaseChange;
 
-    void Start()
+    private void Awake()
     {
         if (manager != null)
         {
             Destroy(this);
         }
         manager = this;
+    }
+
+    void Start()
+    {
+        
 
         StartBattle();
 
@@ -330,6 +335,18 @@ public class GameManager : MonoBehaviour
             characters[e.data.characterType] = e;
         }
 
+    }
+
+    //If looking for a child gameobject, find the gameobject by name and return the object (if none found, return null.
+    public GameObject getChildGameObject(GameObject source, string name)
+    {
+        Transform[] children = source.transform.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in children)
+        {
+            if (child.gameObject.name == name) return child.gameObject;
+        }
+
+        return null;
     }
 }
 

@@ -43,6 +43,19 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
+    {
+        Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in ts)
+        { 
+            if (t.gameObject.name == SFXName)
+            { 
+                PlayObjectSFX(t.gameObject);
+                break;
+            }
+
+        }
+    }
 
     public void PlayObjectSFX(GameObject SFXObject)
     {
@@ -57,7 +70,7 @@ public class AudioManager : MonoBehaviour
 
         switch (SFX)
         {
-            case "CardInteraction":
+            case "PaperInteraction":
                 SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CardInteraction"));
                 break;
             case "PickupCard":

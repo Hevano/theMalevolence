@@ -35,7 +35,6 @@ public class EnemyCharacter : Character
 
         deck = data.Deck;
 
-
         animator = GetComponentInChildren<Animator>();
         //Any initialization in deck order
     }
