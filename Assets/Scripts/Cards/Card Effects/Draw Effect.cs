@@ -44,19 +44,20 @@ public class DrawEffect : CardEffect {
 
     /** <summary>Takes the modification from the MODIFY effect and increases "cardsToDraw" value</summary> */
     public override void ApplyModification () {
+        cards = cardsToDraw;
         if (modifyingValue != 0) {
             switch (modification) {
                 case Enums.Modifier.Add:
-                    cards = cardsToDraw + modifyingValue;
+                    cards += modifyingValue;
                     break;
                 case Enums.Modifier.Subtract:
-                    cards = cardsToDraw - modifyingValue;
+                    cards -= modifyingValue;
                     break;
                 case Enums.Modifier.Multiply:
-                    cards = cardsToDraw * modifyingValue;
+                    cards *= modifyingValue;
                     break;
                 case Enums.Modifier.Divide:
-                    cards = cardsToDraw / modifyingValue;
+                    cards /= modifyingValue;
                     break;
             }
         }

@@ -49,6 +49,7 @@ public class ModifierEffect : CardEffect {
                 value = (hp / perFactorValue) * modifierPerFactor;
                 break;
             case Enums.ModifierFactors.Marked:
+                Debug.Log(targets[0] + " is marked: " + targets[0].Marked);
                 if (targets[0].Marked)
                     value = 1;
                 break;
@@ -58,6 +59,7 @@ public class ModifierEffect : CardEffect {
                     GameManager.manager.decks.TryGetValue(GameManager.manager.party[i].data.characterType, out deck);
                     value += deck.DiscardList.Count;
                 }
+                Debug.Log("Discards: " + value);
                 break;
         }
 

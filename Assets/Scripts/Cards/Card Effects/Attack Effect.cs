@@ -40,19 +40,20 @@ public class AttackEffect : CardEffect {
 
     /** <summary>Takes the modification from the MODIFY effect and increases "dieBonus" value</summary> */
     public override void ApplyModification () {
+        bonusDamage = dieBonus;
         if (modifyingValue != 0) {
             switch (modification) {
                 case Enums.Modifier.Add:
-                    bonusDamage = dieBonus + modifyingValue;
+                    bonusDamage += modifyingValue;
                     break;
                 case Enums.Modifier.Subtract:
-                    bonusDamage = dieBonus - modifyingValue;
+                    bonusDamage -= modifyingValue;
                     break;
                 case Enums.Modifier.Multiply:
-                    bonusDamage = dieBonus * modifyingValue;
+                    bonusDamage *= modifyingValue;
                     break;
                 case Enums.Modifier.Divide:
-                    bonusDamage = dieBonus / modifyingValue;
+                    bonusDamage /= modifyingValue;
                     break;
             }
         }

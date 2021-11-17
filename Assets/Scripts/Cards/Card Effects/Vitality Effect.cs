@@ -54,19 +54,20 @@ public class VitalityEffect : CardEffect {
 
     /** <summary>Takes the modification from the MODIFY effect and increases "value" value</summary> */
     public override void ApplyModification () {
+        val = value;
         if (modifyingValue != 0) {
             switch (modification) {
                 case Enums.Modifier.Add:
-                    val = value + modifyingValue;
+                    val += modifyingValue;
                     break;
                 case Enums.Modifier.Subtract:
-                    val = value - modifyingValue;
+                    val -= modifyingValue;
                     break;
                 case Enums.Modifier.Multiply:
-                    val = value * modifyingValue;
+                    val *= modifyingValue;
                     break;
                 case Enums.Modifier.Divide:
-                    val = value / modifyingValue;
+                    val /= modifyingValue;
                     break;
             }
         }
