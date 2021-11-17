@@ -14,21 +14,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 0}
---- !u!111 &947093970
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6844388912046593108}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 4781951162920444690, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &947093971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shard of Eternity
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ccf4d121fc7b4d449231cc0835d39c3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b2fdf7edb1202478695b256ee54e27, type: 3}
 --- !u!1 &6844388912046593108 stripped

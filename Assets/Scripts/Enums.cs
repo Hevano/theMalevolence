@@ -6,7 +6,6 @@ public static class Enums {
 
     public enum StatusEffects {
         CorruptionShield,
-        HealthShield,
         ExtraCard,
         Protected,
         BackTalk,
@@ -21,7 +20,8 @@ public static class Enums {
         AttackBuff,
         ExistentialDread,
         LustForDestruction,
-        DoubleDamage
+        DoubleDamage,
+        HealthShield
     }
 
     public enum CardEffects {

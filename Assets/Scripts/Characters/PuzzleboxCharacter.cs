@@ -228,6 +228,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
                 ShardOfEternityCharacter newShard = Instantiate(Resources.Load<ShardOfEternityCharacter>("prefabs/Shard Of Eternity"), ShardSpawns[i].transform);
                 newShard.transform.localPosition = Vector3.zero;
                 yield return CombatUIManager.Instance.DisplayMessage("A Shard of Eternity has been created");
+                Shards[i] = newShard;
                 break;
             }
         }
