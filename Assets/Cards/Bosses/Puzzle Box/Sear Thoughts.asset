@@ -16,6 +16,7 @@ MonoBehaviour:
   cardDescription: 
   cardFlavor: 
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
   bossCard: 1
   bossCorTargets: 4
@@ -69,7 +70,7 @@ MonoBehaviour:
       target: 0
     afflictEffect:
       target: 1
-      statusEffect: 8
+      statusEffect: 9
     attackEffect:
       target: 0
       dieNumber: 0

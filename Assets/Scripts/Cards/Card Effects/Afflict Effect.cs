@@ -14,6 +14,9 @@ public class AfflictEffect : CardEffect {
                 case Enums.StatusEffects.CorruptionShield:
                     effect = new StatChangePrevention(target, "corruption", Enums.StatChangeEnum.Increase);
                     break;
+                case Enums.StatusEffects.HealthShield:
+                    effect = new StatChangePrevention(target, "health", Enums.StatChangeEnum.Decrease);
+                    break;
                 case Enums.StatusEffects.CorruptionSubstitution:
                     effect = new CorruptionSubstitution(GameManager.manager.characters[card.Character], target);
                     break;
@@ -26,8 +29,23 @@ public class AfflictEffect : CardEffect {
                 case Enums.StatusEffects.BackTalk:
                     effect = new BackTalk(GameManager.manager.characters[card.Character]);
                     break;
+                case Enums.StatusEffects.DoubleDamage:
+                    effect = new DoubleDamage(target);
+                    break;
                 case Enums.StatusEffects.Stun:
                     effect = new Stun(target);
+                    break;
+                case Enums.StatusEffects.StunDelayed:
+                    effect = new StunDelayed(target);
+                    break;
+                case Enums.StatusEffects.AttackBuff:
+                    effect = new AttackBuff(target, 1, 0, 0);
+                    break;
+                case Enums.StatusEffects.ExistentialDread:
+                    effect = new ExistentialDread(target, GameManager.manager.characters[card.Character]);
+                    break;
+                case Enums.StatusEffects.LustForDestruction:
+                    effect = new LustForDestruction(target, new Damage(2, 6, 0), new Damage(3, 6, 0));
                     break;
                 case Enums.StatusEffects.Mark:
                     break;
@@ -47,6 +65,9 @@ public class AfflictEffect : CardEffect {
                             GameManager.manager.RemoveCardFromHand(cardDisplay);
                         }
                         yield return CombatUIManager.Instance.DisplayMessage($"Discarding {target.name}'s cards from your hand!", 2f);
+                    break;
+                case Enums.StatusEffects.Silence:
+                    effect = new Silence(target);
                     break;
             }
         }

@@ -12,6 +12,7 @@ public class Card : ScriptableObject {
     [SerializeField] private string cardDescription;
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
+    [SerializeField] private Color cardColor;
     [SerializeField] private bool exiled;
     [SerializeField] private bool bossCard;
     [SerializeField] private Enums.Target bossCorTargets;
@@ -33,6 +34,11 @@ public class Card : ScriptableObject {
     public string Description { get { return cardDescription; } }
     public string Flavor { get { return cardFlavor; } }
     public Enums.Character Character { get { return cardCharacter; } }
+    public Color Color
+    {
+        get { return cardColor; }
+        set{cardColor = value;}
+    }
 
     public bool Exiled { get { return exiled; } }
     public bool BossCard { get { return bossCard; } }
@@ -115,6 +121,8 @@ public class Card : ScriptableObject {
 
     //Play the card
     public IEnumerator Activate () {
+        if (bossCard)
+            yield return DesignateTargets();
 
         for (int i = 0; i < cardEffects.Count; i++){
             var effect = cardEffects[i].GetEffect();

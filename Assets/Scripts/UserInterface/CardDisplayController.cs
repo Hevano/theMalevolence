@@ -76,6 +76,7 @@ public class CardDisplayController : MonoBehaviour {
     public void Start(){
         GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
         GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
+
         GetComponent<Draggable>().onDragStop += (drag, drop) => {
             if(drop != null && drop.name == "DropZone"){
                 Play();
@@ -88,8 +89,10 @@ public class CardDisplayController : MonoBehaviour {
     {
         GameManager.manager.ToggleEndPhaseButton(false);
         yield return CardData.DesignateTargets();
-        Debug.Log($"card {CardData.Name} DesignateTarget");
+        Debug.Log($"<color=blue>{CardData.Name} </color>Designating target...");
         GameManager.manager.RemoveCardFromHand(this);
+        AudioManager.audioMgr.PlayUISFX("PlaceCard");
+
         GameManager.manager.ToggleEndPhaseButton(true);
     }
 
@@ -103,10 +106,18 @@ public class CardDisplayController : MonoBehaviour {
         var cardDisplay = cardGameObject.GetComponent<CardDisplayController>();
 
         cardDisplay.CardData = card;
+
+        //Debug.Log($"CDC: Creating card {card}");
+
         cardDisplay._name.text = card.Name;
         cardDisplay._description.text = card.Description;
-        cardDisplay._back.sprite = card.BackArt;
-        cardDisplay._front.sprite = card.FrontArt;
+
+        cardDisplay._front.color = card.Color;
+
+        if(card.BackArt != null)
+            cardDisplay._back.sprite = card.BackArt;
+        if (card.FrontArt != null)
+            cardDisplay._front.sprite = card.FrontArt;
 
         return cardDisplay;
     }

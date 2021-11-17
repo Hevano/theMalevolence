@@ -16,6 +16,18 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private RawImage _profile;
     [SerializeReference]
     private Image _thumbtack;
+    [SerializeReference]
+    private Image _action;
+    [SerializeReference]
+    private Text _actionText;
+    [SerializeReference]
+    private GameObject _corruption;
+    [SerializeReference]
+    private Color DefaultColor;
+
+
+    private bool _returnCard = true;
+
 
     //Temporary UI for alpha
     [SerializeReference]
@@ -24,9 +36,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
     public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
-    public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } } 
+    public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } }
+    public bool ReturnCard { get { return _returnCard; } set { _returnCard = value; } }
 
-    public Button drawButton;
+    public Button drawButton, actionButton;
 
     //private Dictionary<string, StatusEffectDisplay> statusEffects;
 
@@ -54,6 +67,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             ChangeName(Character.data.name);
             ChangeProfile(Character.data.avatar);
             ChangeThumbtack(Character.data.thumbtack);
+            ChangeAction(Character.data.weapon);
+            _actionText.text = "<color=black>Attack\n\n\n</color>";
 
             _character.onActionChange += ChangeAction;
         }
@@ -71,6 +86,12 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     {
         _thumbtack.sprite = newTack;
     }
+    public void ChangeAction(Sprite newAction)
+    {
+
+        if(newAction != null)
+            _action.sprite = newAction;
+    }
     public void ChangeName(string name)
     {
         NameDisplay.text = name;
@@ -79,17 +100,52 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
     }
     public void ChangeCorruption(int currentCorruption) {
-        CorruptionDisplay.text = currentCorruption.ToString();
+
+        CorruptionDisplay.text = currentCorruption.ToString() +"%";
+
+        switch (currentCorruption)
+        {
+            case int n when (n >75):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(3).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 50):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(2).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 25):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+                break;
+            case int n when (n > 0):
+                _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
+                break;
+
+
+        }
+
     }
 
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
         if(oldAction == newAction) return;
-        switch(newAction){
+
+        ActionDisplay.text = "";
+
+        switch (newAction){
             case Enums.Action.Attack:
-                ActionDisplay.text = "Attacking";
+
+                if(_character.data.weapon != null)
+                {
+                    _action.color = DefaultColor;
+                    _action.sprite = _character.data.weapon;
+                    _actionText.text = "<color=black>Attack\n\n\n</color>";
+                }
                 break;
             case Enums.Action.Card:
-                ActionDisplay.text =  $"Playing Card: {_character.CardToPlay.Name}";
+
+                if (_character.CardToPlay != null)
+                { 
+                    _action.sprite = _character.data.cardBack;
+                    _actionText.text = $"<color=white>{_character.CardToPlay.Name}</color>";
+                }
+
                 break;
             case Enums.Action.Stunned:
                 ActionDisplay.text = "Stunned";
@@ -131,6 +187,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
         drawButton.onClick.AddListener(() => {
             GameManager.manager.Draw(Character.data.characterType);
+        });
+
+        actionButton.onClick.AddListener(() => {
+            CheckAction();
         });
     }
 
@@ -176,6 +236,17 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     //Reset the character back to attacking if their display is right clicked
     public void OnPointerClick(PointerEventData d){
         if(d.button == PointerEventData.InputButton.Right && Character.CardToPlay != null){
+            GameManager.manager.PlaceCardInHand(Character.CardToPlay);
+            Character.CardToPlay = null;
+        }
+    }
+
+
+    //Reset the character back to attacking if their action button is clicked
+    public void CheckAction()
+    {
+        if (Character.CardToPlay != null && _returnCard == true)
+        {
             GameManager.manager.PlaceCardInHand(Character.CardToPlay);
             Character.CardToPlay = null;
         }

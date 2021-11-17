@@ -16,6 +16,7 @@ MonoBehaviour:
   cardDescription: Remove 50 corruption and heal 1 HP per 10 corruption lost.
   cardFlavor: 
   cardCharacter: 3
+  cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
     vitalityEffect:
       target: 1
       vitalityType: 0
-      value: 0
+      value: 10
   - effectType: 9
     cardEffect:
       target: 0

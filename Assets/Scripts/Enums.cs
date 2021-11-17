@@ -10,12 +10,18 @@ public static class Enums {
         Protected,
         BackTalk,
         Stun,
+        StunDelayed,
         Mark,
         WeakenWeapon,
         WeakenArmor,
         DiscardCharCards,
         Silence,
-        CorruptionSubstitution
+        CorruptionSubstitution,
+        AttackBuff,
+        ExistentialDread,
+        LustForDestruction,
+        DoubleDamage,
+        HealthShield
     }
 
     public enum CardEffects {
@@ -46,7 +52,8 @@ public static class Enums {
     public enum Action{
         Card,
         Attack,
-        Stunned
+        Stunned,
+        Silenced
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */

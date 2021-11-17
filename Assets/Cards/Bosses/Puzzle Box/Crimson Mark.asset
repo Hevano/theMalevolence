@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Crimson Mark
   cardDescription: 
-  cardFlavor: 
+  cardFlavor: The Puzzle Box demands blood. It will take it by force
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
   bossCard: 1
   bossCorTargets: 4
@@ -58,17 +59,18 @@ MonoBehaviour:
       configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0
       value: 0
   cardCorFail:
-  - effectType: 1
+  - effectType: 8
     cardEffect:
       target: 0
     afflictEffect:
       target: 1
-      statusEffect: 5
+      statusEffect: 6
     attackEffect:
       target: 0
       dieNumber: 0
@@ -97,7 +99,8 @@ MonoBehaviour:
       target: 0
       configuration: 0
     summonEffect:
-      target: 0
+      target: 3
+      Boss: 5
     vitalityEffect:
       target: 0
       vitalityType: 0

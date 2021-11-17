@@ -13,16 +13,25 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set{
             var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
-            if(onStatChange != null){
+            if(onStatChange != null)
+            {
                 onStatChange("health", ref _health, ref newValue);
             }
+
             if (_health > newValue)
+            {
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
+                try { animator.SetTrigger("Hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+            }
             else
+            { 
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
+                AudioManager.audioMgr.PlayUISFX("Heal");
+            }
             _health = newValue;
             if (Health == 0){
                 Defeated = true;
+                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
             }
         }
     }
@@ -38,6 +47,17 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             if(onStatChange != null){
                 onStatChange("corruption", ref _corruption, ref value);
             }
+
+            //Play sounds based on corruption
+            if (_corruption > value)
+            {
+                AudioManager.audioMgr.PlayUISFX("CorruptionGain");
+            }
+            else
+            {
+                AudioManager.audioMgr.PlayUISFX("CorruptionCleanse");
+            }
+
             CombatUIManager.Instance.SetDamageText(value - _corruption, transform, new Color32(139, 0, 139, 0));
             _corruption = value;
         }
@@ -61,7 +81,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     
     public bool Incapacitated {
         get {
-            return Defeated || Action == Enums.Action.Stunned;
+            return Defeated || Action == Enums.Action.Stunned || Action == Enums.Action.Silenced;
         }
     }
 
@@ -214,8 +234,6 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     protected virtual void OnDeath() { return; }
-
-    
 
     //Temporary implementation of character's turn
     public abstract IEnumerator GetTurn();

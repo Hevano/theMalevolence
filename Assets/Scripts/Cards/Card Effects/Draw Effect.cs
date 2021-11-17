@@ -13,25 +13,27 @@ public class DrawEffect : CardEffect {
     /** <summary>Discard cards in hand to discard pile. Overrides fromDiscard.</summary> */
     [SerializeField] private bool toDiscard;
 
+    private int cards;
+
     /** <summary>Applies the effect onto the relevant targets</summary> */
     public override IEnumerator ApplyEffect () {
         ApplyModification();
 
         //Sends a number of numbers from the player's hand into the discard pile
         if (toDiscard) {
-            for (int i = 0; i < cardsToDraw; i++) {
+            for (int i = 0; i < cards; i++) {
                 //Tell game manager to discard a card
             }
         }
         //Draws a number of cards from the discard pile into the player's hand
         else if (fromDiscard) {
-        for (int i = 0; i < cardsToDraw; i++) {
+        for (int i = 0; i < cards; i++) {
                 //Tell game manager to draw a card from the discard
             }
         } 
         //Draw a number of cards from your decks
         else {
-            for (int i = 0; i < cardsToDraw; i++) {
+            for (int i = 0; i < cards; i++) {
                 //Tell the game manager to enter the draw phase, then return to resolve phase
                 yield return GameManager.manager.ExecuteDrawPhase();
                 GameManager.manager.phase = Enums.GameplayPhase.Resolve;
@@ -42,19 +44,20 @@ public class DrawEffect : CardEffect {
 
     /** <summary>Takes the modification from the MODIFY effect and increases "cardsToDraw" value</summary> */
     public override void ApplyModification () {
+        cards = cardsToDraw;
         if (modifyingValue != 0) {
             switch (modification) {
                 case Enums.Modifier.Add:
-                    cardsToDraw += modifyingValue;
+                    cards += modifyingValue;
                     break;
                 case Enums.Modifier.Subtract:
-                    cardsToDraw -= modifyingValue;
+                    cards -= modifyingValue;
                     break;
                 case Enums.Modifier.Multiply:
-                    cardsToDraw *= modifyingValue;
+                    cards *= modifyingValue;
                     break;
                 case Enums.Modifier.Divide:
-                    cardsToDraw /= modifyingValue;
+                    cards /= modifyingValue;
                     break;
             }
         }

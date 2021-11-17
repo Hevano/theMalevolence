@@ -26,7 +26,7 @@ public class InsertEffect : CardEffect {
             toInsert.ChangeOwner(c.data.characterType);
             deck.AddCard(toInsert);
             //Inform the player what just happened
-            yield return CombatUIManager.Instance.DisplayMessage($"Added {toInsert.Name} to {c.data.name}'s deck", 3f);
+            yield return CombatUIManager.Instance.DisplayMessage($"Added {toInsert.Name} to {c.data.name}'s deck");
         }
         yield return new WaitForSeconds(1f);
     }

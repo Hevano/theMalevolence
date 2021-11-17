@@ -22,7 +22,11 @@ public class CardEffect {
     public IEnumerator DesignateTarget() {
         targets = new List<Character>();
 
-        Debug.Log("<color=blue>CardEffect.cs</color>: find target");
+        //Toggle the 'action' button for each character display prefab
+        GameManager.manager.togglePartyButton(false);
+
+        if (!card.BossCard)
+            Debug.Log("<color=blue>CardEffect.cs</color>: find target");
         Character c;
         GameManager.manager.characters.TryGetValue(card.Character, out c);
 
@@ -92,6 +96,8 @@ public class CardEffect {
                 targets.Add(card.SecondAllyTarget);
                 break;
         }
+
+        GameManager.manager.togglePartyButton(true);
     }
 
     public virtual IEnumerator ApplyEffect() {
