@@ -50,7 +50,6 @@ public class PuzzleboxCharacter : EnemyCharacter {
             if (deck.CardList.Count == 0) {
                 deck.Reshuffle();
             }
-            /*
             //Check if current configuration is valid
             if ((currentConfiguration == Enums.PuzzleBoxConfigurations.Achiever && !AchieverConfig)
                 || (currentConfiguration == Enums.PuzzleBoxConfigurations.Explorer && !ExplorerConfig)
@@ -61,61 +60,63 @@ public class PuzzleboxCharacter : EnemyCharacter {
             else {
                 if (turnEnd == false) {
                     int cardChoice;
-                    //Find configuration to determine cards to play
-                    switch (currentConfiguration) {
-                        //Default Configuration
-                        case Enums.PuzzleBoxConfigurations.Default:
-                            //In default configuration, play card "Dark Insight"
-                            CardToPlay = deck.CardList[0];
-                            break;
-                        //Achiever Configuration
-                        case Enums.PuzzleBoxConfigurations.Achiever:
-                            cardChoice = Random.Range(1, 100);
-                            //Randomly play "Volatile Ejections" (25%), "Dominating Will" (37%) or "Vengeful Retaliation" (38%)
-                            if (cardChoice <= 25)
-                                CardToPlay = deck.CardList[2];
-                            else if (cardChoice <= 62)
-                                CardToPlay = deck.CardList[3];
-                            else
-                                CardToPlay = deck.CardList[4];
-                            break;
-                        //Explorer Configuration
-                        case Enums.PuzzleBoxConfigurations.Explorer:
-                            cardChoice = Random.Range(1, 100);
-                            //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "Strangulate" (38%)
-                            if (cardChoice <= 25)
-                                CardToPlay = deck.CardList[5];
-                            else if (cardChoice <= 62)
-                                CardToPlay = deck.CardList[6];
-                            else
-                                CardToPlay = deck.CardList[7];
-                            break;
-                        //Killer Configuration
-                        case Enums.PuzzleBoxConfigurations.Killer:
-                            //If first turn as Killer, play "Crimson Mark"
-                            if (configCount == 0) {
-                                CardToPlay = deck.CardList[8];
+                    //If there are 5 Shards of Eternity, play "Coalescing  Prism"
+                    if (GameManager.manager.foes.Count >= 6)
+                        CardToPlay = deck.CardList[11];
+                    else {
+                        //Find configuration to determine cards to play
+                        switch (currentConfiguration) {
+                            //Default Configuration
+                            case Enums.PuzzleBoxConfigurations.Default:
+                                //In default configuration, play card "Dark Insight"
+                                CardToPlay = deck.CardList[0];
                                 break;
-                            }
-                            //Otherwise, play either "Voracious Hunger" or "Flesh from Bone"
-                            cardChoice = Random.Range(1, 100);
-                            if (cardChoice <= 50)
-                                CardToPlay = deck.CardList[9];
-                            else
-                                CardToPlay = deck.CardList[10];
-                            break;
-                        //Socializer Configuration
-                        case Enums.PuzzleBoxConfigurations.Socializer:
-                            //If there are 5 Shards of Eternity, play "Coalescing  Prism"
-                            if (GameManager.manager.foes.Count >= 6)
-                                CardToPlay = deck.CardList[11];
-                            //Otherwise, if first turn as Socializer, play "Chromatic Shatter"
-                            else if (configCount == 0)
-                                CardToPlay = deck.CardList[12];
-                            //Otherwise, play "Shifting Variance"
-                            else
-                                CardToPlay = deck.CardList[13];
-                            break;
+                            //Achiever Configuration
+                            case Enums.PuzzleBoxConfigurations.Achiever:
+                                cardChoice = Random.Range(1, 100);
+                                //Randomly play "Volatile Ejections" (25%), "Dominating Will" (37%) or "Vengeful Retaliation" (38%)
+                                if (cardChoice <= 25)
+                                    CardToPlay = deck.CardList[2];
+                                else if (cardChoice <= 62)
+                                    CardToPlay = deck.CardList[3];
+                                else
+                                    CardToPlay = deck.CardList[4];
+                                break;
+                            //Explorer Configuration
+                            case Enums.PuzzleBoxConfigurations.Explorer:
+                                cardChoice = Random.Range(1, 100);
+                                //Randomly play "Searing Thoughts" (25%), "Sigil of the Discarded" (37%) or "Strangulate" (38%)
+                                if (cardChoice <= 25)
+                                    CardToPlay = deck.CardList[5];
+                                else if (cardChoice <= 62)
+                                    CardToPlay = deck.CardList[6];
+                                else
+                                    CardToPlay = deck.CardList[7];
+                                break;
+                            //Killer Configuration
+                            case Enums.PuzzleBoxConfigurations.Killer:
+                                //If first turn as Killer, play "Crimson Mark"
+                                if (configCount == 0) {
+                                    CardToPlay = deck.CardList[8];
+                                    break;
+                                }
+                                //Otherwise, play either "Voracious Hunger" or "Flesh from Bone"
+                                cardChoice = Random.Range(1, 100);
+                                if (cardChoice <= 50)
+                                    CardToPlay = deck.CardList[9];
+                                else
+                                    CardToPlay = deck.CardList[10];
+                                break;
+                            //Socializer Configuration
+                            case Enums.PuzzleBoxConfigurations.Socializer:
+                            //If first turn as Socializer, play "Chromatic Shatter"
+                                if (configCount == 0)
+                                    CardToPlay = deck.CardList[12];
+                                //Otherwise, play "Shifting Variance"
+                                else
+                                    CardToPlay = deck.CardList[13];
+                                break;
+                        }
                     }
                 } else {
                     //If cube has been in configuration for 2 turns, change configuration.
@@ -142,22 +143,14 @@ public class PuzzleboxCharacter : EnemyCharacter {
                     yield return CardToPlay.Activate();
                 }
             }
-            */
         }
         turnEnd = !turnEnd;
         changingConfig = false;
-
-        CardToPlay = deck.CardList[currentCard];
-        Debug.Log($"{name} playing card {CardToPlay.Name}");
-        yield return CombatUIManager.Instance.RevealCard(CardToPlay);
-        CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
-        yield return CardToPlay.Activate();
-        currentCard++;
-        if (currentCard == deck.CardList.Count)
-            Health = 0;
     }
 
     private IEnumerator ChangeConfiguration() {
+        if (CheckLast())
+            yield break;
         bool valid = false;
         int newConfig = 0;
         do {
@@ -229,8 +222,21 @@ public class PuzzleboxCharacter : EnemyCharacter {
                 newShard.transform.localPosition = Vector3.zero;
                 yield return CombatUIManager.Instance.DisplayMessage("A Shard of Eternity has been created");
                 Shards[i] = newShard;
+                GameManager.manager.foes.Add(newShard);
                 break;
             }
         }
+    }
+
+    public bool CheckLast() {
+        int solved = 0;
+        if (!AchieverConfig) solved++;
+        if (!ExplorerConfig) solved++;
+        if (!KillerConfig) solved++;
+        if (!SocializerConfig) solved++;
+
+        if (solved == 3)
+            return true;
+        return false;
     }
 }

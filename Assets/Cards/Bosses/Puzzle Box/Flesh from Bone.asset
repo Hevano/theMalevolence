@@ -19,7 +19,7 @@ MonoBehaviour:
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
   bossCard: 1
-  bossCorTargets: 0
+  bossCorTargets: 2
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:

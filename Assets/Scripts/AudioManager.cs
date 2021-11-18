@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
             //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
             currentTrack = GetComponent<AudioSource>();
-            currentTrack.volume = 0.3f;
+            currentTrack.volume = 0.2f;
             currentTrack.clip = sceneBGM;
             currentTrack.loop = true;
 
@@ -43,13 +43,25 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
+    {
+        Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in ts)
+        { 
+            if (t.gameObject.name == SFXName)
+            { 
+                PlayObjectSFX(t.gameObject);
+                break;
+            }
+
+        }
+    }
 
     public void PlayObjectSFX(GameObject SFXObject)
     {
 
-        SFXPlayer.clip = SFXObject.GetComponent<AudioSource>().clip;
-
-        SFXPlayer.Play();
+        SFXObject.GetComponent<AudioSource>().Play();
+        
     }
 
     public void PlayUISFX(string SFX)
@@ -57,7 +69,7 @@ public class AudioManager : MonoBehaviour
 
         switch (SFX)
         {
-            case "CardInteraction":
+            case "PaperInteraction":
                 SFXPlayer.clip = SoundEffects.FindLast(sound => sound.name == ("CardInteraction"));
                 break;
             case "PickupCard":

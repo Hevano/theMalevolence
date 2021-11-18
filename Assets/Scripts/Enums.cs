@@ -45,7 +45,10 @@ public static class Enums {
         Nerd,
         Popular,
         Driver,
-        PuzzleBox
+        PuzzleBox,
+        Headmaster,
+        Student,
+        Faculty
     };
 
     /** <summary>A list of possible actions a character can take</summary> */
@@ -71,7 +74,8 @@ public static class Enums {
         Hand_Size,
         Health,
         Marked,
-        Discards
+        Discards,
+        Enemies
     }
 
     /** <summary>Targeting options for card effects</summary> */
