@@ -29,9 +29,16 @@ public class EnemyCharacter : Character
         _corruption = data.corruption;
         Action = Enums.Action.Attack;
 
+        Debug.Log($"{data.Deck.CardList.Count} cards will be created...");
+
+        int count = 0;
         //Establish card color for decks
         foreach (Card c in data.Deck.CardList)
+        {
+            count++;
+            Debug.Log($"{count}: {c.name} given color.");
             c.Color = data.color;
+        }
 
         deck = data.Deck;
 

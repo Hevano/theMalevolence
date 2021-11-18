@@ -240,7 +240,6 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     {
         Debug.Log($"Creating {this.gameObject.name}");
         SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");
-
     }
 
     //Called once a resolve phase ends, reseting the character's status
