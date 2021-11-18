@@ -45,15 +45,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
     {
-        Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
-        foreach (Transform t in ts)
+        if(SourceObject != null)
         { 
-            if (t.gameObject.name == SFXName)
+            Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
+            foreach (Transform t in ts)
             { 
-                PlayObjectSFX(t.gameObject);
-                break;
-            }
+                if (t.gameObject.name == SFXName)
+                { 
+                    PlayObjectSFX(t.gameObject);
+                    break;
+                }
 
+            }
         }
     }
 
