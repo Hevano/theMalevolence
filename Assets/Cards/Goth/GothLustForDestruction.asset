@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GothLustForDestruction
   m_EditorClassIdentifier: 
   cardName: Lust for Destruction
-  cardDescription: Deal 2d6 damage. If an ally is dead, deal 3d6 damage instead.
+  cardDescription: Deal 2-12 damage. If an ally is dead, deal 3-18 damage instead.
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}

@@ -56,7 +56,8 @@ public static class Enums {
         Card,
         Attack,
         Stunned,
-        Silenced
+        Silenced,
+        Draw
     }
 
     /** <summary>The types of effects on values in card effects.</summary> */

@@ -8,6 +8,10 @@ public class DriverCharacter : EnemyCharacter
     public Card siezureChoiceIgnore;
 
     public IEnumerator Siezure(){
+
+        siezureChoiceHelp.Color = Color.black;
+        siezureChoiceIgnore.Color = Color.black;
+
         var choices = new List<Card>();
         choices.Add(siezureChoiceHelp);
         choices.Add(siezureChoiceIgnore);
@@ -119,10 +123,14 @@ public class DriverCharacter : EnemyCharacter
     public override IEnumerator GetTurn(){
         Debug.Log(animator);
         if(Action != Enums.Action.Stunned){
-            if(deck.CardList.Count == 0){
+
+            if (deck.CardList.Count == 0){
                 deck.Reshuffle();
             }
+
+            Debug.Log($"{deck.CardList.Count} {deck.CardList} {deck.DiscardList.Count} {deck.DiscardList}");
             CardToPlay = deck.Draw();
+
             yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
             switch(CardToPlay.Name){
                 case "Siezure":

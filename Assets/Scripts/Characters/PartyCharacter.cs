@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PartyCharacter : Character
 {
+    bool cFirst25 = true, cFirst50 = true, cFirst75 = true, cFirstPlay = true;
+
     //overriden to update character display, and to return cards to then hand if the player plays multiple
     public override Card CardToPlay
     {
@@ -62,4 +64,39 @@ public class PartyCharacter : Character
         InvokeTurnEndHandler();
         yield return new WaitForSeconds(1f);
     }
+
+    public void checkVoicelines()
+    {
+
+
+        if (this.Corruption >= 25 && this.Corruption <= 50 && cFirst25 == true)
+        {
+            AudioManager.audioMgr.PlayVoiceline(this.gameObject, $"{this.data.characterType}-25Corruption");
+            cFirst25 = false;
+        }
+        else if (this.Corruption >= 50 && this.Corruption <= 75 && cFirst50 == true)
+        {
+            AudioManager.audioMgr.PlayVoiceline(this.gameObject, $"{this.data.characterType}-50Corruption");
+            cFirst50 = false;
+        }
+        else if (this.Corruption >= 75 && cFirst75 == true)
+        {
+            AudioManager.audioMgr.PlayVoiceline(this.gameObject, $"{this.data.characterType}-75Corruption");
+            cFirst75 = false;
+        }
+        else if (this.Corruption >= 75 && cFirst75 == true)
+        {
+            AudioManager.audioMgr.PlayVoiceline(this.gameObject, $"{this.data.characterType}-75Corruption");
+            cFirst75 = false;
+        }
+
+        if (cFirstPlay == true && this.data.characterType == Enums.Character.Jock)
+        {
+            AudioManager.audioMgr.PlayVoiceline(this.gameObject, $"{this.data.characterType}-IntroChoices");
+            cFirstPlay = false;
+        }
+
+    }
+
+
 }

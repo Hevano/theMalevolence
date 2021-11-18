@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Siezure - Ignore
   m_EditorClassIdentifier: 
-  cardName: Siezure - Ignore
+  cardName: Ignore
   cardDescription: All party members gain 40 corruption.
   cardFlavor: 
   cardCharacter: 4
+  cardColor: {r: 0, g: 0, b: 0, a: 1}
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
@@ -50,8 +53,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 4
       vitalityType: 1

@@ -97,7 +97,7 @@ public class CardEffect {
                 break;
         }
 
-        GameManager.manager.togglePartyButton(true);
+        GameManager.manager.togglePartyButton(GameManager.manager.actionsEnabled);
     }
 
     public virtual IEnumerator ApplyEffect() {
@@ -114,8 +114,19 @@ public class CardEffect {
         return;
     }
 
-    public void AddTarget(Character newTarget) { targets.Add(newTarget); }
-    public void ResetTargets() { targets.Clear(); }
+    public void AddTarget(Character newTarget)
+    {
+        if (targets == null)
+            targets = new List<Character>();
+
+        targets.Add(newTarget);
+    }
+    public void ResetTargets()
+    {
+        if(targets != null)
+            targets.Clear();
+
+    }
 
     /*
         CardEffect Resolution and Targeting
