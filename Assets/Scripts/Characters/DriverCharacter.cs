@@ -141,7 +141,7 @@ public class DriverCharacter : EnemyCharacter
                     throw new System.Exception("Driver tried to play unknown card of name: " + CardToPlay.Name);
 
             }
-
+            deck.DiscardList.Add(CardToPlay);
         }
     }
 }
