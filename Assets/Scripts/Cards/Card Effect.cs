@@ -97,7 +97,7 @@ public class CardEffect {
                 break;
         }
 
-        GameManager.manager.togglePartyButton(true);
+        GameManager.manager.togglePartyButton(GameManager.manager.actionsEnabled);
     }
 
     public virtual IEnumerator ApplyEffect() {

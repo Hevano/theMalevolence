@@ -2005,6 +2005,7 @@ MonoBehaviour:
   foes:
   - {fileID: 37066270}
   endPhaseButton: {fileID: 298348797}
+  deckBuilderCanvas: {fileID: 0}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0

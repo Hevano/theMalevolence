@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1669,6 +1669,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 62023895}
     m_Modifications:
+    - target: {fileID: 48006880594577918, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: _character
+      value: 
+      objectReference: {fileID: 6630067578136934688}
+    - target: {fileID: 48006880594577918, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: currentTurnSlot
+      value: 
+      objectReference: {fileID: 295873065}
+    - target: {fileID: 1550783691892655364, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550783691892655364, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -272
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581967709071180477, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: m_Name
+      value: PopularDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 295873066}
+    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
+      propertyPath: returnDropZone
+      value: 
+      objectReference: {fileID: 295873066}
     - target: {fileID: 1550783691892655364, guid: 0371f84716296384eb643874f4d9b6ac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1757,34 +1785,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopularDisplay
       objectReference: {fileID: 0}
-    - target: {fileID: 48006880594577918, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: _character
-      value: 
-      objectReference: {fileID: 6630067578136934688}
-    - target: {fileID: 48006880594577918, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: currentTurnSlot
-      value: 
-      objectReference: {fileID: 295873065}
-    - target: {fileID: 1550783691892655364, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550783691892655364, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -272
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581967709071180477, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: m_Name
-      value: PopularDisplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: zone
-      value: 
-      objectReference: {fileID: 295873066}
-    - target: {fileID: 1995304409378439585, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
-      propertyPath: returnDropZone
-      value: 
-      objectReference: {fileID: 295873066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48259540b39a94c44bb150370f4cc023, type: 3}
 --- !u!1 &846289398
@@ -2161,6 +2161,7 @@ MonoBehaviour:
   foes:
   - {fileID: 1831186986}
   endPhaseButton: {fileID: 679971280}
+  deckBuilderCanvas: {fileID: 0}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0
@@ -2258,7 +2259,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 846289399}
   m_Direction: 2
   m_Value: 1.0000004
-  m_Size: 0.50000006
+  m_Size: 0.5
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3116,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a50ba333b684273b238a964bb52406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBGM: {fileID: 8300000, guid: 1b15b28eb21cc7945b737cfb063e681f, type: 3}
+  sceneBGM: {fileID: 8300000, guid: a7d64904d568ea245ae53331bc4ab0dd, type: 3}
   sceneIntro: {fileID: 0}
   victoryTrack: {fileID: 0}
   failureTrack: {fileID: 0}

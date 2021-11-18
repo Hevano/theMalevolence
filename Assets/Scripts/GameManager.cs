@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public DropZone cardDropZone;
     public List<TurnOrderSlot> turnSlots;
     public Canvas messager;
+    public bool actionsEnabled = false;
 
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
@@ -104,6 +105,8 @@ public class GameManager : MonoBehaviour
         phase = Enums.GameplayPhase.Planning;
         ToggleEndPhaseButton(true);
 
+        actionsEnabled = true;
+
         //For each turn in turnSlots, enabled return card button
         foreach (TurnOrderSlot turnSlot in turnSlots)
         {
@@ -126,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         turnNumber++;
 
+        actionsEnabled = false;
         //UI turn resolving starts
         phase = Enums.GameplayPhase.Resolve;
         
@@ -166,6 +170,9 @@ public class GameManager : MonoBehaviour
 
     //Executes while turn is in draw phase
     public IEnumerator ExecuteDrawPhase(){
+        
+        actionsEnabled = true;
+
         phase = Enums.GameplayPhase.Draw;
         Debug.Log("<color=yellow>Draw Phase</color>:");
         if(onPhaseChange != null){
@@ -182,7 +189,6 @@ public class GameManager : MonoBehaviour
             if(party.Contains(display.Character) && !display.Character.Defeated){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
-                toggleCharButton(display, false);
             }
         }
         //Only wait to draw if at least one deck has cards in it
@@ -267,14 +273,16 @@ public class GameManager : MonoBehaviour
         endPhaseButton.SetActive(enabled);
     }
 
+    //Toggle character action button
     public void toggleCharButton(CharacterDisplayController display, bool enabled)
     {
         display.actionButton.interactable = enabled;
     }
 
+    //toggle all party members action buttons within turnslots
     public void togglePartyButton(bool enabled)
     {
-        //Enable draw buttons (could be better optimized)
+        
         foreach (TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();

@@ -25,8 +25,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Color DefaultColor;
 
+    private Enums.Action prevAction;
 
     private bool _returnCard = true;
+    private bool draw = false;
 
 
     [SerializeReference]
@@ -74,7 +76,20 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
 
     public void ToggleDrawButton(bool enabled){
-        drawButton.gameObject.SetActive(enabled);
+        draw = enabled;
+
+        if (enabled)
+        {
+            prevAction = Character.Action;
+            Character.Action = Enums.Action.Draw;
+            GameManager.manager.toggleCharButton(this, enabled);
+        }
+        else if (!enabled)
+        {
+            Character.Action = prevAction;
+            GameManager.manager.toggleCharButton(this, GameManager.manager.actionsEnabled);
+        }
+
     }
 
     //Setters for the CharacterDisplay Prefab
@@ -87,7 +102,6 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
     public void ChangeAction(Sprite newAction)
     {
-
         if(newAction != null)
             _action.sprite = newAction;
     }
@@ -149,9 +163,12 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             case Enums.Action.Stunned:
                 ActionDisplay.text = "Stunned";
                 break;
-                
+            case Enums.Action.Draw:
+                _action.sprite = _character.data.cardBack;
+                _actionText.text = $"<color=white>Draw Card</color>";
+                break;
         }
-        
+
     }
 
     public TurnOrderSlot currentTurnSlot;
@@ -184,9 +201,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         _character.onCorruptionCheckAttempt += StartCorruptionCheck;
         _character.onCorruptionCheckResult += ShowCorruptionCheck;
 
-        drawButton.onClick.AddListener(() => {
-            GameManager.manager.Draw(Character.data.characterType);
-        });
+        /*drawButton.onClick.AddListener(() => {
+            
+        });*/
 
         actionButton.onClick.AddListener(() => {
             CheckAction();
@@ -244,7 +261,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     //Reset the character back to attacking if their action button is clicked
     public void CheckAction()
     {
-        if (Character.CardToPlay != null && _returnCard == true)
+        if (draw == true)
+        {
+            GameManager.manager.Draw(Character.data.characterType);
+        }
+        else if (Character.CardToPlay != null && _returnCard == true)
         {
             GameManager.manager.PlaceCardInHand(Character.CardToPlay);
             Character.CardToPlay = null;
