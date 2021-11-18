@@ -11,7 +11,6 @@ public class DeckBuilder : MonoBehaviour
         get { return _instance; }
     }
 
-    public Canvas gameCanvas;
     public string nextScene;
 
     public CardDraftPool cardDraftPool;
@@ -27,6 +26,7 @@ public class DeckBuilder : MonoBehaviour
     public HandDisplayController characterDeckDisplay;
     private Enums.Character characterDisplayed;
     public HandDisplayController draftDisplay;
+    public TMPro.TextMeshProUGUI draftMessage;
 
     public bool drafting = false;
     public GameObject draftButton;
@@ -41,15 +41,7 @@ public class DeckBuilder : MonoBehaviour
             party[c.characterType] = c;
         }
         DisplayDeck(Enums.Character.Goth);
-        if(drafting){
-            StartCoroutine(PullCards());
-            draftButton.SetActive(true);
-            exitButton.GetComponentInChildren<Text>().text = "Continue";
-            exitButton.SetActive(false);
-            exitButton.GetComponent<Button>().onClick.AddListener(Continue);
-        } else {
-            exitButton.GetComponent<Button>().onClick.AddListener(ReturnToGame);
-        }
+        StartDraft();
     }
 
 
@@ -66,8 +58,7 @@ public class DeckBuilder : MonoBehaviour
         foreach(Card c in party[character].Deck.CardList){
             c.Color = party[c.Character].color;
             var display = CardDisplayController.CreateCard(c);
-            var draggable = display.GetComponent<Draggable>();
-            draggable.followMouse = false;
+            display.GetComponent<Draggable>().enabled = false;
             characterDeckDisplay.AddCard(display);
         }
     }
@@ -113,12 +104,17 @@ public class DeckBuilder : MonoBehaviour
                     selectedCards.Remove(display);
                 } else if(selectedCards.Count == cardsToKeep){
                     //unhighlight index 0
+                    Destroy(selectedCards[0].transform.GetChild(0).gameObject);
                     selectedCards.RemoveAt(0);
                     selectedCards.Add(display);
                     //highlight card
+                    var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
+                    glow.transform.SetAsFirstSibling();
                 } else {
                     selectedCards.Add(display);
                     //highlight card
+                    var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
+                    glow.transform.SetAsFirstSibling();
                 }
             };
             draggable.onDragStop += (a,b) => {
@@ -126,6 +122,18 @@ public class DeckBuilder : MonoBehaviour
             };
             draftDisplay.AddCard(display);
         }
+    }
+
+    public void StartDraft(){
+        draftDisplay.transform.parent.transform.parent.gameObject.SetActive(true);
+        StartCoroutine(PullCards());
+        draftButton.SetActive(true);
+        exitButton.GetComponentInChildren<Text>().text = "Continue";
+        exitButton.SetActive(false);
+        exitButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        exitButton.GetComponent<Button>().onClick.AddListener(Continue);
+        draftMessage.gameObject.SetActive(true);
+        draftMessage.text = $"Pick {cardsToKeep} cards";
     }
 
     public void ConfirmDraft(){
@@ -141,11 +149,6 @@ public class DeckBuilder : MonoBehaviour
             DisplayDeck(draftedCharacter);
         }
         
-    }
-
-    public void ReturnToGame(){
-        gameCanvas.gameObject.SetActive(true);
-        gameObject.SetActive(false);
     }
 
     public void Continue(){
