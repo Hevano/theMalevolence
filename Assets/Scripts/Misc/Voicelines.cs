@@ -10,7 +10,12 @@ public class Voicelines : MonoBehaviour
     public AudioClip getAudioClip(string name)
     {
 
-        return lines.FindLast(sound => sound.name == name);
+        try
+        {
+            AudioClip returnValue = lines.FindLast(sound => sound.name == name);
+            return returnValue;
+        }
+        catch { return null; }
 
     }
 

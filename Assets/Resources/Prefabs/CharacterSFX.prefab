@@ -555,5 +555,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cb59536161d8d48b486ef81a7bf8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lines:
-  - {fileID: 0}
+  lines: []
