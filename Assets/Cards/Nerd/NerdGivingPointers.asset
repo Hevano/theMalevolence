@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: NerdGivingPointers
   m_EditorClassIdentifier: 
   cardName: Giving Pointers
-  cardDescription: Draw a card for an ally's hand. If you pass a corruption check,
-    draw another card. If you fail, they gain 20 corruption.
+  cardDescription: Draw a card for an ally's hand. If Zoey resists the corruption,
+    draw another card. If failed, they gain 20 corruption.
   cardFlavor: 
   cardCharacter: 2
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

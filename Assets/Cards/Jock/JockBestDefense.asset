@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JockBestDefense
   m_EditorClassIdentifier: 
   cardName: The Best Defense
-  cardDescription: The Jock makes an attack. The next time the Jock would take damage,
+  cardDescription: Johny makes an attack. The next time Johny would take damage,
     they take no damage.
   cardFlavor: 
   cardCharacter: 1

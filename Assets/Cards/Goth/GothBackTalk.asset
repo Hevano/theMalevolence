@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: GothBackTalk
   m_EditorClassIdentifier: 
   cardName: Back Talk
-  cardDescription: The goth makes an additional attack after their first action next
+  cardDescription: Charles makes an additional attack after their first action next
     turn. The attack gains 1 damage for each corruption gained after this card is
     played.
   cardFlavor: 
   cardCharacter: 0
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PopOftenImitatedNeverReplicated
   m_EditorClassIdentifier: 
   cardName: Often Imitated
-  cardDescription: All allies may make any corruption checks with the Popular Kid's
-    corruption score this turn
+  cardDescription: All allies resist the corruption with the Zoey's corruption this
+    turn.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}

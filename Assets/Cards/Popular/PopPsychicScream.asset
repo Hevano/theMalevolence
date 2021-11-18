@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PopPsychicScream
   m_EditorClassIdentifier: 
   cardName: Psychic Scream
-  cardDescription: Stun all characters other than the popular kid. Make a corruption
-    check. On a pass, popular kid will be stunned next round.
+  cardDescription: Stun all characters other than Zoey. Resist the corruption. On
+    a pass, Zoey will be stunned next round.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

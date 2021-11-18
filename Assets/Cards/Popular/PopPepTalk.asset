@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: PopPepTalk
   m_EditorClassIdentifier: 
   cardName: Pep Talk
-  cardDescription: Target ally gains 5 HP. If you pass a corruption check, they gain
-    an additional 5 HP. If you fail, they lose 5 HP.
+  cardDescription: Target ally gains 5 HP. If Zoey resists the corruption, the ally
+    gains an additional 5 HP. If failed, they lose 5 HP.
   cardFlavor: 
   cardCharacter: 3
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardEffects:
@@ -29,7 +32,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -49,8 +54,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 2
       vitalityType: 0
@@ -64,7 +73,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -84,8 +95,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 2
       vitalityType: 0
@@ -99,7 +114,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 0
-      damageBonus: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
     cleanseEffect:
       target: 0
     drawEffect:
@@ -119,8 +136,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 2
       vitalityType: 0

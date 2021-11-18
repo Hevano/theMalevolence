@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: JockBodyCheck
   m_EditorClassIdentifier: 
   cardName: Body Check
-  cardDescription: The Jock takes the next attack meant for a target ally this turn.
-    Make a corruption check. On a fail, the jock attacks the target ally.
+  cardDescription: Johny takes the next attack meant for an ally this turn. Resist
+    the corruption. On a fail, Johny attacks that ally.
   cardFlavor: 
   cardCharacter: 1
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
