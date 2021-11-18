@@ -26,7 +26,7 @@ MonoBehaviour:
   cards:
   - {fileID: 11400000, guid: a33ec2aec9962b2499c4f07292ad19cd, type: 2}
   - {fileID: 11400000, guid: 61847c9c8d96f1d4f9fa5ef984062415, type: 2}
-  - {fileID: 11400000, guid: 2d107b04bf5ef4e4e9d06d76cd10a7af, type: 2}
+  - {fileID: 11400000, guid: 0730daae9889ab44fa22492690801135, type: 2}
   - {fileID: 11400000, guid: e9aca80fb67d64843a82df0a2513fef1, type: 2}
   basicAttack:
     dieNum: 1
