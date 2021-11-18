@@ -17,36 +17,39 @@ public class VitalityEffect : CardEffect {
     public override IEnumerator ApplyEffect () {
         ApplyModification();
 
-        foreach (Character c in targets) {
-            switch (vitalityType) {
-                //Modify the character's health
-                case Enums.VitalityType.Health:
-                    c.Health += val;
-                    //Clamp value to min and max values
-                    if (c.Health < 0) c.Health = 0;
-                    if (c.Health > c.data.health) c.Health = c.data.health;
-                    //Inform the player what just happened
-                    //If value is positive, Health was restored, color = green
-                    //If value is negative, Health was lost, color = white
-                    if (val > 0)
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} restored {val} HP");
-                    else
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} lost {val} HP");
-                    break;
-                //Modify the character's corruption
-                case Enums.VitalityType.Corruption:
-                    c.Corruption += val;
-                    //Clamp value to min and max values
-                    if (c.Corruption < 0) c.Corruption = 0;
-                    if (c.Corruption > 100) c.Corruption = 100;
-                    //Inform the player what just happened
-                    //If value is positive, Corruption was gained, color = purple
-                    //If value is negative, Corruption was cleansed, color = purple
-                    if (val < 0)
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} cleansed {val} Corruption");
-                    else
-                        yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} gained {val} Corruption");
-                    break;
+        if (targets != null)
+        { 
+            foreach (Character c in targets) {
+                switch (vitalityType) {
+                    //Modify the character's health
+                    case Enums.VitalityType.Health:
+                        c.Health += val;
+                        //Clamp value to min and max values
+                        if (c.Health < 0) c.Health = 0;
+                        if (c.Health > c.data.health) c.Health = c.data.health;
+                        //Inform the player what just happened
+                        //If value is positive, Health was restored, color = green
+                        //If value is negative, Health was lost, color = white
+                        if (val > 0)
+                            yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} restored {val} HP");
+                        else
+                            yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} lost {val} HP");
+                        break;
+                    //Modify the character's corruption
+                    case Enums.VitalityType.Corruption:
+                        c.Corruption += val;
+                        //Clamp value to min and max values
+                        if (c.Corruption < 0) c.Corruption = 0;
+                        if (c.Corruption > 100) c.Corruption = 100;
+                        //Inform the player what just happened
+                        //If value is positive, Corruption was gained, color = purple
+                        //If value is negative, Corruption was cleansed, color = purple
+                        if (val < 0)
+                            yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} cleansed {val} Corruption");
+                        else
+                            yield return CombatUIManager.Instance.DisplayMessage($"{c.data.name} gained {val} Corruption");
+                        break;
+                }
             }
         }
         yield return null;

@@ -30,10 +30,13 @@ public class AttackEffect : CardEffect {
         else damVals[2] = self.data.basicAttack.DieBonus;
         Damage damage = new Damage(damVals[0], damVals[1], damVals[2]);
 
-        //Apply effect on each target
-        foreach (Character c in targets) {
-            int value = damage.Value;
-            c.Health -= value;
+        if(targets != null)
+        { 
+            //Apply effect on each target
+            foreach (Character c in targets) {
+                int value = damage.Value;
+                c.Health -= value;
+            }
         }
         yield return new WaitForSeconds(1f);
     }
