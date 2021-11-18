@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
+    public bool shuffleOnStart = false;
 
     public Enums.GameplayPhase phase;
 
@@ -106,6 +107,11 @@ public class GameManager : MonoBehaviour
         ToggleEndPhaseButton(true);
 
         actionsEnabled = true;
+
+        foreach (PartyCharacter c in party)
+        {
+            c.checkVoicelines();
+        }
 
         //For each turn in turnSlots, enabled return card button
         foreach (TurnOrderSlot turnSlot in turnSlots)
@@ -319,24 +325,28 @@ public class GameManager : MonoBehaviour
         Character ch;
         characters.TryGetValue(Enums.Character.Goth, out ch);
         decks[Enums.Character.Goth] = ch.data.Deck;
+        if(shuffleOnStart) ch.data.Deck.Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Jock, out ch);
         decks[Enums.Character.Jock] = ch.data.Deck;
+        if(shuffleOnStart) ch.data.Deck.Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Nerd, out ch);
         decks[Enums.Character.Nerd] = ch.data.Deck;
+        if(shuffleOnStart) ch.data.Deck.Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
+        if(shuffleOnStart) ch.data.Deck.Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;

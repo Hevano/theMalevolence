@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: PopOftenImitatedNeverReplicated
   m_EditorClassIdentifier: 
-  cardName: Often Imitated, Never Replicated
-  cardDescription: All allies may make any corruption checks with the Popular Kid's
-    corruption score this turn
+  cardName: Often Imitated
+  cardDescription: All allies resist the corruption with the Zoey's corruption this
+    turn.
   cardFlavor: 
   cardCharacter: 3
+  cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

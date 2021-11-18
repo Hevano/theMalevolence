@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PopFixMakeup
   m_EditorClassIdentifier: 
   cardName: Fix Makeup
-  cardDescription: Remove 50 corruption and heal 1 HP per 10 corruption lost.
+  cardDescription: Remove 50 corruption from Jacklyn and heal 1 HP per 10 corruption
+    lost.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}

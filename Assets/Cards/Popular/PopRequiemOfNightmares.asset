@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PopRequiemOfNightmares
   m_EditorClassIdentifier: 
   cardName: Requiem of Nightmares
-  cardDescription: Make a corruption check. On a pass, all allie heal 2 HP. On a
-    fail, basic attacks made by allies deal double damage this round.
+  cardDescription: Resist the corruption. On a pass, all allies heal 2 HP. On a fail,
+    basic attacks made by allies deal double damage this round.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}

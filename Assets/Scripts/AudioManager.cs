@@ -45,15 +45,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
     {
-        Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
-        foreach (Transform t in ts)
+        if(SourceObject != null)
         { 
-            if (t.gameObject.name == SFXName)
+            Transform[] ts = SourceObject.transform.GetComponentsInChildren<Transform>(true);
+            foreach (Transform t in ts)
             { 
-                PlayObjectSFX(t.gameObject);
-                break;
-            }
+                if (t.gameObject.name == SFXName)
+                { 
+                    PlayObjectSFX(t.gameObject);
+                    break;
+                }
 
+            }
         }
     }
 
@@ -62,6 +65,33 @@ public class AudioManager : MonoBehaviour
 
         SFXObject.GetComponent<AudioSource>().Play();
         
+    }
+
+    public void PlayVoiceline(GameObject SFXSourceObject, string filename)
+    {
+        Debug.Log("Attempting to play" + filename);
+        if (SFXSourceObject != null)
+        {
+            Transform[] ts = SFXSourceObject.transform.GetComponentsInChildren<Transform>(true);
+            foreach (Transform t in ts)
+            {
+                if (t.gameObject.name == "VoiceLines")
+                {
+                    GameObject voice = t.gameObject;
+                    AudioSource voiceLine = voice.GetComponent<AudioSource>();
+                    voiceLine.clip = voice.GetComponent<Voicelines>().getAudioClip(filename);
+
+                    Debug.Log($"{t.gameObject.name} is the current audio source gameobject");
+
+                    if(voiceLine.clip != null)
+                        PlayObjectSFX(voice);
+
+                    break;
+                }
+
+            }
+        }
+
     }
 
     public void PlayUISFX(string SFX)

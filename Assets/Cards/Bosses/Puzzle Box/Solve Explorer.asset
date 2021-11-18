@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Solve Explorer
   m_EditorClassIdentifier: 
-  cardName: 'Solve Configuration: Explorer'
+  cardName: Solve Explorer
   cardDescription: Solves the Explorer configuration of the Puzzle Box, if it is
     in the correct configuration.
   cardFlavor: 
   cardCharacter: 0
+  cardColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
   exiled: 1
   bossCard: 0
   bossCorTargets: 0

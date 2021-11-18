@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: JockMetamorphosis
   m_EditorClassIdentifier: 
   cardName: Metamorphosis
-  cardDescription: Jock'c basic attack gains +1d6 damage. Make a corruption check.
-    On a fail, the jock attacks a target enemy.
+  cardDescription: Johny's basic attack gains 1-6 damage. Resist the corruption.
+    On a fail, Johny attacks an enemy.
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 1, g: 0, b: 0, a: 1}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NerdEsotericAlgorithm
   m_EditorClassIdentifier: 
   cardName: Esoteric Algorithm
-  cardDescription: Draw a card for every 25 corruption the Nerd has.
+  cardDescription: Draw a card for every 25 corruption Zoey has.
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}

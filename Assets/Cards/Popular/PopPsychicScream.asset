@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: PopPsychicScream
   m_EditorClassIdentifier: 
-  cardName: Soothing Harmonica
-  cardDescription: Stun all characters other than the popular kid. Make a corruption
-    check. On a pass, popular kid will be stunned next round.
+  cardName: Psychic Scream
+  cardDescription: Stun all characters other than Zoey. Resist the corruption. On
+    a pass, Zoey will be stunned next round.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

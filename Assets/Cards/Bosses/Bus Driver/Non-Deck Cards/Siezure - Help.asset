@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Siezure - Help
   m_EditorClassIdentifier: 
-  cardName: Siezure - Help
-  cardDescription: All party members take 2d6 damage.
+  cardName: Help
+  cardDescription: All party members take 1-12 damage.
   cardFlavor: 
   cardCharacter: 4
+  cardColor: {r: 0, g: 0, b: 0, a: 1}
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects:
@@ -50,8 +53,12 @@ MonoBehaviour:
       effectIndex: 0
     reshuffleEffect:
       target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
     summonEffect:
       target: 0
+      Boss: 0
     vitalityEffect:
       target: 0
       vitalityType: 0

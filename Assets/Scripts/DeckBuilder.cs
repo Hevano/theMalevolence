@@ -133,7 +133,7 @@ public class DeckBuilder : MonoBehaviour
         exitButton.GetComponent<Button>().onClick.RemoveAllListeners();
         exitButton.GetComponent<Button>().onClick.AddListener(Continue);
         draftMessage.gameObject.SetActive(true);
-        draftMessage.text = $"Pick {cardsToKeep} cards";
+        draftMessage.text = $"Pick {cardsToKeep} card" + ((cardsToKeep > 1) ? "s" : "");
     }
 
     public void ConfirmDraft(){
@@ -143,10 +143,11 @@ public class DeckBuilder : MonoBehaviour
             exitButton.SetActive(true);
             foreach(CardDisplayController display in selectedCards){
                 draftedCharacter = display.CardData.Character;
-                party[display.CardData.Character].cards.Add(display.CardData);
+                party[display.CardData.Character].cards.Insert(0, display.CardData);
             }
             draftDisplay.transform.parent.transform.parent.gameObject.SetActive(false);
             DisplayDeck(draftedCharacter);
+            draftMessage.gameObject.SetActive(false);
         }
         
     }

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: GothLeechHappiness
   m_EditorClassIdentifier: 
   cardName: Leech Happiness
-  cardDescription: Attack target enemy and deal 6 extra damage. Target ally clears
-    25 corruption. The Goth gains 10 corruption.
+  cardDescription: Attack an enemy and deal 6 extra damage. Target ally clears 25
+    corruption. Charles gains 10 corruption.
   cardFlavor: 
   cardCharacter: 0
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

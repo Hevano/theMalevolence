@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Confound
   m_EditorClassIdentifier: 
   cardName: Confound
-  cardDescription: The box begins to frustrate a character, forcing a corruption
-    check. On a pass, gain 10 corruption. On a fail, summon 2 Shards of Eternity.
+  cardDescription: The box begins to frustrate a character. On a corruption check
+    pass, gain 10 corruption. Otherwise, summon 2 Shards of Eternity.
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
