@@ -13,6 +13,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Text _nametxt;
     [SerializeReference]
+    private Image _nameHighlight;
+    [SerializeReference]
     private RawImage _profile;
     [SerializeReference]
     private Image _thumbtack;
@@ -65,7 +67,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
             ChangeHealth(Character.Health);
             ChangeCorruption(Character.Corruption);
-            ChangeName(Character.data.name);
+            ChangeName(Character.data.name, Character.data.color);
             ChangeProfile(Character.data.avatar);
             ChangeThumbtack(Character.data.thumbtack);
             ChangeAction(Character.data.weapon);
@@ -105,9 +107,10 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         if(newAction != null)
             _action.sprite = newAction;
     }
-    public void ChangeName(string name)
+    public void ChangeName(string name, Color color)
     {
         NameDisplay.text = name;
+        _nameHighlight.color = color;
     }
     public void ChangeHealth(int currentHealth) {
         HealthDisplay.text = currentHealth + "/" + Character.data.health;

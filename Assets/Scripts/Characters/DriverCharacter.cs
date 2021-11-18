@@ -119,10 +119,13 @@ public class DriverCharacter : EnemyCharacter
     public override IEnumerator GetTurn(){
         Debug.Log(animator);
         if(Action != Enums.Action.Stunned){
-            if(deck.CardList.Count == 0){
+
+            if (deck.CardList.Count == 0){
                 deck.Reshuffle();
             }
+
             CardToPlay = deck.Draw();
+
             yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
             switch(CardToPlay.Name){
                 case "Siezure":

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 4
   name: The Bus Driver
-  health: 20
-  currentHealth: 20
+  health: 100
+  currentHealth: 100
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 8400000, guid: 5b58bd5636ffe6041a2fec17a9c7739c, type: 2}
