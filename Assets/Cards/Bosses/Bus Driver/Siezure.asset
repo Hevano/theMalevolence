@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Siezure
   m_EditorClassIdentifier: 
   cardName: Siezure
-  cardDescription: 'Choose One: Help the driver or Ignore him'
+  cardDescription: 'The bus driver begins flailing about! He seems to be suffering. '
   cardFlavor: 
   cardCharacter: 4
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
+  bossCard: 0
+  bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardEffects: []
