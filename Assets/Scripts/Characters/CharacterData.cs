@@ -12,7 +12,12 @@ public class CharacterData : ScriptableObject
     //Base values for a new character asset (which can be modified in the inspector)
     public new string name;
     public int health;
+    
+    [HideInInspector]
+    public int currentHealth;
     public int corruption;
+    [HideInInspector]
+    public int currentCorruption;
     public Texture avatar;
     public Sprite thumbtack;
     public Sprite weapon;
@@ -28,5 +33,15 @@ public class CharacterData : ScriptableObject
 
     public Deck Deck {
         get { return new Deck(cards); }
+    }
+
+    public void OnEnable(){
+        currentHealth = health;
+        currentCorruption = corruption;
+    }
+
+    public void UpdateStats(Character c){
+        //currentHealth = c.Health;
+        currentCorruption = c.Corruption;
     }
 }

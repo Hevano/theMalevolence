@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PopRequiemOfNightmares
   m_EditorClassIdentifier: 
   cardName: Requiem of Nightmares
-  cardDescription: 
+  cardDescription: Make a corruption check. On a pass, all allie heal 2 HP. On a
+    fail, basic attacks made by allies deal double damage this round.
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
@@ -23,5 +24,85 @@ MonoBehaviour:
   cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardEffects: []
-  cardCorPass: []
-  cardCorFail: []
+  cardCorPass:
+  - effectType: 9
+    cardEffect:
+      target: 0
+    afflictEffect:
+      target: 0
+      statusEffect: 0
+    attackEffect:
+      target: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
+    cleanseEffect:
+      target: 0
+    drawEffect:
+      target: 0
+      cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
+    insertEffect:
+      target: 0
+      toInsert: {fileID: 0}
+    modifyEffect:
+      target: 0
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    reshuffleEffect:
+      target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
+    summonEffect:
+      target: 0
+      Boss: 0
+    vitalityEffect:
+      target: 4
+      vitalityType: 0
+      value: 2
+  cardCorFail:
+  - effectType: 1
+    cardEffect:
+      target: 0
+    afflictEffect:
+      target: 4
+      statusEffect: 15
+    attackEffect:
+      target: 0
+      dieNumber: 0
+      dieSize: 0
+      dieBonus: 0
+    cleanseEffect:
+      target: 0
+    drawEffect:
+      target: 0
+      cardsToDraw: 0
+      fromDiscard: 0
+      toDiscard: 0
+    insertEffect:
+      target: 0
+      toInsert: {fileID: 0}
+    modifyEffect:
+      target: 0
+      modifierEffect: 0
+      modifierFactor: 0
+      modifierPerFactor: 0
+      perFactorValue: 0
+      effectIndex: 0
+    reshuffleEffect:
+      target: 0
+    solveEffect:
+      target: 0
+      configuration: 0
+    summonEffect:
+      target: 0
+      Boss: 0
+    vitalityEffect:
+      target: 0
+      vitalityType: 0
+      value: 0

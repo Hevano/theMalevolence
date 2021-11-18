@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     private bool gameOver = false;
 
     public GameObject endPhaseButton;
+    public GameObject deckBuilderCanvas;
 
     public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
     public event PhaseChangeHandler onPhaseChange;
@@ -217,6 +219,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(battleEnumerator);
             Debug.Log("Game Over! TPK");
             //Return to main menu ui
+            StartCoroutine(GameOverScreen());
         }
 
         bool foesDefeated = true;
@@ -230,8 +233,25 @@ public class GameManager : MonoBehaviour
             StopCoroutine(battleEnumerator);
             Debug.Log("Game Over! Defeated enemies");
             //Card Drafting ui
+            StartCoroutine(GameWinScreen());
+
         }
         gameOver = foesDefeated || playerDefeated;
+    }
+
+    public IEnumerator GameWinScreen(){
+        yield return CombatUIManager.Instance.DisplayMessage("You Win!", 4f);
+        yield return CombatUIManager.Instance.DisplayMessage("Proceeding to deck builder...", 4f);
+        foreach(Character c in party){
+            c.data.UpdateStats(c);
+        }
+        SceneManager.LoadScene("DeckBuilder");
+    }
+
+    public IEnumerator GameOverScreen(){
+        yield return CombatUIManager.Instance.DisplayMessage("You Lose!", 2f);
+        yield return CombatUIManager.Instance.DisplayMessage("Consumed by the Malevolence...", 4f);
+        SceneManager.LoadScene("Main Menu");
     }
 
     //UI function, is called when the player presses the end planning button
@@ -348,6 +368,18 @@ public class GameManager : MonoBehaviour
 
         return null;
     }
+
+    //Temp, change later
+    // public void ViewDeck(){
+    //     deckBuilderCanvas.SetActive(true);
+    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
+    // }
+
+    // public void BeginDrafting(){
+    //     deckBuilderCanvas.SetActive(true);
+    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
+    //     DeckBuilder.Instance.StartDraft();
+    // }
 }
 
 //Interface inherited by anything that can take a turn

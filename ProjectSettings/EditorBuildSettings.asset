@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossOne.unity
     guid: a3942b8c31253304a9fa1e4ce9c718e1
+  - enabled: 1
+    path: Assets/Scenes/DeckBuilder.unity
+    guid: 5b7e706e88ee7cb46974e425aaf460a0
+  - enabled: 1
+    path: Assets/Scenes/BossPuzzleBox.unity
+    guid: 468b7b9c0fe06cd498e7edca54000dbd
+  - enabled: 1
+    path: Assets/Scenes/BossHeadmaster.unity
+    guid: 9f0bcc98a39a5224abe0aeb2df61d2da
   m_configObjects: {}

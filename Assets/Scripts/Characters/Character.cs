@@ -230,8 +230,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     public virtual void Awake()
     {
-        _health = data.health;
-        _corruption = data.corruption;
+        _health = data.currentHealth;
+        _corruption = data.currentCorruption;
         Action = Enums.Action.Attack;
         animator = GetComponent<Animator>();
     }
