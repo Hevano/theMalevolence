@@ -12,8 +12,9 @@ public class Voicelines : MonoBehaviour
 
         try
         {
-            AudioClip returnValue = lines.FindLast(sound => sound.name == name);
-            return returnValue;
+            //AudioClip returnValue = lines.FindLast(sound => sound.name == name);
+            //return returnValue;
+            return null;
         }
         catch { return null; }
 
