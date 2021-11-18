@@ -44,38 +44,42 @@ public class ExtraAction : StatusEffect
             character = c;
         }
         public IEnumerator GetTurn(){
-            bool anyValidCards = false;
-            var playableCards = new List<CardDisplayController>();
-            foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
-                if(cardDisplay.CardData.Character == character.data.characterType){
-                    cardDisplay.GetComponent<Draggable>().planningPhaseOnly = false;
-                    anyValidCards = true;
-                    playableCards.Add(cardDisplay);
-                }
-            }
-
-            bool targetSelected = false;
-
-            if(anyValidCards){
-                character.CardToPlay = null;
-                yield return CombatUIManager.Instance.DisplayMessage($"Giving Pointers: Play an extra {character.data.name} card", 3);
-                while(!targetSelected){
-                    foreach(CardDisplayController card in playableCards){
-                        if(card == null){
-                            targetSelected = true;
-                            break;
-                        }
-                    }
-                    yield return new WaitForEndOfFrame();
-                }
+            if(!character.Incapacitated){
+                bool anyValidCards = false;
+                var playableCards = new List<CardDisplayController>();
                 foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
                     if(cardDisplay.CardData.Character == character.data.characterType){
-                        cardDisplay.GetComponent<Draggable>().planningPhaseOnly = true;
+                        cardDisplay.GetComponent<Draggable>().planningPhaseOnly = false;
+                        anyValidCards = true;
+                        playableCards.Add(cardDisplay);
                     }
                 }
-                yield return character.CardToPlay.Activate();
+
+                bool targetSelected = false;
+
+                if(anyValidCards){
+                    character.CardToPlay = null;
+                    IEnumerator instructionMsg = CombatUIManager.Instance.DisplayMessage($"Giving Pointers: Play an extra {character.data.name} card", 1000f);
+                    GameManager.manager.StartCoroutine(instructionMsg);
+                    while(!targetSelected){
+                        foreach(CardDisplayController card in playableCards){
+                            if(card == null){
+                                targetSelected = true;
+                                break;
+                            }
+                        }
+                        yield return new WaitForEndOfFrame();
+                    }
+                    GameManager.manager.StopCoroutine(instructionMsg);
+                    foreach(CardDisplayController cardDisplay in GameManager.manager.hand.DisplayedCards){
+                        if(cardDisplay.CardData.Character == character.data.characterType){
+                            cardDisplay.GetComponent<Draggable>().planningPhaseOnly = true;
+                        }
+                    }
+                    yield return character.CardToPlay.Activate();
+                }
+                yield return null;
             }
-            yield return null;
         }
     }
 }
