@@ -47,6 +47,13 @@ public class Deck {
     }
 
     public void AddCard(Card card) {
+
+        if (cardList.Count >= 1)
+        {
+            card.Color = cardList[0].Color;
+
+        }
+
         cardList.Add(card);
         Shuffle();
     }
