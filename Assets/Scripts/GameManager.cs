@@ -107,6 +107,11 @@ public class GameManager : MonoBehaviour
 
         actionsEnabled = true;
 
+        foreach (PartyCharacter c in party)
+        {
+            c.checkVoicelines();
+        }
+
         //For each turn in turnSlots, enabled return card button
         foreach (TurnOrderSlot turnSlot in turnSlots)
         {

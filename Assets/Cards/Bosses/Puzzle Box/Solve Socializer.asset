@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Solve Socializer
   m_EditorClassIdentifier: 
-  cardName: Socializer
+  cardName: Solve Socializer
   cardDescription: Solves the Socializer configuration of the Puzzle Box, if it is
     in the correct configuration.
   cardFlavor: 
   cardCharacter: 3
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

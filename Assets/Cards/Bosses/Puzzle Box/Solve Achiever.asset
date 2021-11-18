@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Solve Achiever
   m_EditorClassIdentifier: 
-  cardName: Achiever
+  cardName: Solve Achiever
   cardDescription: Solves the Achiever configuration of the Puzzle Box, if it is
     in the correct configuration.
   cardFlavor: 
