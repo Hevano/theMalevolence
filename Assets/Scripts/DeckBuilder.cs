@@ -147,6 +147,7 @@ public class DeckBuilder : MonoBehaviour
             }
             draftDisplay.transform.parent.transform.parent.gameObject.SetActive(false);
             DisplayDeck(draftedCharacter);
+            draftMessage.text = $"";
         }
         
     }
