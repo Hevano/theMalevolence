@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     [SerializeField]
     protected int _health;
     protected GameObject SFX;
-
+    protected GameObject highlight;
     public int Health
     {
         get{
@@ -239,7 +239,29 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public virtual void Start()
     {
         Debug.Log($"Creating {this.gameObject.name}");
+
         SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");
+        highlight = GameManager.manager.getChildGameObject(this.gameObject, "Highlight");
+
+        if(data.color != null && highlight != null)
+            highlight.GetComponent<ParticleSystem>().startColor = data.color;
+
+    }
+
+    public void toggleHighlight()
+    {
+        try
+        {
+            ParticleSystem ps = highlight.GetComponent<ParticleSystem>();
+
+            if (ps.isPlaying)
+            { 
+                ps.Simulate(.1f);
+            }
+            else
+                ps.Play();
+        }
+        catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs, 262)</color>"); }
     }
 
     //Called once a resolve phase ends, reseting the character's status

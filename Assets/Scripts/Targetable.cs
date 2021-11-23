@@ -14,7 +14,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
 
     [Tooltip("List of target types that apply to this gameobject")]
     public List<Enums.TargetType> targetTypes;
-    public ITargetable target; //For now, we can assume characters are the only targetable entities
+    public ITargetable target; //Assume characters are the only targetable entities
 
     public void Start(){
         target = GetComponent<Character>();
@@ -29,7 +29,30 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    
+    public static void highlightTargets()
+    {
+        
+        foreach (Character c in GameManager.manager.party)
+        {
+            c.GetComponent<Targetable>().highlightTarget(c);
+        }
+
+        foreach (Character c in GameManager.manager.foes)
+        {
+            c.GetComponent<Targetable>().highlightTarget(c);
+        }
+    }
+
+    public void highlightTarget(Character character)
+    {
+        
+        if (targetting && targetTypes.Contains(targetType))
+        {
+            character.toggleHighlight();
+        }
+
+    }
+
     public static IEnumerator GetTargetable(Enums.TargetType type, Character source, string msg, int count = 1){
 
         //send msg to some Text object in the screen to inform the player what they are targetting
@@ -45,6 +68,8 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         targetType = type;
         targetSource = source;
 
+        highlightTargets();
+
         //loop while target is being found based on 'targetting'. The onpointerclick function is utilized while this keeps the function from ending \
         // Checks each frame if the number of targets is returned.
         while (currentTargets.Count < count) {
@@ -55,7 +80,9 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
 
-        foreach(GameObject e in GameObject.FindGameObjectsWithTag("Message"))
+        highlightTargets();
+
+        foreach (GameObject e in GameObject.FindGameObjectsWithTag("Message"))
         { 
             Destroy(e);
         }
