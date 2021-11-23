@@ -77,10 +77,10 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
         }
 
 
+        highlightTargets();
+
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
-
-        highlightTargets();
 
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Message"))
         { 

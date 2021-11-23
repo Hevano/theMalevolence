@@ -255,11 +255,16 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             ParticleSystem ps = highlight.GetComponent<ParticleSystem>();
 
             if (ps.isPlaying)
-            { 
-                ps.Simulate(.1f);
+            {
+                Debug.Log($"Stopping ps from {ps.isPlaying}");
+                ps.Stop();
             }
             else
+            {
+
+                Debug.Log($"Playing ps from {ps.isPlaying}");
                 ps.Play();
+            }
         }
         catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs, 262)</color>"); }
     }
