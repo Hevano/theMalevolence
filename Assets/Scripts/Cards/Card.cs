@@ -20,6 +20,7 @@ public class Card : ScriptableObject {
     //[Header("Card Art")]
     [SerializeField] private Sprite cardFront;
     [SerializeField] private Sprite cardBack;
+    [SerializeField] private Sprite[] cardIcons = new Sprite[5];
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();

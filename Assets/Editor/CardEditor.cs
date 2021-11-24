@@ -20,6 +20,7 @@ public class CardEditor : Editor {
     SerializedProperty CardBossCorTargets;
     SerializedProperty CardFront;
     SerializedProperty CardBack;
+    SerializedProperty CardIcons;
     SerializedProperty CardEffects;
     SerializedProperty CardCorPass;
     SerializedProperty CardCorFail;
@@ -40,6 +41,7 @@ public class CardEditor : Editor {
         CardBossCorTargets = GetTarget.FindProperty("bossCorTargets");
         CardFront = GetTarget.FindProperty("cardFront");
         CardBack = GetTarget.FindProperty("cardBack");
+        CardIcons = GetTarget.FindProperty("cardIcons");
         CardEffects = GetTarget.FindProperty("cardEffects");
         CardCorPass = GetTarget.FindProperty("cardCorPass");
         CardCorFail = GetTarget.FindProperty("cardCorFail");
@@ -65,6 +67,7 @@ public class CardEditor : Editor {
             EditorGUILayout.LabelField("Card Art", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(CardFront);
             EditorGUILayout.PropertyField(CardBack);
+            EditorGUILayout.PropertyField(CardIcons);
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Card Effects", EditorStyles.boldLabel);
