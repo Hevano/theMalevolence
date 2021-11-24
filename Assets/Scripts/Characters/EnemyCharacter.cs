@@ -46,6 +46,14 @@ public class EnemyCharacter : Character
         //Any initialization in deck order
     }
 
+    public override void Start()
+    {
+        base.Start();
+
+        if (data.color != null && highlight != null)
+            highlight.GetComponent<ParticleSystem>().startColor = Color.white;
+    }
+
     public override IEnumerator GetTurn(){
         Character target;
     

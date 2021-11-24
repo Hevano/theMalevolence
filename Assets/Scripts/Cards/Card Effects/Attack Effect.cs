@@ -21,13 +21,19 @@ public class AttackEffect : CardEffect {
         ApplyModification();
         //Create the damage object based on inputs. If value is invalid/0, use character's value
         int[] damVals = new int[3];
-    
+
         if (dieNumber > 0) damVals[0] = dieNumber;
+        else if (dieNumber < 0) damVals[0] = 0;
         else damVals[0] = self.data.basicAttack.DieNumber;
+
         if (dieSize > 0) damVals[1] = dieSize;
+        else if (dieSize < 0) damVals[1] = 0;
         else damVals[1] = self.data.basicAttack.DieSize;
+
         if (bonusDamage != 0) damVals[2] = bonusDamage;
+        else if (bonusDamage < 0) damVals[2] = 0;
         else damVals[2] = self.data.basicAttack.DieBonus;
+
         Damage damage = new Damage(damVals[0], damVals[1], damVals[2]);
 
         if(targets != null)

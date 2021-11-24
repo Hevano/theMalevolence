@@ -6,6 +6,14 @@ public class PartyCharacter : Character
 {
     bool cFirst25 = true, cFirst50 = true, cFirst75 = true, cFirstPlay = true;
 
+    public override void Start()
+    {
+        base.Start();
+
+        if (data.color != null && highlight != null)
+            highlight.GetComponent<ParticleSystem>().startColor = data.color;
+    }
+
     //overriden to update character display, and to return cards to then hand if the player plays multiple
     public override Card CardToPlay
     {
