@@ -9,9 +9,9 @@ public class DoubleDamage : StatusEffect {
 
     public void BoostDamage(Character target, ref Damage damage){
         var newDamage = new Damage(
-            watchedCharacter.data.basicAttack.DieNumber * 2,
-            watchedCharacter.data.basicAttack.DieSize,
-            watchedCharacter.data.basicAttack.DieBonus * 2
+            (int)(watchedCharacter.data.basicAttack.DieNumber * 2.5),
+            (int)(watchedCharacter.data.basicAttack.DieSize * 2.5),
+            (int)(watchedCharacter.data.basicAttack.DieBonus * 2.5)
         );
         damage = newDamage;
     }

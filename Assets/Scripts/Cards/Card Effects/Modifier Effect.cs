@@ -61,6 +61,9 @@ public class ModifierEffect : CardEffect {
                 }
                 Debug.Log("Discards: " + value);
                 break;
+            case Enums.ModifierFactors.Enemies:
+                value = GameManager.manager.foes.Count;
+                break;
         }
 
         CardEffect effect = card.cardEffects[effectIndex].GetEffect();
