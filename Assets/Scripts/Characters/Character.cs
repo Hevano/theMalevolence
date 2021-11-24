@@ -252,18 +252,17 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     {
         try
         {
-            ParticleSystem ps = highlight.GetComponent<ParticleSystem>();
+            //ParticleSystem ps = highlight.GetComponent<ParticleSystem>();
 
-            if (ps.isPlaying)
+            if (highlight.active)
             {
-                Debug.Log($"Stopping ps from {ps.isPlaying}");
-                ps.Stop();
+                highlight.SetActive(false);
             }
-            else
+            else //if(!ps.isPlaying)
             {
 
-                Debug.Log($"Playing ps from {ps.isPlaying}");
-                ps.Play();
+                Debug.Log($"Playing ps from {highlight.active}");
+                highlight.SetActive(true);
             }
         }
         catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs, 262)</color>"); }
