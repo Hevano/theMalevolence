@@ -233,7 +233,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         _health = data.currentHealth;
         _corruption = data.currentCorruption;
         Action = Enums.Action.Attack;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public virtual void Start()

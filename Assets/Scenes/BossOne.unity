@@ -2008,8 +2008,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 846289400}
   m_HandleRect: {fileID: 846289399}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.5000001
+  m_Value: 1.0000004
+  m_Size: 0.50000006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4030,6 +4030,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5797490368525686316, guid: f20d43b7b801cd04d9edaabfdd073b11, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 7082e94098389ec46a053f1f23e99f88, type: 3}
+    - target: {fileID: 5797490368525686316, guid: f20d43b7b801cd04d9edaabfdd073b11, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7459668984544435091, guid: f20d43b7b801cd04d9edaabfdd073b11, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4205,6 +4213,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6085665058371673175, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 7082e94098389ec46a053f1f23e99f88, type: 3}
+    - target: {fileID: 6085665058371673175, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6101646184190419383, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
       propertyPath: attackCard
       value: 
@@ -4370,6 +4386,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5743925591444047222, guid: 25a19e9098c205749a776ced6e398ad4, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 7082e94098389ec46a053f1f23e99f88, type: 3}
+    - target: {fileID: 5743925591444047222, guid: 25a19e9098c205749a776ced6e398ad4, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595524028887965502, guid: 25a19e9098c205749a776ced6e398ad4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4427,6 +4451,14 @@ PrefabInstance:
     - target: {fileID: 281048997408852536, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
       propertyPath: m_Name
       value: CharacterSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 497112288019651936, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 7082e94098389ec46a053f1f23e99f88, type: 3}
+    - target: {fileID: 497112288019651936, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 898560284746247003, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
       propertyPath: m_RootOrder
