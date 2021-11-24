@@ -15,11 +15,13 @@ MonoBehaviour:
   characterType: 0
   name: Charles Blackwell
   health: 20
+  currentHealth: 20
   corruption: 0
+  currentCorruption: 0
   avatar: {fileID: 8400000, guid: 34c64d631153c684587c3cb26c3178fc, type: 2}
   thumbtack: {fileID: 21300000, guid: 1250dac85f47ee643bd7a6cac461e40d, type: 3}
   weapon: {fileID: 21300000, guid: f55d72747285f704c926c0771e8daf97, type: 3}
-  color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  color: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}
   cardBack: {fileID: 21300000, guid: 89cc7b332b4f30d47b00b8a7585b5823, type: 3}
   cards:
   - {fileID: 11400000, guid: 58d03a73e1b7a844f879c7a99755a9af, type: 2}

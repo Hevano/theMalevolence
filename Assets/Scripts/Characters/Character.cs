@@ -243,9 +243,6 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");
         highlight = GameManager.manager.getChildGameObject(this.gameObject, "Highlight");
 
-        if(data.color != null && highlight != null)
-            highlight.GetComponent<ParticleSystem>().startColor = data.color;
-
     }
 
     public void toggleHighlight()
