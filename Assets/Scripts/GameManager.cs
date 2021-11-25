@@ -156,13 +156,22 @@ public class GameManager : MonoBehaviour
         if (onPhaseChange != null){
             onPhaseChange(phase);
         }
-        
+
+        int count = 0;
+
         foreach(ITurnExecutable turn in turns)
         {
+            GameObject currentTurnHighlight = getChildGameObject(turnSlots[count].currentTurnDraggable.GetComponent<CharacterDisplayController>().gameObject, "Highlight");
+            count++;
+
+            currentTurnHighlight.active = true;
+
             yield return turn.GetTurn();
             if(gameOver){
                 yield break;
             }
+
+            currentTurnHighlight.active = false;
         }
 
         //Discards all cards that were played
