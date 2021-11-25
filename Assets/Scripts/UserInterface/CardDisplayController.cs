@@ -44,6 +44,9 @@ public class CardDisplayController : MonoBehaviour {
         set { _back = value; }
     }
 
+    [SerializeReference]
+    private Image _corEye;
+
     private Card _cardData;
 
     //The public facing card of this class. This is where all the cards data (from _cardData) is returned
@@ -118,6 +121,11 @@ public class CardDisplayController : MonoBehaviour {
             cardDisplay._back.sprite = card.BackArt;
         if (card.FrontArt != null)
             cardDisplay._front.sprite = card.FrontArt;
+        if (card.cardCorFail.Count > 0 || card.cardCorPass.Count > 0)
+            cardDisplay._corEye.enabled = true;
+        else
+            cardDisplay._corEye.enabled = false;
+
 
         return cardDisplay;
     }
