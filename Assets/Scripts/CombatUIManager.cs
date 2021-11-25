@@ -11,6 +11,8 @@ public class CombatUIManager : MonoBehaviour {
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI displayText;
 
+    [SerializeField] private GameObject CardRevealDisplay;
+
     private DamageText PopupDamageText;
 
     public static CombatUIManager Instance { get { return instance; } }
@@ -23,9 +25,6 @@ public class CombatUIManager : MonoBehaviour {
         PopupDamageText = Resources.Load<DamageText>("Prefabs/DamagePopUp");
     }
 
-    // Start is called before the first frame update
-    void Start() {
-    }
 
     public void SetDamageText (int value, Transform location) {
         DamageText instance = Instantiate(PopupDamageText);
@@ -57,12 +56,15 @@ public class CombatUIManager : MonoBehaviour {
     }
 
     public IEnumerator RevealCard(Card card, float duration = 1f){
-        var display = CardDisplayController.CreateCard(card);
+        CardDisplayController display = CardDisplayController.CreateCard(card);
         display.GetComponent<Draggable>().followMouse = false;
-        display.transform.SetParent(displayText.transform);
+
         RectTransform cardRectTransform = display.GetComponent<RectTransform>();
-        cardRectTransform.offsetMin = new Vector2(0, 120);
-        cardRectTransform.sizeDelta = new Vector2(60, 90);
+        RectTransform DisplayArea = CardRevealDisplay.GetComponent<RectTransform>();
+        cardRectTransform.SetParent(DisplayArea.transform);
+
+        //cardRectTransform.offsetMin = new Vector2(0, 120);
+        //cardRectTransform.sizeDelta = new Vector2(60, 90);
         yield return new WaitForSeconds(duration);
         displayText.text = "Press any key to continue";
         while(!Input.anyKey){
@@ -77,13 +79,19 @@ public class CombatUIManager : MonoBehaviour {
         List<CardDisplayController> displays = new List<CardDisplayController>();
         int selectedIndex = -1;
         foreach(Card card in choices){
-            var display = CardDisplayController.CreateCard(card);
+            CardDisplayController display = CardDisplayController.CreateCard(card);
             display.GetComponent<Draggable>().followMouse = false;
             display.GetComponent<Draggable>().planningPhaseOnly = false;
+
             display.transform.SetParent(displayText.transform);
+
             RectTransform cardRectTransform = display.GetComponent<RectTransform>();
-            cardRectTransform.offsetMin = new Vector2((choices.IndexOf(card)) * 250 - ((choices.Count - 1) * 125), 120);
-            cardRectTransform.sizeDelta = new Vector2(60, 90);
+            RectTransform DisplayArea = CardRevealDisplay.GetComponent<RectTransform>();
+            cardRectTransform.SetParent(DisplayArea.transform);
+
+            //cardRectTransform.offsetMin = new Vector2((choices.IndexOf(card)) * 250 - ((choices.Count - 1) * 125), 120);
+            //cardRectTransform.sizeDelta = new Vector2(60, 90);
+
             displays.Add(display);
             display.GetComponent<Draggable>().onDragStart += (drag, drop) => {
                 selectedIndex = displays.IndexOf(display);
