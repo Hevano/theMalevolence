@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -117,7 +118,14 @@ public class GameManager : MonoBehaviour
         foreach (TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+
+            //If character is not defeated, enable their character button.
             toggleCharButton(display, true);
+
+            //If the current list of foes does not contain the character type used for this turn, then brighten their turn slot.
+            if (!foes.Contains(characters[display.Character.data.characterType]))
+                display.highlightTurnSlot(true);
+
         }
 
         if (onPhaseChange != null){
@@ -148,8 +156,9 @@ public class GameManager : MonoBehaviour
             turns.Add(turnSlot.Turn);
 
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+            display.highlightTurnSlot(false);
+            
             toggleCharButton(display, false);
-
         }
 
 
@@ -161,17 +170,23 @@ public class GameManager : MonoBehaviour
 
         foreach(ITurnExecutable turn in turns)
         {
-            GameObject currentTurnHighlight = getChildGameObject(turnSlots[count].currentTurnDraggable.GetComponent<CharacterDisplayController>().gameObject, "Highlight");
-            count++;
+            CharacterDisplayController CurrentCharDisplay = null;
 
-            currentTurnHighlight.active = true;
+            try { CurrentCharDisplay = turnSlots[count].currentTurnDraggable.GetComponent<CharacterDisplayController>(); }
+            catch { Debug.Log($"<color=red>Error: {turn} at {count}'th turn contains no valid character display controller. </color>"); }
+
+            count++;
+            
+            if(CurrentCharDisplay != null)
+                CurrentCharDisplay.highlightTurn(true);
 
             yield return turn.GetTurn();
             if(gameOver){
                 yield break;
             }
 
-            currentTurnHighlight.active = false;
+            if (CurrentCharDisplay != null)
+                CurrentCharDisplay.highlightTurn(false);
         }
 
         //Discards all cards that were played
@@ -291,7 +306,10 @@ public class GameManager : MonoBehaviour
     //Toggle character action button
     public void toggleCharButton(CharacterDisplayController display, bool enabled)
     {
-        display.actionButton.interactable = enabled;
+        if (display.Character.Defeated == false && display.Character.Action != Enums.Action.Attack)
+            display.actionButton.interactable = enabled;
+        else
+            display.actionButton.interactable = false;
     }
 
     //toggle all party members action buttons within turnslots

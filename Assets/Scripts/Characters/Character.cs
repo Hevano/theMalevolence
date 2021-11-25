@@ -16,12 +16,18 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         }
         set{
             var newValue = Mathf.Max(Mathf.Min(value, data.health), 0);
-            if(onStatChange != null)
-            {
-                onStatChange("health", ref _health, ref newValue);
-            }
 
-            if (_health > newValue)
+            if (newValue == 0)
+            {
+                Defeated = true;
+
+                CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
+
+                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+            }
+            else if(_health > newValue)
             {
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
                 try { animator.SetTrigger("Hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
@@ -30,17 +36,19 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
             }
             else
-            { 
+            {
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
 
                 AudioManager.audioMgr.PlayUISFX("Heal");
             }
-            _health = newValue;
-            if (Health == 0){
-                Defeated = true;
-                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
+            if (onStatChange != null)
+            {
+                onStatChange("health", ref _health, ref newValue);
             }
+            
+            _health = newValue;
+            
         }
     }
 
@@ -269,13 +277,12 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     {
         try
         {
-
             if (highlight.active)
                 highlight.SetActive(false);
-            else 
+            else if (Defeated == false)
                 highlight.SetActive(true);
         }
-        catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs, 262)</color>"); }
+        catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs)</color>"); }
     }
 
     //Called once a resolve phase ends, reseting the character's status

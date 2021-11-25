@@ -17,6 +17,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Image _nameHighlight;
     [SerializeReference]
+    private Image _deathMark;
+    [SerializeReference]
     private RawImage _profile;
     [SerializeReference]
     private Image _thumbtack;
@@ -26,6 +28,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private Text _actionText;
     [SerializeReference]
     private GameObject _corruption;
+    [SerializeReference]
+    private GameObject _turnHighlight;
     [SerializeReference]
     private Color DefaultColor;
 
@@ -84,23 +88,6 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         }
     }
 
-    public void ToggleDrawButton(bool enabled){
-        draw = enabled;
-
-        if (enabled)
-        {
-            prevAction = Character.Action;
-            Character.Action = Enums.Action.Draw;
-            GameManager.manager.toggleCharButton(this, enabled);
-        }
-        else if (!enabled)
-        {
-            Character.Action = prevAction;
-            GameManager.manager.toggleCharButton(this, GameManager.manager.actionsEnabled);
-        }
-
-    }
-
     //Setters for the CharacterDisplay Prefab
     public void ChangeProfile(Texture newProfile) {
         _profile.texture = newProfile;
@@ -120,6 +107,15 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         _nameHighlight.color = color;
     }
     public void ChangeHealth(int currentHealth) {
+
+        //Debug.Log($"{Character.name} Health being changed to {currentHealth}. Defeated = {Character.Defeated}");
+
+        if (Character.Defeated == true)
+        {
+            _deathMark.enabled = true;
+        }
+        else { _deathMark.enabled = false; }
+
         HealthDisplay.text = currentHealth + "/" + Character.data.health;
     }
     public void ChangeCorruption(int currentCorruption) {
@@ -128,7 +124,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
         switch (currentCorruption)
         {
-            case int n when (n >75):
+            case int n when (n > 75):
                 _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(3).gameObject.GetComponent<Image>().sprite;
                 break;
             case int n when (n > 50):
@@ -140,8 +136,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             case int n when (n > 0):
                 _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(0).gameObject.GetComponent<Image>().sprite;
                 break;
-
-
+            default:
+                try { _corruption.GetComponent<Image>().sprite = _corruption.transform.GetChild(0).gameObject.GetComponent<Image>().sprite; }catch{ }
+                break;
         }
 
     }
@@ -152,12 +149,14 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
 
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
-        if(oldAction == newAction) return;
+        if(oldAction == newAction && oldAction != Enums.Action.Card) return;
 
         ActionDisplay.text = "";
 
         switch (newAction){
             case Enums.Action.Attack:
+
+                actionButton.interactable = false;
 
                 if(_character.data.weapon != null)
                 {
@@ -180,11 +179,38 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
                 break;
             case Enums.Action.Draw:
                 _action.sprite = _character.data.cardBack;
-                _actionText.text = $"<color=white>Draw Card</color>";
+                if(GameManager.manager.decks[Character.data.characterType].CardList.Count != 0)
+                    _actionText.text = $"<color=white>Draw Card</color>";
+                else if (GameManager.manager.decks[Character.data.characterType].DiscardList.Count > 0)
+                    _actionText.text = $"<color=white>Reshuffle and Draw</color>";
+                else
+                    _actionText.text = $"<color=white>Out of Cards</color>";
                 break;
         }
 
     }
+
+
+    public void ToggleDrawButton(bool enabled)
+    {
+        draw = enabled;
+
+        if (enabled)
+        {
+            prevAction = Character.Action;
+            Character.Action = Enums.Action.Draw;
+
+            if (GameManager.manager.decks[Character.data.characterType].CardList.Count != 0 || GameManager.manager.decks[Character.data.characterType].DiscardList.Count != 0 || enabled == false)
+                GameManager.manager.toggleCharButton(this, enabled);
+        }
+        else if (!enabled)
+        {
+            Character.Action = prevAction;
+            GameManager.manager.toggleCharButton(this, GameManager.manager.actionsEnabled);
+        }
+
+    }
+
 
     public TurnOrderSlot currentTurnSlot;
 
@@ -248,6 +274,23 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         {
             corrAnim.SetTrigger("CheckFail");
         }
+    }
+
+    public void highlightTurn(bool state)
+    {
+
+        if (_turnHighlight != null && Character.Defeated == false)
+            _turnHighlight.active = state;
+
+    }
+
+    public void highlightTurnSlot(bool state)
+    {
+
+        if (state)
+            this.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
+        else
+            this.GetComponent<Image>().color = new Color(1f, 1f, 1f, .75f); ;
     }
 
     //Toggles the graphic raycast component on all other (Slightly jank, a better method probably exists)
