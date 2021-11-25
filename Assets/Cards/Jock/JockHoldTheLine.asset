@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Hold the Line
   cardDescription: Take the next hit meant for an ally and gain 15 corruption. Resist
-    the corruption, blocking damage on a success or regaining 5HP on a failure
+    the corruption, blocking damage on a success or regaining 5 HP on a failure
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -23,6 +23,12 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 1
     cardEffect:

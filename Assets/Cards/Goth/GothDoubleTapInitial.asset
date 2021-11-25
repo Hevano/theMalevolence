@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: GothDoubleTapInitial
   m_EditorClassIdentifier: 
   cardName: Double Tap
-  cardDescription: Deal 1d6+4 damage. Resist the corruption, gaining 30 corruption
+  cardDescription: Deal 4-10 damage. Resist the corruption, gaining 30 corruption
     on a success, or losing 30 on a fail. Reshuffle this card back into deck the
     first time it's played.
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
-  exiled: 0
+  exiled: 1
   bossCard: 0
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 2
     cardEffect:

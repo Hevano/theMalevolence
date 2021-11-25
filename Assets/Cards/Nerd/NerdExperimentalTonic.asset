@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Experimental Tonic
   cardDescription: Increases damage of target ally's next attack. Resist the corruption,
-    granting an HP shield on a success or a corruption shield on a failure
+    granting an HP shield on a success or a corruption shield on a failure.
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -23,6 +23,12 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 1
     cardEffect:
