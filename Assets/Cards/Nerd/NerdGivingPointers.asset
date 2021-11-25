@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NerdGivingPointers
   m_EditorClassIdentifier: 
   cardName: Giving Pointers
-  cardDescription: Draw a card. If Zoey resists the corruption, draw another card.
-    If failed, they gain 20 corruption.
+  cardDescription: Draw a card from target's deck. If Zoey resists the corruption,
+    draw another card. If failed, they gain 20 corruption.
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}
@@ -23,6 +23,12 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 1
     cardEffect:

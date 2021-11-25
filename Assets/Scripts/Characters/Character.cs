@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 {
-    [SerializeField]
-    protected int _health;
     protected GameObject SFX;
     protected GameObject highlight;
+
+    [SerializeField]
+    protected int _health;
     public int Health
     {
         get{
@@ -40,6 +41,25 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
             }
+        }
+    }
+
+    [SerializeField]
+    protected int _discardPile;
+    public int Discarded
+    {
+        get
+        {
+            return _discardPile;
+        }
+        set
+        {
+            if (onStatChange != null)
+            {
+                onStatChange("discard", ref _discardPile, ref value);
+            }
+
+            _discardPile = value;
         }
     }
 

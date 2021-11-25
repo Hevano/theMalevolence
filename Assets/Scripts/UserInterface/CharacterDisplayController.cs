@@ -11,6 +11,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Text _cptxt;
     [SerializeReference]
+    private Text _discardtxt;
+    [SerializeReference]
     private Text _nametxt;
     [SerializeReference]
     private Image _nameHighlight;
@@ -37,12 +39,13 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     private Text _actiontxt;
 
     public Text HealthDisplay { get { return _hptxt;} set { _hptxt = value; } } 
-    public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } } 
+    public Text CorruptionDisplay { get { return _cptxt;} set { _cptxt = value; } }
+    public Text DiscardDisplay { get { return _discardtxt; } set { _discardtxt = value; } }
     public Text NameDisplay { get { return _nametxt; } set { _nametxt = value; } } 
     public Text ActionDisplay { get { return _actiontxt; } set { _actiontxt = value; } }
     public bool ReturnCard { get { return _returnCard; } set { _returnCard = value; } }
 
-    public Button drawButton, actionButton;
+    public Button actionButton;
 
     //private Dictionary<string, StatusEffectDisplay> statusEffects;
 
@@ -57,11 +60,15 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             //Set the fields based on the character data
             //Subscribe to character events to continually update
             _character.onStatChange += (string statName, ref int oldValue, ref int newValue) => {
-                //Debug.Log("Stat change");
+                //Debug.Log($"<color=cyan>{statName} stat change</color> from {oldValue} to {newValue}");
                 if(statName == "health"){
                     ChangeHealth(newValue);
                 } else if(statName == "corruption"){
                     ChangeCorruption(newValue);
+                }
+                else if (statName == "discard")
+                {
+                    ChangeDiscardPile(newValue);
                 }
             };
 
@@ -138,6 +145,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         }
 
     }
+    public void ChangeDiscardPile(int currentDiscarded)
+    {
+        Debug.Log($"{currentDiscarded} are the cards currently discarded.");
+        DiscardDisplay.text = currentDiscarded.ToString();
+    }
 
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
         if(oldAction == newAction) return;
@@ -203,10 +215,6 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
         _character.onCorruptionCheckAttempt += StartCorruptionCheck;
         _character.onCorruptionCheckResult += ShowCorruptionCheck;
-
-        /*drawButton.onClick.AddListener(() => {
-            
-        });*/
 
         actionButton.onClick.AddListener(() => {
             CheckAction();

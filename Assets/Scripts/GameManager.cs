@@ -305,6 +305,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void updateDiscardPile(Enums.Character character)
+    {
+
+        characters[character].Discarded = decks[character].DiscardList.Count;
+
+    }
+
     public void Draw(Enums.Character characterDeckToDrawFrom)
     {
         var card = decks[characterDeckToDrawFrom].Draw();
@@ -316,6 +323,7 @@ public class GameManager : MonoBehaviour
         if(card == null) return;
         if (card.Exiled) return;
         decks[card.Character].DiscardList.Add(card);
+        updateDiscardPile(card.Character);
     }
 
     //Remove card display from hand: Note: doesn't discard
@@ -323,6 +331,7 @@ public class GameManager : MonoBehaviour
         hand.AddCard(CardDisplayController.CreateCard(c));
         AudioManager.audioMgr.PlayUISFX("PickupCard");
     }
+
 
     public void RemoveCardFromHand(CardDisplayController cd){
         hand.RemoveCard(cd);

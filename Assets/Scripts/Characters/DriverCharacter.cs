@@ -128,7 +128,6 @@ public class DriverCharacter : EnemyCharacter
                 deck.Reshuffle();
             }
 
-            Debug.Log($"{deck.CardList.Count} {deck.CardList} {deck.DiscardList.Count} {deck.DiscardList}");
             CardToPlay = deck.Draw();
 
             yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing

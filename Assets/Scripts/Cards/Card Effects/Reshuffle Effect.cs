@@ -13,6 +13,7 @@ public class ReshuffleEffect : CardEffect {
             GameManager.manager.decks.TryGetValue(charType, out deck);
             //Get all cards from discard with same chartype
             deck.Reshuffle();
+            GameManager.manager.updateDiscardPile(charType);
         }
         yield return null;
     }
