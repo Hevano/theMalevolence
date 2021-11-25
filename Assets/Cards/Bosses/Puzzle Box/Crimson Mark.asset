@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crimson Mark
   m_EditorClassIdentifier: 
   cardName: Crimson Mark
-  cardDescription: 
+  cardDescription: The Puzzle Box demands blood. It will take it by force
   cardFlavor: The Puzzle Box demands blood. It will take it by force
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +22,12 @@ MonoBehaviour:
   bossCorTargets: 4
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects: []
   cardCorPass:
   - effectType: 2
