@@ -157,9 +157,7 @@ public class GameManager : MonoBehaviour
 
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
             display.highlightTurnSlot(false);
-
-            Debug.Log($"{display.name} should have changed their panel to {display.GetComponent<Image>().color}");
-
+            
             toggleCharButton(display, false);
         }
 

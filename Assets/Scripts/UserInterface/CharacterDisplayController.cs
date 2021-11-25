@@ -288,9 +288,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     {
 
         if (state)
-            this.GetComponent<Image>().color = Color.white;
+            this.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
         else
-            this.GetComponent<Image>().color = Color.grey;
+            this.GetComponent<Image>().color = new Color(1f, 1f, 1f, .75f); ;
     }
 
     //Toggles the graphic raycast component on all other (Slightly jank, a better method probably exists)
