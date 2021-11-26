@@ -280,13 +280,14 @@ public class GameManager : MonoBehaviour
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
-        SceneManager.LoadScene("DeckBuilder");
+        LevelManager.Instance.ToDeckBuilder();
     }
 
     public IEnumerator GameOverScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("You Lose!", 2f);
         yield return CombatUIManager.Instance.DisplayMessage("Consumed by the Malevolence...", 4f);
         SceneManager.LoadScene("Main Menu");
+        LevelManager.Instance.ToMainMenu();
     }
 
     //UI function, is called when the player presses the end planning button

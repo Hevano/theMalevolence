@@ -28,7 +28,6 @@ public class DeckBuilder : MonoBehaviour
     public HandDisplayController draftDisplay;
     public TMPro.TextMeshProUGUI draftMessage;
 
-    public bool drafting = false;
     public GameObject draftButton;
     public GameObject exitButton;
 
@@ -41,7 +40,11 @@ public class DeckBuilder : MonoBehaviour
             party[c.characterType] = c;
         }
         DisplayDeck(Enums.Character.Goth);
-        StartDraft();
+        //StartDraft();
+        exitButton.SetActive(true);
+        exitButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        exitButton.GetComponent<Button>().onClick.AddListener(Continue);
+        Debug.Log(GameManager.manager);
     }
 
 
@@ -153,6 +156,7 @@ public class DeckBuilder : MonoBehaviour
     }
 
     public void Continue(){
-        SceneManager.LoadScene(nextScene);
+        LevelManager.Instance.ToNextLevel();
+
     }
 }
