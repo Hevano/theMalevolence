@@ -59,6 +59,8 @@ public class CombatUIManager : MonoBehaviour {
         CardDisplayController display = CardDisplayController.CreateCard(card);
         display.GetComponent<Draggable>().followMouse = false;
 
+        CardRevealDisplay.active = true;
+
         RectTransform cardRectTransform = display.GetComponent<RectTransform>();
         RectTransform DisplayArea = CardRevealDisplay.GetComponent<RectTransform>();
         cardRectTransform.SetParent(DisplayArea.transform);
@@ -69,14 +71,21 @@ public class CombatUIManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         displayText.text = "";
+        
+        CardRevealDisplay.active = false;
+
         Destroy(display.gameObject);
     }
 
     //The list given will given will be modified to contain only the selected card
     public IEnumerator DisplayChoice(List<Card> choices){
+
         List<CardDisplayController> displays = new List<CardDisplayController>();
         int selectedIndex = -1;
-        foreach(Card card in choices){
+        
+        CardRevealDisplay.active = true;
+
+        foreach (Card card in choices){
             CardDisplayController display = CardDisplayController.CreateCard(card);
             display.GetComponent<Draggable>().followMouse = false;
             display.GetComponent<Draggable>().planningPhaseOnly = false;
@@ -95,13 +104,18 @@ public class CombatUIManager : MonoBehaviour {
                 selectedIndex = displays.IndexOf(display);
             };
         }
+
         while(selectedIndex == -1){
             yield return new WaitForEndOfFrame();
         }
+
         var choice = choices[selectedIndex];
         choices.Clear();
         choices.Add(choice);
-        foreach(CardDisplayController display in displays){
+        
+        CardRevealDisplay.active = false;
+
+        foreach (CardDisplayController display in displays){
             Destroy(display.gameObject);
         }
         
