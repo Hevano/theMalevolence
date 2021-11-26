@@ -9,6 +9,15 @@ ModelImporter:
   - first:
       74: 9149661223541978141
     second: Armature|Hurt
+  - first:
+      74: 937848655089938619
+    second: Armature|Action1
+  - first:
+      74: 612542021848784534
+    second: Armature|Corruption
+  - first:
+      74: -982115091633673366
+    second: Armature|Death
   externalObjects: {}
   materials:
     materialImportMode: 2

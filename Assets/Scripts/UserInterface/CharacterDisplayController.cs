@@ -151,10 +151,11 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     public void ChangeAction(Enums.Action oldAction, Enums.Action newAction) {
         if(oldAction == newAction && oldAction != Enums.Action.Card) return;
 
-        ActionDisplay.text = "";
+        //ActionDisplay.text = "";
 
         switch (newAction){
             case Enums.Action.Attack:
+                ActionDisplay.text = "";
 
                 actionButton.interactable = false;
 
@@ -166,6 +167,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
                 }
                 break;
             case Enums.Action.Card:
+
+                ActionDisplay.text = "";
 
                 if (_character.CardToPlay != null)
                 { 
