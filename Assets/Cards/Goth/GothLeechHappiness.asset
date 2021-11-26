@@ -17,12 +17,18 @@ MonoBehaviour:
     corruption. Charles gains 10 corruption.
   cardFlavor: 
   cardCharacter: 0
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
   cardBack: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
+  cardIcons:
+  - {fileID: 21300000, guid: 2d8acbb4163361541b3a6f422436a5e8, type: 3}
+  - {fileID: 21300000, guid: 4aed771d90ac0cc45b92655cefde65b1, type: 3}
+  - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 2
     cardEffect:

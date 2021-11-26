@@ -586,6 +586,11 @@ MonoBehaviour:
   _front: {fileID: 489511974014922865}
   _back: {fileID: 4297600589771929190}
   _corEye: {fileID: 9144285549230224393}
+  _icons:
+  - {fileID: 1013068487765235641}
+  - {fileID: 2868540748433243321}
+  - {fileID: 6468103422575784358}
+  - {fileID: 8062936280815092484}
 --- !u!114 &4846171882246197907
 MonoBehaviour:
   m_ObjectHideFlags: 0

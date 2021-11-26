@@ -16,12 +16,18 @@ MonoBehaviour:
   cardDescription: Target heals 5 HP and removes 25 corruption. Gain 25 corruption.
   cardFlavor: 
   cardCharacter: 3
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
+  cardIcons:
+  - {fileID: 21300000, guid: aa2b14de17da71a47a22b6083db4260b, type: 3}
+  - {fileID: 21300000, guid: 4aed771d90ac0cc45b92655cefde65b1, type: 3}
+  - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 9
     cardEffect:

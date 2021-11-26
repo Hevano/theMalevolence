@@ -46,6 +46,8 @@ public class CardDisplayController : MonoBehaviour {
 
     [SerializeReference]
     private Image _corEye;
+    [SerializeReference]
+    private Image[] _icons = new Image[4];
 
     private Card _cardData;
 
@@ -125,7 +127,10 @@ public class CardDisplayController : MonoBehaviour {
             cardDisplay._corEye.enabled = true;
         else
             cardDisplay._corEye.enabled = false;
-
+        for (int i = 0; i < 4; i++) {
+            if (card.Icons[i] != null)
+                cardDisplay._icons[i].sprite = card.Icons[i];
+        }
 
         return cardDisplay;
     }

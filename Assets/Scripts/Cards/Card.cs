@@ -20,7 +20,7 @@ public class Card : ScriptableObject {
     //[Header("Card Art")]
     [SerializeField] private Sprite cardFront;
     [SerializeField] private Sprite cardBack;
-    [SerializeField] private Sprite[] cardIcons = new Sprite[5];
+    [SerializeField] private Sprite[] cardIcons = new Sprite[4];
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
@@ -47,6 +47,7 @@ public class Card : ScriptableObject {
 
     public Sprite FrontArt { get { return cardFront; } }
     public Sprite BackArt { get { return cardBack; } }
+    public Sprite[] Icons { get { return cardIcons; } }
 
     public Character AllyTarget { get; set; }
     public Character SecondAllyTarget { get; set; }

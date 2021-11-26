@@ -24,8 +24,7 @@ MonoBehaviour:
   cardFront: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
   cardBack: {fileID: 21300000, guid: 1a25d33c8c04af047a68d9c0a395cf68, type: 3}
   cardIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 4ccc0810c99ae9c40a33d6a1e022c4d6, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

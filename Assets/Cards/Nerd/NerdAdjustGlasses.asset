@@ -17,12 +17,18 @@ MonoBehaviour:
     If passed, draw 2 more cards.
   cardFlavor: 
   cardCharacter: 2
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
   cardBack: {fileID: 21300000, guid: cbc498e9f556fd3409628648e7ec68c9, type: 3}
+  cardIcons:
+  - {fileID: 21300000, guid: 7180826d907856c49bf1cb6270e0e9c3, type: 3}
+  - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
+  - {fileID: 21300000, guid: 0c06d9a5b647a5b4bb7c6126a7e1358b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 7
     cardEffect:

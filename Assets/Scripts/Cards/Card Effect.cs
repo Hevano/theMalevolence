@@ -96,7 +96,9 @@ public class CardEffect {
                 targets.Add(card.SecondAllyTarget);
                 break;
         }
-
+        foreach (Character t in targets)
+            if (t.Defeated)
+                targets.Remove(t);
         GameManager.manager.togglePartyButton(GameManager.manager.actionsEnabled);
     }
 

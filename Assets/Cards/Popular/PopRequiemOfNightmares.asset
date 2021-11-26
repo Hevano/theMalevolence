@@ -23,6 +23,11 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
   cardBack: {fileID: 21300000, guid: 9939ec1b2eb7316428ad578c39386c3d, type: 3}
+  cardIcons:
+  - {fileID: 21300000, guid: aa2b14de17da71a47a22b6083db4260b, type: 3}
+  - {fileID: 21300000, guid: 8905fcb272446ec449bc4bb3cbe4dea6, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects: []
   cardCorPass:
   - effectType: 9
