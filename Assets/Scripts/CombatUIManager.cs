@@ -58,8 +58,9 @@ public class CombatUIManager : MonoBehaviour {
     public IEnumerator RevealCard(Card card, float duration = 1f){
         CardDisplayController display = CardDisplayController.CreateCard(card);
         display.GetComponent<Draggable>().followMouse = false;
-
+        
         CardRevealDisplay.active = true;
+        CardRevealDisplay.GetComponent<Canvas>().enabled = true;
 
         RectTransform cardRectTransform = display.GetComponent<RectTransform>();
         RectTransform DisplayArea = CardRevealDisplay.GetComponent<RectTransform>();
@@ -71,7 +72,8 @@ public class CombatUIManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         displayText.text = "";
-        
+
+        CardRevealDisplay.GetComponent<Canvas>().enabled = false;
         CardRevealDisplay.active = false;
 
         Destroy(display.gameObject);
@@ -84,6 +86,7 @@ public class CombatUIManager : MonoBehaviour {
         int selectedIndex = -1;
         
         CardRevealDisplay.active = true;
+        CardRevealDisplay.GetComponent<Canvas>().enabled = true;
 
         foreach (Card card in choices){
             CardDisplayController display = CardDisplayController.CreateCard(card);
@@ -112,7 +115,8 @@ public class CombatUIManager : MonoBehaviour {
         var choice = choices[selectedIndex];
         choices.Clear();
         choices.Add(choice);
-        
+
+        CardRevealDisplay.GetComponent<Canvas>().enabled = false;
         CardRevealDisplay.active = false;
 
         foreach (CardDisplayController display in displays){
