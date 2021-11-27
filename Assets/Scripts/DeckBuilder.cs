@@ -48,7 +48,7 @@ public class DeckBuilder : MonoBehaviour
         exitButton.SetActive(true);
         exitButton.GetComponent<Button>().onClick.RemoveAllListeners();
         exitButton.GetComponent<Button>().onClick.AddListener(Continue);
-        Debug.Log(GameManager.manager);
+        //Debug.Log(GameManager.manager);
     }
 
 
@@ -116,22 +116,33 @@ public class DeckBuilder : MonoBehaviour
             draggable.followMouse = false;
             draggable.planningPhaseOnly = false;
             draggable.returnIfNotDropped = false;
+            draggable.enabled = false;
 
             draggable.ClearHandlers();
 
+            //Add a button to each card to interact and select while using the CardDisplayController class and avoiding conflicts/reorganization from the grid layout component.
+            display.gameObject.AddComponent<Button>();
+
+            Button cardSelector = display.GetComponent<Button>();
+
+            cardSelector.onClick.AddListener(() => {
+                SelectCard(display);
+            });
+
+            /*
             draggable.onDragStart += (a, b) => {
 
-                if(selectedCards.Contains(display))
+                if (selectedCards.Contains(display))
                 {
                     selectedCards.Remove(display);
                 }
-                else if(selectedCards.Count == cardsToKeep)
+                else if (selectedCards.Count == cardsToKeep)
                 {
                     //unhighlight index 0
                     Destroy(selectedCards[0].transform.GetChild(0).gameObject);
                     selectedCards.RemoveAt(0);
                     selectedCards.Add(display);
-                    
+
                     //highlight card
                     var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
                     glow.transform.SetAsFirstSibling();
@@ -148,16 +159,53 @@ public class DeckBuilder : MonoBehaviour
 
             draggable.onDragStop += (a,b) => {
                 display.transform.SetParent(draftDisplay.transform);
-            };
+            };*/
 
             draftDisplay.AddCard(display);
         }
     }
 
-    public void SelectCard(CardDisplayController card)
+    public void SelectCard(CardDisplayController display)
     {
 
-        Debug.Log($"<color=Purple>Card Selected</color>");
+        Debug.Log($"<color=Purple>Card Clicked</color>: {display.CardData.name}");
+
+        //If already selected, unselect card.
+        if (selectedCards.Contains(display))
+        {
+            Debug.Log($"Card was unselected");
+            selectedCards.Remove(display);
+
+        }//Replace oldest selection when selected cards is equal to cards to keep.
+        else if (selectedCards.Count == cardsToKeep)
+        {
+            Debug.Log($"Card was selected");
+
+            //unhighlight index 0
+            Destroy(selectedCards[0].transform.GetChild(0).gameObject);
+            selectedCards.RemoveAt(0);
+            selectedCards.Add(display);
+
+            //highlight card
+            var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
+            glow.transform.SetAsFirstSibling();
+            glow.transform.localScale = new Vector3(1.35f, 1.2f, 1f);
+
+        }//Select current card and add it to selectedcards
+        else
+        {
+
+            Debug.Log($"Card was selected");
+
+            selectedCards.Add(display);
+
+            //highlight card
+            var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
+            glow.transform.SetAsFirstSibling();
+            glow.transform.localScale = new Vector3(1.35f,1.2f,1f);
+        }
+
+
 
     }
 
