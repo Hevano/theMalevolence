@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
         }
     }
     public List<string> levels;
+
     // Start is called before the first frame update
     void Start()
     {

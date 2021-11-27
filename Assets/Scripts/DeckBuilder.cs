@@ -31,6 +31,8 @@ public class DeckBuilder : MonoBehaviour
     public GameObject draftButton;
     public GameObject exitButton;
 
+
+    //Start the draft!
     public void Start(){
         if(_instance != null){
             Destroy(this);
@@ -40,7 +42,9 @@ public class DeckBuilder : MonoBehaviour
             party[c.characterType] = c;
         }
         DisplayDeck(Enums.Character.Goth);
-        //StartDraft();
+
+        StartDraft();
+
         exitButton.SetActive(true);
         exitButton.GetComponent<Button>().onClick.RemoveAllListeners();
         exitButton.GetComponent<Button>().onClick.AddListener(Continue);
@@ -48,16 +52,18 @@ public class DeckBuilder : MonoBehaviour
     }
 
 
-
+    //Pull cards and display them to the draft hand.
     public IEnumerator PullCards(){
         pulledCards = cardDraftPool.GetShuffled().GetRange(0, cardsToPull);
         DisplayPulledCards();
         yield return null;
     }
 
+    //Display the given characters deck from char data.
     public void DisplayDeck(Enums.Character character){
         characterDisplayed = character;
         ClearDeckDisplay();
+
         foreach(Card c in party[character].Deck.CardList){
             c.Color = party[c.Character].color;
             var display = CardDisplayController.CreateCard(c);
@@ -65,7 +71,8 @@ public class DeckBuilder : MonoBehaviour
             characterDeckDisplay.AddCard(display);
         }
     }
-
+    
+    //Display character specific decks currently in char data.
     public void DisplayGoth(){
         if(Enums.Character.Goth == characterDisplayed) return;
         DisplayDeck(Enums.Character.Goth);
@@ -86,6 +93,8 @@ public class DeckBuilder : MonoBehaviour
         DisplayDeck(Enums.Character.Popular);
     }
 
+
+    //Clear the display for the current character.
     private void ClearDeckDisplay(){
         var displays = new List<CardDisplayController>(characterDeckDisplay.DisplayedCards);
         foreach(CardDisplayController display in displays){
@@ -93,39 +102,65 @@ public class DeckBuilder : MonoBehaviour
         }
     }
 
+
+    //Display the cards from the pool of rewarded cards.
     public void DisplayPulledCards(){
-        foreach(Card c in pulledCards){
+
+        foreach (Card c in pulledCards){
+
             c.Color = party[c.Character].color;
-            var display = CardDisplayController.CreateCard(c);
-            var draggable = display.GetComponent<Draggable>();
+
+            CardDisplayController display = CardDisplayController.CreateCard(c);
+            Draggable draggable = display.GetComponent<Draggable>();
+
             draggable.followMouse = false;
             draggable.planningPhaseOnly = false;
             draggable.returnIfNotDropped = false;
+
             draggable.ClearHandlers();
+
             draggable.onDragStart += (a, b) => {
-                if(selectedCards.Contains(display)){
+
+                if(selectedCards.Contains(display))
+                {
                     selectedCards.Remove(display);
-                } else if(selectedCards.Count == cardsToKeep){
+                }
+                else if(selectedCards.Count == cardsToKeep)
+                {
                     //unhighlight index 0
                     Destroy(selectedCards[0].transform.GetChild(0).gameObject);
                     selectedCards.RemoveAt(0);
                     selectedCards.Add(display);
+                    
                     //highlight card
                     var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
                     glow.transform.SetAsFirstSibling();
-                } else {
+                }
+                else
+                {
                     selectedCards.Add(display);
                     //highlight card
                     var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
                     glow.transform.SetAsFirstSibling();
                 }
+
             };
+
             draggable.onDragStop += (a,b) => {
                 display.transform.SetParent(draftDisplay.transform);
             };
+
             draftDisplay.AddCard(display);
         }
     }
+
+    public void SelectCard(CardDisplayController card)
+    {
+
+        Debug.Log($"<color=Purple>Card Selected</color>");
+
+    }
+
 
     public void StartDraft(){
         draftDisplay.transform.parent.transform.parent.gameObject.SetActive(true);
