@@ -92,10 +92,15 @@ public class CardDisplayController : MonoBehaviour {
     // Delete cards once targets have been designated
     public IEnumerator ResolveTargets()
     {
+        GameManager.manager.cardDropZone.enabled = false;
+
         GameManager.manager.ToggleEndPhaseButton(false);
         yield return CardData.DesignateTargets();
         Debug.Log($"<color=blue>{CardData.Name} </color>Designating target...");
         GameManager.manager.RemoveCardFromHand(this);
+        GameManager.manager.cardDropZone.enabled = true;
+
+
         AudioManager.audioMgr.PlayUISFX("PlaceCard");
 
         GameManager.manager.ToggleEndPhaseButton(true);
