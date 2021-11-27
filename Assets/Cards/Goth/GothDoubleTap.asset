@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: GothDoubleTap
   m_EditorClassIdentifier: 
   cardName: Double Tap
-  cardDescription: Deal 4-10 damage. Resist the corruption, gaining 30 corruption
-    on a success, or losing 30 on a fail.
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardDescription: 'Attack an enemy for 4-10 damage. '
+  cardCorruptionPassDescription: +30 Corruption
+  cardCorruptionFailDescription: -30 Corruption
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}

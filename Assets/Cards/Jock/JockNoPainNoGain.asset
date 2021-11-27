@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: JockNoPainNoGain
   m_EditorClassIdentifier: 
   cardName: No Pain, No Gain
-  cardDescription: Attack an enemy, and gain 3 damage for every 5 HP Johny is missing.
-    Resist the corruption. On a fail, Johny is stunned next turn.
+  cardDescription: 'Attack an enemy, +3 damage for every 5 HP Johny is missing. '
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Johny is stunned next turn
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 1, g: 0, b: 0, a: 1}

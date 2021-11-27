@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: JockHoldTheLine
   m_EditorClassIdentifier: 
   cardName: Hold the Line
-  cardDescription: Take the next hit meant for an ally and gain 15 corruption. Resist
-    the corruption, blocking damage on a success or regaining 5 HP on a failure
+  cardDescription: 'Take the next attack meant for an ally and gain 15 corruption. '
+  cardCorruptionPassDescription: Block damage taken
+  cardCorruptionFailDescription: +5 HP
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GothNotAPhase
   m_EditorClassIdentifier: 
   cardName: Not a Phase
-  cardDescription: Attack an enemy.
+  cardDescription: Attack an enemy for 1-6 damage.
   cardCorruptionPassDescription: +20 Corruption
   cardCorruptionFailDescription: +2-12 damage to attack
   cardFlavor: 

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: NerdAdjustGlasses
   m_EditorClassIdentifier: 
   cardName: Adjust Glasses
-  cardDescription: Reshuffle an ally's cards and add 20 corruption. Resist the corruption.
-    If passed, draw 2 more cards.
+  cardDescription: Reshuffle an ally's discarded cards into their deck. Gain 20 corruption.
+  cardCorruptionPassDescription: Draw 2 more cards
+  cardCorruptionFailDescription: Nothing
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}

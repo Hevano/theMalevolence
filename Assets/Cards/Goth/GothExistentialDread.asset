@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: GothExistentialDread
   m_EditorClassIdentifier: 
   cardName: Existential Dread
-  cardDescription: At the end of the battle phase, deal 1-6 damage to one target.
-    This effect persists until Charles or the target dies.
+  cardDescription: After everyone acts, attack one enemy for 1-6 damage. This effect
+    persists until Charles or the enemy dies.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}

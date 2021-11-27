@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PopEveryoneIsInvited
   m_EditorClassIdentifier: 
   cardName: Everyone is Invited!
-  cardDescription: Heal all allies for 5. Resist the corruption, cleansing 25 corruption
-    from allies on a pass, or all allies gaining 25 corruption on a failure
+  cardDescription: 'Heal all allies for 5 HP. '
+  cardCorruptionPassDescription: -25 Corruption from all allies
+  cardCorruptionFailDescription: +25 Corruption for all allies
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

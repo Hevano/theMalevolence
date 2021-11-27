@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: JockBestDefense
   m_EditorClassIdentifier: 
   cardName: The Best Defense
-  cardDescription: Johny makes an attack. The next time Johny would take damage,
-    they take no damage.
+  cardDescription: Attack enemy for 1-6 damage. The next time Johny would take damage,
+    he takes no damage.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 1, g: 0, b: 0, a: 1}

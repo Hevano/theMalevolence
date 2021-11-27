@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PopPsychicScream
   m_EditorClassIdentifier: 
   cardName: Psychic Scream
-  cardDescription: Stun all characters other than Zoey. Resist the corruption. On
-    a pass, Zoey will be stunned next round.
+  cardDescription: Stun all characters other than Jacklyn.
+  cardCorruptionPassDescription: Stunned next turn
+  cardCorruptionFailDescription: Nothing
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

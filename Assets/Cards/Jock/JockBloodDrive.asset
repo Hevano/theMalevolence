@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: JockBloodDrive
   m_EditorClassIdentifier: 
   cardName: Blood Drive
-  cardDescription: Deal 1-6 damage. Regain 10 HP and gain 15 corruption
+  cardDescription: Attack enemy for 1-6 damage. Heal self for 10 HP and gain 15 corruption
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: NerdMasterPlan
   m_EditorClassIdentifier: 
   cardName: Master Plan
-  cardDescription: Deal 4 damage per every card played this turn. Gain 20 corruption.
+  cardDescription: Attack an enemy for 4 damage per every card played this turn.
+    Gain 20 corruption.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}

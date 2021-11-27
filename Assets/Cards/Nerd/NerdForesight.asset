@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: NerdForesight
   m_EditorClassIdentifier: 
   cardName: Foresight
-  cardDescription: Draw 2 cards and add 10 corruption. Resist the corruption. If
-    passed, draw a card from the discard pile. If failed, discard a random card.
+  cardDescription: 'Draw 2 cards and add 10 corruption. '
+  cardCorruptionPassDescription: Draw card from discard pile
+  cardCorruptionFailDescription: Discard random card from hand
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}

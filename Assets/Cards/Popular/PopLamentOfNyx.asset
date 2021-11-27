@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PopLamentOfNyx
   m_EditorClassIdentifier: 
   cardName: Lament of Nyx
-  cardDescription: Ally cleanses 25 corruption, while Popular gains 25 corruption.
-    Resist the corruption, granting the target a corruption shield on a pass or both
-    targets gaining 10 corruption on a fail.
+  cardDescription: 'Ally removes 25 corruption, while Jacklyn gains 25 corruption. '
+  cardCorruptionPassDescription: Ally gains no corruption next time
+  cardCorruptionFailDescription: +10 Corruption to ally and Jacklyn
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

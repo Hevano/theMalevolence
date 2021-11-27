@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: GothNothingButEdge
   m_EditorClassIdentifier: 
   cardName: Nothing But Edge
-  cardDescription: Attack and add 1 damage for every 10 corruption Charles has. Resist
-    the corruption. On a fail, Charles attacks themself.
+  cardDescription: Attack an enemy, +1 damage for every 10 corruption Charles has.
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Attack self
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}

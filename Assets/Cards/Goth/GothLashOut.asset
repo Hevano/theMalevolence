@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: GothLashOut
   m_EditorClassIdentifier: 
   cardName: Lash Out
-  cardDescription: Deal 1-6 damage to all enemies. Resist the corruption, stunning
-    the Goth on a fail.
+  cardDescription: 'Attack all enemies for 1-6 damage. '
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Charles is Stunned
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}

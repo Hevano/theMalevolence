@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: NerdExperimentalTonic
   m_EditorClassIdentifier: 
   cardName: Experimental Tonic
-  cardDescription: Increases damage of target ally's next attack. Resist the corruption,
-    granting an HP shield on a success or a corruption shield on a failure.
+  cardDescription: Increases damage of an ally's next attack.
+  cardCorruptionPassDescription: Ally takes no damage next attack
+  cardCorruptionFailDescription: Ally takes no corruption next time
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0, g: 0, b: 0, a: 0}

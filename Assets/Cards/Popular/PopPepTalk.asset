@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PopPepTalk
   m_EditorClassIdentifier: 
   cardName: Pep Talk
-  cardDescription: Target ally gains 5 HP. If Zoey resists the corruption, the ally
-    gains an additional 5 HP. If failed, they lose 5 HP.
+  cardDescription: An ally gains 5 HP.
+  cardCorruptionPassDescription: +5 extra HP to ally
+  cardCorruptionFailDescription: -5 HP to ally
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: JockTeamFormation
   m_EditorClassIdentifier: 
   cardName: Team Formation
-  cardDescription: All allies become protected. Resist the corruption, taking 2-12
-    damage on a failure
+  cardDescription: All allies become protected from attacks.
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Take 2-12 damage
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}
