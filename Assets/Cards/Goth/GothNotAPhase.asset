@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: GothNotAPhase
   m_EditorClassIdentifier: 
   cardName: Not a Phase
-  cardDescription: Attack an enemy. Resist the corruption. If passed, gain 20 corruption.
-    On a fail, add 2-12 damage to the attack.
+  cardDescription: Attack an enemy.
+  cardCorruptionPassDescription: +20 Corruption
+  cardCorruptionFailDescription: +2-12 damage to attack
   cardFlavor: 
   cardCharacter: 0
   cardColor: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}

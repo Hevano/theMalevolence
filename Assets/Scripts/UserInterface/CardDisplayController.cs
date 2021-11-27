@@ -122,6 +122,8 @@ public class CardDisplayController : MonoBehaviour {
         cardDisplay._name.text = card.Name;
         cardDisplay._description.text = card.Description;
 
+        Debug.Log($"{card.CorruptionPassDescription}");
+
         cardDisplay._front.color = card.Color;
 
         if(card.BackArt != null)

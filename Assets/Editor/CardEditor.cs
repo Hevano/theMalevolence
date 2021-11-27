@@ -13,6 +13,8 @@ public class CardEditor : Editor {
     #region CARD DATA
     SerializedProperty CardName;
     SerializedProperty CardDescription;
+    SerializedProperty CardCorruptionPassDescription;
+    SerializedProperty CardCorruptionFailDescription;
     SerializedProperty CardFlavor;
     SerializedProperty CardCharacter;
     SerializedProperty CardExile;
@@ -34,6 +36,8 @@ public class CardEditor : Editor {
         #region CARD DATA
         CardName = GetTarget.FindProperty("cardName");
         CardDescription = GetTarget.FindProperty("cardDescription");
+        CardCorruptionPassDescription = GetTarget.FindProperty("cardCorruptionPassDescription");
+        CardCorruptionFailDescription = GetTarget.FindProperty("cardCorruptionFailDescription");
         CardFlavor = GetTarget.FindProperty("cardFlavor");
         CardCharacter = GetTarget.FindProperty("cardCharacter");
         CardExile = GetTarget.FindProperty("exiled");
@@ -55,6 +59,8 @@ public class CardEditor : Editor {
             EditorGUILayout.LabelField("Card Information", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(CardName);
             EditorGUILayout.PropertyField(CardDescription);
+            EditorGUILayout.PropertyField(CardCorruptionPassDescription);
+            EditorGUILayout.PropertyField(CardCorruptionFailDescription);
             EditorGUILayout.PropertyField(CardFlavor);
             EditorGUILayout.PropertyField(CardCharacter);
             displayBools = EditorGUILayout.Foldout(displayBools, "Extra Card Options");
