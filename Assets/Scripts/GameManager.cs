@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
                 drag.Drop(drop);
             }
         };
+
+        endPhaseButton.GetComponent<Button>().onClick.AddListener(() => {
+            EndPlanning();
+        });
+
     }
 
     //Starts a new battle with listed enemies. This initializes the characers, decks, and starts a new coroutine: battleEnumerator (like a thread)
