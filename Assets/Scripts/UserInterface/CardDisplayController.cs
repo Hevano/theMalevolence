@@ -149,8 +149,8 @@ public class CardDisplayController : MonoBehaviour {
         if (card.cardCorFail.Count > 0 || card.cardCorPass.Count > 0)
         { 
             cardDisplay._corEye.active = true;
-            cardDisplay._corrPass.text = card.CorruptionPassDescription;
-            cardDisplay._corrFail.text = card.CorruptionFailDescription;
+            cardDisplay._corrPass.text = "Pass: " + card.CorruptionPassDescription;
+            cardDisplay._corrFail.text = "Fail: " + card.CorruptionFailDescription;
         }
         else
             cardDisplay._corEye.active = false;
