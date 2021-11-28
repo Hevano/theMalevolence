@@ -49,6 +49,14 @@ public class CombatUIManager : MonoBehaviour {
         displayText.StartFade();
     }
 
+    public void SetMessage(string msg){
+        displayText.SetMessage(msg);
+    }
+
+    public void HideMessage(){
+        displayText.StartFade();
+    }
+
     public IEnumerator RevealCard(Card card, float duration = 1f){
         CardDisplayController display = CardDisplayController.CreateCard(card);
         display.GetComponent<Draggable>().followMouse = false;

@@ -31,6 +31,7 @@ public class DisplayText : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void SetMessage(string msg){
         secondaryMessage.text = primaryMessage.text;
         primaryMessage.text = msg;
+        forceVisible = true;
         SetVisible();
     }
 
@@ -42,11 +43,11 @@ public class DisplayText : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private IEnumerator Fade(){
         Color primaryColor = primaryMessage.color;
-        Color secondaryColor = primaryMessage.color;
+        Color secondaryColor = secondaryMessage.color;
         while(primaryColor.a != 0 && secondaryColor.a != 0){
-            primaryColor.a = Mathf.Lerp(0, primaryColor.a, 0.01f);
+            primaryColor.a = Mathf.Lerp(primaryColor.a, 0, 0.01f);
             primaryMessage.color = primaryColor;
-            secondaryColor.a = Mathf.Lerp(0, secondaryColor.a, 0.01f);
+            secondaryColor.a = Mathf.Lerp(secondaryColor.a, 0, 0.01f);
             secondaryMessage.color = secondaryColor;
             yield return new WaitForEndOfFrame();
         }
@@ -56,7 +57,7 @@ public class DisplayText : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void SetVisible(){
         if(fadeEnumerator != null) StopCoroutine(fadeEnumerator);
         Color primaryColor = primaryMessage.color;
-        Color secondaryColor = primaryMessage.color;
+        Color secondaryColor = secondaryMessage.color;
         primaryColor.a = 1;
         secondaryColor.a = 1;
         primaryMessage.color = primaryColor;
