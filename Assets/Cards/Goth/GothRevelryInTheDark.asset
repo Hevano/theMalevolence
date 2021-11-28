@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: GothRevelryInTheDark
   m_EditorClassIdentifier: 
   cardName: Revelry in the Dark
-  cardDescription: Attack all enemies for 2 damage, +1 for every 10 corruption Charles
-    has.
+  cardDescription: Attack all enemies for 2 damage, +1 per 10 corruption.
   cardCorruptionPassDescription: Nothing
   cardCorruptionFailDescription: Allies are hit instead
   cardFlavor: 
   cardCharacter: 0
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

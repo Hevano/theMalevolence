@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PopRequiemOfNightmares
   m_EditorClassIdentifier: 
   cardName: Requiem of Nightmares
-  cardDescription: 
-  cardCorruptionPassDescription: +2 HP to all allies
-  cardCorruptionFailDescription: Allies basic attacks do x2 damage this turn
+  cardDescription: Affect all allies this turn based on Jacklyn's corruption.
+  cardCorruptionPassDescription: +2 HP
+  cardCorruptionFailDescription: Double basic attack damage
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
