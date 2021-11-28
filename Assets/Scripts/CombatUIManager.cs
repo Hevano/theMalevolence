@@ -9,7 +9,7 @@ public class CombatUIManager : MonoBehaviour {
     private static CombatUIManager instance;
 
     [Header("UI Elements")]
-    [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private DisplayText displayText;
 
     [SerializeField] private GameObject CardRevealDisplay;
 
@@ -43,16 +43,10 @@ public class CombatUIManager : MonoBehaviour {
         instance.SetColor(color);
     }
 
-    public IEnumerator DisplayMessage (string msg) {
-        displayText.text = msg;
-        yield return new WaitForSeconds(1f);
-        displayText.text = "";
-    }
-
-    public IEnumerator DisplayMessage (string msg, float duration) {
-        displayText.text = msg;
+    public IEnumerator DisplayMessage (string msg, float duration = 1f) {
+        displayText.SetMessage(msg);
         yield return new WaitForSeconds(duration);
-        displayText.text = "";
+        displayText.StartFade();
     }
 
     public IEnumerator RevealCard(Card card, float duration = 1f){
@@ -67,11 +61,11 @@ public class CombatUIManager : MonoBehaviour {
         cardRectTransform.SetParent(DisplayArea.transform);
 
         yield return new WaitForSeconds(duration);
-        displayText.text = "Press any key to continue";
+        displayText.SetMessage("Press any key to continue");
         while(!Input.anyKey){
             yield return new WaitForEndOfFrame();
         }
-        displayText.text = "";
+        displayText.StartFade();
 
         CardRevealDisplay.GetComponent<Canvas>().enabled = false;
         CardRevealDisplay.active = false;
