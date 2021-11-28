@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Sear Thoughts
   m_EditorClassIdentifier: 
   cardName: Sear Thoughts
-  cardDescription: 
+  cardDescription: Party gains 5 corruption.
+  cardCorruptionPassDescription: +5 Corruption
+  cardCorruptionFailDescription: Discard Character's cards
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 4
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects: []
   cardCorPass:
   - effectType: 9

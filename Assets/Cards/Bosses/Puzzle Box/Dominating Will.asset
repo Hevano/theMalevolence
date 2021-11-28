@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Dominating Will
   m_EditorClassIdentifier: 
   cardName: Dominating WIll
-  cardDescription: 
+  cardDescription: Those acting after the puzzle box take 1-4 damage.
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Stunned next turn
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 7
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 2
     cardEffect:

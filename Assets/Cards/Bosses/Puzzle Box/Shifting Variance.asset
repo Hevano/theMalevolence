@@ -13,14 +13,22 @@ MonoBehaviour:
   m_Name: Shifting Variance
   m_EditorClassIdentifier: 
   cardName: Shifting Variance
-  cardDescription: 
+  cardDescription: Stun a character and summon a Shard of Eternity.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 1
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 1
     cardEffect:

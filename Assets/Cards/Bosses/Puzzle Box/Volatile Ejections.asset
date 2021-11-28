@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Volatile Ejections
   m_EditorClassIdentifier: 
   cardName: Volatile Ejections
-  cardDescription: 
+  cardDescription: An ally takes 1-4 damage, +2 damage for every 20 corruption they
+    have.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +25,11 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 6
     cardEffect:

@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: Chromatic Shattering
   m_EditorClassIdentifier: 
   cardName: Chromatic Shattering
-  cardDescription: All characters make a corruption check. On a pass, gain 5 corruption.
-    On a fail, summon a Shard of Eternity
-  cardFlavor: 'The shimmering crystals betray the box''s true nature. '
+  cardDescription: 'The shimmering crystals betray the box''s true nature. '
+  cardCorruptionPassDescription: +5 Corruption
+  cardCorruptionFailDescription: Summon a Shard of Eternity
+  cardFlavor: 
   cardCharacter: 5
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 1
   bossCorTargets: 4
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects: []
   cardCorPass:
   - effectType: 9
