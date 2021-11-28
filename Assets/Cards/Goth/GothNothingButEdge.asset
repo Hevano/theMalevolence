@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GothNothingButEdge
   m_EditorClassIdentifier: 
   cardName: Nothing But Edge
-  cardDescription: Attack an enemy, +1 damage for every 10 corruption Charles has.
+  cardDescription: Attack an enemy, +1 damage per 10 corruption Charles has.
   cardCorruptionPassDescription: Nothing
   cardCorruptionFailDescription: Attack self
   cardFlavor: 
