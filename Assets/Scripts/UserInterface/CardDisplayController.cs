@@ -19,6 +19,22 @@ public class CardDisplayController : MonoBehaviour {
         get{return _name;}
     }
 
+    [SerializeReference]
+    private Text _corrPass;
+    public Text CorruptionPassDescription
+    {
+        get { return _corrPass; }
+        set { _corrPass = value; }
+    }
+
+    [SerializeReference]
+    private Text _corrFail;
+    public Text CorruptionFailDescription
+    {
+        get { return _corrFail; }
+        set { _corrFail = value; }
+    }
+
     //The description of the displayed card. Must be changed to display the cards proper description (seperate field)
     [SerializeReference]
     private Text _description;
@@ -45,7 +61,7 @@ public class CardDisplayController : MonoBehaviour {
     }
 
     [SerializeReference]
-    private Image _corEye;
+    private GameObject _corEye;
     [SerializeReference]
     private Image[] _icons = new Image[4];
 
@@ -131,9 +147,13 @@ public class CardDisplayController : MonoBehaviour {
         if (card.FrontArt != null)
             cardDisplay._front.sprite = card.FrontArt;
         if (card.cardCorFail.Count > 0 || card.cardCorPass.Count > 0)
-            cardDisplay._corEye.enabled = true;
+        { 
+            cardDisplay._corEye.active = true;
+            cardDisplay._corrPass.text = card.CorruptionPassDescription;
+            cardDisplay._corrFail.text = card.CorruptionFailDescription;
+        }
         else
-            cardDisplay._corEye.enabled = false;
+            cardDisplay._corEye.active = false;
         for (int i = 0; i < 4; i++) {
             if (card.Icons[i] != null)
                 cardDisplay._icons[i].sprite = card.Icons[i];
