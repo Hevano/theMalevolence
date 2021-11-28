@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Flesh from Bone
   m_EditorClassIdentifier: 
   cardName: Flesh from Bone
-  cardDescription: 
+  cardDescription: 'Weaken''s an ally''s weapon. '
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Take 1-6 damage
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 2
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 1
     cardEffect:

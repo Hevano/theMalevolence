@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Strangulate
   m_EditorClassIdentifier: 
   cardName: Strangulate
-  cardDescription: 
+  cardDescription: 'An ally takes 1-4 damage, and is silenced.
+
+    Summon a Shard
+    of Eternity.'
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +27,11 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 2
     cardEffect:

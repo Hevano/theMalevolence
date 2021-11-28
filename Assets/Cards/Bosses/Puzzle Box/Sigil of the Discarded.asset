@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Sigil of the Discarded
   m_EditorClassIdentifier: 
   cardName: Sigil of the Discarded
-  cardDescription: 
+  cardDescription: An ally takes 1-6 damage, +1 per each discarded card.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 6
     cardEffect:
