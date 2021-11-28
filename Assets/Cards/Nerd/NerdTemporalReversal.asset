@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: NerdTemporalReversal
   m_EditorClassIdentifier: 
   cardName: Temporal Reversal
-  cardDescription: Redraw a random card from the discard for every 25 corruption.
-    Resist the corruption, drawing a card on a success or discarding on a failure
+  cardDescription: 'Redraw a random card from the discard pile for every 25 corruption. '
+  cardCorruptionPassDescription: Draw a card
+  cardCorruptionFailDescription: Discard a card
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0, g: 0, b: 0, a: 0}

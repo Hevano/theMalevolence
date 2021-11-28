@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: PopSoothingHarmonica
   m_EditorClassIdentifier: 
   cardName: Soothing Harmonica
-  cardDescription: Target heals 5 HP and removes 25 corruption. Gain 25 corruption.
+  cardDescription: An ally heals 5 HP and removes 25 corruption. Jacklyn gains 25
+    corruption.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PopTragicDuet
   m_EditorClassIdentifier: 
   cardName: Tragic Duet
-  cardDescription: Ally regains 5 HP, while Popular loses 5 HP. Resist the corruption,
-    restoring 5 HP to the target on a pass, or 5 HP to the Popular on a fail.
+  cardDescription: 'An ally regains 5 HP, while Jacklyn loses 5 HP. '
+  cardCorruptionPassDescription: +5 extra HP to ally
+  cardCorruptionFailDescription: +5 HP to Jacklyn
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}

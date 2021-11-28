@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: NerdForbiddenKnowledge
   m_EditorClassIdentifier: 
   cardName: Forbidden Knowledge
-  cardDescription: Deal 1 damage for each card in the discard pile.
+  cardDescription: Attack an enemy for 1 damage per card in the discard pile.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 2
   cardColor: {r: 0.30419922, g: 1, b: 0, a: 1}

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: JockAgainstTheOdds
   m_EditorClassIdentifier: 
   cardName: Against the Odds
-  cardDescription: Deal 1-6 damage to all enemies, +1  for each enemy in battle
+  cardDescription: Attack all enemies for 1-6 damage, +1  for each enemy in battle
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}

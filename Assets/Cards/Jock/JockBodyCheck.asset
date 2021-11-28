@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: JockBodyCheck
   m_EditorClassIdentifier: 
   cardName: Body Check
-  cardDescription: Johny takes the next attack meant for an ally this turn. Resist
-    the corruption. On a fail, Johny attacks that ally.
+  cardDescription: 'Johny takes the next attack meant for an ally this turn. '
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Attack ally
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 1, g: 0, b: 0, a: 1}

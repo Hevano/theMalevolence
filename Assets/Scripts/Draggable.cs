@@ -26,9 +26,11 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if(planningPhaseOnly && GameManager.manager != null && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
         dragTarget = this;
         dragging = true;
+
         if(onDragStart != null){
             onDragStart(this, null);
         }
+
         returnPos = this.transform.position;
         GetComponent<GraphicRaycaster>().enabled = false;
         transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<RectTransform>());
@@ -36,6 +38,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData data){
         if(planningPhaseOnly && GameManager.manager != null && GameManager.manager.phase != Enums.GameplayPhase.Planning) return;
+
         dragging = false;
         letGo = true;
         GetComponent<GraphicRaycaster>().enabled = true;
@@ -45,7 +48,8 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void Drop(DropZone zoneWhereDropped){
         letGo = false;
         dragTarget = null;
-        if(zoneWhereDropped != null){
+
+        if (zoneWhereDropped != null){
             zone = zoneWhereDropped;
             returnDropZone = zone;
             transform.SetParent(zoneWhereDropped.GetComponent<RectTransform>());
@@ -53,18 +57,22 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             transform.SetParent(returnDropZone.GetComponent<RectTransform>());
             transform.position = returnPos;
         }
-        if(onDragStop != null){
+
+        if (onDragStop != null){
             onDragStop(this, zone);
         }
     }
 
     public void LateUpdate(){
-        if(dragging){
-            if(followMouse) transform.position = Input.mousePosition;
+
+        if (dragging){
+
+            if (followMouse) transform.position = Input.mousePosition;
             if(onDrag != null){
                 onDrag(this, zone);
             }
-        } else if(letGo) {
+        }
+        else if(letGo) {
             Drop(null);
         }
     }

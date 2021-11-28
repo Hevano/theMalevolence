@@ -10,6 +10,8 @@ public class Card : ScriptableObject {
     [SerializeField] private string cardName;
     [TextArea]
     [SerializeField] private string cardDescription;
+    [SerializeField] private string cardCorruptionPassDescription;
+    [SerializeField] private string cardCorruptionFailDescription;
     [SerializeField] private string cardFlavor;
     [SerializeField] private Enums.Character cardCharacter;
     [SerializeField] private Color cardColor;
@@ -40,6 +42,8 @@ public class Card : ScriptableObject {
         get { return cardColor; }
         set{cardColor = value;}
     }
+    public string CorruptionPassDescription { get { return cardCorruptionPassDescription; } }
+    public string CorruptionFailDescription { get { return cardCorruptionFailDescription; } }
 
     public bool Exiled { get { return exiled; } }
     public bool BossCard { get { return bossCard; } }

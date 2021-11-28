@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: JockBloodRage
   m_EditorClassIdentifier: 
   cardName: Blood Rage
-  cardDescription: Johny makes 2 basic attacks, then resists the corruption. On a
-    fail, they make another basic attack.
+  cardDescription: Attack an enemy twice for 1-6 damage.
+  cardCorruptionPassDescription: Nothing
+  cardCorruptionFailDescription: Make another 1-6 damage attack
   cardFlavor: 
   cardCharacter: 1
   cardColor: {r: 1, g: 0, b: 0, a: 1}
