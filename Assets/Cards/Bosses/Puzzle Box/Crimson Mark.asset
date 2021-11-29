@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Crimson Mark
   m_EditorClassIdentifier: 
   cardName: Crimson Mark
-  cardDescription: The Puzzle Box demands blood. It will take it by force
+  cardDescription: The Puzzle Box demands blood. It will take it by force.
+  cardCorruptionPassDescription: Take 2-8 damage
+  cardCorruptionFailDescription: Summon a Shard of Eternity
   cardFlavor: The Puzzle Box demands blood. It will take it by force
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}

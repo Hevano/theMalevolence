@@ -56,9 +56,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     public static IEnumerator GetTargetable(Enums.TargetType type, Character source, string msg, int count = 1){
 
         //send msg to some Text object in the screen to inform the player what they are targetting
-        Canvas messagePrompt = Instantiate(GameManager.manager.messager);
-        messagePrompt.GetComponentInChildren<Text>().text = msg;
-        messagePrompt.transform.position = new Vector3(0, 0, 0);
+        CombatUIManager.Instance.SetMessage(msg);
 
         //Disables raycast of dropzone to prevent from being targetted.
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
@@ -81,11 +79,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
 
         GameManager.manager.cardDropZone.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
         targetting = false;
-
-        foreach (GameObject e in GameObject.FindGameObjectsWithTag("Message"))
-        { 
-            Destroy(e);
-        }
+        CombatUIManager.Instance.HideMessage();
     }
 }
 

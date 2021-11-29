@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GothBackTalk
   m_EditorClassIdentifier: 
   cardName: Back Talk
-  cardDescription: Make an additional 1-6 damage attack after the first action next
-    turn, +1 damage for each corruption gained after this card is played.
+  cardDescription: Make an extra 1-6 damage attack after the first action next turn,
+    +1 damage for every 5 corruption gained after this card is played.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
