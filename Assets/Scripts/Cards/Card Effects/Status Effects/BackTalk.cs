@@ -24,6 +24,7 @@ public class BackTalk : StatusEffect {
         GameManager.manager.turns.Insert(index + 1, watchedCharacter);
         watchedCharacter.Action = (watchedCharacter.Action != Enums.Action.Stunned) ? Enums.Action.Attack : Enums.Action.Stunned;
         watchedCharacter.onTurnEnd += WaitToSecondAttack;
+        GameManager.manager.onPhaseChange -= ExtraAttack;
     }
 
     public void WaitToSecondAttack(){
@@ -33,7 +34,7 @@ public class BackTalk : StatusEffect {
 
     public void BonusDamage(Character target, ref Damage d){
         d = new Damage(watchedCharacter.data.basicAttack);
-        d.bonus += Mathf.CeilToInt(bonus / 10);
+        d.bonus += Mathf.CeilToInt(bonus / 5);
         watchedCharacter.onStatChange -= AddDamage;
         watchedCharacter.onAttack -= BonusDamage;
     }
