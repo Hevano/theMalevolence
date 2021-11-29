@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: 6297210489662904390
     second: Armature|Corrupted
+  - first:
+      74: -982115091633673366
+    second: Armature|Death
   externalObjects: {}
   materials:
     materialImportMode: 2
