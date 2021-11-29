@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 8
   name: Zealous Faculty
-  health: 15
+  health: 10
+  currentHealth: 15
   corruption: 0
+  currentCorruption: 0
   avatar: {fileID: 0}
   thumbtack: {fileID: 0}
   weapon: {fileID: 0}

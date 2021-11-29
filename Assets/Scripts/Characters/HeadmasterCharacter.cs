@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeadmasterCharacter : EnemyCharacter {
 
     [SerializeField] private List<Transform> CultistSpawns;
-    private EnemyCharacter[] Cultists;
+    private EnemyCharacter[] Cultists = new EnemyCharacter[12];
     private bool turnEnd = false;
 
     public override IEnumerator GetTurn () {
@@ -30,32 +30,21 @@ public class HeadmasterCharacter : EnemyCharacter {
     }
 
     public IEnumerator SpawnStudent () {
-
-        if (Cultists != null)
-        {
-            for (int i = 0; i < Cultists.Length; i++)
-            {
-                if (Cultists[i] == null)
-                {
-                    AfflictedStudentCharacter newStudent = Instantiate(Resources.Load<AfflictedStudentCharacter>("prefabs/Afflicted Student"), CultistSpawns[i].transform);
-                    newStudent.transform.localPosition = Vector3.zero;
-                    yield return CombatUIManager.Instance.DisplayMessage("An Afflicted Student has come to the Headmaster's aid");
-                    Cultists[i] = newStudent;
-                    GameManager.manager.foes.Add(newStudent);
-                    break;
-                }
+        
+        for (int i = 0; i < Cultists.Length; i++) {
+            if (Cultists[i] == null){
+                AfflictedStudentCharacter newStudent = Instantiate(Resources.Load<AfflictedStudentCharacter>("prefabs/Afflicted Student"), CultistSpawns[i].transform);
+                newStudent.transform.localPosition = Vector3.zero;
+                yield return CombatUIManager.Instance.DisplayMessage("An Afflicted Student has come to the Headmaster's aid");
+                Cultists[i] = newStudent;
+                GameManager.manager.foes.Add(newStudent);
+                break;
             }
         }
-        else { Debug.Log($"<Color=red>Error:The Headmaster, spawnstudents function contains a null cultists list. </color>"); }
     }
 
-    public IEnumerator SpawnFaculty()
-    {
-
-        if (Cultists != null)
-        {
-            for (int i = 0; i < Cultists.Length; i++)
-            {
+    public IEnumerator SpawnFaculty() {
+        for (int i = 0; i < Cultists.Length; i++) {
                 if (Cultists[i] == null)
                 {
                     ZealousFacultyCharacter newFaculty = Instantiate(Resources.Load<ZealousFacultyCharacter>("prefabs/Zealous Faculty"), CultistSpawns[i].transform);
@@ -66,7 +55,5 @@ public class HeadmasterCharacter : EnemyCharacter {
                     break;
                 }
             }
-        }
-        else { Debug.Log($"<Color=red>Error:The Headmaster, spawnfaculty function contains a null cultists list. </color>"); }
     }
 }
