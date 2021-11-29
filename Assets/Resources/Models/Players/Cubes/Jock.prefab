@@ -25,15 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817256081637752704}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_LocalPosition: {x: 0.07, y: 4.49, z: 1.66}
 =======
   m_LocalPosition: {x: 0, y: 2.35, z: 1.49}
 >>>>>>> Stashed changes
-=======
-  m_LocalPosition: {x: 0.07, y: 2.4, z: 1.66}
->>>>>>> parent of 492e077 (adjustments)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 898560284746247003}
@@ -190,7 +186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5527912112112737713}
   m_LocalRotation: {x: -0, y: 0.50000006, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0.15, y: 4.25, z: 2.66}
+  m_LocalPosition: {x: -0.18, y: 4.25, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 898560284746247003}
@@ -209,7 +205,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.97308964, b: 0.6924528, a: 1}
   m_Intensity: 0.5
-  m_Range: 20
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

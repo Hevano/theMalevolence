@@ -25,15 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025054773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_LocalPosition: {x: -0.756, y: 4.03, z: 0.967}
 =======
   m_LocalPosition: {x: -0.97, y: 4.11, z: 0.21}
 >>>>>>> Stashed changes
-=======
-  m_LocalPosition: {x: 0, y: 1, z: 1}
->>>>>>> parent of 492e077 (adjustments)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4843569339384331148}
@@ -52,7 +48,7 @@ Light:
   m_Shape: 0
 <<<<<<< Updated upstream
   m_Color: {r: 1, g: 0.9453062, b: 0.37169808, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
 =======
   m_Color: {r: 1, g: 0.97308964, b: 0.6924528, a: 1}
@@ -215,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495078097035639742}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0.98}
+  m_LocalPosition: {x: 0, y: 4.88, z: 0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4843569339384331148}
