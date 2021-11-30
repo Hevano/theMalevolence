@@ -18,7 +18,7 @@ MonoBehaviour:
   currentHealth: 20
   corruption: 0
   currentCorruption: 0
-  avatar: {fileID: 8400000, guid: 34c64d631153c684587c3cb26c3178fc, type: 2}
+  avatar: {fileID: 21300000, guid: ecce0cac5dd89df4b97e15a75e1e7683, type: 3}
   thumbtack: {fileID: 21300000, guid: 1250dac85f47ee643bd7a6cac461e40d, type: 3}
   weapon: {fileID: 21300000, guid: f55d72747285f704c926c0771e8daf97, type: 3}
   color: {r: 0.33962262, g: 0.08810965, b: 0.29201588, a: 1}

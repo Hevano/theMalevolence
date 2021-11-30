@@ -273,7 +273,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hey guys, i think we should do something about this!
+  m_text: <color=red>Hey</color> <b>guys</b>, <s><i>i</i> think</s> we should do
+    something about this!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1721fa56f2da4c338a4aa5aa006548d, type: 2}
   m_sharedMaterial: {fileID: -3066483431170467059, guid: e1721fa56f2da4c338a4aa5aa006548d, type: 2}
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

@@ -324,6 +324,14 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"HERE");
                 StartCoroutine(Shake(dialogue.gameObject));
                 break;
+            case 39:
+                currentTextCol = jockColor;
+                updateText($"Okay guys, we need to do something about this, <i>now</i>. Here, use this notebook! Write down stuff you can do, and let's figure out a gameplan, <i>stat</i>.");
+                break;
+            case 40:
+                currentTextCol = nerdColor;
+                updateText($"Got it! Ummm, ok... Lemme throw something together..");
+                break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
                 break;
