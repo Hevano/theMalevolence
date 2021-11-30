@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10802833, g: 0.053747296, b: 0.10701809, a: 1}
+  m_IndirectSpecularColor: {r: 0.20345691, g: 0.12743807, b: 0.09717139, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1355,6 +1355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: a37f9dd03349b68498f3797bbd591c3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a37f9dd03349b68498f3797bbd591c3f, type: 3}
       propertyPath: m_Name
       value: Puzzle Box
@@ -2566,8 +2570,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.38679248, g: 0, b: 0.33066958, a: 1}
-  m_Intensity: 0.6
+  m_Color: {r: 0.3882353, g: 0.00000005553751, b: 0, a: 1}
+  m_Intensity: 1
   m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2927,11 +2931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 433887320, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 433887320, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.9745265
       objectReference: {fileID: 0}
     - target: {fileID: 433887320, guid: 48a40cdf5e2afa54f9a604bca5a5e19e, type: 3}
       propertyPath: m_Color.r
@@ -3317,11 +3321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7330661823345186181, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.4188679
       objectReference: {fileID: 0}
     - target: {fileID: 7330661823345186181, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.9475842
       objectReference: {fileID: 0}
     - target: {fileID: 7330661823345186181, guid: 14b4de0c0e364544d994f30af363be1c, type: 3}
       propertyPath: m_Color.r
