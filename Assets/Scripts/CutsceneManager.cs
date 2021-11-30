@@ -10,7 +10,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private string cutsceneName;
     [SerializeField]
-    private TextMeshProUGUI dialogue;
+    private TextMeshProUGUI dialogue, voices, events;
     [SerializeField]
     private Button skipScene, next;
     [SerializeField]
@@ -23,10 +23,11 @@ public class CutsceneManager : MonoBehaviour
     private int cutsceneNum, cutsceneImageStage = 0, cutsceneStage = 0;
     private Color currentTextCol;
     private string gothSColor = "purple", popSColor = "yellow", jockSColor = "red", nerdSColor = "green";
-    private Color gothColor = new Color (128, 0 , 128), popColor = Color.yellow, jockColor = Color.red, nerdColor = Color.green;
+    private Color gothColor = new Color (160/ 255.0f, 32/255.0f, 240/255.0f), popColor = Color.yellow, jockColor = Color.red, nerdColor = Color.green;
 
     private bool coroutineRunning = false;
     private Vector3 originalPosition;
+    private Quaternion originalRotation;
     private Vector4 targetColor;
     private GameObject modifiedObject;
 
@@ -63,7 +64,7 @@ public class CutsceneManager : MonoBehaviour
         coroutineRunning = false;
     }
 
-    IEnumerator Shake(GameObject toShake)
+    IEnumerator Shake(GameObject toShake, float scale)
     {
         coroutineRunning = true;
 
@@ -72,9 +73,9 @@ public class CutsceneManager : MonoBehaviour
 
         do
         {
-            float random = Random.Range(originalPosition.x-4f, originalPosition.x+4f);
-            float random2 = Random.Range(originalPosition.y - 4f, originalPosition.y + 4f);
-            float random3 = Random.Range(originalPosition.z - 4f, originalPosition.z + 4f);
+            float random = Random.Range(originalPosition.x-scale, originalPosition.x+scale);
+            float random2 = Random.Range(originalPosition.y - scale, originalPosition.y + scale);
+            float random3 = Random.Range(originalPosition.z - scale, originalPosition.z + scale);
 
             toShake.transform.position = new Vector3(random, random2, random3);
             Debug.Log($"{toShake.transform.position} is the current position of the object");
@@ -84,6 +85,27 @@ public class CutsceneManager : MonoBehaviour
         }
         while (true);
         
+
+    }
+
+    IEnumerator Tilt(GameObject toTilt)
+    {
+        coroutineRunning = true;
+
+        originalRotation = toTilt.transform.rotation;
+        modifiedObject = toTilt;
+
+        do
+        {
+            float random = Random.Range(originalRotation.z - .03f, originalPosition.z + .03f);
+
+            toTilt.transform.rotation = new Quaternion(originalRotation.x, originalRotation.y, random, originalRotation.w);
+            Debug.Log($"{toTilt.transform.rotation} is the current rotation of the object");
+
+            yield return new WaitForSeconds(.1f);
+
+        }
+        while (true);
 
     }
 
@@ -122,10 +144,17 @@ public class CutsceneManager : MonoBehaviour
         dialogue.text = newText;
     }
 
+    private void changeImageAlpha(Image image, float alpha)
+    {
+        Color currentColor = image.color;
+        image.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+    }
+
     private void eventText(string newText)
     {
-
-
+        
+        events.color = currentTextCol;
+        events.text = newText;
 
     }
 
@@ -135,6 +164,8 @@ public class CutsceneManager : MonoBehaviour
     {
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";
+        voices.text = "";
+        events.text = "";
 
         switch (cutsceneName)
         {
@@ -174,7 +205,10 @@ public class CutsceneManager : MonoBehaviour
             StopAllCoroutines();
 
             if (modifiedObject != null)
+            { 
                 modifiedObject.transform.position = originalPosition;
+                modifiedObject.transform.rotation = originalRotation;
+            }
 
             fadeImage.color = targetColor;
 
@@ -198,8 +232,12 @@ public class CutsceneManager : MonoBehaviour
     {
         switch (cutsceneStage)
         {
+            case 0:
+                Debug.Log("Moving to next scene.");
+
+                break;
             case 1:
-                currentTextCol = Color.grey;
+                currentTextCol = Color.white;
                 updateText("<i>sigh</i>, the road’s really foggy today.");
                 break;
             case 2:
@@ -214,46 +252,64 @@ public class CutsceneManager : MonoBehaviour
                 updateDrawing(0);
                 break;
             case 5:
+                updateDrawing(6);
+                currentTextCol = Color.black;
                 updateText("...What the hell?? This is <i>not</i> normal. The fog is getting thicker!");
                 break;
             case 6:
-                updateText("Huh? Who said that?? And what do you mean the children are safe? The children are safe???");
+                voices.text = "Children are safe";
+                StartCoroutine(Shake(voices.gameObject, 500f));
+                StartCoroutine(Tilt(voices.gameObject));
                 break;
             case 7:
-                updateText("The... children... are safe.");
+                voices.text = "";
+                updateText("Huh? Who said that?? And what do you mean the children are safe? The children are safe???");
                 break;
             case 8:
-                updateText("The children... are safe… You’re right...");
+                toggleTutorialImage();
+                updateTutorial(7);
+                changeImageAlpha(tutorial, .1f);
+                updateText("The... children... are safe.");
                 break;
             case 9:
-                updateText("I can stop driving... They are safe... and away... they're safe... safe...");
-                fadeImage.color = new Color(0f, 0f, 0f, .16f);
+                changeImageAlpha(tutorial, 0f);
+                updateText("The children... are safe… You’re right...");
                 break;
             case 10:
-                updateText("and away...");
+                updateText("I can stop driving...");
+                fadeImage.color = new Color(0f, 0f, 0f, .16f);
                 fadeImage.color = new Color(0f, 0f, 0f, .33f);
                 break;
             case 11:
+                changeImageAlpha(tutorial, .25f);
                 updateText("They're safe... ");
                 fadeImage.color = new Color(0f, 0f, 0f, .498f);
                 break;
             case 12:
+                currentTextCol = Color.white;
+                changeImageAlpha(tutorial, .5f);
                 updateText("safe...");
                 fadeImage.color = new Color(0f, 0f, 0f, .664f);
                 break;
             case 13:
+                changeImageAlpha(tutorial, .75f);
                 updateText("I'm safe.");
                 fadeImage.color = new Color(0f, 0f, 0f, .830f);
                 break;
             case 14:
+                changeImageAlpha(tutorial, 1f);
                 updateText("We're safe.");
                 fadeImage.color = new Color(0f, 0f, 0f, 1f);
                 break;
             case 15:
+                toggleTutorialImage();
                 updateText("");
+                currentTextCol = Color.white;
                 eventText("CRASH");
+                StartCoroutine(Shake(events.gameObject, 100f));
                 break;
             case 16:
+                eventText("");
                 currentTextCol = popColor;
                 updateText($"Ugghhhh, what was that about?");
                 break;
@@ -339,7 +395,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 38:
                 updateText($"HERE");
-                StartCoroutine(Shake(dialogue.gameObject));
+                StartCoroutine(Shake(dialogue.gameObject, 4f));
                 break;
             case 39:
                 currentTextCol = jockColor;
