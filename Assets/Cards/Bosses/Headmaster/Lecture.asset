@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Lecture
   cardDescription: 
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: Silence and deal 1-4 damage
   cardFlavor: 
   cardCharacter: 8
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 2
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects: []
   cardCorPass: []
   cardCorFail:

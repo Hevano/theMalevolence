@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Toll the Bell
   m_EditorClassIdentifier: 
   cardName: Toll the Bell
-  cardDescription: 
+  cardDescription: Summon 2 students
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 6
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 8
     cardEffect:

@@ -15,7 +15,7 @@ MonoBehaviour:
   characterType: 7
   name: Afflicted Student
   health: 6
-  currentHealth: 10
+  currentHealth: 6
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 0}
@@ -24,9 +24,6 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   cardBack: {fileID: 0}
   cards:
-  - {fileID: 11400000, guid: 340cf2689fbe7384c836360426bfaad5, type: 2}
-  - {fileID: 11400000, guid: 33ad3ff116a00bb4e95ec7f2527f8c23, type: 2}
-  - {fileID: 11400000, guid: 33ad3ff116a00bb4e95ec7f2527f8c23, type: 2}
   - {fileID: 11400000, guid: 33ad3ff116a00bb4e95ec7f2527f8c23, type: 2}
   basicAttack:
     dieNum: 1

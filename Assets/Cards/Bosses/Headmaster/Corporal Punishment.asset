@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Corporal Punishment
   m_EditorClassIdentifier: 
   cardName: Corporal Punishment
-  cardDescription: 
+  cardDescription: Attack the target for 1-6 damage
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: Stun the target
   cardFlavor: 
   cardCharacter: 6
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -22,6 +24,11 @@ MonoBehaviour:
   bossCorTargets: 2
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
+  cardIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardEffects:
   - effectType: 2
     cardEffect:

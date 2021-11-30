@@ -15,7 +15,7 @@ MonoBehaviour:
   characterType: 8
   name: Zealous Faculty
   health: 10
-  currentHealth: 15
+  currentHealth: 10
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 0}
@@ -25,8 +25,8 @@ MonoBehaviour:
   cardBack: {fileID: 0}
   cards:
   - {fileID: 11400000, guid: 97ef1304297f2ec42b4e3043b5cf765e, type: 2}
-  - {fileID: 11400000, guid: 8383f8a869277e64a8e11691926dcc40, type: 2}
   - {fileID: 11400000, guid: e30033176dc81594babe0ae6874a6a78, type: 2}
+  - {fileID: 11400000, guid: 97ef1304297f2ec42b4e3043b5cf765e, type: 2}
   basicAttack:
     dieNum: 1
     dieSize: 6
