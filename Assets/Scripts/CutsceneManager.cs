@@ -14,7 +14,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private Button skipScene, next;
     [SerializeField]
-    private Image fadeImage, cutsceneImage, drawingImage, notebook;
+    private Image fadeImage, cutsceneImage, drawingImage, notebook, tutorial;
     [SerializeField]
     private List<Sprite> cutScene1Images, cutScene2Images;
 
@@ -87,9 +87,21 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    private void updateImage()
+    
+
+    private void toggleTutorialImage()
     {
-        cutsceneImage.sprite = CurrentCutsceneImages[cutsceneImageStage];
+        if(tutorial.color == new Color(1f,1f,1f,1f))
+            tutorial.color = new Color(1f,1f,1f,0f);
+        else
+            tutorial.color = new Color(1f, 1f, 1f, 1f);
+    }
+
+    private void updateTutorial(int index)
+    {
+
+        tutorial.sprite = CurrentCutsceneImages[index];
+
     }
 
     private void updateDrawing(int index)
@@ -97,6 +109,11 @@ public class CutsceneManager : MonoBehaviour
 
         drawingImage.sprite = CurrentCutsceneImages[index];
 
+    }
+
+    private void updateImage()
+    {
+        cutsceneImage.sprite = CurrentCutsceneImages[cutsceneImageStage];
     }
 
     private void updateText(string newText)
@@ -182,7 +199,7 @@ public class CutsceneManager : MonoBehaviour
         switch (cutsceneStage)
         {
             case 1:
-                currentTextCol = Color.white;
+                currentTextCol = Color.grey;
                 updateText("<i>sigh</i>, the road’s really foggy today.");
                 break;
             case 2:
@@ -301,7 +318,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"...Hey, there he is!");
                 break;
             case 33:
-                currentTextCol = Color.white;
+                currentTextCol = Color.grey;
                 updateText($"Kids... are... safe... Kids... are... safe...");
                 break;
             case 34:
@@ -309,7 +326,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"I... don't like that look in his eyes.");
                 break;
             case 35:
-                currentTextCol = Color.white;
+                currentTextCol = Color.grey;
                 updateText($"Kids... come here... You’re safe now... Join me... Join us...");
                 break;
             case 36:
@@ -317,7 +334,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"Whoa, hey there bucko, that's a lil too close, even for hockey standards.");
                 break;
             case 37:
-                currentTextCol = Color.white;
+                currentTextCol = Color.grey;
                 updateText($"Come");
                 break;
             case 38:
@@ -331,6 +348,53 @@ public class CutsceneManager : MonoBehaviour
             case 40:
                 currentTextCol = nerdColor;
                 updateText($"Got it! Ummm, ok... Lemme throw something together..");
+                break;
+            case 41:
+                updateText($"Ok, I'll keep track of our actions using these scraps of paper.");
+                break;
+            case 42:
+                toggleTutorialImage();
+                updateTutorial(2);
+                updateText($"This is the driver. I doodled an eye to represent whatever is affecting him. Hopefully we can make him snap out of it.");
+                break;
+            case 43:
+                updateTutorial(3);
+                updateText($"This is what we look like. Give me a heads up if you want to change the <color=white>order of our actions</color>, and I'll move them around.");
+                break;
+            case 44:
+                updateText($"These thumbtacks should keep them in place and let me move them around.");
+                break;
+            case 45:
+                currentTextCol = gothColor;
+                updateText($"Shouldn't you also make some sort of counter to track whatever force is affecting the driver? Clearly something's up, and I'm not sure we're invulnerable.");
+                break;
+            case 46:
+                currentTextCol = nerdColor;
+                updateText($"...yeah, I guess you're right.");
+                break;
+            case 47:
+                updateTutorial(4);
+                updateText($"Here, this eye will represent our affliction.");
+                break;
+            case 48:
+                updateText($"If you feel something start talking to you, kinda in a weird ritualistic way, like how the driver is speaking, then this should be increased.");
+                break;
+            case 49:
+                updateText($"The higher it gets, the more we'll have to try to resist it I suppose...");
+                break;
+            case 50:
+                updateText($"Let's make sure to <color=white>resist whatever force</color> is affecting the driver");
+                break;
+            case 51:
+                updateText($"And <color=white>keep that percentage low</color> so it's easier to resist this force.");
+                break;
+            case 52:
+                updateTutorial(5);
+                updateText($"We can use this symbol to represent an attempt to resist. I don't know what's going on, but let's <i>try</i> to understand it.");
+                break;
+            case 53:
+                currentTextCol = jockColor;
+                updateText($"Sounds good. Let's do this!");
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
