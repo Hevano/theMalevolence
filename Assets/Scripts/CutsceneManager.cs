@@ -166,6 +166,7 @@ public class CutsceneManager : MonoBehaviour
         dialogue.text = "";
         voices.text = "";
         events.text = "";
+        cutsceneStage = 0;
 
         switch (cutsceneName)
         {
@@ -188,6 +189,16 @@ public class CutsceneManager : MonoBehaviour
         next.GetComponent<Button>().onClick.AddListener(() => {
             nextStage();
         });
+
+        skipScene.GetComponent<Button>().onClick.AddListener(() => {
+            skip();
+        });
+    }
+
+    private void skip()
+    {
+        Debug.Log($"Skipping cutscene and changing scene...");
+
     }
 
     private void nextStage()
@@ -451,6 +462,9 @@ public class CutsceneManager : MonoBehaviour
             case 53:
                 currentTextCol = jockColor;
                 updateText($"Sounds good. Let's do this!");
+                break;
+            case 54:
+                skip();
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
