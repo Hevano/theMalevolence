@@ -70,16 +70,15 @@ public class UITests
     public void PlayCardTest(){
         altUnityDriver.LoadScene("Main Menu");
         altUnityDriver.LoadScene("BossOne");
-        var card = altUnityDriver.FindObjects(By.PATH, "//Main Camera/MainCanvas\\&HUD/DraftContainer/DraftMask/DraftDisplay/*")[0];
+        var card = altUnityDriver.FindObjects(By.COMPONENT, "CardDisplayController")[0];
         var id = card.id;
         var dropzone = altUnityDriver.FindObject(By.NAME, "DropZone");
-        altUnityDriver.MoveMouse(new AltUnityVector2(card.worldX, card.worldY), 1);
-        System.Threading.Thread.Sleep(1500);
+        altUnityDriver.MoveMouseAndWait(new AltUnityVector2(500f, 200f), 0.5f);
         AltUnityKeyCode kcode = AltUnityKeyCode.Mouse0;
         altUnityDriver.KeyDown(kcode, 1);
-        altUnityDriver.MoveMouse(new AltUnityVector2(card.worldX, card.worldY + 50f), 1);
-        System.Threading.Thread.Sleep(1500);
+        altUnityDriver.MoveMouseAndWait(new AltUnityVector2(500f, 800f), 0.5f);
         altUnityDriver.KeyUp(kcode);
+        altUnityDriver.FindObject(By.NAME, "Boss").Click();
         altUnityDriver.WaitForObjectNotBePresent(By.ID, id.ToString());
     }
 
