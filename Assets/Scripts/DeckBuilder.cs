@@ -174,6 +174,9 @@ public class DeckBuilder : MonoBehaviour
         if (selectedCards.Contains(display))
         {
             Debug.Log($"Card was unselected");
+            
+            //unhighlight display
+            Destroy(display.transform.GetChild(0).gameObject);
             selectedCards.Remove(display);
 
         }//Replace oldest selection when selected cards is equal to cards to keep.

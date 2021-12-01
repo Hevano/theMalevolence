@@ -18,7 +18,7 @@ public class CharacterData : ScriptableObject
     public int corruption;
     [HideInInspector]
     public int currentCorruption;
-    public Texture avatar;
+    public Sprite avatar;
     public Sprite thumbtack;
     public Sprite weapon;
     public Color color;
