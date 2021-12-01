@@ -22,7 +22,7 @@ MonoBehaviour:
   BuildNumber: 0
   MyTests:
   - _selected: 0
-    _testName: C:/Users/ecomi/Documents/School/TheMalevolence/theMalevolence/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _testName: C:/Users/Evano/Documents/Projects/theMalevolence/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _status: 0
     _isSuite: 1
     _parentName: 
@@ -37,7 +37,7 @@ MonoBehaviour:
     _testName: UITests
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/ecomi/Documents/School/TheMalevolence/theMalevolence/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: C:/Users/Evano/Documents/Projects/theMalevolence/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 4
     _foldOut: 1
     _testResultMessage: 
@@ -47,46 +47,28 @@ MonoBehaviour:
     _testSelectedCount: 1
   - _selected: 0
     _testName: UITests.AttackTest
-    _status: 0
+    _status: 1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0
+    _testDuration: 0.8178557
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
-  - _selected: 1
+  - _selected: 0
     _testName: UITests.DraftingTest
-    _status: -1
+    _status: 1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
-    _testResultMessage: "Altom.AltUnityDriver.ComponentNotFoundException : error:componentNotFound\nComponent
-      not found\n  at Assets.AltUnityTester.AltUnityServer.AltUnityReflectionMethodsCommand.GetType
-      (System.String typeName, System.String assemblyName) [0x0008e] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityServer\\Commands\\ObjectCommands\\AltUnityReflectionMethodsCommand.cs:43
-      \r\n  at Assets.AltUnityTester.AltUnityServer.Commands.AltUnityGetComponentPropertyCommand.Execute
-      () [0x00001] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityServer\\Commands\\ObjectCommands\\AltUnityGetComponentPropertyCommand.cs:20
-      \r\n  at Assets.AltUnityTester.AltUnityServer.Commands.AltUnityCommand.ExecuteHandleErrors
-      (System.Func`1[TResult] action) [0x00004] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityServer\\Commands\\AltUnityCommand.cs:29
-      \n"
-    _testStackTrace: "  at Altom.AltUnityDriver.Commands.AltBaseCommand.handleErrors
-      (System.String data, System.String log) [0x0031d] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\Commands\\AltBaseCommand.cs:234
-      \r\n  at Altom.AltUnityDriver.Commands.AltBaseCommand.Recvall () [0x00255]
-      in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\Commands\\AltBaseCommand.cs:98
-      \r\n  at Altom.AltUnityDriver.Commands.AltUnityGetComponentProperty.Execute
-      () [0x0005d] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\Commands\\ObjectCommands\\AltUnityGetComponentProperty.cs:23
-      \r\n  at Altom.AltUnityDriver.AltUnityObject.GetComponentProperty (System.String
-      componentName, System.String propertyName, System.String assemblyName, System.Int32
-      maxDepth) [0x00001] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\AltUnity\\AltUnityObject.cs:61
-      \r\n  at UITests.DraftingTest () [0x00059] in C:\\Users\\ecomi\\Documents\\School\\TheMalevolence\\theMalevolence\\Assets\\AltUnityTester\\Editor\\Tests\\UITests.cs:44
-      \r\n  at (wrapper managed-to-native) System.Reflection.MonoMethod.InternalInvoke(System.Reflection.MonoMethod,object,object[],System.Exception&)\r\n 
-      at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags
-      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
-      culture) [0x00032] in <695d1cc93cca45069c528c15c9fdd749>:0 "
-    _testDuration: 3.8738697
+    _testResultMessage: 
+    _testStackTrace: 'at UITests.DraftingTest () [0x0008c] in C:\Users\Evano\Documents\Projects\theMalevolence\Assets\AltUnityTester\Editor\Tests\UITests.cs:47
+
+'
+    _testDuration: 1.2689403
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
   - _selected: 0
@@ -101,20 +83,50 @@ MonoBehaviour:
     _testDuration: 0
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
-  - _selected: 0
+  - _selected: 1
     _testName: UITests.PlayCardTest
-    _status: 0
+    _status: -1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
-    _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
+    _testResultMessage: 'Newtonsoft.Json.JsonReaderException : Unexpected character
+      encountered while parsing value: e. Path '''', line 0, position 0.'
+    _testStackTrace: "  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3]
+      in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.JsonTextReader.Read
+      () [0x0004c] in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent
+      () [0x00000] in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.JsonReader.ReadForType
+      (Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter)
+      [0x0004a] in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize
+      (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean
+      checkAdditionalContent) [0x000db] in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n 
+      at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader
+      reader, System.Type objectType) [0x00054] in <7ca8898b690a4181a32a9cf767cedb1e>:0
+      \r\n  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader
+      reader, System.Type objectType) [0x00000] in <7ca8898b690a4181a32a9cf767cedb1e>:0
+      \r\n  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value,
+      System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d]
+      in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.JsonConvert.DeserializeObject[T]
+      (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000]
+      in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n  at Newtonsoft.Json.JsonConvert.DeserializeObject[T]
+      (System.String value) [0x00000] in <7ca8898b690a4181a32a9cf767cedb1e>:0 \r\n 
+      at Altom.AltUnityDriver.Commands.AltUnityCommandReturningAltElement.ReceiveListOfAltUnityObjects
+      () [0x00008] in C:\\Users\\Evano\\Documents\\Projects\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\Commands\\AltUnityCommandReturningAltElement.cs:24
+      \r\n  at Altom.AltUnityDriver.Commands.AltUnityFindObjects.Execute () [0x00073]
+      in C:\\Users\\Evano\\Documents\\Projects\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\Commands\\FindObjects\\AltUnityFindObjects.cs:24
+      \r\n  at Altom.AltUnityDriver.AltUnityDriver.FindObjects (Altom.AltUnityDriver.By
+      by, System.String value, Altom.AltUnityDriver.By cameraBy, System.String cameraPath,
+      System.Boolean enabled) [0x00001] in C:\\Users\\Evano\\Documents\\Projects\\theMalevolence\\Assets\\AltUnityTester\\AltUnityDriver\\AltUnityDriver.cs:144
+      \r\n  at UITests.PlayCardTest () [0x00025] in C:\\Users\\Evano\\Documents\\Projects\\theMalevolence\\Assets\\AltUnityTester\\Editor\\Tests\\UITests.cs:73
+      \r\n  at (wrapper managed-to-native) System.Reflection.MonoMethod.InternalInvoke(System.Reflection.MonoMethod,object,object[],System.Exception&)\r\n 
+      at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags
+      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
+      culture) [0x00032] in <695d1cc93cca45069c528c15c9fdd749>:0 "
+    _testDuration: 0.6253527
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
   - _selected: 1
-    _testName: C:/Users/ecomi/Documents/School/TheMalevolence/theMalevolence/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
+    _testName: C:/Users/Evano/Documents/Projects/theMalevolence/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
     _status: 0
     _isSuite: 1
     _parentName: 
@@ -126,7 +138,7 @@ MonoBehaviour:
     path: 
     _testSelectedCount: 0
   - _selected: 1
-    _testName: C:/Users/ecomi/Documents/School/TheMalevolence/theMalevolence/Library/ScriptAssemblies/Unity.Rider.Editor.dll
+    _testName: C:/Users/Evano/Documents/Projects/theMalevolence/Library/ScriptAssemblies/Unity.Rider.Editor.dll
     _status: 0
     _isSuite: 1
     _parentName: 
@@ -155,7 +167,7 @@ MonoBehaviour:
     _buildIndex: 4
   platform: 1
   StandaloneTarget: 5
-  RanInEditor: 1
+  RanInEditor: 0
   RequestSeparator: ;
   RequestEnding: '&'
   ServerPort: 13000
