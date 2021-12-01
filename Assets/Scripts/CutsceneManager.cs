@@ -7,8 +7,7 @@ using TMPro;
 public class CutsceneManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private string cutsceneName;
+    public string cutsceneName;
     [SerializeField]
     private TextMeshProUGUI dialogue, voices, events;
     [SerializeField]
@@ -179,6 +178,7 @@ public class CutsceneManager : MonoBehaviour
             case "PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
+                updateImage();
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneName} cutscene not found. Setting to intro scene...</color>");
@@ -195,6 +195,7 @@ public class CutsceneManager : MonoBehaviour
         });
     }
 
+    //This will change the scene @Evano
     private void skip()
     {
         Debug.Log($"Skipping cutscene and changing scene...");
@@ -232,6 +233,8 @@ public class CutsceneManager : MonoBehaviour
         {
             case 1: progressPreBusDriver();
                 break;
+            case 2: progressPostBusDriver();
+                break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneNum} is not in scope of available cutscenes.</color>");
                 break;
@@ -249,14 +252,14 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 1:
                 currentTextCol = Color.white;
-                updateText("<i>sigh</i>, the road’s really foggy today.");
+                updateText("<i>sigh</i>, the road's really foggy today.");
                 break;
             case 2:
-                updateText("Been a while since I’ve seen this much fog. Almost as bad as the day I drew up in my notebook. I was hoping to get home before that pizza got there, not after.");
+                updateText("Been a while since I've seen this much fog. Almost as bad as the day I drew up in my notebook. I was hoping to get home before that pizza arrived, not after.");
                 break;
             case 3:
                 updateDrawing(1);
-                updateText("But... so long as the kids are safe, I guess that’s all that matters. ");
+                updateText("But... so long as the kids are safe, I guess that's all that matters. ");
                 break;
             case 4:
                 updateText("");
@@ -265,11 +268,11 @@ public class CutsceneManager : MonoBehaviour
             case 5:
                 updateDrawing(6);
                 currentTextCol = Color.black;
-                updateText("...What the hell?? This is <i>not</i> normal. The fog is getting thicker!");
+                updateText("...What the hell?? This is <i>not</i> normal. The fog is getting thicker");
                 break;
             case 6:
                 voices.text = "Children are safe";
-                StartCoroutine(Shake(voices.gameObject, 500f));
+                StartCoroutine(Shake(voices.gameObject, 400f));
                 StartCoroutine(Tilt(voices.gameObject));
                 break;
             case 7:
@@ -284,7 +287,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 9:
                 changeImageAlpha(tutorial, 0f);
-                updateText("The children... are safe… You’re right...");
+                updateText("The children... are safe? You're right...");
                 break;
             case 10:
                 updateText("I can stop driving...");
@@ -330,11 +333,11 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 18:
                 currentTextCol = popColor;
-                updateText($"I think so. My harmonica managed to stab my side, but other than that, it could be worse. I guess…");
+                updateText($"I think so. My harmonica managed to stab my side, but other than that, it could be worse. I guess...");
                 break;
             case 19:
                 currentTextCol = gothColor;
-                updateText($"Well, at least it wasn’t a switch blade.");
+                updateText($"Well, at least it wasn't a switch blade.");
                 break;
             case 20:
                 currentTextCol = popColor;
@@ -355,7 +358,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"WAIT.");
                 break;
             case 25:
-                updateText($"Oh thank god, my keyboard’s fine. I just bought this thing, jeez. I was hoping to get home before I broke it in…");
+                updateText($"Oh thank god, my keyboard's fine. I just bought this thing, jeez. I was hoping to get home before I broke it in.");
                 break;
             case 26:
                 updateText($"Ummm, where's the bus driver?");
@@ -366,7 +369,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 28:
                 currentTextCol = nerdColor;
-                updateText($"<color={jockSColor}>Johny</color>, that is way too quick to be searching through his stuff. Did we not just crash a few minutes ago?");
+                updateText($"<color={jockSColor}>Johny</color>, you are way too quick to search through his stuff. Did we not just crash a few minutes ago?");
                 break;
             case 29:
                 currentTextCol = jockColor;
@@ -394,7 +397,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 35:
                 currentTextCol = Color.grey;
-                updateText($"Kids... come here... You’re safe now... Join me... Join us...");
+                updateText($"Kids... come here... You're safe now... Join me... Join us...");
                 break;
             case 36:
                 currentTextCol = jockColor;
@@ -474,4 +477,19 @@ public class CutsceneManager : MonoBehaviour
         
     }
 
+
+    private void progressPostBusDriver()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = Color.white;
+                updateText("<i>sigh</i>, the road's really foggy today.");
+                break;
+
+            default:
+                break;
+        }
+    } 
 }
