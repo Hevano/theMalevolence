@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Siezure - Help
   m_EditorClassIdentifier: 
   cardName: Help
-  cardDescription: '
-
-    All party members take 1-12 damage.'
+  cardDescription: All party members take 1-12 damage.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
@@ -31,6 +29,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: 
   cardEffects:
   - effectType: 2
     cardEffect:
