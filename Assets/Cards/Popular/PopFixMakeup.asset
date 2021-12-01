@@ -15,6 +15,8 @@ MonoBehaviour:
   cardName: Fix Makeup
   cardDescription: Remove 50 corruption from Jacklyn and heal 1 HP per 10 corruption
     lost.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
@@ -29,6 +31,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e824ea9f37185624f9b8919a2776b3f6, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: Attack
   cardEffects:
   - effectType: 6
     cardEffect:

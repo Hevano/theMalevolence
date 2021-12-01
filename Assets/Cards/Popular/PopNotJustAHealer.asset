@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Not Just a Healer
   cardDescription: Deal 2-12 damage and heal 5 HP to an ally. Gain 10 corruption.
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 3
   cardColor: {r: 0, g: 0, b: 0, a: 0}
@@ -28,6 +30,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: Attack
   cardEffects:
   - effectType: 2
     cardEffect:

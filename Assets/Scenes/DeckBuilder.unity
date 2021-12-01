@@ -6704,7 +6704,7 @@ MonoBehaviour:
   nextScene: BossPuzzleBox
   cardDraftPool: {fileID: 11400000, guid: 451f8694ab7199e4198b119cfb1e2e8a, type: 2}
   cardsToPull: 8
-  cardsToKeep: 3
+  cardsToKeep: 4
   pulledCards: []
   selectedCards: []
   _party:

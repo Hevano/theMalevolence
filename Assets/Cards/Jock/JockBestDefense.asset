@@ -31,6 +31,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: Attack
   cardEffects:
   - effectType: 2
     cardEffect:

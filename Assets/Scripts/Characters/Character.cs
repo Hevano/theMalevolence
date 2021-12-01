@@ -84,12 +84,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
 
             //Play sounds based on corruption
-            if (_corruption < value)
-            {
+            if (_corruption < value) {
+                try { animator.SetTrigger("Corrupt"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
                 AudioManager.audioMgr.PlayUISFX("CorruptionGain");
             }
-            else
-            {
+            else {
                 AudioManager.audioMgr.PlayUISFX("CorruptionCleanse");
             }
 
