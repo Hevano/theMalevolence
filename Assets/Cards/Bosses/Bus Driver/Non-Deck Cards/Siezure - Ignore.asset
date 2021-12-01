@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Siezure - Ignore
   m_EditorClassIdentifier: 
   cardName: Ignore
-  cardDescription: '
-
-    All party members gain 40 corruption.'
+  cardDescription: All party members gain 40 corruption.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
@@ -28,6 +26,7 @@ MonoBehaviour:
   cardBack: {fileID: 0}
   cardIcons:
   - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
