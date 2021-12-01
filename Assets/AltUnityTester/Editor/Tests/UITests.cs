@@ -35,26 +35,16 @@ public class UITests
 
     [Test]
     public void DraftingTest(){
+        altUnityDriver.LoadScene("Main Menu");
         altUnityDriver.LoadScene("BossOne");
         altUnityDriver.LoadScene("DeckBuilder");
         //Get all card displays in 
-        var cards = altUnityDriver.FindObjects(By.COMPONENT, "Transform");
-        List<AltUnityObject> draftCards = new List<AltUnityObject>();
-        foreach(AltUnityObject card in cards){
-            if(card.GetComponentProperty("Transform", "parent") == "Draft Display"){
-                draftCards.Add(card);
-            }
-        }
-        if(draftCards.Count == 0){
-            Assert.Pass();
-        }
-        try {
-            draftCards[0].Click();
-            draftCards[1].Click();
-            draftCards[2].Click();
-        } catch(System.Exception e){
-            Assert.Fail();
-        }
+        var cards = altUnityDriver.FindObjects(By.PATH, "//Main Camera/DeckBuildCanvas/DraftContainer/DraftMask/DraftDisplay/*");
+        
+        cards[0].Click();
+        cards[1].Click();
+        cards[2].Click();
+        Assert.Pass();
         
         
         var confirmDraftButton = altUnityDriver.FindObject(By.NAME, "EndDraftButton");
@@ -66,12 +56,31 @@ public class UITests
 
     [Test]
     public void AttackTest(){
-
+        altUnityDriver.LoadScene("Main Menu");
+        altUnityDriver.LoadScene("BossOne");
+        altUnityDriver.FindObject(By.NAME, "EndPhaseButton").Click();
+        var boss = altUnityDriver.FindObject(By.NAME, "Boss");
+        int bossHealth = System.Int32.Parse(boss.GetComponentProperty("DriverCharacter", "Health"));
+        boss.Click();//Attack the boss
+        int newHealth = System.Int32.Parse(boss.GetComponentProperty("DriverCharacter", "Health"));
+        Assert.That((bossHealth - newHealth) < 7 && (bossHealth - newHealth) > 0 );
     }
 
     [Test]
     public void PlayCardTest(){
-        
+        altUnityDriver.LoadScene("Main Menu");
+        altUnityDriver.LoadScene("BossOne");
+        var card = altUnityDriver.FindObjects(By.PATH, "//Main Camera/MainCanvas\\&HUD/DraftContainer/DraftMask/DraftDisplay/*")[0];
+        var id = card.id;
+        var dropzone = altUnityDriver.FindObject(By.NAME, "DropZone");
+        altUnityDriver.MoveMouse(new AltUnityVector2(card.worldX, card.worldY), 1);
+        System.Threading.Thread.Sleep(1500);
+        AltUnityKeyCode kcode = AltUnityKeyCode.Mouse0;
+        altUnityDriver.KeyDown(kcode, 1);
+        altUnityDriver.MoveMouse(new AltUnityVector2(card.worldX, card.worldY + 50f), 1);
+        System.Threading.Thread.Sleep(1500);
+        altUnityDriver.KeyUp(kcode);
+        altUnityDriver.WaitForObjectNotBePresent(By.ID, id.ToString());
     }
 
 }
