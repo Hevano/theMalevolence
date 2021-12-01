@@ -619,38 +619,89 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Couldn't you grab something more lethal than an instrument?");
                 break;
             case 5:
-                currentTextCol = gothColor;
-                updateText("Despite the late nights I've had here, this is the deadest I've <i>ever</i> seen this school.");
+                updateText("Like, oh, I dunno, a baseball bat??");
                 break;
             case 6:
-                currentTextCol = popColor;
-                updateText("Can we stop by the washroom? My makeup could use a bit of a touch-up after that walking...");
+                updateText("I mean, jeez, at this rate, I'd take that over this knife. Really hard to hurt something otherworldly with a switchblade.");
                 break;
             case 7:
                 currentTextCol = nerdColor;
-                updateText("Is that really your concern right now?");
+                updateText("Hey, I hear something... coming from downstairs");
                 break;
             case 8:
-                currentTextCol = Color.white;
-                eventText("Step... step.... step...");
+                updateText("...Let's pick up some of these runes first, then go check it out.");
                 break;
             case 9:
-                currentTextCol = Color.white;
-                eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
+                updateText($"I doubt finding the janitor's master key will be easy anyway, so getting more weapons is off the table.");
                 break;
             case 10:
-                //updateImage(1);
+                updateText($"Besides, these runes seem to be a lot stronger.");
                 break;
             case 11:
-                updateText("Now what do we have here...?");
+                currentTextCol = gothColor;
+                updateText("Told ya.");
                 break;
             case 12:
-                updateText("Students who haven't joined us?");
+                skip();
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+    }
+
+    private void progressPrePuzzlebox()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = popColor;
+                updateText("This is the place, yeah?");
+                break;
+            case 2:
+                currentTextCol = nerdColor;
+                updateText("Yeah. I'm sure of it.");
+                break;
+            case 3:
+                currentTextCol = gothColor;
+                updateText("And how can you be so sure? I mean, you doubted the runes, so why should I believe in your confidence?");
+                break;
+            case 4:
+                currentTextCol = jockColor;
+                updateText("Hey, we're in this together, ok?");
+                break;
+            case 5:
+                updateText("Let's just check and find out. Not like it's a good idea to wander away from the school in this fog anyway.");
+                break;
+            case 6:
+                currentTextCol = popColor;
+                updateText("And we don't even have reception, so what else are we gonna do? Sit around and wait till more creeps show up and kill us?");
+                break;
+            case 7:
+                currentTextCol = gothColor;
+                updateText("<i>haaaa</i>, fair... fine, let's check it out.");
+                break;
+            case 8:
+                currentTextCol = nerdColor;
+                updateText("Thank you.");
+                break;
+            case 9:
+                updateText($"");
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
                 break;
             case 13:
-                updateText("It's time to change that...");
+                eventText($"<color={nerdSColor}!!!</color> <color={gothSColor}!!!</color> <color={popSColor}!!!</color> <color={jockSColor}!!!</color>");
                 break;
             case 14:
+                updateText("Wha... what the heck is it?");
+                break;
+            case 15:
                 skip();
                 break;
             default:
