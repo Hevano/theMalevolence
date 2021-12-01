@@ -132,9 +132,9 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    private void updateImage()
+    private void updateImage(int index)
     {
-        cutsceneImage.sprite = CurrentCutsceneImages[cutsceneImageStage];
+        cutsceneImage.sprite = CurrentCutsceneImages[index];
     }
 
     private void updateText(string newText)
@@ -158,9 +158,10 @@ public class CutsceneManager : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    // When adding new cutscenes, remember to add a new level to the list on the level manager, found in the main menu
+    public void StartScene(string sceneName)
     {
+        cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";
         voices.text = "";
@@ -169,16 +170,16 @@ public class CutsceneManager : MonoBehaviour
 
         switch (cutsceneName)
         {
-            case "PreBossOne":
+            case "Cutscene_PreBossOne":
                 cutsceneNum = 1;
                 CurrentCutsceneImages = cutScene1Images;
                 drawingImage.sprite = cutScene1Images[0];
                 fade();
                 break;
-            case "PostBossOne":
+            case "Cutscene_PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
-                updateImage();
+                updateImage(0);
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneName} cutscene not found. Setting to intro scene...</color>");
@@ -195,10 +196,11 @@ public class CutsceneManager : MonoBehaviour
         });
     }
 
-    //This will change the scene @Evano
+    //This will change the scene
     private void skip()
     {
         Debug.Log($"Skipping cutscene and changing scene...");
+        LevelManager.Instance.ToNextLevel();
 
     }
 
@@ -484,12 +486,176 @@ public class CutsceneManager : MonoBehaviour
         switch (cutsceneStage)
         {
             case 1:
-                currentTextCol = Color.white;
-                updateText("<i>sigh</i>, the road's really foggy today.");
+                currentTextCol = jockColor;
+                updateText("He's... dead.");
                 break;
-
+            case 2:
+                currentTextCol = jockColor;
+                updateText("Now what do we do?");
+                break;
+            case 3:
+                currentTextCol = nerdColor;
+                updateText("Look. There's some runes on the floor.");
+                break;
+            case 4:
+                updateImage(1);
+                break;
+            case 5:
+                currentTextCol = gothColor;
+                updateText("I'll write them down. You never know when eldritch runes are gonna be handy.");
+                break;
+            case 6:
+                currentTextCol = nerdColor;
+                updateText("What the hell kind of use do you think that'll have??");
+                break;
+            case 7:
+                updateText("There's absolutely no point.");
+                break;
+            case 8:
+                currentTextCol = gothColor;
+                updateText("They seem pretty useful to me");
+                break;
+            case 9:
+                updateText("It looks like we can read them off and use an arcane ability.");
+                break;
+            case 10:
+                updateText("Not sure why it changed into our language, but whatever.");
+                break;
+            case 11:
+                currentTextCol = nerdColor;
+                updateText("<i>sigh</i>, what in the world is going on.");
+                break;
+            case 12:
+                currentTextCol = popColor;
+                updateText("Well, let's get writing then. Then, let's head back to the school. We're not too far off anyway, probably better than wandering home in this fog.");
+                break;
+            case 13:
+                skip();
+                break;
             default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
                 break;
         }
-    } 
+    }
+
+    private void progressPreHeadmaster()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = popColor;
+                updateText("Hey, there's the school!");
+                break;
+            case 2:
+                updateText("Do you... think everyone else is okay?");
+                break;
+            case 3:
+                currentTextCol = jockColor;
+                updateText("Hopefully. My hockey team had a meetup today. I... I'm worried about them.");
+                break;
+            case 4:
+                //updateImage(1);
+                break;
+            case 5:
+                currentTextCol = gothColor;
+                updateText("Despite the late nights I've had here, this is the deadest I've <i>ever</i> seen this school.");
+                break;
+            case 6:
+                currentTextCol = popColor;
+                updateText("Can we stop by the washroom? My makeup could use a bit of a touch-up after that walking...");
+                break;
+            case 7:
+                currentTextCol = nerdColor;
+                updateText("Is that really your concern right now?");
+                break;
+            case 8:
+                currentTextCol = Color.white;
+                eventText("Step... step.... step...");
+                break;
+            case 9:
+                currentTextCol = Color.white;
+                eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
+                break;
+            case 10:
+                //updateImage(1);
+                break;
+            case 11:
+                updateText("Now what do we have here...?");
+                break;
+            case 12:
+                updateText("Students who haven't joined us?");
+                break;
+            case 13:
+                updateText("It's time to change that...");
+                break;
+            case 14:
+                skip();
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+    }
+
+    private void progressPostHeadmaster()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = jockColor;
+                updateText("Another one, huh? What's going on???");
+                break;
+            case 2:
+                currentTextCol = popColor;
+                updateText("If we're gonna have to face more of these people, can I at least go get something from the music room?");
+                break;
+            case 3:
+                updateText("I'm sure I can find something a bit more lethal than this harmonica...");
+                break;
+            case 4:
+                currentTextCol = gothColor;
+                updateText("Couldn't you grab something more lethal than an instrument?");
+                break;
+            case 5:
+                currentTextCol = gothColor;
+                updateText("Despite the late nights I've had here, this is the deadest I've <i>ever</i> seen this school.");
+                break;
+            case 6:
+                currentTextCol = popColor;
+                updateText("Can we stop by the washroom? My makeup could use a bit of a touch-up after that walking...");
+                break;
+            case 7:
+                currentTextCol = nerdColor;
+                updateText("Is that really your concern right now?");
+                break;
+            case 8:
+                currentTextCol = Color.white;
+                eventText("Step... step.... step...");
+                break;
+            case 9:
+                currentTextCol = Color.white;
+                eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
+                break;
+            case 10:
+                //updateImage(1);
+                break;
+            case 11:
+                updateText("Now what do we have here...?");
+                break;
+            case 12:
+                updateText("Students who haven't joined us?");
+                break;
+            case 13:
+                updateText("It's time to change that...");
+                break;
+            case 14:
+                skip();
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+    }
 }

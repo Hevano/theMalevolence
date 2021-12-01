@@ -11,8 +11,6 @@ public class DeckBuilder : MonoBehaviour
         get { return _instance; }
     }
 
-    public string nextScene;
-
     public CardDraftPool cardDraftPool;
     public int cardsToPull;
     public int cardsToKeep;
