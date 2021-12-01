@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Altom.AltUnityDriver;
+using System.Collections.Generic;
 
 public class UITests
 {
@@ -30,6 +31,47 @@ public class UITests
         } else {
             Assert.Fail();
         }
+    }
+
+    [Test]
+    public void DraftingTest(){
+        altUnityDriver.LoadScene("BossOne");
+        altUnityDriver.LoadScene("DeckBuilder");
+        //Get all card displays in 
+        var cards = altUnityDriver.FindObjects(By.COMPONENT, "Transform");
+        List<AltUnityObject> draftCards = new List<AltUnityObject>();
+        foreach(AltUnityObject card in cards){
+            if(card.GetComponentProperty("Transform", "parent") == "Draft Display"){
+                draftCards.Add(card);
+            }
+        }
+        if(draftCards.Count == 0){
+            Assert.Pass();
+        }
+        try {
+            draftCards[0].Click();
+            draftCards[1].Click();
+            draftCards[2].Click();
+        } catch(System.Exception e){
+            Assert.Fail();
+        }
+        
+        
+        var confirmDraftButton = altUnityDriver.FindObject(By.NAME, "EndDraftButton");
+        confirmDraftButton.Click();
+        var continueButton = altUnityDriver.FindObject(By.NAME, "ExitButton");
+        continueButton.Click();
+        altUnityDriver.WaitForCurrentSceneToBe("BossHeadmaster");
+    }
+
+    [Test]
+    public void AttackTest(){
+
+    }
+
+    [Test]
+    public void PlayCardTest(){
+        
     }
 
 }
