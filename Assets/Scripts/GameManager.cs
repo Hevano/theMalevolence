@@ -395,8 +395,12 @@ public class GameManager : MonoBehaviour
 
         if (characters.TryGetValue(Enums.Character.Driver, out ch))
             decks[Enums.Character.Driver] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.Headmaster, out ch))
+            decks[Enums.Character.Headmaster] = ch.data.Deck;
         if (characters.TryGetValue(Enums.Character.PuzzleBox, out ch))
             decks[Enums.Character.PuzzleBox] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.Entity, out ch))
+            decks[Enums.Character.Entity] = ch.data.Deck;
     }
 
     //Initialize each character in party list established. 

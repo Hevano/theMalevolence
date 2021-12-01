@@ -19,12 +19,11 @@ MonoBehaviour:
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 2800000, guid: 47b3aec1c9845eb419b03d249a033574, type: 3}
-  thumbtack: {fileID: 0}
+  thumbtack: {fileID: 21300000, guid: 1740b5570dd6b40469aeca539ffda540, type: 3}
   weapon: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   cardBack: {fileID: 0}
   cards:
-  - {fileID: 11400000, guid: 6fedbce9df3ded247854c27cd2ef48d7, type: 2}
   - {fileID: 11400000, guid: d372e5b82ffc75c4281edaf566029ba9, type: 2}
   - {fileID: 11400000, guid: 3b8210d0214a3ae469cd63fb61327493, type: 2}
   - {fileID: 11400000, guid: 482a1d1210e514d4f83f432ac542a77a, type: 2}
