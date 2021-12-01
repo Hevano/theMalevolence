@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
+  _discardPile: 0
   _corruption: 0
   data: {fileID: 11400000, guid: 80ea37aac293257459222b7f77cd7161, type: 2}
   _cardToPlay: {fileID: 0}
@@ -163,6 +164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zealous Faculty
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 476e7460603d93941ac6aa745f83f159, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 773be0132ee1c224583062e8e3a71d0f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 476e7460603d93941ac6aa745f83f159, type: 3}
 --- !u!1 &7847441691215256362 stripped
