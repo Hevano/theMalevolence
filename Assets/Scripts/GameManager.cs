@@ -285,7 +285,7 @@ public class GameManager : MonoBehaviour
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
-        LevelManager.Instance.ToDeckBuilder();
+        LevelManager.Instance.ToNextLevel();
     }
 
     public IEnumerator GameOverScreen(){

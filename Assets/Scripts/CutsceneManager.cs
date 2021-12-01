@@ -159,9 +159,10 @@ public class CutsceneManager : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    // When adding new cutscenes, remember to add a new level to the list on the level manager, found in the main menu
+    public void StartScene(string sceneName)
     {
+        cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";
         voices.text = "";
@@ -170,13 +171,13 @@ public class CutsceneManager : MonoBehaviour
 
         switch (cutsceneName)
         {
-            case "PreBossOne":
+            case "Cutscene_PreBossOne":
                 cutsceneNum = 1;
                 CurrentCutsceneImages = cutScene1Images;
                 drawingImage.sprite = cutScene1Images[0];
                 fade();
                 break;
-            case "PostBossOne":
+            case "Cutscene_PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
                 break;
@@ -198,6 +199,7 @@ public class CutsceneManager : MonoBehaviour
     private void skip()
     {
         Debug.Log($"Skipping cutscene and changing scene...");
+        LevelManager.Instance.ToNextLevel();
 
     }
 
@@ -249,14 +251,14 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 1:
                 currentTextCol = Color.white;
-                updateText("<i>sigh</i>, the road’s really foggy today.");
+                updateText("<i>sigh</i>, the roadï¿½s really foggy today.");
                 break;
             case 2:
-                updateText("Been a while since I’ve seen this much fog. Almost as bad as the day I drew up in my notebook. I was hoping to get home before that pizza got there, not after.");
+                updateText("Been a while since Iï¿½ve seen this much fog. Almost as bad as the day I drew up in my notebook. I was hoping to get home before that pizza got there, not after.");
                 break;
             case 3:
                 updateDrawing(1);
-                updateText("But... so long as the kids are safe, I guess that’s all that matters. ");
+                updateText("But... so long as the kids are safe, I guess thatï¿½s all that matters. ");
                 break;
             case 4:
                 updateText("");
@@ -284,7 +286,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 9:
                 changeImageAlpha(tutorial, 0f);
-                updateText("The children... are safe… You’re right...");
+                updateText("The children... are safeï¿½ Youï¿½re right...");
                 break;
             case 10:
                 updateText("I can stop driving...");
@@ -330,11 +332,11 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 18:
                 currentTextCol = popColor;
-                updateText($"I think so. My harmonica managed to stab my side, but other than that, it could be worse. I guess…");
+                updateText($"I think so. My harmonica managed to stab my side, but other than that, it could be worse. I guessï¿½");
                 break;
             case 19:
                 currentTextCol = gothColor;
-                updateText($"Well, at least it wasn’t a switch blade.");
+                updateText($"Well, at least it wasnï¿½t a switch blade.");
                 break;
             case 20:
                 currentTextCol = popColor;
@@ -355,7 +357,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"WAIT.");
                 break;
             case 25:
-                updateText($"Oh thank god, my keyboard’s fine. I just bought this thing, jeez. I was hoping to get home before I broke it in…");
+                updateText($"Oh thank god, my keyboardï¿½s fine. I just bought this thing, jeez. I was hoping to get home before I broke it inï¿½");
                 break;
             case 26:
                 updateText($"Ummm, where's the bus driver?");
@@ -394,7 +396,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 35:
                 currentTextCol = Color.grey;
-                updateText($"Kids... come here... You’re safe now... Join me... Join us...");
+                updateText($"Kids... come here... Youï¿½re safe now... Join me... Join us...");
                 break;
             case 36:
                 currentTextCol = jockColor;
