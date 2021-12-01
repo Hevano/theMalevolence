@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NerdGivingPointers
   m_EditorClassIdentifier: 
   cardName: Giving Pointers
-  cardDescription: Draw a card from target's deck.
+  cardDescription: Draw a card.
   cardCorruptionPassDescription: Draw another card
   cardCorruptionFailDescription: +20 Corruption
   cardFlavor: 
@@ -46,7 +46,7 @@ MonoBehaviour:
     cleanseEffect:
       target: 0
     drawEffect:
-      target: 2
+      target: 0
       cardsToDraw: 1
       fromDiscard: 0
       toDiscard: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     cleanseEffect:
       target: 0
     drawEffect:
-      target: 2
+      target: 0
       cardsToDraw: 1
       fromDiscard: 0
       toDiscard: 0

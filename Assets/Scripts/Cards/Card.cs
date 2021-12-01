@@ -134,7 +134,7 @@ public class Card : ScriptableObject {
         if (!cardAnimation.Equals("")) {
             Character c;
             GameManager.manager.characters.TryGetValue(cardCharacter, out c);
-            c.GetComponentInChildren<Animator>().SetTrigger(cardAnimation);
+            c.Animator.SetTrigger(cardAnimation);
         }
 
 

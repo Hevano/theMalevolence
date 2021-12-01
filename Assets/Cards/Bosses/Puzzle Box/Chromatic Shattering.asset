@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Chromatic Shattering
   cardDescription: 'The shimmering crystals betray the box''s true nature. '
-  cardCorruptionPassDescription: +5 Corruption
+  cardCorruptionPassDescription: Gain 5 corruption
   cardCorruptionFailDescription: Summon a Shard of Eternity
   cardFlavor: 
   cardCharacter: 5
@@ -25,10 +25,11 @@ MonoBehaviour:
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
+  - {fileID: 21300000, guid: c5ae55d69d9566740bc0d9f8050277c7, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  cardAnimation: 
   cardEffects: []
   cardCorPass:
   - effectType: 9

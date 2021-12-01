@@ -9,6 +9,7 @@ public class HeadmasterCharacter : EnemyCharacter {
     private bool turnEnd = false;
 
     public override IEnumerator GetTurn () {
+        deck.Shuffle();
         if (turnEnd) {
             for (int i = 0; i < Cultists.Length; i++) {
                 if (Cultists[i] != null) {
@@ -17,7 +18,7 @@ public class HeadmasterCharacter : EnemyCharacter {
             }
         }
         else {
-            if (Action != Enums.Action.Stunned || Health > 0) {
+            if (Action != Enums.Action.Stunned && Health > 0) {
                 if (deck.CardList.Count == 0) deck.Reshuffle();
                 CardToPlay = deck.Draw();
                 yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing

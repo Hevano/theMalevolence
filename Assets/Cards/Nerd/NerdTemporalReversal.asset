@@ -85,7 +85,7 @@ MonoBehaviour:
     cleanseEffect:
       target: 0
     drawEffect:
-      target: 1
+      target: 0
       cardsToDraw: 0
       fromDiscard: 1
       toDiscard: 0

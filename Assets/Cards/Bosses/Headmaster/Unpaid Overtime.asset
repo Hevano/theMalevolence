@@ -25,10 +25,11 @@ MonoBehaviour:
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: c5ae55d69d9566740bc0d9f8050277c7, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  cardAnimation: 
   cardEffects:
   - effectType: 8
     cardEffect:
