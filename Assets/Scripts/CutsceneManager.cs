@@ -196,7 +196,7 @@ public class CutsceneManager : MonoBehaviour
         });
     }
 
-    //This will change the scene @Evano
+    //This will change the scene
     private void skip()
     {
         Debug.Log($"Skipping cutscene and changing scene...");
@@ -578,17 +578,79 @@ public class CutsceneManager : MonoBehaviour
                 eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
                 break;
             case 10:
-                currentTextCol = Color.white;
+                //updateImage(1);
                 break;
             case 11:
-                currentTextCol = nerdColor;
-                updateText("<i>sigh</i>, what in the world is going on.");
+                updateText("Now what do we have here...?");
                 break;
             case 12:
-                currentTextCol = popColor;
-                updateText("Well, let's get writing then.");
+                updateText("Students who haven't joined us?");
                 break;
             case 13:
+                updateText("It's time to change that...");
+                break;
+            case 14:
+                skip();
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+    }
+
+    private void progressPostHeadmaster()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = jockColor;
+                updateText("Another one, huh? What's going on???");
+                break;
+            case 2:
+                currentTextCol = popColor;
+                updateText("If we're gonna have to face more of these people, can I at least go get something from the music room?");
+                break;
+            case 3:
+                updateText("I'm sure I can find something a bit more lethal than this harmonica...");
+                break;
+            case 4:
+                currentTextCol = gothColor;
+                updateText("Couldn't you grab something more lethal than an instrument?");
+                break;
+            case 5:
+                currentTextCol = gothColor;
+                updateText("Despite the late nights I've had here, this is the deadest I've <i>ever</i> seen this school.");
+                break;
+            case 6:
+                currentTextCol = popColor;
+                updateText("Can we stop by the washroom? My makeup could use a bit of a touch-up after that walking...");
+                break;
+            case 7:
+                currentTextCol = nerdColor;
+                updateText("Is that really your concern right now?");
+                break;
+            case 8:
+                currentTextCol = Color.white;
+                eventText("Step... step.... step...");
+                break;
+            case 9:
+                currentTextCol = Color.white;
+                eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
+                break;
+            case 10:
+                //updateImage(1);
+                break;
+            case 11:
+                updateText("Now what do we have here...?");
+                break;
+            case 12:
+                updateText("Students who haven't joined us?");
+                break;
+            case 13:
+                updateText("It's time to change that...");
+                break;
+            case 14:
                 skip();
                 break;
             default:
