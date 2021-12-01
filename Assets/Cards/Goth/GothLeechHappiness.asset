@@ -31,6 +31,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: Attack
   cardEffects:
   - effectType: 2
     cardEffect:
@@ -149,48 +150,8 @@ MonoBehaviour:
       target: 0
       Boss: 0
     vitalityEffect:
-      target: 2
-      vitalityType: 1
-      value: 25
-  - effectType: 9
-    cardEffect:
-      target: 0
-    afflictEffect:
-      target: 0
-      statusEffect: 0
-    attackEffect:
-      target: 0
-      dieNumber: 0
-      dieSize: 0
-      dieBonus: 0
-    cleanseEffect:
-      target: 0
-    drawEffect:
-      target: 0
-      cardsToDraw: 0
-      fromDiscard: 0
-      toDiscard: 0
-    insertEffect:
-      target: 0
-      toInsert: {fileID: 0}
-    modifyEffect:
-      target: 0
-      modifierEffect: 0
-      modifierFactor: 0
-      modifierPerFactor: 0
-      perFactorValue: 0
-      effectIndex: 0
-    reshuffleEffect:
-      target: 0
-    solveEffect:
-      target: 0
-      configuration: 0
-    summonEffect:
-      target: 0
-      Boss: 0
-    vitalityEffect:
       target: 1
       vitalityType: 1
-      value: 25
+      value: 10
   cardCorPass: []
   cardCorFail: []

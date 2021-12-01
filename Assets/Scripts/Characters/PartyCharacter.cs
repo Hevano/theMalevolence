@@ -44,6 +44,7 @@ public class PartyCharacter : Character
         damage = damage == null ? data.basicAttack : damage;
         InvokeAttackHandler(target, ref damage);
 
+        animator.SetTrigger("Attack");
         AudioManager.audioMgr.PlayCharacterSFX(SFX, "Attack");
 
         target.Health -= damage.Value;
@@ -55,7 +56,7 @@ public class PartyCharacter : Character
         InvokeTurnStartHandler();
         if(Defeated)
         {
-            Debug.Log($"<Color=red>{data.name} has been defeated and cannot continue the fight</color>");
+            Debug.Log($"<Color=darkred>{data.name} has been defeated and cannot continue the fight</color>");
         }
         else if(Action == Enums.Action.Card && CardToPlay != null)
         {

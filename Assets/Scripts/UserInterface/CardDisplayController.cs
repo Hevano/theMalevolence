@@ -85,6 +85,9 @@ public class CardDisplayController : MonoBehaviour {
         if(character.Incapacitated){
             //Display some error
             StartCoroutine(CombatUIManager.Instance.DisplayMessage($"{character.data.name} is incapacitated and cannot play a card"));
+            var card = CardData;
+            GameManager.manager.PlaceCardInHand(card);
+            GameManager.manager.RemoveCardFromHand(this);
             return;
         }
         character.CardToPlay = CardData;

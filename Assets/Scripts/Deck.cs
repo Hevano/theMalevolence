@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class Deck {
-    [SerializeField] private List<Card> cardList;
+    [SerializeField] private List<Card> cardList = new List<Card>();
 
     public List<Card> CardList { get { return cardList; } }
     

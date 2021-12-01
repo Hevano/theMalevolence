@@ -48,7 +48,8 @@ public static class Enums {
         PuzzleBox,
         Headmaster,
         Student,
-        Faculty
+        Faculty,
+        Entity
     };
 
     /** <summary>A list of possible actions a character can take</summary> */

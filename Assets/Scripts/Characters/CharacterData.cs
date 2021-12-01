@@ -18,7 +18,7 @@ public class CharacterData : ScriptableObject
     public int corruption;
     [HideInInspector]
     public int currentCorruption;
-    public Texture avatar;
+    public Sprite avatar;
     public Sprite thumbtack;
     public Sprite weapon;
     public Color color;
@@ -42,6 +42,6 @@ public class CharacterData : ScriptableObject
 
     public void UpdateStats(Character c){
         //currentHealth = c.Health;
-        currentCorruption = c.Corruption;
+        //currentCorruption = c.Corruption;
     }
 }

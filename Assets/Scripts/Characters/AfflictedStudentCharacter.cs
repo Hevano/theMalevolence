@@ -10,6 +10,7 @@ public class AfflictedStudentCharacter : EnemyCharacter {
             CardToPlay = deck.Draw();
             yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
             Debug.Log($"{name} playing card {CardToPlay.Name}");
+            animator.SetTrigger("Serve");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
             yield return CardToPlay.Activate();
         }

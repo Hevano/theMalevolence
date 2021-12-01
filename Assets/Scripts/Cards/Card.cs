@@ -23,6 +23,7 @@ public class Card : ScriptableObject {
     [SerializeField] private Sprite cardFront;
     [SerializeField] private Sprite cardBack;
     [SerializeField] private Sprite[] cardIcons = new Sprite[4];
+    [SerializeField] private string cardAnimation = "";
 
     public List<CardEffectsMaker> cardEffects = new List<CardEffectsMaker>();
     public List<CardEffectsMaker> cardCorPass = new List<CardEffectsMaker>();
@@ -129,6 +130,13 @@ public class Card : ScriptableObject {
     public IEnumerator Activate () {
         if (bossCard)
             yield return DesignateTargets();
+
+        if (!cardAnimation.Equals("")) {
+            Character c;
+            GameManager.manager.characters.TryGetValue(cardCharacter, out c);
+            c.Animator.SetTrigger(cardAnimation);
+        }
+
 
         for (int i = 0; i < cardEffects.Count; i++){
             var effect = cardEffects[i].GetEffect();

@@ -21,8 +21,8 @@ MonoBehaviour:
   avatar: {fileID: 0}
   thumbtack: {fileID: 0}
   weapon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  cardBack: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  cardBack: {fileID: 21300000, guid: 8153eb263b412b54cbc81cfbf07c4677, type: 3}
   cards:
   - {fileID: 11400000, guid: 33ad3ff116a00bb4e95ec7f2527f8c23, type: 2}
   basicAttack:

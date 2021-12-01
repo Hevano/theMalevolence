@@ -84,12 +84,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
             }
 
             //Play sounds based on corruption
-            if (_corruption < value)
-            {
+            if (_corruption < value) {
+                try { animator.SetTrigger("Corrupt"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
                 AudioManager.audioMgr.PlayUISFX("CorruptionGain");
             }
-            else
-            {
+            else {
                 AudioManager.audioMgr.PlayUISFX("CorruptionCleanse");
             }
 
@@ -162,6 +161,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public bool Marked { get; set; }
 
     protected Animator animator;
+    public Animator Animator { get { return animator; } }
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs

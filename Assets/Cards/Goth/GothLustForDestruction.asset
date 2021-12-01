@@ -30,6 +30,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c58fd4a157fe1e740bc1e55a699b9dae, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: Attack
   cardEffects:
   - effectType: 1
     cardEffect:

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Crazed Flailing
   m_EditorClassIdentifier: 
   cardName: Crazed Flailing
-  cardDescription: 'Each party member acting before the boss takes 5-12 damage. '
+  cardDescription: 'Each party member that took a turn before the boss takes 5-12
+    damage. '
   cardCorruptionPassDescription: Stunned next turn
   cardCorruptionFailDescription: Nothing
   cardFlavor: He's gone mad
@@ -25,10 +26,13 @@ MonoBehaviour:
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: 2d8acbb4163361541b3a6f422436a5e8, type: 3}
+  - {fileID: 21300000, guid: 8a83891207654134c829975c91101548, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cardAnimation: 
   cardEffects:
   - effectType: 0
     cardEffect:

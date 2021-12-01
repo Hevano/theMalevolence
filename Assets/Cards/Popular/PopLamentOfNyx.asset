@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b5c75a11533a433488446cd0e8757dad, type: 3}
   - {fileID: 21300000, guid: a2d239cd62e12bd479f3658ec7c9df1b, type: 3}
   - {fileID: 0}
+  cardAnimation: Corrupt
   cardEffects:
   - effectType: 9
     cardEffect:

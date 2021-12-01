@@ -19,7 +19,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     [SerializeReference]
     private Image _deathMark;
     [SerializeReference]
-    private RawImage _profile;
+    private Image _profile;
     [SerializeReference]
     private Image _thumbtack;
     [SerializeReference]
@@ -89,8 +89,8 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
     }
 
     //Setters for the CharacterDisplay Prefab
-    public void ChangeProfile(Texture newProfile) {
-        _profile.texture = newProfile;
+    public void ChangeProfile(Sprite newProfile) {
+        _profile.sprite = newProfile;
     }
     public void ChangeThumbtack(Sprite newTack)
     {

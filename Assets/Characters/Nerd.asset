@@ -15,8 +15,10 @@ MonoBehaviour:
   characterType: 2
   name: Zoey Booker
   health: 15
+  currentHealth: 15
   corruption: 0
-  avatar: {fileID: 8400000, guid: 3368faa2f3e513c4d9994eb69fad60f0, type: 2}
+  currentCorruption: 0
+  avatar: {fileID: 21300000, guid: 12842f49733c6a7499b17d122f562c6a, type: 3}
   thumbtack: {fileID: 21300000, guid: a67d996eb672f9448ab3b1fdc393287c, type: 3}
   weapon: {fileID: 21300000, guid: e476e0007c384d04eb9d45be86bcc98b, type: 3}
   color: {r: 0.30419922, g: 1, b: 0, a: 1}
