@@ -915,7 +915,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"My... head...");
                 break;
             case 6:
-                currentTextCol = nerdColor;
+                currentTextCol = gothColor;
                 updateText($"<color={popSColor}>Jacklyn</color>, write down those runes! I have a bad feeling about this...");
                 break;
             case 7:
