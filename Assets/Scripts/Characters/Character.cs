@@ -42,6 +42,10 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 AudioManager.audioMgr.PlayUISFX("Heal");
             }
 
+            if(Defeated && _health != 0){
+                Defeated = false;
+            }
+
             if (onStatChange != null)
             {
                 onStatChange("health", ref _health, ref newValue);
@@ -107,11 +111,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
-
-            AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
-
-            OnDeath();
-            GameManager.manager.CheckGameOver();
+            if(_defeated){
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+                OnDeath();
+                GameManager.manager.CheckGameOver();
+            }
         }
     }
 
