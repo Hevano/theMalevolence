@@ -161,6 +161,7 @@ public class CutsceneManager : MonoBehaviour
     // When adding new cutscenes, remember to add a new level to the list on the level manager, found in the main menu
     public void StartScene(string sceneName)
     {
+        AudioManager.audioMgr.ChangeMusic();
         cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";

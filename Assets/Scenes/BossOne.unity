@@ -1205,7 +1205,7 @@ MonoBehaviour:
   foes:
   - {fileID: 37066270}
   endPhaseButton: {fileID: 1043351155}
-  battleMusic: {fileID: 8300000, guid: a7d64904d568ea245ae53331bc4ab0dd, type: 3}
+  battleMusic: {fileID: 8300000, guid: 484aa32f1163a244d86d899e9325c913, type: 3}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0

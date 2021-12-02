@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void StartBattle()
     {
         //Play battle start effects
-        AudioManager.audioMgr.ChangeMusic(battleMusic);
+        AudioManager.audioMgr.ChangeMusic();
         //Draw starting hand
         InitializeCharacters();
         InitializeDecks();

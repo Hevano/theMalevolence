@@ -28,7 +28,10 @@ public class AudioManager : MonoBehaviour
         }
     }
     public List<AudioClip> SoundEffects;
-    
+    public List<AudioClip> LevelBGM;
+
+    private int currentLevel = 0;
+
 
     public void Awake()
     {
@@ -154,12 +157,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic() { currentTrack.Play(); }
 
-    public void ChangeMusic(AudioClip newClip)
+    public void ChangeMusic()
     {
+        currentLevel++;
         var oldTrack = currentTrack;
         currentTrack = gameObject.AddComponent<AudioSource>();
         currentTrack.volume = 0.0f;
-        currentTrack.clip = newClip;
+        currentTrack.clip = LevelBGM[currentLevel];
         currentTrack.loop = true;
         currentTrack.Play();
         StartCoroutine(CrossFade(oldTrack, 0f, 0.001f));
