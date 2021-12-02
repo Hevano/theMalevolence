@@ -108,7 +108,12 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    
+
+    public void Start()
+    {
+        Debug.Log("For debugging purposes. If you're reading this message, please comment out the start function in cutscenemanager.cs");
+        StartScene(cutsceneName);
+    }
 
     private void toggleTutorialImage()
     {
@@ -161,7 +166,7 @@ public class CutsceneManager : MonoBehaviour
     // When adding new cutscenes, remember to add a new level to the list on the level manager, found in the main menu
     public void StartScene(string sceneName)
     {
-        AudioManager.audioMgr.ChangeMusic();
+       // AudioManager.audioMgr.ChangeMusic();
         cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";
@@ -202,12 +207,12 @@ public class CutsceneManager : MonoBehaviour
                 CurrentCutsceneImages = cutScene6Images;
                 updateImage(0);
                 break;
-            case "Cutscene_PreEntity":
+            case "Cutscene_PreBossEntity":
                 cutsceneNum = 7;
                 CurrentCutsceneImages = cutScene7Images;
                 updateImage(0);
                 break;
-            case "Cutscene_PostEntity":
+            case "Cutscene_PostBossEntity":
                 cutsceneNum = 8;
                 CurrentCutsceneImages = cutScene8Images;
                 updateImage(0);
@@ -617,7 +622,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 3:
                 currentTextCol = gothColor;
-                updateText("Oooh, I'll write them down. I can finally say I've seen some daarrrkk stuff.");
+                updateText("Oooh, I'll write them down. I can finally say I've seen some dark stuff in my time.");
                 break;
             case 4:
                 currentTextCol = nerdColor;
@@ -670,6 +675,10 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Fine.");
                 break;
             case 17:
+                updateImage(0);
+                updateText("We're going to get help. I'll be back, I promise.");
+                break;
+            case 18:
                 skip();
                 break;
             default:
@@ -692,9 +701,10 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 3:
                 currentTextCol = jockColor;
-                updateText("Hopefully. My hockey team had a meetup today. I... I'm worried about them.");
+                updateText("Hopefully. Some members of the hockey team had a meetup after school. I... I'm worried about them.");
                 break;
             case 4:
+                updateText("");
                 updateImage(1);
                 break;
             case 5:
@@ -711,13 +721,14 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 8:
                 currentTextCol = Color.white;
-                eventText("Step... step.... step...");
+                updateText("<i>Step... step... step</i>");
                 break;
             case 9:
                 currentTextCol = Color.white;
-                eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
+                updateText($"<color={popSColor}>???</color> <color={jockSColor}>???</color> <color={nerdSColor}>???</color> <color={gothSColor}>???</color>");
                 break;
             case 10:
+                updateText("");
                 updateImage(2);
                 break;
             case 11:
@@ -728,10 +739,13 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Students who haven't joined us?");
                 break;
             case 13:
-                updateImage(4);
-                updateText("It's time to change that...");
+                updateText("...");
                 break;
             case 14:
+                updateImage(4);
+                updateText("Why don't we have a chat?");
+                break;
+            case 15:
                 skip();
                 break;
             default:
@@ -768,7 +782,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 7:
                 currentTextCol = popColor;
-                updateText("I don't think the undead would be able to form complete sentences... ");
+                updateText("Pretty sure they're not undead. I don't think the undead would be able to form complete sentences... ");
                 break;
             case 8:
                 currentTextCol = nerdColor;
@@ -785,7 +799,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 12:
                 currentTextCol = gothColor;
-                updateText("Told ya.");
+                updateText("Told ya they were useful.");
                 break;
             case 13:
                 skip();
@@ -855,7 +869,7 @@ public class CutsceneManager : MonoBehaviour
                 updateImage(7);
                 break;
             case 16:
-                eventText($"<color={nerdSColor}!!!</color> <color={gothSColor}!!!</color> <color={popSColor}!!!</color> <color={jockSColor}!!!</color>");
+                updateText($"<color={nerdSColor}>!!!</color> <color={gothSColor}>!!!</color> <color={popSColor}>!!!</color> <color={jockSColor}>!!!</color>");
                 break;
             case 17:
                 updateText("Wha... what the heck is it?");
@@ -990,36 +1004,36 @@ public class CutsceneManager : MonoBehaviour
         switch (cutsceneStage)
         {
             case 1:
-                eventText("There was never any hope for you");
-                StartCoroutine(Shake(events.gameObject, 10f));
+                voices.text = "There was never any hope for you";
+                StartCoroutine(Shake(voices.gameObject, 10f));
                 break;
             case 2:
-                eventText("There is no escape");
-                StartCoroutine(Shake(events.gameObject, 50f));
+                voices.text = ("There is no escape");
+                StartCoroutine(Shake(voices.gameObject, 50f));
                 break;
             case 3:
-                eventText("There is no end");
-                StartCoroutine(Shake(events.gameObject, 100f));
+                voices.text = ("There is no end");
+                StartCoroutine(Shake(voices.gameObject, 100f));
                 break;
             case 4:
-                eventText("There is only me");
-                StartCoroutine(Shake(events.gameObject, 200f));
+                voices.text = ("There is only me");
+                StartCoroutine(Shake(voices.gameObject, 200f));
                 break;
             case 5:
-                eventText("There is only");
-                StartCoroutine(Shake(events.gameObject, 200f));
+                voices.text = ("There is only");
+                StartCoroutine(Shake(voices.gameObject, 200f));
                 break;
             case 6:
-                eventText("US");
-                StartCoroutine(Shake(events.gameObject, 300f));
+                voices.text = ("US");
+                StartCoroutine(Shake(voices.gameObject, 300f));
                 break;
             case 7:
-                eventText("Join");
-                StartCoroutine(Shake(events.gameObject, 300f));
+                voices.text = ("Join");
+                StartCoroutine(Shake(voices.gameObject, 300f));
                 break;
             case 8:
-                eventText("Us");
-                StartCoroutine(Shake(events.gameObject, 300f));
+                voices.text = ("Us");
+                StartCoroutine(Shake(voices.gameObject, 300f));
                 break;
             case 9:
                 skip();
