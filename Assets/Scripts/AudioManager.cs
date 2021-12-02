@@ -78,8 +78,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayObjectSFX(GameObject SFXObject)
     {
+        AudioSource SFXObjectPlayer = SFXObject.GetComponent<AudioSource>();
 
-        SFXObject.GetComponent<AudioSource>().Play();
+        SFXObjectPlayer.volume = 0.1f;
+        SFXObjectPlayer.Play();
         
     }
 
@@ -167,13 +169,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic() { currentTrack.Play(); }
 
-    public void ChangeMusic()
+    public void ChangeMusic(AudioClip newClip)
     {
         currentLevel++;
         var oldTrack = currentTrack;
         currentTrack = gameObject.AddComponent<AudioSource>();
         currentTrack.volume = 0.0f;
-        currentTrack.clip = LevelBGM[currentLevel];
+        currentTrack.clip = newClip;
         currentTrack.loop = true;
         currentTrack.Play();
         StartCoroutine(CrossFade(oldTrack, 0f, 0.001f));

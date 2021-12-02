@@ -17,6 +17,9 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private List<Sprite> cutScene1Images, cutScene2Images, cutScene3Images, cutScene4Images, cutScene5Images, cutScene6Images, cutScene7Images, cutScene8Images;
 
+
+    public AudioClip cutsceneMusic;
+
     private List<Sprite> CurrentCutsceneImages;
     private float fadeTime = 3f, alphaToFadeTo;
     private int cutsceneNum, cutsceneImageStage = 0, cutsceneStage = 0;
@@ -108,12 +111,12 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-
+    /*
     public void Start()
     {
         Debug.Log("For debugging purposes. If you're reading this message, please comment out the start function in cutscenemanager.cs");
         StartScene(cutsceneName);
-    }
+    }*/
 
     private void toggleTutorialImage()
     {
@@ -166,7 +169,9 @@ public class CutsceneManager : MonoBehaviour
     // When adding new cutscenes, remember to add a new level to the list on the level manager, found in the main menu
     public void StartScene(string sceneName)
     {
-       // AudioManager.audioMgr.ChangeMusic();
+
+        AudioManager.audioMgr.ChangeMusic(cutsceneMusic);
+
         cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
         dialogue.text = "";
@@ -387,10 +392,7 @@ public class CutsceneManager : MonoBehaviour
             case 18:
                 toggleTutorialImage();
                 updateText("");
-                currentTextCol = Color.white;
-                eventText("CRASH");
                 AudioManager.audioMgr.PlaySFX(13);
-                StartCoroutine(Shake(events.gameObject, 100f));
                 break;
             case 19:
                 eventText("");
@@ -573,6 +575,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText($"And this fun little ball of purple will be what I use as I laugh at you trying to resist.");
                 break;
             case 66:
+                toggleTutorialImage();
                 currentTextCol = jockColor;
                 updateText($"Uhh, guys, we have company.");
                 break;

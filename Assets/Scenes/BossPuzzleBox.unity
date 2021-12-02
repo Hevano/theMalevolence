@@ -574,6 +574,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 664887105983054664, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
+      propertyPath: m_Volume
+      value: 0.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 664887105983054664, guid: 89b741f4fd2284f39ab0c1b7a6072bd2, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: a0162fe38f4dd484badc59113957b783, type: 3}
@@ -802,6 +806,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aafdd411f2e0f6749abceb53ff691339, type: 3}
   - {fileID: 8300000, guid: 01244e6a2bea50648a7abb9a0205ede0, type: 3}
   - {fileID: 8300000, guid: 5c244b5a51612c1468434bd5596627f0, type: 3}
+  LevelBGM: []
 --- !u!4 &435917111
 Transform:
   m_ObjectHideFlags: 0

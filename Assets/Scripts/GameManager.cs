@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void StartBattle()
     {
         //Play battle start effects
-        AudioManager.audioMgr.ChangeMusic();
+        AudioManager.audioMgr.ChangeMusic(battleMusic);
         //Draw starting hand
         InitializeCharacters();
         InitializeDecks();
@@ -281,7 +281,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator GameWinScreen(){
-        yield return CombatUIManager.Instance.DisplayMessage("", 4f);
+        yield return CombatUIManager.Instance.DisplayMessage("", 6f);
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
