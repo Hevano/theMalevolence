@@ -11535,7 +11535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55c8bd5513780e459737da6fed0d722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shuffleOnStart: 0
+  shuffleOnStart: 1
   phase: 0
   speedScale: 1
   hand: {fileID: 164045668}
