@@ -85,6 +85,9 @@ public class CardDisplayController : MonoBehaviour {
         if(character.Incapacitated){
             //Display some error
             StartCoroutine(CombatUIManager.Instance.DisplayMessage($"{character.data.name} is incapacitated and cannot play a card"));
+            var card = CardData;
+            GameManager.manager.PlaceCardInHand(card);
+            GameManager.manager.RemoveCardFromHand(this);
             return;
         }
         character.CardToPlay = CardData;
@@ -111,6 +114,10 @@ public class CardDisplayController : MonoBehaviour {
         GameManager.manager.cardDropZone.enabled = false;
 
         GameManager.manager.ToggleEndPhaseButton(false);
+
+        this.GetComponent<RectTransform>().position = new Vector3(175, 200, 0);
+        _back.color = new Color(_back.color.r, _back.color.g, _back.color.b, .5f);
+
         yield return CardData.DesignateTargets();
         Debug.Log($"<color=blue>{CardData.Name} </color>Designating target...");
         GameManager.manager.RemoveCardFromHand(this);
@@ -124,7 +131,8 @@ public class CardDisplayController : MonoBehaviour {
 
     //Create a new display of the card selected
     public static CardDisplayController CreateCard(Card card){
-        if(cardDisplayPrefab == null)
+
+        if (cardDisplayPrefab == null)
             cardDisplayPrefab = Resources.Load<GameObject>("UserInterface/CardDisplay");
         
         var cardGameObject = Instantiate<GameObject>(cardDisplayPrefab, Vector3.zero, Quaternion.identity);

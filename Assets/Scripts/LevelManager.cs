@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public static string BossDriver = "BossOne";
     public static string BossHeadmaser = "BossHeadmaster";
     public static string BossPuzzleBox = "BossPuzzleBox";
+    public static string BossEntity = "BossEntity";
 
     public List<string> levels;
     private int levelIndex = 0;

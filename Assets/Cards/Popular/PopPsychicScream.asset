@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PopPsychicScream
   m_EditorClassIdentifier: 
   cardName: Psychic Scream
-  cardDescription: Stun all characters other than Jacklyn.
+  cardDescription: Stuns everyone other than Jacklyn.
   cardCorruptionPassDescription: Stunned next turn
   cardCorruptionFailDescription: Nothing
   cardFlavor: 
   cardCharacter: 3
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 1, g: 0.9071804, b: 0, a: 1}
   exiled: 0
   bossCard: 0
   bossCorTargets: 0

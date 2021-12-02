@@ -19,13 +19,14 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
             if (newValue == 0)
             {
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+
                 Defeated = true;
 
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
 
-                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+                try { animator.SetBool("Death", true); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
-                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
             }
             else if(_health > newValue)
             {
@@ -40,6 +41,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
 
                 AudioManager.audioMgr.PlayUISFX("Heal");
+                try { animator.SetBool("Death", false); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+            }
+
+            if(Defeated && newValue != 0){
+                Defeated = false;
             }
 
             if (onStatChange != null)
@@ -107,11 +113,11 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         set
         {
             _defeated = value;
-
-            AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
-
-            OnDeath();
-            GameManager.manager.CheckGameOver();
+            if(_defeated){
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+                OnDeath();
+                GameManager.manager.CheckGameOver();
+            }
         }
     }
 
@@ -161,6 +167,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public bool Marked { get; set; }
 
     protected Animator animator;
+    public Animator Animator { get { return animator; } }
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs

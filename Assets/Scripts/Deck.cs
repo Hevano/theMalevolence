@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class Deck {
-    [SerializeField] private List<Card> cardList;
+    [SerializeField] private List<Card> cardList = new List<Card>();
 
     public List<Card> CardList { get { return cardList; } }
     
@@ -24,7 +24,10 @@ public class Deck {
         }
         Card ret = cardList[0];
         cardList.RemoveAt(0);
-        return ret;
+        if (ret != null)
+            return ret;
+        else
+            return null;
     }
 
     public void Shuffle() {

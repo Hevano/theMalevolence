@@ -13,34 +13,50 @@ public class AudioManager : MonoBehaviour
 
     //SFX
     public GameObject SFXSource;
-    private AudioSource SFXPlayer;
+    private AudioSource SFXPlayer {
+        get{
+            if(SFXSource != null){
+                return SFXSource.GetComponent<AudioSource>();
+            } else {
+                SFXSource = GameObject.FindGameObjectWithTag("MainCanvas");
+                if(SFXSource != null){
+                    return SFXSource.GetComponent<AudioSource>();
+                } else {
+                    return GetComponent<AudioSource>();
+                }
+            }
+        }
+    }
     public List<AudioClip> SoundEffects;
-    
+    public List<AudioClip> LevelBGM;
+
+    private int currentLevel = 0;
+
 
     public void Awake()
     {
-        if (audioMgr == null)
+        if (audioMgr != null && audioMgr != this)
         {
-
-            //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
-            currentTrack = GetComponent<AudioSource>();
-            currentTrack.volume = 0.2f;
-            currentTrack.clip = sceneBGM;
-            currentTrack.loop = true;
-
-
-            //Configure audioSources
-            SFXPlayer = SFXSource.GetComponent<AudioSource>();
-            SFXPlayer.volume = 0.5f;
-            currentTrack.playOnAwake = false;
-            SFXPlayer.playOnAwake = false;
-
-
-            audioMgr = this;
-
-            currentTrack.Play();
+            Destroy(gameObject);
+            return;
         }
+        //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
+        currentTrack = GetComponent<AudioSource>();
+        currentTrack.volume = 0.2f;
+        currentTrack.clip = sceneBGM;
+        currentTrack.loop = true;
 
+
+        //Configure audioSources
+        SFXPlayer.volume = 0.5f;
+        currentTrack.playOnAwake = false;
+        SFXPlayer.playOnAwake = false;
+
+
+        audioMgr = this;
+
+        currentTrack.Play();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayCharacterSFX(GameObject SourceObject, string SFXName)
@@ -62,8 +78,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayObjectSFX(GameObject SFXObject)
     {
+        AudioSource SFXObjectPlayer = SFXObject.GetComponent<AudioSource>();
 
-        SFXObject.GetComponent<AudioSource>().Play();
+        SFXObjectPlayer.volume = 0.1f;
+        SFXObjectPlayer.Play();
         
     }
 
@@ -135,15 +153,44 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PlaySFX(int index)
+    {
+        try
+        {
+            SFXPlayer.clip = SoundEffects[index];
+            SFXPlayer.Play();
+        }
+        catch { Debug.Log($"<color=red>Sound not found at index {index}</color>"); }
+    }
+
     public void StopMusic() { currentTrack.Stop(); }
 
     public void PauseMusic() { currentTrack.Pause(); }
 
     public void PlayMusic() { currentTrack.Play(); }
 
-    public void ChangeMusic()
+    public void ChangeMusic(AudioClip newClip)
     {
-        
+        currentLevel++;
+        var oldTrack = currentTrack;
+        currentTrack = gameObject.AddComponent<AudioSource>();
+        currentTrack.volume = 0.0f;
+        currentTrack.clip = newClip;
+        currentTrack.loop = true;
+        currentTrack.Play();
+        StartCoroutine(CrossFade(oldTrack, 0f, 0.001f));
+        StartCoroutine(CrossFade(currentTrack, 0.2f, 0.001f));
+    }
 
+    private IEnumerator CrossFade(AudioSource source, float volumeTarget, float rate){
+        float progress = 0f;
+        while(source.volume != volumeTarget){
+            source.volume = Mathf.Lerp(source.volume, volumeTarget, progress);
+            progress += rate;
+            yield return new WaitForFixedUpdate();
+        }
+        if(source.volume == 0){
+            Destroy(source);
+        }
     }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   cardDescription: The Puzzle Box demands blood. It will take it by force.
   cardCorruptionPassDescription: Take 2-8 damage
   cardCorruptionFailDescription: Summon a Shard of Eternity
-  cardFlavor: The Puzzle Box demands blood. It will take it by force
+  cardFlavor: 
   cardCharacter: 5
   cardColor: {r: 0, g: 0, b: 0, a: 0.9843137}
   exiled: 0
@@ -25,11 +25,12 @@ MonoBehaviour:
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: 2d8acbb4163361541b3a6f422436a5e8, type: 3}
+  - {fileID: 21300000, guid: c5ae55d69d9566740bc0d9f8050277c7, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  cardAnimation: 
   cardEffects: []
   cardCorPass:
   - effectType: 2

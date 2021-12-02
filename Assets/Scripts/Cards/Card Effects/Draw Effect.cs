@@ -27,8 +27,31 @@ public class DrawEffect : CardEffect {
         }
         //Draws a number of cards from the discard pile into the player's hand
         else if (fromDiscard) {
-        for (int i = 0; i < cards; i++) {
-                //Tell game manager to draw a card from the discard
+            Deck discards = new Deck();
+            Deck charDeck;
+            GameManager.manager.decks.TryGetValue(Enums.Character.Goth, out charDeck);
+            if (charDeck.DiscardList.Count > 0)
+                discards.CardList.AddRange(charDeck.DiscardList);
+            GameManager.manager.decks.TryGetValue(Enums.Character.Jock, out charDeck);
+            if (charDeck.DiscardList.Count > 0)
+                discards.CardList.AddRange(charDeck.DiscardList);
+            GameManager.manager.decks.TryGetValue(Enums.Character.Nerd, out charDeck);
+            if (charDeck.DiscardList.Count > 0)
+                discards.CardList.AddRange(charDeck.DiscardList);
+            GameManager.manager.decks.TryGetValue(Enums.Character.Popular, out charDeck);
+            if (charDeck.DiscardList.Count > 0)
+                discards.CardList.AddRange(charDeck.DiscardList);
+
+            discards.Shuffle();
+            for (int i = 0; i < cards; i++) {
+
+                Card drawn = discards.Draw();
+                if (drawn != null)
+                { 
+                    GameManager.manager.PlaceCardInHand(drawn);
+                    GameManager.manager.decks.TryGetValue(drawn.Character, out charDeck);
+                    charDeck.DiscardList.Remove(drawn);
+                }
             }
         } 
         //Draw a number of cards from your decks

@@ -17,50 +17,63 @@ public class DisplayText : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public TextMeshProUGUI primaryMessage;
     public TextMeshProUGUI secondaryMessage;
     public bool forceVisible = false;
-    private IEnumerator fadeEnumerator;
+    private IEnumerator primaryFadeEnumerator;
+    private IEnumerator secondaryFadeEnumerator;
+    private delegate void OnCompleteFade();
     public void OnPointerEnter(PointerEventData d){
         SetVisible();
     }
 
     public void OnPointerExit(PointerEventData d){
         if(!forceVisible){
-            StartFade();
+            StartFade(false);
         }
+        FadeSecondary();
     }
 
     public void SetMessage(string msg){
         secondaryMessage.text = primaryMessage.text;
         primaryMessage.text = msg;
         forceVisible = true;
-        SetVisible();
+        SetVisible(false);
     }
 
-    public void StartFade(){
+    public void StartFade(bool bothMessages = true){
         forceVisible = false;
-        fadeEnumerator = Fade();
-        StartCoroutine(fadeEnumerator);
-    }
-
-    private IEnumerator Fade(){
-        Color primaryColor = primaryMessage.color;
-        Color secondaryColor = secondaryMessage.color;
-        while(primaryColor.a != 0 && secondaryColor.a != 0){
-            primaryColor.a = Mathf.Lerp(primaryColor.a, 0, 0.01f);
-            primaryMessage.color = primaryColor;
-            secondaryColor.a = Mathf.Lerp(secondaryColor.a, 0, 0.01f);
-            secondaryMessage.color = secondaryColor;
-            yield return new WaitForEndOfFrame();
+        primaryFadeEnumerator = Fade(primaryMessage, ()=>{primaryFadeEnumerator = null;});
+        StartCoroutine(primaryFadeEnumerator);
+        if(bothMessages){
+            FadeSecondary();
         }
-        fadeEnumerator = null;
     }
 
-    public void SetVisible(){
-        if(fadeEnumerator != null) StopCoroutine(fadeEnumerator);
+    private void FadeSecondary(){
+        secondaryFadeEnumerator = Fade(secondaryMessage, ()=>{secondaryFadeEnumerator = null;});
+        StartCoroutine(secondaryFadeEnumerator);
+    }
+
+    private IEnumerator Fade(TextMeshProUGUI message, OnCompleteFade onComplete){
+        Color color = message.color;
+        while(color.a > 0.001f){
+            color.a -= 0.01f;
+            message.color = color;
+            yield return new WaitForFixedUpdate();
+        }
+        onComplete();
+        yield return null;
+    }
+
+    public void SetVisible(bool bothMessages = true){
+        if(primaryFadeEnumerator != null) StopCoroutine(primaryFadeEnumerator);
         Color primaryColor = primaryMessage.color;
-        Color secondaryColor = secondaryMessage.color;
         primaryColor.a = 1;
-        secondaryColor.a = 1;
         primaryMessage.color = primaryColor;
-        secondaryMessage.color = secondaryColor;
+        
+        if(bothMessages){
+            if(secondaryFadeEnumerator != null) StopCoroutine(secondaryFadeEnumerator);
+            Color secondaryColor = secondaryMessage.color;
+            secondaryColor.a = 1;
+            secondaryMessage.color = secondaryColor;
+        }
     }
 }

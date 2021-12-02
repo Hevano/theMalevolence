@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: Remedy
   m_EditorClassIdentifier: 
   cardName: Remedy
-  cardDescription: Heal an ally
+  cardDescription: Heal an ally.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 8
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0, g: 0, b: 0, a: 1}
   exiled: 0
   bossCard: 1
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: aa2b14de17da71a47a22b6083db4260b, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  cardEffects: []
-  cardCorPass:
+  cardAnimation: 
+  cardEffects:
   - effectType: 9
     cardEffect:
       target: 0
@@ -70,5 +70,6 @@ MonoBehaviour:
     vitalityEffect:
       target: 3
       vitalityType: 0
-      value: 5
+      value: 15
+  cardCorPass: []
   cardCorFail: []

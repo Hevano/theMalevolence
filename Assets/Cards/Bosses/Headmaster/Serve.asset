@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: Serve
   m_EditorClassIdentifier: 
   cardName: Serve
-  cardDescription: Damage a target
+  cardDescription: Damage a target.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
   cardCharacter: 7
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0, g: 0, b: 0, a: 1}
   exiled: 0
   bossCard: 1
   bossCorTargets: 0
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   cardIcons:
+  - {fileID: 21300000, guid: 2d8acbb4163361541b3a6f422436a5e8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  cardAnimation: 
   cardEffects:
   - effectType: 2
     cardEffect:
@@ -38,9 +39,9 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 2
-      dieNumber: 1
-      dieSize: 4
-      dieBonus: 0
+      dieNumber: 2
+      dieSize: 3
+      dieBonus: -1
     cleanseEffect:
       target: 0
     drawEffect:

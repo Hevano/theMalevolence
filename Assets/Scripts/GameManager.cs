@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     private bool gameOver = false;
 
     public GameObject endPhaseButton;
-    public GameObject deckBuilderCanvas;
+
+    public AudioClip battleMusic;
 
     public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
     public event PhaseChangeHandler onPhaseChange;
@@ -79,8 +80,8 @@ public class GameManager : MonoBehaviour
     //Starts a new battle with listed enemies. This initializes the characers, decks, and starts a new coroutine: battleEnumerator (like a thread)
     public void StartBattle()
     {
-
         //Play battle start effects
+        AudioManager.audioMgr.ChangeMusic(battleMusic);
         //Draw starting hand
         InitializeCharacters();
         InitializeDecks();
@@ -280,8 +281,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator GameWinScreen(){
-        yield return CombatUIManager.Instance.DisplayMessage("You Win!", 4f);
-        yield return CombatUIManager.Instance.DisplayMessage("Proceeding to deck builder...", 4f);
+        yield return CombatUIManager.Instance.DisplayMessage("", 6f);
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
@@ -289,7 +289,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator GameOverScreen(){
-        yield return CombatUIManager.Instance.DisplayMessage("You Lose!", 2f);
+        yield return CombatUIManager.Instance.DisplayMessage("Everyone has fallen...", 2f);
         yield return CombatUIManager.Instance.DisplayMessage("Consumed by the Malevolence...", 4f);
         SceneManager.LoadScene("Main Menu");
         LevelManager.Instance.ToMainMenu();
@@ -367,36 +367,40 @@ public class GameManager : MonoBehaviour
         Character ch;
         characters.TryGetValue(Enums.Character.Goth, out ch);
         decks[Enums.Character.Goth] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Goth].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Jock, out ch);
         decks[Enums.Character.Jock] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Jock].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Nerd, out ch);
         decks[Enums.Character.Nerd] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Nerd].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Popular].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         if (characters.TryGetValue(Enums.Character.Driver, out ch))
             decks[Enums.Character.Driver] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.Headmaster, out ch))
+            decks[Enums.Character.Headmaster] = ch.data.Deck;
         if (characters.TryGetValue(Enums.Character.PuzzleBox, out ch))
             decks[Enums.Character.PuzzleBox] = ch.data.Deck;
+        if (characters.TryGetValue(Enums.Character.Entity, out ch))
+            decks[Enums.Character.Entity] = ch.data.Deck;
     }
 
     //Initialize each character in party list established. 

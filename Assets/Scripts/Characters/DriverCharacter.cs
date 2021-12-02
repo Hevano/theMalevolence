@@ -91,11 +91,11 @@ public class DriverCharacter : EnemyCharacter
                     GameManager.manager.Discard(cardDisplay.CardData);
                     GameManager.manager.RemoveCardFromHand(cardDisplay);
                 }
-                yield return CombatUIManager.Instance.DisplayMessage($"Discarding {partyMember.name}'s cards from your hand!", 2f);
+                yield return CombatUIManager.Instance.DisplayMessage($"Discarding {partyMember.data.name}'s cards from your hand!", 2f);
             } else {
                 partyMember.Corruption += 10;
                 CombatUIManager.Instance.SetDamageText(10, partyMember.transform, new Color32(139, 0, 139, 0));
-                yield return CombatUIManager.Instance.DisplayMessage($"{partyMember.name} gained {10} Corruption");
+                yield return CombatUIManager.Instance.DisplayMessage($"{partyMember.data.name} gained {10} Corruption");
             }
         }
     }
@@ -121,7 +121,6 @@ public class DriverCharacter : EnemyCharacter
     }*/
 
     public override IEnumerator GetTurn(){
-        Debug.Log(animator);
         if(Action != Enums.Action.Stunned){
 
             if (deck.CardList.Count == 0){

@@ -46,7 +46,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
     [SerializeField] private int currentCard = 2;
     public override IEnumerator GetTurn () {
         changingConfig = false;
-        if (Action != Enums.Action.Stunned || Health > 0) {
+        if (Action != Enums.Action.Stunned && Health > 0) {
             if (deck.CardList.Count == 0) {
                 deck.Reshuffle();
             }
