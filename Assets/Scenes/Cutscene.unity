@@ -1477,10 +1477,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9308e2e6d3bdf9f48a711257b52c38ea, type: 3}
   - {fileID: 21300000, guid: f4f906319449d9343943f925e90b27df, type: 3}
   - {fileID: 21300000, guid: 897669d518cd3a640afe456c519a679d, type: 3}
-  cutScene3Images: []
-  cutScene4Images: []
-  cutScene5Images: []
-  cutScene6Images: []
+  cutScene3Images:
+  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  cutScene4Images:
+  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  cutScene5Images:
+  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  cutScene6Images:
+  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
 --- !u!4 &1749706856
 Transform:
   m_ObjectHideFlags: 0

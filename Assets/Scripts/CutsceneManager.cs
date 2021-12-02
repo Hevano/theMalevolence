@@ -619,6 +619,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText("?");
                 break;
             case 10:
+                updateImage(2);
                 currentTextCol = gothColor;
                 updateText("Heh, these runes are more useful than I thought. They change into actual things we can say. So if we read them out, we can do some preeeetty neat stuff.");
                 break;
@@ -633,9 +634,11 @@ public class CutsceneManager : MonoBehaviour
                 updateText("<i>sigh</i>, well, it's getting darker, so let's start heading back to the school.");
                 break;
             case 14:
+                updateImage(0);
                 updateText("It's not too far off - I know the way from here.");
                 break;
             case 15:
+                updateImage(1);
                 currentTextCol = popColor;
                 updateText("Well, I suggest we get writing. Then, head back to the school.");
                 break;
