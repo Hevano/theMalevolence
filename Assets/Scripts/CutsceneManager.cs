@@ -163,6 +163,7 @@ public class CutsceneManager : MonoBehaviour
     {
         cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
+        cutsceneImage.color = new Color(0, 0, 0, 1f);
         dialogue.text = "";
         voices.text = "";
         events.text = "";
@@ -172,6 +173,7 @@ public class CutsceneManager : MonoBehaviour
         {
             case "Cutscene_PreBossOne":
                 cutsceneNum = 1;
+                cutsceneImage.color = new Color(0, 0, 0, 0f);
                 CurrentCutsceneImages = cutScene1Images;
                 drawingImage.sprite = cutScene1Images[0];
                 fade();
@@ -181,6 +183,7 @@ public class CutsceneManager : MonoBehaviour
                 CurrentCutsceneImages = cutScene2Images;
                 CurrentCutsceneImages = cutScene2Images;
                 updateImage(0);
+                
                 break;
             case "Cutscene_PreBossHeadmaster":
                 cutsceneNum = 3;
