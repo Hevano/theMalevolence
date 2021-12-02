@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Remedy
   m_EditorClassIdentifier: 
   cardName: Remedy
-  cardDescription: Heal an ally
+  cardDescription: Heal an ally.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Serve
   m_EditorClassIdentifier: 
   cardName: Serve
-  cardDescription: Damage a target
+  cardDescription: Damage a target.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Reinforcements
   m_EditorClassIdentifier: 
   cardName: Reinforcements
-  cardDescription: Summon 2 faculty or 4 students
+  cardDescription: Summon 2 faculty members or 4 students.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

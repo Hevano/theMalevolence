@@ -1391,7 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a50ba333b684273b238a964bb52406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBGM: {fileID: 0}
+  sceneBGM: {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
   sceneIntro: {fileID: 0}
   victoryTrack: {fileID: 0}
   failureTrack: {fileID: 0}

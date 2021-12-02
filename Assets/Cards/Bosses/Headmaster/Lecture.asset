@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Lecture
   cardDescription: 
-  cardCorruptionPassDescription: 
+  cardCorruptionPassDescription: Nothing
   cardCorruptionFailDescription: Silence and deal 1-4 damage
   cardFlavor: 
   cardCharacter: 8

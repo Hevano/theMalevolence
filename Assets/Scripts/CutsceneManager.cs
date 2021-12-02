@@ -174,14 +174,12 @@ public class CutsceneManager : MonoBehaviour
                 cutsceneNum = 1;
                 CurrentCutsceneImages = cutScene1Images;
                 drawingImage.sprite = cutScene1Images[0];
-                fade();
                 break;
             case "Cutscene_PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
                 cutsceneImage.sprite = cutScene2Images[0];
                 updateImage(0);
-                
                 break;
             case "Cutscene_PreBossHeadmaster":
                 cutsceneNum = 3;
@@ -208,6 +206,8 @@ public class CutsceneManager : MonoBehaviour
                 cutsceneNum = 1;
                 break;
         }
+
+        fade();
 
         next.GetComponent<Button>().onClick.AddListener(() => {
             nextStage();

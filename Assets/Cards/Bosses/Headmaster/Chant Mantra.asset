@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chant Mantra
   m_EditorClassIdentifier: 
   cardName: Chant Mantra
-  cardDescription: Corrupt all targets for 10 plus 2 for each ally
+  cardDescription: Corrupt all targets for 10 plus 2 for each ally.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
