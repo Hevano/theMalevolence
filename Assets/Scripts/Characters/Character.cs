@@ -42,7 +42,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 AudioManager.audioMgr.PlayUISFX("Heal");
             }
 
-            if(Defeated && _health != 0){
+            if(Defeated && newValue != 0){
                 Defeated = false;
             }
 
