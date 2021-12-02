@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     private bool gameOver = false;
 
     public GameObject endPhaseButton;
-    public GameObject deckBuilderCanvas;
+
+    public AudioClip battleMusic;
 
     public delegate void PhaseChangeHandler(Enums.GameplayPhase phase);
     public event PhaseChangeHandler onPhaseChange;
@@ -79,8 +80,8 @@ public class GameManager : MonoBehaviour
     //Starts a new battle with listed enemies. This initializes the characers, decks, and starts a new coroutine: battleEnumerator (like a thread)
     public void StartBattle()
     {
-
         //Play battle start effects
+        AudioManager.audioMgr.ChangeMusic(battleMusic);
         //Draw starting hand
         InitializeCharacters();
         InitializeDecks();
