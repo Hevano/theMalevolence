@@ -19,13 +19,14 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
             if (newValue == 0)
             {
+                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+
                 Defeated = true;
 
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
 
                 try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
-                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
             }
             else if(_health > newValue)
             {
