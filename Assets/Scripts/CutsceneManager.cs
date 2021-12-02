@@ -163,7 +163,6 @@ public class CutsceneManager : MonoBehaviour
     {
         cutsceneName = sceneName;
         fadeImage.color = new Color(0,0,0,1f);
-        cutsceneImage.color = new Color(0, 0, 0, 1f);
         dialogue.text = "";
         voices.text = "";
         events.text = "";
@@ -173,7 +172,6 @@ public class CutsceneManager : MonoBehaviour
         {
             case "Cutscene_PreBossOne":
                 cutsceneNum = 1;
-                cutsceneImage.color = new Color(0, 0, 0, 0f);
                 CurrentCutsceneImages = cutScene1Images;
                 drawingImage.sprite = cutScene1Images[0];
                 fade();
@@ -181,31 +179,27 @@ public class CutsceneManager : MonoBehaviour
             case "Cutscene_PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
-                CurrentCutsceneImages = cutScene2Images;
+                cutsceneImage.sprite = cutScene2Images[0];
                 updateImage(0);
                 
                 break;
             case "Cutscene_PreBossHeadmaster":
                 cutsceneNum = 3;
                 CurrentCutsceneImages = cutScene3Images;
-                CurrentCutsceneImages = cutScene3Images;
                 updateImage(0);
                 break;
             case "Cutscene_PostBossHeadmaster":
                 cutsceneNum = 4;
-                CurrentCutsceneImages = cutScene4Images;
                 CurrentCutsceneImages = cutScene4Images;
                 updateImage(0);
                 break;
             case "Cutscene_PreBossPuzzleBox":
                 cutsceneNum = 5;
                 CurrentCutsceneImages = cutScene5Images;
-                CurrentCutsceneImages = cutScene5Images;
                 updateImage(0);
                 break;
             case "Cutscene_PostBossPuzzleBox":
                 cutsceneNum = 6;
-                CurrentCutsceneImages = cutScene6Images;
                 CurrentCutsceneImages = cutScene6Images;
                 updateImage(0);
                 break;
