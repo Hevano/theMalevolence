@@ -1837,6 +1837,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 750544413093214664, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f67c169879968945ab84f9c9a9f378b, type: 3}
     - target: {fileID: 938142427061772098, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1893,6 +1897,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3806574885877188888, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a0162fe38f4dd484badc59113957b783, type: 3}
     - target: {fileID: 6106746638999123677, guid: 9836c7414ec86a540bfd53cb18ff2625, type: 3}
       propertyPath: m_TargetTexture
       value: 

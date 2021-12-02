@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 6
   name: Headmaster Shepard
-  health: 2
-  currentHealth: 2
+  health: 100
+  currentHealth: 100
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 21300000, guid: 47b3aec1c9845eb419b03d249a033574, type: 3}
