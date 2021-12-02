@@ -15,7 +15,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private Image fadeImage, cutsceneImage, drawingImage, notebook, tutorial;
     [SerializeField]
-    private List<Sprite> cutScene1Images, cutScene2Images;
+    private List<Sprite> cutScene1Images, cutScene2Images, cutScene3Images, cutScene4Images, cutScene5Images, cutScene6Images;
 
     private List<Sprite> CurrentCutsceneImages;
     private float fadeTime = 3f, alphaToFadeTo;
@@ -179,6 +179,31 @@ public class CutsceneManager : MonoBehaviour
             case "Cutscene_PostBossOne":
                 cutsceneNum = 2;
                 CurrentCutsceneImages = cutScene2Images;
+                CurrentCutsceneImages = cutScene2Images;
+                updateImage(0);
+                break;
+            case "Cutscene_PreBossHeadmaster":
+                cutsceneNum = 3;
+                CurrentCutsceneImages = cutScene3Images;
+                CurrentCutsceneImages = cutScene3Images;
+                updateImage(0);
+                break;
+            case "Cutscene_PostBossHeadmaster":
+                cutsceneNum = 4;
+                CurrentCutsceneImages = cutScene4Images;
+                CurrentCutsceneImages = cutScene4Images;
+                updateImage(0);
+                break;
+            case "Cutscene_PreBossPuzzleBox":
+                cutsceneNum = 5;
+                CurrentCutsceneImages = cutScene5Images;
+                CurrentCutsceneImages = cutScene5Images;
+                updateImage(0);
+                break;
+            case "Cutscene_PostBossPuzzleBox":
+                cutsceneNum = 6;
+                CurrentCutsceneImages = cutScene6Images;
+                CurrentCutsceneImages = cutScene6Images;
                 updateImage(0);
                 break;
             default:
@@ -237,6 +262,16 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case 2: progressPostBusDriver();
                 break;
+            case 3: progressPreHeadmaster();
+                break;
+            case 4: progressPostHeadmaster();
+                break;
+            case 5:
+                progressPrePuzzlebox();
+                break;
+            case 6:
+                progressPostPuzzlebox();
+                break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneNum} is not in scope of available cutscenes.</color>");
                 break;
@@ -257,218 +292,284 @@ public class CutsceneManager : MonoBehaviour
                 updateText("<i>sigh</i>, the road's really foggy today.");
                 break;
             case 2:
-                updateText("Been a while since I've seen this much fog. Almost as bad as the day I drew up in my notebook. I was hoping to get home before that pizza arrived, not after.");
+                updateText("Reminds me of that drawing I made the other day. A lot more foggy though. Wonder if I could still find that doodle.");
                 break;
             case 3:
                 updateDrawing(1);
-                updateText("But... so long as the kids are safe, I guess that's all that matters. ");
+                updateText("Though, I was hoping to get home before that pizza arrived, not after.");
                 break;
             case 4:
+                updateText("But... so long as the kids are safe, I guess that's all that matters. ");
+                break;
+            case 5:
                 updateText("");
                 updateDrawing(0);
                 break;
-            case 5:
+            case 6:
                 updateDrawing(6);
                 currentTextCol = Color.black;
-                updateText("...What the hell?? This is <i>not</i> normal. The fog is getting thicker");
+                updateText("What the - why is the fog getting thicker?");
                 break;
-            case 6:
+            case 7:
                 voices.text = "Children are safe";
                 StartCoroutine(Shake(voices.gameObject, 400f));
                 StartCoroutine(Tilt(voices.gameObject));
                 break;
-            case 7:
-                voices.text = "";
-                updateText("Huh? Who said that?? And what do you mean the children are safe? The children are safe???");
-                break;
             case 8:
+                voices.text = "";
+                updateText("Huh? Who said that?? And what do you mean the children are safe?");
+                break;
+            case 9:
                 toggleTutorialImage();
                 updateTutorial(7);
                 changeImageAlpha(tutorial, .1f);
-                updateText("The... children... are safe.");
-                break;
-            case 9:
-                changeImageAlpha(tutorial, 0f);
-                updateText("The children... are safe? You're right...");
+                updateText("The... children... are safe?");
                 break;
             case 10:
-                updateText("I can stop driving...");
+                changeImageAlpha(tutorial, 0f);
+                updateText("The children... are safe. You're right...");
+                break;
+            case 11:
+                updateText("They're safe.");
                 fadeImage.color = new Color(0f, 0f, 0f, .16f);
                 fadeImage.color = new Color(0f, 0f, 0f, .33f);
                 break;
-            case 11:
+            case 12:
                 changeImageAlpha(tutorial, .25f);
                 updateText("They're safe... ");
                 fadeImage.color = new Color(0f, 0f, 0f, .498f);
                 break;
-            case 12:
+            case 13:
                 currentTextCol = Color.white;
                 changeImageAlpha(tutorial, .5f);
-                updateText("safe...");
+                updateText("Safe...");
                 fadeImage.color = new Color(0f, 0f, 0f, .664f);
                 break;
-            case 13:
+            case 14:
                 changeImageAlpha(tutorial, .75f);
                 updateText("I'm safe.");
                 fadeImage.color = new Color(0f, 0f, 0f, .830f);
                 break;
-            case 14:
+            case 15:
                 changeImageAlpha(tutorial, 1f);
-                updateText("We're safe.");
+                updateText("You're safe");
                 fadeImage.color = new Color(0f, 0f, 0f, 1f);
                 break;
-            case 15:
+            case 16:
+                updateText("We're safe.");
+                break;
+            case 17:
+                updateText("");
+                break;
+            case 18:
                 toggleTutorialImage();
                 updateText("");
                 currentTextCol = Color.white;
                 eventText("CRASH");
                 StartCoroutine(Shake(events.gameObject, 100f));
                 break;
-            case 16:
+            case 19:
                 eventText("");
                 currentTextCol = popColor;
-                updateText($"Ugghhhh, what was that about?");
+                updateText($"Ugghhhh");
                 break;
-            case 17:
+            case 20:
                 currentTextCol = gothColor;
                 updateText($"You okay <color={popSColor}>Jacklyn</color>?");
                 break;
-            case 18:
+            case 21:
                 currentTextCol = popColor;
-                updateText($"I think so. My harmonica managed to stab my side, but other than that, it could be worse. I guess...");
+                updateText($"I think so. My harmonica bruised my side a bit, but other than that, it could be worse... I guess...");
                 break;
-            case 19:
+            case 22:
                 currentTextCol = gothColor;
                 updateText($"Well, at least it wasn't a switch blade.");
                 break;
-            case 20:
-                currentTextCol = popColor;
-                updateText($"<color={gothSColor}>Charles</color>, you have a switch blade??? Is that even legal?");
-                break;
-            case 21:
-                currentTextCol = gothColor;
-                updateText($"...No comment.");
-                break;
-            case 22:
-                updateText($"...Yo, <color={nerdSColor}>Zoey</color>, you doing okay over there?");
-                break;
             case 23:
-                currentTextCol = nerdColor;
-                updateText($"Yeah, I seem stable enough.");
+                currentTextCol = popColor;
+                updateText($"Yeah... Wait, <color={gothSColor}>Charles</color>, what do you mean by that?? Do you <i>have</i> a switchblade?");
                 break;
             case 24:
-                updateText($"WAIT.");
+                currentTextCol = gothColor;
+                updateText($"<i>ahem</i>");
                 break;
             case 25:
-                updateText($"Oh thank god, my keyboard's fine. I just bought this thing, jeez. I was hoping to get home before I broke it in.");
+                updateText($"...Yo, <color={nerdSColor}>Zoey</color>, you doing okay over there?");
                 break;
             case 26:
-                updateText($"Ummm, where's the bus driver?");
+                currentTextCol = nerdColor;
+                updateText($"<i>Urgh</i>, yeah... Just give me a minute.");
                 break;
             case 27:
+                updateText($"WAIT");
+                break;
+            case 28:
+                updateText("");
+                break;
+            case 29:
+                updateText($"Oh thank god, my keyboard's fine. I just bought this thing, jeez. I was hoping to get home before I broke it in.");
+                break;
+            case 30:
+                updateText($"Ummm, where's the bus driver?");
+                break;
+            case 31:
                 currentTextCol = jockColor;
                 updateText($"I found his notebook over here.");
                 break;
-            case 28:
+            case 32:
                 currentTextCol = nerdColor;
-                updateText($"<color={jockSColor}>Johny</color>, you are way too quick to search through his stuff. Did we not just crash a few minutes ago?");
+                updateText($"<color={jockSColor}>Johny</color>, you are way too quick to search through his stuff. Did we not <i>just</i> crash a few minutes ago?");
                 break;
-            case 29:
+            case 33:
                 currentTextCol = jockColor;
-                updateText($"Eh, what can I say. My adrenaline is high right about now. Plus, this fog isn't helping.");
+                updateText($"Eh, what can I say - my blood is pumping. Plus, this fog isn't helping.");
                 break;
-            case 30:
+            case 34:
                 currentTextCol = nerdColor;
                 updateText($"Yeah, maybe let's head outside and see if we can find him. I'd rather get home in one piece.");
                 break;
-            case 31:
+            case 35:
                 currentTextCol = gothColor;
                 updateText($"Agreed.");
                 break;
-            case 32:
+            case 36:
+                updateText("");
+                break;
+            case 37:
                 currentTextCol = jockColor;
                 updateText($"...Hey, there he is!");
                 break;
-            case 33:
-                currentTextCol = Color.grey;
-                updateText($"Kids... are... safe... Kids... are... safe...");
-                break;
-            case 34:
-                currentTextCol = jockColor;
-                updateText($"I... don't like that look in his eyes.");
-                break;
-            case 35:
-                currentTextCol = Color.grey;
-                updateText($"Kids... come here... You're safe now... Join me... Join us...");
-                break;
-            case 36:
-                currentTextCol = jockColor;
-                updateText($"Whoa, hey there bucko, that's a lil too close, even for hockey standards.");
-                break;
-            case 37:
-                currentTextCol = Color.grey;
-                updateText($"Come");
-                break;
             case 38:
-                updateText($"HERE");
-                StartCoroutine(Shake(dialogue.gameObject, 4f));
+                currentTextCol = Color.grey;
+                updateText($"Kids... <i>are</i>... safe... Kids... are... <i>safe</i>...");
                 break;
             case 39:
                 currentTextCol = jockColor;
-                updateText($"Okay guys, we need to do something about this, <i>now</i>. Here, use this notebook! Write down stuff you can do, and let's figure out a gameplan, <i>stat</i>.");
+                updateText($"I... don't like that look in his eyes.");
                 break;
             case 40:
-                currentTextCol = nerdColor;
-                updateText($"Got it! Ummm, ok... Lemme throw something together..");
+                currentTextCol = Color.grey;
+                updateText($"Kids... Come here... You're <i>safe</i> now... Join me... Join <i>us</i>...");
                 break;
             case 41:
-                updateText($"Ok, I'll keep track of our actions using these scraps of paper.");
+                currentTextCol = jockColor;
+                updateText($"Whoa, hey there bucko, that's a <i>little</i> too close, even for hockey standards.");
                 break;
             case 42:
-                toggleTutorialImage();
-                updateTutorial(2);
-                updateText($"This is the driver. I doodled an eye to represent whatever is affecting him. Hopefully we can make him snap out of it.");
+                currentTextCol = Color.grey;
+                updateText($"Come");
                 break;
             case 43:
-                updateTutorial(3);
-                updateText($"This is what we look like. Give me a heads up if you want to change the <color=white>order of our actions</color>, and I'll move them around.");
+                updateText($"HERE");
+                StartCoroutine(Shake(dialogue.gameObject, 4f));
                 break;
             case 44:
-                updateText($"These thumbtacks should keep them in place and let me move them around.");
+                currentTextCol = jockColor;
+                updateText("Hey, <i>hey</i>, back UP.");
                 break;
             case 45:
-                currentTextCol = gothColor;
-                updateText($"Shouldn't you also make some sort of counter to track whatever force is affecting the driver? Clearly something's up, and I'm not sure we're invulnerable.");
+                currentTextCol = jockColor;
+                updateText($"Ok ok, so that didn't seem to phase you. Time to bail!");
                 break;
             case 46:
-                currentTextCol = nerdColor;
-                updateText($"...yeah, I guess you're right.");
+                currentTextCol = jockColor;
+                updateText($"Guys, let's go please!");
                 break;
             case 47:
-                updateTutorial(4);
-                updateText($"Here, this eye will represent our affliction.");
+                updateText("");
                 break;
             case 48:
-                updateText($"If you feel something start talking to you, kinda in a weird ritualistic way, like how the driver is speaking, then this should be increased.");
+                updateText($"<i>Haa</i>, I think we lost him. He's definitely a no go, we need to figure something out.");
                 break;
             case 49:
-                updateText($"The higher it gets, the more we'll have to try to resist it I suppose...");
+                currentTextCol = nerdColor;
+                updateText("Can you pass me that notebook?");
                 break;
             case 50:
-                updateText($"Let's make sure to <color=white>resist whatever force</color> is affecting the driver");
+                currentTextCol = jockColor;
+                updateText("Uhh, sure?");
                 break;
             case 51:
-                updateText($"And <color=white>keep that percentage low</color> so it's easier to resist this force.");
+                currentTextCol = nerdColor;
+                updateText($"Here, let me write down what we can do. It'll help for planning.");
                 break;
             case 52:
-                updateTutorial(5);
-                updateText($"We can use this symbol to represent an attempt to resist. I don't know what's going on, but let's <i>try</i> to understand it.");
+                currentTextCol = jockColor;
+                updateText("What we <i>should</i> do is run away.");
                 break;
             case 53:
-                currentTextCol = jockColor;
-                updateText($"Sounds good. Let's do this!");
+                currentTextCol = nerdColor;
+                updateText("Yeah, but what if he finds us? Let's just prep for the worse, since this fog will be hard to navigate through anyway.");
                 break;
             case 54:
+                updateText($"Look, I'll keep track of us using these scraps of paper.");
+                break;
+            case 55:
+                toggleTutorialImage();
+                updateTutorial(2);
+                updateText($"This is the driver. I doodled an eye to represent whatever is affecting him.");
+                break;
+            case 56:
+                updateTutorial(3);
+                updateText($"And this is what we look like. If one of you wants to do something first, move these around to represent the <color=white>order of our actions</color>.");
+                break;
+            case 57:
+                updateText($"These thumbtacks should keep them in place and make it easier to track.");
+                break;
+            case 58:
+                currentTextCol = gothColor;
+                updateText($"Okaayyy? Well, if we're writing stuff down, here-");
+                break;
+            case 59:
+                updateTutorial(4);
+                updateText($"This eye will represent us, and how much we've turned.");
+                break;
+            case 60:
+                currentTextCol = nerdColor;
+                updateText("Turned? <i>Turned</i>?? What do you think this is - some zombie virus?");
+                break;
+            case 61:
+                currentTextCol = gothColor;
+                updateText($"Hey, I just want to cover our bases. If I start feeling funny, I'll be increasing mine. I suggest you all do the same.");
+                break;
+            case 62:
+                updateText($"The higher it gets, the harder I can imagine it'll be for me to resist turning into a zombie.");
+                break;
+            case 63:
+                currentTextCol = nerdColor;
+                updateText($"Jesus, you're ridiculous. So what, you're claiming to be trying to <color=white>resist whatever force</color> is affecting the driver?");
+                break;
+            case 64:
+                currentTextCol = gothColor;
+                updateText($"Yeah. I am. So as long as I <color=white>keep that percentage low</color>, it'll be a piece of cake. Got a problem with that?");
+                break;
+            case 65:
+                updateTutorial(5);
+                updateText($"And this fun little ball of purple will be what I use as I laugh at you trying to resist.");
+                break;
+            case 66:
+                currentTextCol = jockColor;
+                updateText($"Uhh, guys, we have company.");
+                break;
+            case 67:
+                currentTextCol = Color.grey;
+                updateText("Safe... Safe... Safe... Safe...Safe... Safe... Safe... Safe...Safe... Safe... Safe... Safe...Safe... Safe... Safe... Safe...");
+                voices.text = ("Children are safe");
+                StartCoroutine(Shake(voices.gameObject, 300f));
+                break;
+            case 68:
+                voices.text = ("");
+                currentTextCol = popColor;
+                updateText("Really good choice, running back to the bus. Where we could easily be found in this fog.");
+                break;
+            case 69:
+                updateText("Y'know, given that there are bright headlights lighting this place up like a beacon.");
+                break;
+            case 70:
+                currentTextCol = jockColor;
+                updateText("WHATEVER! Bring out that notebook, let's try and knock him out.");
+                break;
+            case 71:
                 skip();
                 break;
             default:
@@ -487,49 +588,65 @@ public class CutsceneManager : MonoBehaviour
         {
             case 1:
                 currentTextCol = jockColor;
-                updateText("He's... dead.");
+                updateText("Is he... dead?");
                 break;
             case 2:
-                currentTextCol = jockColor;
-                updateText("Now what do we do?");
+                updateImage(1);
+                currentTextCol = nerdColor;
+                updateText("And what's with those runes on the floor?");
                 break;
             case 3:
-                currentTextCol = nerdColor;
-                updateText("Look. There's some runes on the floor.");
+                currentTextCol = gothColor;
+                updateText("Oooh, I'll write them down. I can finally say I've seen some daarrrkk stuff.");
                 break;
             case 4:
-                updateImage(1);
+                currentTextCol = nerdColor;
+                updateText("That... Is a huge waste of time.");
                 break;
             case 5:
-                currentTextCol = gothColor;
-                updateText("I'll write them down. You never know when eldritch runes are gonna be handy.");
+                updateImage(0);
+                updateText("");
                 break;
             case 6:
-                currentTextCol = nerdColor;
-                updateText("What the hell kind of use do you think that'll have??");
+                updateText("...The driver seems to be still alive though, I can feel his heartbeat. Faint, but present.");
                 break;
             case 7:
-                updateText("There's absolutely no point.");
+                updateText("Hmm. I don't want to just leave him here.");
                 break;
             case 8:
                 currentTextCol = gothColor;
-                updateText("They seem pretty useful to me");
+                updateText("It's not a phase... not a phase... not a phase...");
                 break;
             case 9:
-                updateText("It looks like we can read them off and use an arcane ability.");
+                currentTextCol = nerdColor;
+                updateText("?");
                 break;
             case 10:
-                updateText("Not sure why it changed into our language, but whatever.");
+                currentTextCol = gothColor;
+                updateText("Heh, these runes are more useful than I thought. They change into actual things we can say. So if we read them out, we can do some preeeetty neat stuff.");
                 break;
             case 11:
-                currentTextCol = nerdColor;
-                updateText("<i>sigh</i>, what in the world is going on.");
+                updateText("Not sure why they changed into our language, but whatever.");
                 break;
             case 12:
-                currentTextCol = popColor;
-                updateText("Well, let's get writing then. Then, let's head back to the school. We're not too far off anyway, probably better than wandering home in this fog.");
+                updateText("I'm writing more of these down.");
                 break;
             case 13:
+                currentTextCol = nerdColor;
+                updateText("<i>sigh</i>, well, it's getting darker, so let's start heading back to the school.");
+                break;
+            case 14:
+                updateText("It's not too far off - I know the way from here.");
+                break;
+            case 15:
+                currentTextCol = popColor;
+                updateText("Well, I suggest we get writing. Then, head back to the school.");
+                break;
+            case 16:
+                currentTextCol = nerdColor;
+                updateText("Fine.");
+                break;
+            case 17:
                 skip();
                 break;
             default:
@@ -709,4 +826,21 @@ public class CutsceneManager : MonoBehaviour
                 break;
         }
     }
+
+
+    private void progressPostPuzzlebox()
+    {
+
+        switch (cutsceneStage)
+        {
+            case 1:
+                currentTextCol = popColor;
+                updateText("This is the place, yeah?");
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+    }
+
 }
