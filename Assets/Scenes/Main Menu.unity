@@ -2036,9 +2036,13 @@ MonoBehaviour:
   - BossOne
   - Cutscene_PostBossOne
   - Drafting_BossOne
+  - Cutscene_PreHeadmaster
   - BossHeadmaster
+  - Cutscene_PostHeadmaster
   - Drafting_BossHeadmaster
+  - Cutscene_PrePuzzlebox
   - BossPuzzleBox
+  - Cutscene_PostPuzzlebox
   - Drafting_BossPuzzlebox
   - BossEntity
 --- !u!4 &1857593077
