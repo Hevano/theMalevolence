@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.05160784, g: 0.2164528, b: 0.24556056, a: 1}
+  m_IndirectSpecularColor: {r: 0.051619858, g: 0.21650779, b: 0.24570861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -302,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &396782172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,7 +981,7 @@ MonoBehaviour:
   foes:
   - {fileID: 1062504902}
   endPhaseButton: {fileID: 586137476}
-  deckBuilderCanvas: {fileID: 0}
+  battleMusic: {fileID: 0}
 --- !u!4 &971244609
 Transform:
   m_ObjectHideFlags: 0

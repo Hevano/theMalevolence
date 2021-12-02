@@ -32,9 +32,10 @@ public class AudioManager : MonoBehaviour
 
     public void Awake()
     {
-        if (audioMgr != null)
+        if (audioMgr != null && audioMgr != this)
         {
             Destroy(gameObject);
+            return;
         }
         //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
         currentTrack = GetComponent<AudioSource>();

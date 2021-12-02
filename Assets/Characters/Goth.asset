@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 0
   name: Charles Blackwell
-  health: 20
-  currentHealth: 20
+  health: 2
+  currentHealth: 2
   corruption: 0
   currentCorruption: 0
   avatar: {fileID: 21300000, guid: ecce0cac5dd89df4b97e15a75e1e7683, type: 3}
