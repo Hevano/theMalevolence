@@ -19,7 +19,10 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
             if (newValue == 0)
             {
-                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+
+                AudioManager.audioMgr.PlayGivenSFX(GameManager.manager.getChildGameObject(SFX, "Death").GetComponent<AudioSource>().clip);
+
+                Debug.Log("Defeated. Played death sound.");
 
                 Defeated = true;
 
@@ -114,7 +117,10 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             _defeated = value;
             if(_defeated){
-                AudioManager.audioMgr.PlayCharacterSFX(SFX, "Death");
+                AudioClip deathclip = GameManager.manager.getChildGameObject(SFX, "Death").GetComponent<AudioSource>().clip;
+                Debug.Log($"{deathclip.name} is the sound for death ({deathclip})");
+                AudioManager.audioMgr.PlayGivenSFX(deathclip);
+
                 OnDeath();
                 GameManager.manager.CheckGameOver();
             }
@@ -285,8 +291,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
         {
             if (highlight.active)
                 highlight.SetActive(false);
-            else if (Defeated == false)
-                highlight.SetActive(true);
+            else //if (Defeated == false)
+              highlight.SetActive(true);
         }
         catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs)</color>"); }
     }

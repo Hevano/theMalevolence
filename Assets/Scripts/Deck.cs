@@ -40,12 +40,15 @@ public class Deck {
             tempList.RemoveAt(drawnCard);
         }
 
+        try { GameManager.manager.updateDiscardPile(cardList[0].Character); } catch { }
+
         AudioManager.audioMgr.PlayUISFX("Shuffle");
     }
 
     //Shuffles the discard pile into the draw pile
     public void Reshuffle(){
         cardList.AddRange(discardList);
+
         Shuffle();
     }
 
