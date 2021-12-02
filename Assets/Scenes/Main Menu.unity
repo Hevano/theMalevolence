@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a50ba333b684273b238a964bb52406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBGM: {fileID: 8300000, guid: 484aa32f1163a244d86d899e9325c913, type: 3}
+  sceneBGM: {fileID: 8300000, guid: c44385d1538b94a4ba41682674885ceb, type: 3}
   sceneIntro: {fileID: 0}
   victoryTrack: {fileID: 0}
   failureTrack: {fileID: 0}
@@ -1478,6 +1478,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aafdd411f2e0f6749abceb53ff691339, type: 3}
   - {fileID: 8300000, guid: 01244e6a2bea50648a7abb9a0205ede0, type: 3}
   - {fileID: 8300000, guid: 5c244b5a51612c1468434bd5596627f0, type: 3}
+  - {fileID: 8300000, guid: 9b894bff076299b42af3f62002567630, type: 3}
+  - {fileID: 8300000, guid: 6507fc4362fdbda4a8376c53cfa08b69, type: 3}
+  - {fileID: 8300000, guid: 0f67c169879968945ab84f9c9a9f378b, type: 3}
+  LevelBGM:
+  - {fileID: 8300000, guid: c44385d1538b94a4ba41682674885ceb, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 484aa32f1163a244d86d899e9325c913, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: a7d64904d568ea245ae53331bc4ab0dd, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 1b15b28eb21cc7945b737cfb063e681f, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: a7d64904d568ea245ae53331bc4ab0dd, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
+  - {fileID: 8300000, guid: 1b15b28eb21cc7945b737cfb063e681f, type: 3}
+  - {fileID: 8300000, guid: 7d640fc7cacf9574d98aeb14b20e8aa5, type: 3}
 --- !u!4 &1228409589
 Transform:
   m_ObjectHideFlags: 0
@@ -2036,11 +2056,18 @@ MonoBehaviour:
   - BossOne
   - Cutscene_PostBossOne
   - Drafting_BossOne
+  - Cutscene_PreBossHeadmaster
   - BossHeadmaster
+  - Cutscene_PostBossHeadmaster
   - Drafting_BossHeadmaster
+  - Cutscene_PreBossPuzzleBox
   - BossPuzzleBox
-  - Drafting_BossPuzzlebox
+  - Cutscene_PostBossPuzzleBox
+  - Drafting_BossPuzzleBox
+  - Cutscene_PreBossEntity
   - BossEntity
+  - Cutscene_PostBossEntity
+  - Main Menu
 --- !u!4 &1857593077
 Transform:
   m_ObjectHideFlags: 0

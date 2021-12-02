@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Worship
   m_EditorClassIdentifier: 
   cardName: Worship
-  cardDescription: Student gains damage buff
+  cardDescription: Student gains damage buff.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

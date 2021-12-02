@@ -28,13 +28,17 @@ public class AudioManager : MonoBehaviour
         }
     }
     public List<AudioClip> SoundEffects;
-    
+    public List<AudioClip> LevelBGM;
+
+    private int currentLevel = 0;
+
 
     public void Awake()
     {
-        if (audioMgr != null)
+        if (audioMgr != null && audioMgr != this)
         {
             Destroy(gameObject);
+            return;
         }
         //Play 'awake' SoundEffects for the scene (one time) CHANGE THIS IF WE GO WITH A 'STARTUP' SONG
         currentTrack = GetComponent<AudioSource>();
@@ -74,8 +78,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayObjectSFX(GameObject SFXObject)
     {
+        AudioSource SFXObjectPlayer = SFXObject.GetComponent<AudioSource>();
 
-        SFXObject.GetComponent<AudioSource>().Play();
+        SFXObjectPlayer.volume = 0.1f;
+        SFXObjectPlayer.Play();
         
     }
 
@@ -147,6 +153,16 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PlaySFX(int index)
+    {
+        try
+        {
+            SFXPlayer.clip = SoundEffects[index];
+            SFXPlayer.Play();
+        }
+        catch { Debug.Log($"<color=red>Sound not found at index {index}</color>"); }
+    }
+
     public void StopMusic() { currentTrack.Stop(); }
 
     public void PauseMusic() { currentTrack.Pause(); }
@@ -155,6 +171,7 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeMusic(AudioClip newClip)
     {
+        currentLevel++;
         var oldTrack = currentTrack;
         currentTrack = gameObject.AddComponent<AudioSource>();
         currentTrack.volume = 0.0f;

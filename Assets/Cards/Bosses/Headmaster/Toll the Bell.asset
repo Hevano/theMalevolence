@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Toll the Bell
   m_EditorClassIdentifier: 
   cardName: Toll the Bell
-  cardDescription: Summon 2 students
+  cardDescription: Summon 2 students.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unpaid Overtime
   m_EditorClassIdentifier: 
   cardName: Unpaid Overtime
-  cardDescription: Summon a faculty
+  cardDescription: Summon a faculty member.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 9
   name: The Entity
-  health: 200
+  health: 250
   currentHealth: 200
   corruption: 0
   currentCorruption: 0
