@@ -42,17 +42,23 @@ public class DrawEffect : CardEffect {
             if (charDeck.DiscardList.Count > 0)
                 discards.CardList.AddRange(charDeck.DiscardList);
 
-            discards.Shuffle();
-            for (int i = 0; i < cards; i++) {
 
-                Card drawn = discards.Draw();
-                if (drawn != null)
-                { 
-                    GameManager.manager.PlaceCardInHand(drawn);
-                    GameManager.manager.decks.TryGetValue(drawn.Character, out charDeck);
-                    charDeck.DiscardList.Remove(drawn);
+            if(discards.CardList.Count > 0){
+                discards.Shuffle();
+                for (int i = 0; i < cards; i++) {
+
+                    Card drawn = discards.Draw();
+                    if (drawn != null)
+                    { 
+                        GameManager.manager.PlaceCardInHand(drawn);
+                        GameManager.manager.decks.TryGetValue(drawn.Character, out charDeck);
+                        charDeck.DiscardList.Remove(drawn);
+                    }
                 }
+            } else {
+                yield return CombatUIManager.Instance.DisplayMessage("Discard pile empty. Cannot draw from it.");
             }
+            
         } 
         //Draw a number of cards from your decks
         else {
