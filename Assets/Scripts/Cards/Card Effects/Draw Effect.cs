@@ -44,10 +44,14 @@ public class DrawEffect : CardEffect {
 
             discards.Shuffle();
             for (int i = 0; i < cards; i++) {
+
                 Card drawn = discards.Draw();
-                GameManager.manager.PlaceCardInHand(drawn);
-                GameManager.manager.decks.TryGetValue(drawn.Character, out charDeck);
-                charDeck.DiscardList.Remove(drawn);
+                if (drawn != null)
+                { 
+                    GameManager.manager.PlaceCardInHand(drawn);
+                    GameManager.manager.decks.TryGetValue(drawn.Character, out charDeck);
+                    charDeck.DiscardList.Remove(drawn);
+                }
             }
         } 
         //Draw a number of cards from your decks
