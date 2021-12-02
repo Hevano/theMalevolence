@@ -136,7 +136,7 @@ MonoBehaviour:
   _discardPile: 0
   _corruption: 0
   data: {fileID: 11400000, guid: de3b0b617dcc112438cc47a2ec873a9b, type: 2}
-  _cardToPlay: {fileID: 0}
+  _cardToPlay: {fileID: 11400000, guid: 2c6e16c7e5c786441aabf716f2b5ecf5, type: 2}
 --- !u!1 &8126047225960494156
 GameObject:
   m_ObjectHideFlags: 0

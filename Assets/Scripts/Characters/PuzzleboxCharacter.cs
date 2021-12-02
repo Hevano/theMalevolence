@@ -30,6 +30,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
     private bool ExplorerConfig = true;
     private bool KillerConfig = true;
     private bool SocializerConfig = true;
+    private int solvedConfigs = 0;
 
     private int configCount = 2;
     private bool changingConfig = false;
@@ -149,50 +150,50 @@ public class PuzzleboxCharacter : EnemyCharacter {
     }
 
     private IEnumerator ChangeConfiguration() {
-        if (CheckLast())
-            yield break;
-        bool valid = false;
-        int newConfig = 0;
-        do {
-            newConfig = Random.Range(1, 4);
-            if (newConfig == (int)currentConfiguration)
-                continue;
-            if (newConfig == 1 && !AchieverConfig)
-                continue;
-            if (newConfig == 2 && !ExplorerConfig)
-                continue;
-            if (newConfig == 3 && !KillerConfig)
-                continue;
-            if (newConfig == 4 && !SocializerConfig)
-                continue;
-            valid = true;
-        } while (valid == false);
-        currentConfiguration = (Enums.PuzzleBoxConfigurations)newConfig;
-        animator.SetBool("Achiever", false);
-        animator.SetBool("Explorer", false);
-        animator.SetBool("Killer", false);
-        animator.SetBool("Socializer", false);
-        yield return new WaitForSeconds(2f);
-        switch (currentConfiguration) {
-            case Enums.PuzzleBoxConfigurations.Achiever:
-                animator.SetBool("Achiever", true);
-                yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Achiever configuration");
-                break;
-            case Enums.PuzzleBoxConfigurations.Explorer:
-                animator.SetBool("Explorer", true);
-                yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Explorer configuration");
-                break;
-            case Enums.PuzzleBoxConfigurations.Killer:
-                animator.SetBool("Killer", true);
-                yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Killer configuration");
-                break;
-            case Enums.PuzzleBoxConfigurations.Socializer:
-                animator.SetBool("Socializer", true);
-                yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Socializer configuration");
-                break;
+        if (CheckLast() == false) {
+            bool valid = false;
+            int newConfig = 0;
+            do {
+                newConfig = Random.Range(1, 4);
+                if (newConfig == (int)currentConfiguration)
+                    continue;
+                if (newConfig == 1 && !AchieverConfig)
+                    continue;
+                if (newConfig == 2 && !ExplorerConfig)
+                    continue;
+                if (newConfig == 3 && !KillerConfig)
+                    continue;
+                if (newConfig == 4 && !SocializerConfig)
+                    continue;
+                valid = true;
+            } while (valid == false);
+            currentConfiguration = (Enums.PuzzleBoxConfigurations)newConfig;
+            animator.SetBool("Achiever", false);
+            animator.SetBool("Explorer", false);
+            animator.SetBool("Killer", false);
+            animator.SetBool("Socializer", false);
+            yield return new WaitForSeconds(2f);
+            switch (currentConfiguration) {
+                case Enums.PuzzleBoxConfigurations.Achiever:
+                    animator.SetBool("Achiever", true);
+                    yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Achiever configuration");
+                    break;
+                case Enums.PuzzleBoxConfigurations.Explorer:
+                    animator.SetBool("Explorer", true);
+                    yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Explorer configuration");
+                    break;
+                case Enums.PuzzleBoxConfigurations.Killer:
+                    animator.SetBool("Killer", true);
+                    yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Killer configuration");
+                    break;
+                case Enums.PuzzleBoxConfigurations.Socializer:
+                    animator.SetBool("Socializer", true);
+                    yield return CombatUIManager.Instance.DisplayMessage("The Puzzle Box switches to the Socializer configuration");
+                    break;
+            }
+            changingConfig = true;
+            configCount = 0;
         }
-        changingConfig = true;
-        configCount = 0;
     }
 
     public IEnumerator Solve (Enums.PuzzleBoxConfigurations config) {
@@ -235,7 +236,7 @@ public class PuzzleboxCharacter : EnemyCharacter {
         if (!KillerConfig) solved++;
         if (!SocializerConfig) solved++;
 
-        if (solved == 3)
+        if (solved >= 3)
             return true;
         return false;
     }
