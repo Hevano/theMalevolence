@@ -121,7 +121,6 @@ public class DriverCharacter : EnemyCharacter
     }*/
 
     public override IEnumerator GetTurn(){
-        Debug.Log(animator);
         if(Action != Enums.Action.Stunned){
 
             if (deck.CardList.Count == 0){

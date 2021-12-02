@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Call the Void
   cardDescription: All targets gains 10 corruption.
-  cardCorruptionPassDescription: Take 1-4 damage
+  cardCorruptionPassDescription: Take 2-8 damage
   cardCorruptionFailDescription: Summon new enemy
   cardFlavor: 
   cardCharacter: 6
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  cardColor: {r: 0, g: 0, b: 0, a: 1}
   exiled: 0
   bossCard: 1
   bossCorTargets: 4
@@ -80,7 +80,7 @@ MonoBehaviour:
       statusEffect: 0
     attackEffect:
       target: 1
-      dieNumber: 1
+      dieNumber: 2
       dieSize: 4
       dieBonus: 0
     cleanseEffect:

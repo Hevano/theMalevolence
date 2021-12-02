@@ -25,7 +25,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
                 CombatUIManager.Instance.SetDamageText(_health - newValue, transform);
 
-                try { animator.SetTrigger("Death"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+                try { animator.SetBool("Death", true); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
             }
             else if(_health > newValue)
@@ -41,6 +41,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 CombatUIManager.Instance.SetDamageText(newValue - _health, transform, Color.green);
 
                 AudioManager.audioMgr.PlayUISFX("Heal");
+                try { animator.SetBool("Death", false); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
             }
 
             if(Defeated && newValue != 0){

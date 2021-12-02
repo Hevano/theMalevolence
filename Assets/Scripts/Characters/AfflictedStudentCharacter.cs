@@ -6,7 +6,7 @@ public class AfflictedStudentCharacter : EnemyCharacter {
     
     public override IEnumerator GetTurn () {
         if (Action != Enums.Action.Stunned) {
-            if (deck.CardList.Count == 0) deck.Reshuffle();
+            if (deck.DiscardList.Count == deck.CardList.Count) deck.Reshuffle();
             CardToPlay = deck.Draw();
             yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
             Debug.Log($"{name} playing card {CardToPlay.Name}");

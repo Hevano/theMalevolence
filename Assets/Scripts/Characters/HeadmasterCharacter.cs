@@ -25,6 +25,9 @@ public class HeadmasterCharacter : EnemyCharacter {
                 Debug.Log($"{name} playing card {CardToPlay.Name}");
                 CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
                 yield return CardToPlay.Activate();
+                deck.CardList.Remove(CardToPlay);
+                deck.DiscardList.Add(CardToPlay);
+                Debug.Log("Headmaster cards remaining: " + deck.CardList.Count);
             }
         }
         turnEnd = !turnEnd;
