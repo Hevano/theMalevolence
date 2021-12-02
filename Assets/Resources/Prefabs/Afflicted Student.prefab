@@ -49,7 +49,7 @@ MonoBehaviour:
   _discardPile: 0
   _corruption: 0
   data: {fileID: 11400000, guid: b89cdb5d26f11a649ae47d92bc05e693, type: 2}
-  _cardToPlay: {fileID: 0}
+  _cardToPlay: {fileID: 11400000, guid: 33ad3ff116a00bb4e95ec7f2527f8c23, type: 2}
 --- !u!114 &7565989388976522522
 MonoBehaviour:
   m_ObjectHideFlags: 0
