@@ -24,7 +24,10 @@ public class Deck {
         }
         Card ret = cardList[0];
         cardList.RemoveAt(0);
-        return ret;
+        if (ret != null)
+            return ret;
+        else
+            return null;
     }
 
     public void Shuffle() {

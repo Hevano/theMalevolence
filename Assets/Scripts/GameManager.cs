@@ -281,8 +281,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator GameWinScreen(){
-        yield return CombatUIManager.Instance.DisplayMessage("You Win!", 4f);
-        yield return CombatUIManager.Instance.DisplayMessage("Proceeding to deck builder...", 4f);
+        yield return CombatUIManager.Instance.DisplayMessage("", 4f);
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
@@ -290,7 +289,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator GameOverScreen(){
-        yield return CombatUIManager.Instance.DisplayMessage("You Lose!", 2f);
+        yield return CombatUIManager.Instance.DisplayMessage("Everyone has fallen...", 2f);
         yield return CombatUIManager.Instance.DisplayMessage("Consumed by the Malevolence...", 4f);
         SceneManager.LoadScene("Main Menu");
         LevelManager.Instance.ToMainMenu();
