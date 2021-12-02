@@ -1410,6 +1410,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aafdd411f2e0f6749abceb53ff691339, type: 3}
   - {fileID: 8300000, guid: 01244e6a2bea50648a7abb9a0205ede0, type: 3}
   - {fileID: 8300000, guid: 5c244b5a51612c1468434bd5596627f0, type: 3}
+  - {fileID: 8300000, guid: 9b894bff076299b42af3f62002567630, type: 3}
+  - {fileID: 8300000, guid: 0f67c169879968945ab84f9c9a9f378b, type: 3}
+  - {fileID: 8300000, guid: 6507fc4362fdbda4a8376c53cfa08b69, type: 3}
+  LevelBGM: []
 --- !u!4 &1703626442
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,13 +1482,31 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f4f906319449d9343943f925e90b27df, type: 3}
   - {fileID: 21300000, guid: 897669d518cd3a640afe456c519a679d, type: 3}
   cutScene3Images:
-  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  - {fileID: 21300000, guid: 501844ba59175134db0cb2f60362427d, type: 3}
+  - {fileID: 21300000, guid: 8b00aec9ec4514247b3dc71948c1b821, type: 3}
+  - {fileID: 21300000, guid: d8490662d898ff14e8fc86ed10f22c3f, type: 3}
+  - {fileID: 21300000, guid: 07cc3d6bf82515043a0fd42b3c0e493e, type: 3}
+  - {fileID: 21300000, guid: e57bd3eac2f4a34469b38ca763ade235, type: 3}
+  - {fileID: 21300000, guid: f834be8549841b44a9b77bc30b8c9b09, type: 3}
   cutScene4Images:
-  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  - {fileID: 21300000, guid: 20f39226a51622244a2f2fdb93fc7e01, type: 3}
   cutScene5Images:
-  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  - {fileID: 21300000, guid: 282a09b1ab837bc4ebe0690c0f48fc4f, type: 3}
+  - {fileID: 21300000, guid: 286d3e82ab79597499115551128c2d37, type: 3}
+  - {fileID: 21300000, guid: f167802026c2c854b83a6eeef455a47c, type: 3}
+  - {fileID: 21300000, guid: 48410f67b661b7e44a52491f5b936b67, type: 3}
+  - {fileID: 21300000, guid: 7795067e0c9f2c64285a170da3fb77e5, type: 3}
+  - {fileID: 21300000, guid: c46183e0ba5bea948b045f250a909d6d, type: 3}
+  - {fileID: 21300000, guid: eb6ba3f57b23f3b49a84c66779f442fe, type: 3}
+  - {fileID: 21300000, guid: 90d2e3639af59874e9f6825b63488797, type: 3}
   cutScene6Images:
-  - {fileID: 21300000, guid: 4f551b5fcfb48264bb5b216e6cced510, type: 3}
+  - {fileID: 21300000, guid: 501844ba59175134db0cb2f60362427d, type: 3}
+  cutScene7Images:
+  - {fileID: 21300000, guid: 501844ba59175134db0cb2f60362427d, type: 3}
+  - {fileID: 21300000, guid: 5b705cec554840a438cc0d7c5fc88907, type: 3}
+  - {fileID: 21300000, guid: b44f53eaea1cbed46a2a8ed91be8455c, type: 3}
+  cutScene8Images:
+  - {fileID: 21300000, guid: 501844ba59175134db0cb2f60362427d, type: 3}
 --- !u!4 &1749706856
 Transform:
   m_ObjectHideFlags: 0

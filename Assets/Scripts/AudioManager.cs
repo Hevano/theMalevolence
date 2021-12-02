@@ -151,6 +151,16 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PlaySFX(int index)
+    {
+        try
+        {
+            SFXPlayer.clip = SoundEffects[index];
+            SFXPlayer.Play();
+        }
+        catch { Debug.Log($"<color=red>Sound not found at index {index}</color>"); }
+    }
+
     public void StopMusic() { currentTrack.Stop(); }
 
     public void PauseMusic() { currentTrack.Pause(); }

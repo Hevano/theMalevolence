@@ -15,7 +15,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private Image fadeImage, cutsceneImage, drawingImage, notebook, tutorial;
     [SerializeField]
-    private List<Sprite> cutScene1Images, cutScene2Images, cutScene3Images, cutScene4Images, cutScene5Images, cutScene6Images;
+    private List<Sprite> cutScene1Images, cutScene2Images, cutScene3Images, cutScene4Images, cutScene5Images, cutScene6Images, cutScene7Images, cutScene8Images;
 
     private List<Sprite> CurrentCutsceneImages;
     private float fadeTime = 3f, alphaToFadeTo;
@@ -202,6 +202,16 @@ public class CutsceneManager : MonoBehaviour
                 CurrentCutsceneImages = cutScene6Images;
                 updateImage(0);
                 break;
+            case "Cutscene_PreEntity":
+                cutsceneNum = 7;
+                CurrentCutsceneImages = cutScene7Images;
+                updateImage(0);
+                break;
+            case "Cutscene_PostEntity":
+                cutsceneNum = 8;
+                CurrentCutsceneImages = cutScene8Images;
+                updateImage(0);
+                break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneName} cutscene not found. Setting to intro scene...</color>");
                 cutsceneNum = 1;
@@ -256,19 +266,29 @@ public class CutsceneManager : MonoBehaviour
 
         switch (cutsceneNum)
         {
-            case 1: progressPreBusDriver();
+            case 1:
+                progressPreBusDriver();
                 break;
-            case 2: progressPostBusDriver();
+            case 2:
+                progressPostBusDriver();
                 break;
-            case 3: progressPreHeadmaster();
+            case 3:
+                progressPreHeadmaster();
                 break;
-            case 4: progressPostHeadmaster();
+            case 4:
+                progressPostHeadmaster();
                 break;
             case 5:
                 progressPrePuzzlebox();
                 break;
             case 6:
                 progressPostPuzzlebox();
+                break;
+            case 7:
+                progressPreEntity();
+                break;
+            case 8:
+                progressPostEntity();
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneNum} is not in scope of available cutscenes.</color>");
@@ -364,6 +384,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText("");
                 currentTextCol = Color.white;
                 eventText("CRASH");
+                AudioManager.audioMgr.PlaySFX(13);
                 StartCoroutine(Shake(events.gameObject, 100f));
                 break;
             case 19:
@@ -464,6 +485,7 @@ public class CutsceneManager : MonoBehaviour
             case 44:
                 currentTextCol = jockColor;
                 updateText("Hey, <i>hey</i>, back UP.");
+                AudioManager.audioMgr.PlaySFX(14);
                 break;
             case 45:
                 currentTextCol = jockColor;
@@ -673,7 +695,7 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Hopefully. My hockey team had a meetup today. I... I'm worried about them.");
                 break;
             case 4:
-                //updateImage(1);
+                updateImage(1);
                 break;
             case 5:
                 currentTextCol = gothColor;
@@ -696,15 +718,17 @@ public class CutsceneManager : MonoBehaviour
                 eventText($"<color={popSColor}???</color> <color={jockSColor}???</color> <color={nerdSColor}???</color> <color={gothSColor}???</color>");
                 break;
             case 10:
-                //updateImage(1);
+                updateImage(2);
                 break;
             case 11:
                 updateText("Now what do we have here...?");
                 break;
             case 12:
+                updateImage(3);
                 updateText("Students who haven't joined us?");
                 break;
             case 13:
+                updateImage(4);
                 updateText("It's time to change that...");
                 break;
             case 14:
@@ -740,26 +764,30 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Like, oh, I dunno, a baseball bat??");
                 break;
             case 6:
-                updateText("I mean, jeez, at this rate, I'd take that over this knife. Really hard to hurt something otherworldly with a switchblade.");
+                updateText("I mean, jeez, at this rate, I'd take that over this knife. Really hard to hurt the undead with a switchblade.");
                 break;
             case 7:
+                currentTextCol = popColor;
+                updateText("I don't think the undead would be able to form complete sentences... ");
+                break;
+            case 8:
                 currentTextCol = nerdColor;
                 updateText("Hey, I hear something... coming from downstairs");
                 break;
-            case 8:
-                updateText("...Let's pick up some of these runes first, then go check it out.");
-                break;
             case 9:
-                updateText($"I doubt finding the janitor's master key will be easy anyway, so getting more weapons is off the table.");
+                updateText("...Let's pick up some of these runes, then go check it out.");
                 break;
             case 10:
-                updateText($"Besides, these runes seem to be a lot stronger.");
+                updateText($"I doubt finding the janitor's master key will be easy anyway, so getting more weapons is off the table.");
                 break;
             case 11:
+                updateText($"Besides, these runes seem to be a lot stronger.");
+                break;
+            case 12:
                 currentTextCol = gothColor;
                 updateText("Told ya.");
                 break;
-            case 12:
+            case 13:
                 skip();
                 break;
             default:
@@ -805,21 +833,34 @@ public class CutsceneManager : MonoBehaviour
                 updateText("Thank you.");
                 break;
             case 9:
+                updateImage(1);
                 updateText($"");
                 break;
             case 10:
+                updateImage(2);
                 break;
             case 11:
+                updateImage(3);
                 break;
             case 12:
+                updateImage(4);
                 break;
             case 13:
-                eventText($"<color={nerdSColor}!!!</color> <color={gothSColor}!!!</color> <color={popSColor}!!!</color> <color={jockSColor}!!!</color>");
+                updateImage(5);
                 break;
             case 14:
-                updateText("Wha... what the heck is it?");
+                updateImage(6);
                 break;
             case 15:
+                updateImage(7);
+                break;
+            case 16:
+                eventText($"<color={nerdSColor}!!!</color> <color={gothSColor}!!!</color> <color={popSColor}!!!</color> <color={jockSColor}!!!</color>");
+                break;
+            case 17:
+                updateText("Wha... what the heck is it?");
+                break;
+            case 18:
                 skip();
                 break;
             default:
@@ -836,7 +877,30 @@ public class CutsceneManager : MonoBehaviour
         {
             case 1:
                 currentTextCol = popColor;
-                updateText("This is the place, yeah?");
+                updateText("Is it finally over?");
+                break;
+            case 2:
+                currentTextCol = gothColor;
+                updateText("Well, there's this weird rift here, so somehow I feel like it's far from over.");
+                break;
+            case 3:
+                currentTextCol = nerdColor;
+                updateText("AUGH");
+                break;
+            case 4:
+                currentTextCol = gothColor;
+                updateText($"Hey! <color={nerdSColor}>Zoey</color>, what's wrong??");
+                break;
+            case 5:
+                currentTextCol = nerdColor;
+                updateText($"My... head...");
+                break;
+            case 6:
+                currentTextCol = nerdColor;
+                updateText($"<color={popSColor}>Jacklyn</color>, write down those runes! I have a bad feeling about this...");
+                break;
+            case 7:
+                skip();
                 break;
             default:
                 Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
@@ -844,4 +908,123 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+    private void progressPreEntity()
+    {
+        switch (cutsceneStage)
+        {
+            case 1:
+                fadeImage.color = new Color(0f, 0f, 0f, 1f);
+                updateImage(1);
+                updateText("");
+                break;
+            case 2:
+                fadeImage.color = new Color(0f, 0f, 0f, .75f);
+                break;
+            case 3:
+                fadeImage.color = new Color(0f, 0f, 0f, .50f);
+                break;
+            case 4:
+                fadeImage.color = new Color(0f, 0f, 0f, .25f);
+                break;
+            case 5:
+                fadeImage.color = new Color(0f, 0f, 0f, 0f);
+                currentTextCol = nerdColor;
+                updateText($"...?");
+                break;
+            case 6:
+                updateText($"Where... am I?");
+                break;
+            case 7:
+                currentTextCol = gothColor;
+                updateText($"In a much more dangerous place.");
+                break;
+            case 8:
+                currentTextCol = nerdColor;
+                updateText($"Huh? What do you mean?");
+                break;
+            case 9:
+                currentTextCol = gothColor;
+                updateText($"Well... After you passed out, we got pulled into... Somewhere much worse.");
+                break;
+            case 10:
+                updateText($"Look.");
+                break;
+            case 11:
+                updateImage(2);
+                currentTextCol = nerdColor;
+                updateText($"...wh-what?");
+                break;
+            case 12:
+                currentTextCol = popColor;
+                updateText($"It hasn't... Done anything. It's just been sitting there... watching us... waiting...");
+                break;
+            case 13:
+                currentTextCol = jockColor;
+                updateText($"I feel like it has to do something at some point, right?");
+                break;
+            case 14:
+                currentTextCol = nerdColor;
+                updateText("I'm dreaming. I must be dreaming...");
+                break;
+            case 15:
+                currentTextCol = gothColor;
+                updateText("I... I'm sorry, but you're not. We need to find a way out of here, and I have a feeling the only way out is through that thing.");
+                break;
+            case 16:
+                currentTextCol = jockColor;
+                updateText("Oh crud. Guys!? It's moving!");
+                break;
+            case 17:
+                skip();
+                break;
+            default:
+                Debug.Log($"<color=red>Error: {cutsceneStage} is not in scope of available stages for cutscene #{cutsceneNum}</color>");
+                break;
+        }
+
+    }
+
+
+    private void progressPostEntity()
+    {
+        switch (cutsceneStage)
+        {
+            case 1:
+                eventText("There was never any hope for you");
+                StartCoroutine(Shake(events.gameObject, 10f));
+                break;
+            case 2:
+                eventText("There is no escape");
+                StartCoroutine(Shake(events.gameObject, 50f));
+                break;
+            case 3:
+                eventText("There is no end");
+                StartCoroutine(Shake(events.gameObject, 100f));
+                break;
+            case 4:
+                eventText("There is only me");
+                StartCoroutine(Shake(events.gameObject, 200f));
+                break;
+            case 5:
+                eventText("There is only");
+                StartCoroutine(Shake(events.gameObject, 200f));
+                break;
+            case 6:
+                eventText("US");
+                StartCoroutine(Shake(events.gameObject, 300f));
+                break;
+            case 7:
+                eventText("Join");
+                StartCoroutine(Shake(events.gameObject, 300f));
+                break;
+            case 8:
+                eventText("Us");
+                StartCoroutine(Shake(events.gameObject, 300f));
+                break;
+            case 9:
+                skip();
+                break;
+
+        }
+    }
 }
