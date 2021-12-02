@@ -368,28 +368,28 @@ public class GameManager : MonoBehaviour
         Character ch;
         characters.TryGetValue(Enums.Character.Goth, out ch);
         decks[Enums.Character.Goth] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Goth].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Jock, out ch);
         decks[Enums.Character.Jock] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Jock].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Nerd, out ch);
         decks[Enums.Character.Nerd] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Nerd].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
 
         characters.TryGetValue(Enums.Character.Popular, out ch);
         decks[Enums.Character.Popular] = ch.data.Deck;
-        if(shuffleOnStart) ch.data.Deck.Shuffle();
+        if(shuffleOnStart) decks[Enums.Character.Popular].Shuffle();
 
         foreach (Card c in ch.data.Deck.CardList)
             c.Color = ch.data.color;
