@@ -2060,11 +2060,14 @@ MonoBehaviour:
   - BossHeadmaster
   - Cutscene_PostBossHeadmaster
   - Drafting_BossHeadmaster
-  - Cutscene_PreBossPuzzlebox
+  - Cutscene_PreBossPuzzleBox
   - BossPuzzleBox
   - Cutscene_PostBossPuzzleBox
   - Drafting_BossPuzzleBox
+  - Cutscene_PreBossEntity
   - BossEntity
+  - Cutscene_PostBossEntity
+  - Main Menu
 --- !u!4 &1857593077
 Transform:
   m_ObjectHideFlags: 0
