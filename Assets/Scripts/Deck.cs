@@ -40,7 +40,7 @@ public class Deck {
             tempList.RemoveAt(drawnCard);
         }
 
-        AudioManager.audioMgr.PlayUISFX("Shuffle");
+        if(AudioManager.audioMgr != null) AudioManager.audioMgr.PlayUISFX("Shuffle");
     }
 
     //Shuffles the discard pile into the draw pile

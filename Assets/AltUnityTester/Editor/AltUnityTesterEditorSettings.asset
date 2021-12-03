@@ -45,43 +45,47 @@ MonoBehaviour:
     _testDuration: 0
     path: 
     _testSelectedCount: 1
-  - _selected: 0
+  - _selected: 1
     _testName: UITests.AttackTest
-    _status: 0
+    _status: 1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0
+    _testDuration: 0.9142536
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: UITests.DraftingTest
-    _status: 0
+    _status: 1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
     _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
+    _testStackTrace: 'at UITests.DraftingTest () [0x0008c] in C:\Users\Evano\Documents\Projects\theMalevolence\Assets\AltUnityTester\Editor\Tests\UITests.cs:47
+
+'
+    _testDuration: 1.1058357
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: UITests.EndPhaseTest
-    _status: 0
+    _status: 1
     _isSuite: 0
     _parentName: UITests
     _testCaseCount: 1
     _foldOut: 1
     _testResultMessage: 
-    _testStackTrace: 
-    _testDuration: 0
+    _testStackTrace: 'at UITests.EndPhaseTest () [0x0004a] in C:\Users\Evano\Documents\Projects\theMalevolence\Assets\AltUnityTester\Editor\Tests\UITests.cs:30
+
+'
+    _testDuration: 0.5580713
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
-  - _selected: 1
+  - _selected: 0
     _testName: UITests.PlayCardTest
     _status: 1
     _isSuite: 0
@@ -90,7 +94,7 @@ MonoBehaviour:
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 27.1881201
+    _testDuration: 9.4584106
     path: Assets/AltUnityTester/Editor/Tests/UITests.cs
     _testSelectedCount: 0
   - _selected: 1
@@ -133,6 +137,12 @@ MonoBehaviour:
   - _toBeBuilt: 1
     _path: Assets/Scenes/BossHeadmaster.unity
     _buildIndex: 4
+  - _toBeBuilt: 1
+    _path: Assets/Scenes/Cutscene.unity
+    _buildIndex: 5
+  - _toBeBuilt: 1
+    _path: Assets/Scenes/BossEntity.unity
+    _buildIndex: 6
   platform: 1
   StandaloneTarget: 5
   RanInEditor: 0
