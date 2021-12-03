@@ -1520,10 +1520,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 8
 =======
   m_RootOrder: 10
 >>>>>>> 1b9ffa7 (Completed UI Tests)
+=======
+  m_RootOrder: 10
+>>>>>>> 1b9ffa7c61c676d9671b6ff1911db41f10e6fade
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1108308689 stripped
 MonoBehaviour:
