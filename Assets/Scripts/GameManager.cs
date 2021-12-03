@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character) && !display.Character.Defeated){
+            if (party.Contains(display.Character) && !display.Character.Defeated && (decks[display.Character.data.characterType].CardList.Count != 0 || decks[display.Character.data.characterType].DiscardList.Count != 0)){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
         phase = Enums.GameplayPhase.Planning;
     }
 
