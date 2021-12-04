@@ -2075,8 +2075,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - Cutscene_PreBossOne
   - BossOne
+  - Cutscene_PreBossOne
   - Cutscene_PostBossOne
   - Drafting_BossOne
   - BossHeadmaster

@@ -32,7 +32,7 @@ public class Testing : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
-            
+            Debug.Log("Quitting...");
             Application.Quit();
         }
         else
