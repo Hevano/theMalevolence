@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEditor;
 
 public class Testing : MonoBehaviour
 {
@@ -16,7 +18,17 @@ public class Testing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Active scene is {SceneManager.GetActiveScene().name}");
+        
+        /*
+        List<string> EditorScenes = new List<string>();
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if (!scene.enabled) continue;
+            EditorScenes.Add(scene.path);
+        }
+
+        Debug.Log($"Active scene is {SceneManager.GetActiveScene().name} and scenes enabled include {EditorScenes[1].ToString()}");
+        */
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
