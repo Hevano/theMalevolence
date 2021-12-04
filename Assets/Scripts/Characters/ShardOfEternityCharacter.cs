@@ -6,6 +6,7 @@ public class ShardOfEternityCharacter : EnemyCharacter {
 
     public override IEnumerator GetTurn () {
         Debug.Log($"{name} playing card {CardToPlay.Name}");
+        yield return CombatUIManager.Instance.RevealCard(CardToPlay);
         CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
         yield return CardToPlay.Activate();
     }
