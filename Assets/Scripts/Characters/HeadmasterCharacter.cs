@@ -21,7 +21,7 @@ public class HeadmasterCharacter : EnemyCharacter {
             if (Action != Enums.Action.Stunned && Health > 0) {
                 if (deck.CardList.Count == 0) deck.Reshuffle();
                 CardToPlay = deck.Draw();
-                yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
+                yield return CombatUIManager.Instance.RevealCard(CardToPlay); 
                 Debug.Log($"{name} playing card {CardToPlay.Name}");
                 CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
                 yield return CardToPlay.Activate();

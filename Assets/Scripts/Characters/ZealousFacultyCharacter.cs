@@ -8,7 +8,7 @@ public class ZealousFacultyCharacter : EnemyCharacter {
         if (Action != Enums.Action.Stunned) {
             int card = Random.Range(0, 2);
             CardToPlay = deck.CardList[card];
-            yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
+            yield return CombatUIManager.Instance.RevealCard(CardToPlay); 
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             animator.SetTrigger("Attack");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");

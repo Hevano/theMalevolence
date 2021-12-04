@@ -171,19 +171,16 @@ public class Card : ScriptableObject {
     public IEnumerator DesignateTargets() {
         AllyTarget = null;
         EnemyTarget = null;
-
-        //Somewhere here, targets are not being designated for the card. Are there missing references?
+        
         Debug.Log("Designating targets");
 
         for (int i = 0; i < cardEffects.Count; i++) {
-            //cardEffect.card was not being set properly, this is a workaround
             var effect = cardEffects[i].GetEffect();
             effect.SetOwnerCard(this);
             yield return effect.DesignateTarget();
         }
 
         for (int i = 0; i < cardCorPass.Count; i++) {
-            //cardEffect.card was not being set properly, this is a workaround
             var effect = cardCorPass[i].GetEffect();
             effect.SetOwnerCard(this);
             if (!bossCard)
@@ -261,18 +258,4 @@ public class Card : ScriptableObject {
         exiled = true;
     }
 
-    /*
-        CardEffect Resolution and Targeting
-    */
-    // public IEnumerator ActivateEffect(){
-    //     foreach(CardEffect effect in cardEffects){
-    //         yield return effect.Activate();
-    //     }
-    // }
-
-    // public IEnumerator AccquireTargets(){
-    //     foreach(CardEffect effect in cardEffects){
-    //         yield return effect.AccquireTarget();
-    //     }
-    // }
 }

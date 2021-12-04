@@ -127,37 +127,7 @@ public class DeckBuilder : MonoBehaviour
                 SelectCard(display);
             });
 
-            /*
-            draggable.onDragStart += (a, b) => {
-
-                if (selectedCards.Contains(display))
-                {
-                    selectedCards.Remove(display);
-                }
-                else if (selectedCards.Count == cardsToKeep)
-                {
-                    //unhighlight index 0
-                    Destroy(selectedCards[0].transform.GetChild(0).gameObject);
-                    selectedCards.RemoveAt(0);
-                    selectedCards.Add(display);
-
-                    //highlight card
-                    var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
-                    glow.transform.SetAsFirstSibling();
-                }
-                else
-                {
-                    selectedCards.Add(display);
-                    //highlight card
-                    var glow = Instantiate(Resources.Load<GameObject>("UserInterface/CardGlow"), display.transform);
-                    glow.transform.SetAsFirstSibling();
-                }
-
-            };
-
-            draggable.onDragStop += (a,b) => {
-                display.transform.SetParent(draftDisplay.transform);
-            };*/
+            
 
             draftDisplay.AddCard(display);
         }

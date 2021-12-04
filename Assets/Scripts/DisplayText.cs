@@ -5,12 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-/*
-Display text behaviour
-- Instantiate
-
-
-*/
 
 public class DisplayText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {

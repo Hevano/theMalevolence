@@ -61,7 +61,7 @@ public class PartyCharacter : Character
         else if(Action == Enums.Action.Card && CardToPlay != null)
         {
             Debug.Log($"<color=green>{data.name} playing card {CardToPlay.Name}</color>");
-            //CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
+
             yield return CombatUIManager.Instance.RevealCard(CardToPlay);
             //Execute the selected card from the dropzone.
             yield return CardToPlay.Activate();

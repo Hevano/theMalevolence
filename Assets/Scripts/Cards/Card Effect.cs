@@ -98,12 +98,7 @@ public class CardEffect {
                     targets.Add(card.SecondAllyTarget);
                     break;
             }
-            if(targets != null)
-            { 
-                //foreach (Character t in targets)
-                //    if (t.Defeated)
-                //        targets.Remove(t);
-            }
+
         }
         GameManager.manager.togglePartyButton(GameManager.manager.actionsEnabled);
     }
@@ -136,15 +131,4 @@ public class CardEffect {
 
     }
 
-    /*
-        CardEffect Resolution and Targeting
-    */
-    // public IEnumerator Activate(){
-    //     //Effect resolution goes here
-    // }
-
-    // public IEnumerator AccquireTarget(){
-    //     yield return Targetable.GetTargetable(Enums.TargetType.Any, "Targetting ui msg", 1);
-    //     this.targets = Targetable.currentTargets;
-    // }
 }

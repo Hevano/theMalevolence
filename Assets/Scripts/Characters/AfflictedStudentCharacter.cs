@@ -8,7 +8,7 @@ public class AfflictedStudentCharacter : EnemyCharacter {
         if (Action != Enums.Action.Stunned) {
             if (deck.DiscardList.Count == deck.CardList.Count) deck.Reshuffle();
             CardToPlay = deck.Draw();
-            yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
+            yield return CombatUIManager.Instance.RevealCard(CardToPlay); 
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             animator.SetTrigger("Serve");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");

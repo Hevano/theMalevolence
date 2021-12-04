@@ -433,17 +433,6 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    //Temp, change later
-    // public void ViewDeck(){
-    //     deckBuilderCanvas.SetActive(true);
-    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
-    // }
-
-    // public void BeginDrafting(){
-    //     deckBuilderCanvas.SetActive(true);
-    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
-    //     DeckBuilder.Instance.StartDraft();
-    // }
 }
 
 //Interface inherited by anything that can take a turn

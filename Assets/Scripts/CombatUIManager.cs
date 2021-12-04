@@ -101,8 +101,6 @@ public class CombatUIManager : MonoBehaviour {
             RectTransform DisplayArea = CardRevealDisplay.GetComponent<RectTransform>();
             cardRectTransform.SetParent(DisplayArea.transform);
 
-            //cardRectTransform.offsetMin = new Vector2((choices.IndexOf(card)) * 250 - ((choices.Count - 1) * 125), 120);
-            //cardRectTransform.sizeDelta = new Vector2(60, 90);
 
             displays.Add(display);
             display.GetComponent<Draggable>().onDragStart += (drag, drop) => {

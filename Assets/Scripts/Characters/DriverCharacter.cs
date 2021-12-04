@@ -99,26 +99,6 @@ public class DriverCharacter : EnemyCharacter
             }
         }
     }
-    /* Cannot implement ravings of a madman, need some method of creating multiple instances of the same card.
-    public IEnumerator RavingsOfAMadman(){
-        //Character with the least corruption gains 10
-        Character target = GameManager.manager.party[0];
-        for(int i = 1; i < GameManager.manager.party.Count; i++){
-            if(target.Corruption > GameManager.manager.party[i].Corruption){
-                target = GameManager.manager.party[i];
-            }
-        }
-
-        target.Corruption += 10;
-        CombatUIManager.Instance.SetDamageText(10, target.transform, new Color32(139, 0, 139, 0));
-        yield return CombatUIManager.Instance.DisplayMessage($"{target.name} gained {10} Corruption");
-
-        foreach(Character partyMember in GameManager.manager.party){
-            if(!partyMember.CorruptionCheck()){
-                Card c = 
-            }
-        }
-    }*/
 
     public override IEnumerator GetTurn(){
         if(Action != Enums.Action.Stunned){
@@ -129,7 +109,7 @@ public class DriverCharacter : EnemyCharacter
 
             CardToPlay = deck.Draw();
 
-            yield return CombatUIManager.Instance.RevealCard(CardToPlay); //Should extend this time when not testing
+            yield return CombatUIManager.Instance.RevealCard(CardToPlay); 
             switch(CardToPlay.Name){
                 case "Siezure":
                     yield return Siezure();

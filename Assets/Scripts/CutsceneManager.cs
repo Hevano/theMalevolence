@@ -42,8 +42,7 @@ public class CutsceneManager : MonoBehaviour
             alphaToFadeTo = 0f;
         else
             alphaToFadeTo = 1f;
-
-        //Debug.Log($"{fadeImage.color} fading now to {alphaToFadeTo}...");
+        
 
         StartCoroutine(FadeTo(alphaToFadeTo, fadeTime));
 
@@ -80,7 +79,6 @@ public class CutsceneManager : MonoBehaviour
             float random3 = Random.Range(originalPosition.z - scale, originalPosition.z + scale);
 
             toShake.transform.position = new Vector3(random, random2, random3);
-            //Debug.Log($"{toShake.transform.position} is the current position of the object");
 
             yield return new WaitForSeconds(.1f);
 

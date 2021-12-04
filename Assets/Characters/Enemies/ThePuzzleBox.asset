@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 5
   name: The Puzzle Box
-  health: 200
+  health: 150
   currentHealth: 200
   corruption: 0
   currentCorruption: 0

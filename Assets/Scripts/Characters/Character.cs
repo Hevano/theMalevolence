@@ -176,7 +176,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public Animator Animator { get { return animator; } }
 
     //Character Events
-    public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); //we should make some static statName strings to prevent bugs
+    public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); 
     public event StatChangeHandler onStatChange;
 
     public delegate void ActionChangeHandler(Enums.Action prev, Enums.Action newAction);

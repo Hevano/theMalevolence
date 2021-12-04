@@ -41,7 +41,6 @@ public class CharacterData : ScriptableObject
     }
 
     public void UpdateStats(Character c){
-        //currentHealth = c.Health;
         currentCorruption = c.Corruption;
     }
 }

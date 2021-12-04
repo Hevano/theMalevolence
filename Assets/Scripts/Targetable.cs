@@ -23,7 +23,7 @@ public class Targetable : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData data){ //Camera needs to have the PhysicsRaycast Component
         if(targetting && targetTypes.Contains(targetType) && ((Character)target).Defeated == false)
         {
-            currentTargets.Add(((Character)target).Targeted(targetSource));//May want to change so that a target already in the list cannot be added a second time
+            currentTargets.Add(((Character)target).Targeted(targetSource));
             Debug.Log($"<color=Cyan>Target assigned:</color> {name} has been targeted");
             ;
         }
