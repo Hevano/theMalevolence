@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public DropZone cardDropZone;
     public List<TurnOrderSlot> turnSlots;
     public Canvas messager;
-    public bool actionsEnabled = false;
+    public bool actionsEnabled = false, testing = false;
 
     public List<Character> party = new List<Character>();
     public List<Character> foes = new List<Character>();
@@ -156,51 +156,62 @@ public class GameManager : MonoBehaviour
         Debug.Log("<color=yellow>Resolving Phase</color>");
         turns = new List<ITurnExecutable>();
 
-        //For each turn in turnSlots, add a turn to the turns list
-        foreach(TurnOrderSlot turnSlot in turnSlots)
+        if (!testing)
         {
-            turns.Add(turnSlot.Turn);
+            //For each turn in turnSlots, add a turn to the turns list
+            foreach (TurnOrderSlot turnSlot in turnSlots)
+            {
+                turns.Add(turnSlot.Turn);
 
-            var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            display.highlightTurnSlot(false);
-            
-            toggleCharButton(display, false);
-        }
+                var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
+                display.highlightTurnSlot(false);
 
-
-        if (onPhaseChange != null){
-            onPhaseChange(phase);
-        }
-
-        int count = 0;
-
-        foreach(ITurnExecutable turn in turns)
-        {
-            CharacterDisplayController CurrentCharDisplay = null;
-
-            try { CurrentCharDisplay = turnSlots[count].currentTurnDraggable.GetComponent<CharacterDisplayController>(); }
-            catch { Debug.Log($"<color=red>Error: {turn} at {count}'th turn contains no valid character display controller. </color>"); }
-
-            count++;
-            
-            if(CurrentCharDisplay != null)
-                CurrentCharDisplay.highlightTurn(true);
-
-            yield return turn.GetTurn();
-            if(gameOver){
-                yield break;
+                toggleCharButton(display, false);
             }
 
-            if (CurrentCharDisplay != null)
-                CurrentCharDisplay.highlightTurn(false);
-        }
 
-        //Discards all cards that were played
-        foreach(ITurnExecutable turn in turns){
-            Character c = turn as Character;
-            if(c != null){
-                c.EndResolvePhase();
+            if (onPhaseChange != null)
+            {
+                onPhaseChange(phase);
             }
+
+            int count = 0;
+
+            foreach (ITurnExecutable turn in turns)
+            {
+                CharacterDisplayController CurrentCharDisplay = null;
+
+                try { CurrentCharDisplay = turnSlots[count].currentTurnDraggable.GetComponent<CharacterDisplayController>(); }
+                catch { Debug.Log($"<color=red>Error: {turn} at {count}'th turn contains no valid character display controller. </color>"); }
+
+                count++;
+
+                if (CurrentCharDisplay != null)
+                    CurrentCharDisplay.highlightTurn(true);
+
+                yield return turn.GetTurn();
+                if (gameOver)
+                {
+                    yield break;
+                }
+
+                if (CurrentCharDisplay != null)
+                    CurrentCharDisplay.highlightTurn(false);
+            }
+
+            //Discards all cards that were played
+            foreach (ITurnExecutable turn in turns)
+            {
+                Character c = turn as Character;
+                if (c != null)
+                {
+                    c.EndResolvePhase();
+                }
+            }
+        }
+        else
+        {
+            foes[0].Health -= 1;
         }
     }
 
@@ -222,7 +233,7 @@ public class GameManager : MonoBehaviour
         foreach(TurnOrderSlot turnSlot in turnSlots)
         {
             var display = turnSlot.currentTurnDraggable.GetComponent<CharacterDisplayController>();
-            if(party.Contains(display.Character) && !display.Character.Defeated){
+            if(party.Contains(display.Character) && !display.Character.Defeated && testing != true){
                 display.ToggleDrawButton(true);
                 cardsToDraw = true;
             }
@@ -285,7 +296,8 @@ public class GameManager : MonoBehaviour
         foreach(Character c in party){
             c.data.UpdateStats(c);
         }
-        LevelManager.Instance.ToNextLevel();
+        if (!testing) { LevelManager.Instance.ToNextLevel(); }
+        else { SceneManager.LoadScene("Main Menu"); }
     }
 
     public IEnumerator GameOverScreen(){
@@ -432,17 +444,6 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    //Temp, change later
-    // public void ViewDeck(){
-    //     deckBuilderCanvas.SetActive(true);
-    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
-    // }
-
-    // public void BeginDrafting(){
-    //     deckBuilderCanvas.SetActive(true);
-    //     GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
-    //     DeckBuilder.Instance.StartDraft();
-    // }
 }
 
 //Interface inherited by anything that can take a turn
